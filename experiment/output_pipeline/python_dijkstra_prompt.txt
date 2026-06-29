@@ -1,0 +1,33 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def dijkstra(graph, src, dest):
+    if graph is None:
+        return -1
+    n = len(graph)
+    dist = [float('inf')] * n
+    dist[src] = 0
+    spt_set = [False] * n
+    for _ in range(n):
+        u = -1
+        min_val = float('inf')
+        for i in range(n):
+            if not spt_set[i] and dist[i] < min_val:
+                min_val = dist[i]
+                u = i
+        if u == -1 or u == dest:
+            break
+        spt_set[u] = True
+        for v in range(n):
+            if graph[u][v] > 0 and not spt_set[v] and dist[v] > dist[u] + graph[u][v]:
+                dist[v] = dist[u] + graph[u][v]
+    return dist[dest] if dist[dest] != float('inf') else -1
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

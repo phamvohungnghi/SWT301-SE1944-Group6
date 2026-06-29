@@ -1,0 +1,42 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static int dijkstra(int[][] graph, int src, int dest) {
+        if (graph == null) {
+            return -1;
+        }
+        int n = graph.length;
+        int[] dist = new int[n];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[src] = 0;
+        boolean[] sptSet = new boolean[n];
+        for (int count = 0; count < n; count++) {
+            int u = -1;
+            int minDist = Integer.MAX_VALUE;
+            for (int i = 0; i < n; i++) {
+                if (!sptSet[i] && dist[i] < minDist) {
+                    minDist = dist[i];
+                    u = i;
+                }
+            }
+            if (u == -1 || u == dest) {
+                break;
+            }
+            sptSet[u] = true;
+            for (int v = 0; v < n; v++) {
+                if (graph[u][v] > 0 && !sptSet[v] && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+        return dist[dest] == Integer.MAX_VALUE ? -1 : dist[dest];
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

@@ -1,0 +1,36 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static boolean luhnCheck(String cardNumber) {
+        if (cardNumber == null || cardNumber.isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < cardNumber.length(); i++) {
+            if (!Character.isDigit(cardNumber.charAt(i))) {
+                return false;
+            }
+        }
+        int total = 0;
+        boolean alternate = false;
+        for (int i = cardNumber.length() - 1; i >= 0; i--) {
+            int val = cardNumber.charAt(i) - '0';
+            if (alternate) {
+                val *= 2;
+                if (val > 9) {
+                    val -= 9;
+                }
+            }
+            total += val;
+            alternate = !alternate;
+        }
+        return total % 10 == 0;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

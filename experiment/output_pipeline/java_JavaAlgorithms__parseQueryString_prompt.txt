@@ -1,0 +1,53 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static Map<String, Object> parseQueryString(String qs) {
+        if (qs == null || qs.isEmpty()) {
+            return new HashMap<>();
+        }
+        if (qs.startsWith("?")) {
+            qs = qs.substring(1);
+        }
+        Map<String, Object> result = new HashMap<>();
+        String[] pairs = qs.split("&");
+        for (String pair : pairs) {
+            if (pair.isEmpty()) {
+                continue;
+            }
+            String key;
+            String val;
+            if (pair.contains("=")) {
+                String[] parts = pair.split("=", 2);
+                key = parts[0];
+                val = parts[1];
+            } else {
+                key = pair;
+                val = "";
+            }
+            if (result.containsKey(key)) {
+                Object existing = result.get(key);
+                if (existing instanceof List) {
+                    @SuppressWarnings("unchecked")
+                    List<String> list = (List<String>) existing;
+                    list.add(val);
+                } else {
+                    List<String> list = new ArrayList<>();
+                    list.add((String) existing);
+                    list.add(val);
+                    result.put(key, list);
+                }
+            } else {
+                result.put(key, val);
+            }
+        }
+        return result;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

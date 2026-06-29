@@ -1,0 +1,36 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def simple_html_tokenizer(html):
+    if html is None:
+        return []
+    tokens = []
+    i = 0
+    n = len(html)
+    while i < n:
+        if html[i] == '<':
+            j = i + 1
+            while j < n and html[j] != '>':
+                j += 1
+            if j < n:
+                tokens.append(("TAG", html[i:j+1]))
+                i = j + 1
+            else:
+                tokens.append(("TEXT", html[i:]))
+                break
+        else:
+            j = i
+            while j < n and html[j] != '<':
+                j += 1
+            tokens.append(("TEXT", html[i:j]))
+            i = j
+    return tokens
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

@@ -1,0 +1,38 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def date_difference(date1, date2):
+    if date1 is None or date2 is None:
+        return -1
+    try:
+        p1 = date1.split('-')
+        p2 = date2.split('-')
+        if len(p1) != 3 or len(p2) != 3:
+            return -1
+        y1, m1, d1 = map(int, p1)
+        y2, m2, d2 = map(int, p2)
+
+        ny1, nm1 = y1, m1
+        if nm1 < 3:
+            ny1 -= 1
+            nm1 += 12
+        days1 = 365 * ny1 + ny1 // 4 - ny1 // 100 + ny1 // 400 + (153 * nm1 + 2) // 5 + d1
+
+        ny2, nm2 = y2, m2
+        if nm2 < 3:
+            ny2 -= 1
+            nm2 += 12
+        days2 = 365 * ny2 + ny2 // 4 - ny2 // 100 + ny2 // 400 + (153 * nm2 + 2) // 5 + d2
+
+        return abs(days1 - days2)
+    except Exception:
+        return -1
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

@@ -1,0 +1,35 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def json_path_lookup(data, path):
+    if data is None or not path:
+        return None
+    keys = path.split(".")
+    current = data
+    for key in keys:
+        if isinstance(current, dict):
+            if key in current:
+                current = current[key]
+            else:
+                return None
+        elif isinstance(current, list):
+            if key.isdigit():
+                idx = int(key)
+                if 0 <= idx < len(current):
+                    current = current[idx]
+                else:
+                    return None
+            else:
+                return None
+        else:
+            return None
+    return current
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

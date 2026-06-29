@@ -1,0 +1,23 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def is_match(s, p):
+    if p is None or s is None:
+        return False
+    if not p:
+        return not s
+    first_match = bool(s) and p[0] in (s[0], '.')
+    if len(p) >= 2 and p[1] == '*':
+        return (is_match(s, p[2:]) or
+                (first_match and is_match(s[1:], p)))
+    else:
+        return first_match and is_match(s[1:], p[1:])
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

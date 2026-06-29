@@ -1,0 +1,33 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def check_sudoku_board(board):
+    if board is None or len(board) != 9:
+        return False
+    for row in board:
+        if row is None or len(row) != 9:
+            return False
+    for r in range(9):
+        row_set = set()
+        col_set = set()
+        for c in range(9):
+            rv = board[r][c]
+            cv = board[c][r]
+            if rv != 0:
+                if rv in row_set or not (1 <= rv <= 9):
+                    return False
+                row_set.add(rv)
+            if cv != 0:
+                if cv in col_set or not (1 <= cv <= 9):
+                    return False
+                col_set.add(cv)
+    return True
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

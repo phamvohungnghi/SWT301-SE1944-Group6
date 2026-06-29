@@ -1,0 +1,40 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static int romanToInt(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+        int total = 0;
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            if (!romanMap.containsKey(c)) {
+                return 0;
+            }
+            int val = romanMap.get(c);
+            if (i + 1 < n && romanMap.containsKey(s.charAt(i + 1)) && romanMap.get(s.charAt(i + 1)) > val) {
+                total -= val;
+            } else {
+                total += val;
+            }
+        }
+        return total;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

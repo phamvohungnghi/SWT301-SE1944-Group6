@@ -1,0 +1,51 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static Object jsonPathLookup(Map<String, Object> data, String path) {
+        if (data == null || path == null || path.isEmpty()) {
+            return null;
+        }
+        String[] keys = path.split("\\.");
+        Object current = data;
+        for (String key : keys) {
+            if (current instanceof Map) {
+                Map<?, ?> map = (Map<?, ?>) current;
+                if (map.containsKey(key)) {
+                    current = map.get(key);
+                } else {
+                    return null;
+                }
+            } else if (current instanceof List) {
+                List<?> list = (List<?>) current;
+                boolean isDigit = true;
+                for (int i = 0; i < key.length(); i++) {
+                    if (!Character.isDigit(key.charAt(i))) {
+                        isDigit = false;
+                        break;
+                    }
+                }
+                if (isDigit && !key.isEmpty()) {
+                    int idx = Integer.parseInt(key);
+                    if (idx >= 0 && idx < list.size()) {
+                        current = list.get(idx);
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
+        return current;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

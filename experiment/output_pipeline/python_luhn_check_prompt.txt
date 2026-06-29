@@ -1,0 +1,25 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def luhn_check(card_number):
+    if not card_number or not card_number.isdigit():
+        return False
+    total = 0
+    reverse_digits = card_number[::-1]
+    for idx, digit in enumerate(reverse_digits):
+        val = int(digit)
+        if idx % 2 == 1:
+            val *= 2
+            if val > 9:
+                val -= 9
+        total += val
+    return total % 10 == 0
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

@@ -1,0 +1,33 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def is_valid_bst(nodes, root_idx):
+    if not nodes or root_idx < 0 or root_idx >= len(nodes):
+        return True
+    stack = [(root_idx, float('-inf'), float('inf'))]
+    while stack:
+        curr, low, high = stack.pop()
+        node = nodes[curr]
+        val = node["val"]
+        if val <= low or val >= high:
+            return False
+        left = node.get("left", -1)
+        right = node.get("right", -1)
+        if left >= 0 and left < len(nodes):
+            stack.append((left, low, val))
+        elif left != -1:
+            return False
+        if right >= 0 and right < len(nodes):
+            stack.append((right, val, high))
+        elif right != -1:
+            return False
+    return True
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

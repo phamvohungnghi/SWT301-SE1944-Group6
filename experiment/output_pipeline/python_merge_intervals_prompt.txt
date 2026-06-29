@@ -1,0 +1,28 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    for interval in intervals:
+        if len(interval) != 2 or interval[0] > interval[1]:
+            return []
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    for current in intervals[1:]:
+        prev_start, prev_end = merged[-1]
+        curr_start, curr_end = current
+        if curr_start <= prev_end:
+            merged[-1] = [prev_start, max(prev_end, curr_end)]
+        else:
+            merged.append(current)
+    return merged
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

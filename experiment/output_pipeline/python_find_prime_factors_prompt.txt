@@ -1,0 +1,28 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def find_prime_factors(n):
+    if n <= 1:
+        return []
+    factors = []
+    while n % 2 == 0:
+        factors.append(2)
+        n //= 2
+    d = 3
+    while d * d <= n:
+        while n % d == 0:
+            factors.append(d)
+            n //= d
+        d += 2
+    if n > 1:
+        factors.append(n)
+    return factors
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

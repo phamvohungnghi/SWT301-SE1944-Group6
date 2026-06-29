@@ -1,0 +1,35 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def parse_query_string(qs):
+    if not qs:
+        return {}
+    if qs.startswith("?"):
+        qs = qs[1:]
+    result = {}
+    pairs = qs.split("&")
+    for pair in pairs:
+        if not pair:
+            continue
+        if "=" in pair:
+            parts = pair.split("=", 1)
+            key, val = parts[0], parts[1]
+        else:
+            key, val = pair, ""
+        if key in result:
+            if isinstance(result[key], list):
+                result[key].append(val)
+            else:
+                result[key] = [result[key], val]
+        else:
+            result[key] = val
+    return result
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

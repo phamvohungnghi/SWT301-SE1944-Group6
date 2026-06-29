@@ -1,0 +1,38 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static String longestPalindromeSubstring(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        String longest = "";
+        for (int i = 0; i < s.length(); i++) {
+            int l = i, r = i;
+            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+                if ((r - l + 1) > longest.length()) {
+                    longest = s.substring(l, r + 1);
+                }
+                l--;
+                r++;
+            }
+            l = i;
+            r = i + 1;
+            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+                if ((r - l + 1) > longest.length()) {
+                    longest = s.substring(l, r + 1);
+                }
+                l--;
+                r++;
+            }
+        }
+        return longest;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

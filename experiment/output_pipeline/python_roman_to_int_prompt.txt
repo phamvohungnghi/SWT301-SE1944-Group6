@@ -1,0 +1,27 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def roman_to_int(s):
+    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    if not s:
+        return 0
+    total = 0
+    n = len(s)
+    for i in range(n):
+        if s[i] not in roman_map:
+            return 0
+        val = roman_map[s[i]]
+        if i + 1 < n and roman_map[s[i + 1]] > val:
+            total -= val
+        else:
+            total += val
+    return total
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

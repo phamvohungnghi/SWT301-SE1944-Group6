@@ -1,0 +1,34 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static String runLengthEncoding(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isLetter(s.charAt(i))) {
+                return "";
+            }
+        }
+        StringBuilder encoded = new StringBuilder();
+        int count = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                count++;
+            } else {
+                encoded.append(count).append(s.charAt(i - 1));
+                count = 1;
+            }
+        }
+        encoded.append(count).append(s.charAt(s.length() - 1));
+        return encoded.toString();
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

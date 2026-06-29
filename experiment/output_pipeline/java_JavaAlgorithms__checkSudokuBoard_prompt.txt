@@ -1,0 +1,38 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static boolean checkSudokuBoard(int[][] board) {
+        if (board == null || board.length != 9) {
+            return false;
+        }
+        for (int r = 0; r < 9; r++) {
+            Set<Integer> rowSet = new HashSet<>();
+            Set<Integer> colSet = new HashSet<>();
+            for (int c = 0; c < 9; c++) {
+                int rv = board[r][c];
+                int cv = board[c][r];
+                if (rv != 0) {
+                    if (rowSet.contains(rv) || rv < 1 || rv > 9) {
+                        return false;
+                    }
+                    rowSet.add(rv);
+                }
+                if (cv != 0) {
+                    if (colSet.contains(cv) || cv < 1 || cv > 9) {
+                        return false;
+                    }
+                    colSet.add(cv);
+                }
+            }
+        }
+        return true;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

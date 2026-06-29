@@ -1,0 +1,50 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static boolean isValidBST(List<Map<String, Integer>> nodes, int rootIdx) {
+        if (nodes == null || rootIdx < 0 || rootIdx >= nodes.size()) {
+            return true;
+        }
+        class StackElement {
+            int idx;
+            long low;
+            long high;
+            StackElement(int idx, long low, long high) {
+                this.idx = idx;
+                this.low = low;
+                this.high = high;
+            }
+        }
+        Stack<StackElement> stack = new Stack<>();
+        stack.push(new StackElement(rootIdx, Long.MIN_VALUE, Long.MAX_VALUE));
+        while (!stack.isEmpty()) {
+            StackElement curr = stack.pop();
+            Map<String, Integer> node = nodes.get(curr.idx);
+            int val = node.get("val");
+            if (val <= curr.low || val >= curr.high) {
+                return false;
+            }
+            int left = node.getOrDefault("left", -1);
+            int right = node.getOrDefault("right", -1);
+            if (left >= 0 && left < nodes.size()) {
+                stack.push(new StackElement(left, curr.low, val));
+            } else if (left != -1) {
+                return false;
+            }
+            if (right >= 0 && right < nodes.size()) {
+                stack.push(new StackElement(right, val, curr.high));
+            } else if (right != -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

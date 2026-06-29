@@ -1,0 +1,30 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def run_length_decoding(s):
+    if not s:
+        return ""
+    decoded = []
+    i = 0
+    while i < len(s):
+        if not s[i].isdigit():
+            return ""
+        num_str = ""
+        while i < len(s) and s[i].isdigit():
+            num_str += s[i]
+            i += 1
+        if i >= len(s):
+            return ""
+        char = s[i]
+        decoded.append(char * int(num_str))
+        i += 1
+    return "".join(decoded)
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

@@ -1,0 +1,34 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static List<Integer> findPrimeFactors(int n) {
+        if (n <= 1) {
+            return new ArrayList<>();
+        }
+        List<Integer> factors = new ArrayList<>();
+        while (n % 2 == 0) {
+            factors.add(2);
+            n /= 2;
+        }
+        int d = 3;
+        while (d * d <= n) {
+            while (n % d == 0) {
+                factors.add(d);
+                n /= d;
+            }
+            d += 2;
+        }
+        if (n > 1) {
+            factors.add(n);
+        }
+        return factors;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

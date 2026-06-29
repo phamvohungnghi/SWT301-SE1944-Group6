@@ -1,0 +1,30 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static String intToRoman(int num) {
+        if (num <= 0 || num > 3999) {
+            return "";
+        }
+        int[] vals = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] sybs = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        StringBuilder romanNum = new StringBuilder();
+        int i = 0;
+        while (num > 0) {
+            int count = num / vals[i];
+            for (int k = 0; k < count; k++) {
+                romanNum.append(sybs[i]);
+                num -= vals[i];
+            }
+            i++;
+        }
+        return romanNum.toString();
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

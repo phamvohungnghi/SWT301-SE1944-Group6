@@ -1,0 +1,28 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def run_length_encoding(s):
+    if not s:
+        return ""
+    for char in s:
+        if not char.isalpha():
+            return ""
+    encoded = []
+    count = 1
+    for i in range(1, len(s)):
+        if s[i] == s[i - 1]:
+            count += 1
+        else:
+            encoded.append(f"{count}{s[i-1]}")
+            count = 1
+    encoded.append(f"{count}{s[-1]}")
+    return "".join(encoded)
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

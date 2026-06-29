@@ -1,0 +1,35 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Python function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```python
+def parse_csv_line(line):
+    if line is None:
+        return []
+    result = []
+    current = []
+    in_quotes = False
+    i = 0
+    while i < len(line):
+        char = line[i]
+        if char == '"':
+            if in_quotes and i + 1 < len(line) and line[i + 1] == '"':
+                current.append('"')
+                i += 1
+            else:
+                in_quotes = not in_quotes
+        elif char == ',' and not in_quotes:
+            result.append("".join(current))
+            current = []
+        else:
+            current.append(char)
+        i += 1
+    result.append("".join(current))
+    return result
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.

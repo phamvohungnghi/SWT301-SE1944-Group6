@@ -1,0 +1,43 @@
+You are an expert in software testing. Write a comprehensive unit test suite for the following Java function.
+Ensure that:
+1. The test suite compiles and runs successfully.
+2. It targets maximum branch coverage.
+3. It includes robust assertions to identify logical defects.
+
+Source Function:
+```java
+    public static List<String[]> simpleHtmlTokenizer(String html) {
+        if (html == null) {
+            return new ArrayList<>();
+        }
+        List<String[]> tokens = new ArrayList<>();
+        int i = 0;
+        int n = html.length();
+        while (i < n) {
+            if (html.charAt(i) == '<') {
+                int j = i + 1;
+                while (j < n && html.charAt(j) != '>') {
+                    j++;
+                }
+                if (j < n) {
+                    tokens.add(new String[]{"TAG", html.substring(i, j + 1)});
+                    i = j + 1;
+                } else {
+                    tokens.add(new String[]{"TEXT", html.substring(i)});
+                    break;
+                }
+            } else {
+                int j = i;
+                while (j < n && html.charAt(j) != '<') {
+                    j++;
+                }
+                tokens.add(new String[]{"TEXT", html.substring(i, j)});
+                i = j;
+            }
+        }
+        return tokens;
+    }
+
+```
+
+Write only the complete, executable test code block. Do not include markdown explanations outside the code block.
