@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-d70773ed",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_025_isMatchTest {\n\n    @Test\n    void testNullInputs() {\n        assertFalse(JAVA_025_isMatch.isMatch(null, null));\n        assertFalse(JAVA_025_isMatch.isMatch(null, \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", null));\n    }\n\n    @Test\n    void testEmptyPattern() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"\"));\n    }\n\n    @Test\n    void testEmptyString() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"\", \"a\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \".*\"));\n    }\n\n    @Test\n    void testExactMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \"abc\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \"abcd\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abcd\", \"abc\"));\n    }\n\n    @Test\n    void testSingleCharacterWildcard() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"\", \".\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \"a.c\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \"a.d\"));\n    }\n\n    @Test\n    void testKleeneStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aa\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"aaa\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"b\", \"a*\"));\n    }\n\n    @Test\n    void testCombinationOfWildcardAndStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"ab\", \".*b\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"ab\", \".*c\"));\n    }\n\n    @Test\n    void testComplexPatterns() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aab\", \"c*a*b\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"mississippi\", \"mis*is*p*.\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"mississippi\", \"mis*is*ip*.\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"ab\", \".*c*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \".*c*d\"));\n    }\n\n    @Test\n    void testEdgeCases() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"a*a*a*a*a*a*a*a*a*a*b\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"aaaaaaaaaaaaab\", \"a*a*a*a*a*a*a*a*a*a*b\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".*..a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \".*..b*\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

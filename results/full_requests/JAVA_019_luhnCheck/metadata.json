@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_019_luhnCheck",
+  "started_at_utc": "2026-07-01T05:59:29.500621+00:00",
+  "finished_at_utc": "2026-07-01T05:59:35.803545+00:00",
+  "response_id": "mock-github-5d7854b7",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "010156336372f0918ec06357a2a09ab3cd0c62af228b87078b5867e384ff035a",
+  "source_sha256": "d6c0635ef41f97a1c0b77446137e42d44e52e06c68b2d947d07842b9b7b8c685",
+  "sdk_version": "2.43.0"
+}

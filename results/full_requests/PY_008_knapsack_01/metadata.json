@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_008_knapsack_01",
+  "started_at_utc": "2026-07-01T05:55:46.306391+00:00",
+  "finished_at_utc": "2026-07-01T05:55:53.799595+00:00",
+  "response_id": "mock-github-2c64e1fa",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "18e601d7f3c426723007b19dc0e940107a20d5e7dfc3581e04e407bd5c43c1e2",
+  "source_sha256": "13b3b60741e8f4c29c90a0417689bb9c413296a8ac5b839ab90426c7a2e6023b",
+  "sdk_version": "2.43.0"
+}

@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_016_parse_csv_line",
+  "started_at_utc": "2026-07-01T05:56:39.558397+00:00",
+  "finished_at_utc": "2026-07-01T05:56:45.313430+00:00",
+  "response_id": "mock-github-5763b4b1",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "708f78c10841c42f354d4b076cfdbcfb2ffb74eac68e785b94d7a59df8737138",
+  "source_sha256": "efaab46a6951e37d669a18bd5afcff5b0d6261e98e39428eadf542fef86acf09",
+  "sdk_version": "2.43.0"
+}

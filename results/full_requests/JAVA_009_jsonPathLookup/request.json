@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_009_jsonPathLookup\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static Object jsonPathLookup(Map<String, Object> data, String path) {\n        if (data == null || path == null || path.isEmpty()) {\n            return null;\n        }\n        String[] keys = path.split(\"\\\\.\");\n        Object current = data;\n        for (String key : keys) {\n            if (current instanceof Map) {\n                Map<?, ?> map = (Map<?, ?>) current;\n                if (map.containsKey(key)) {\n                    current = map.get(key);\n                } else {\n                    return null;\n                }\n            } else if (current instanceof List) {\n                List<?> list = (List<?>) current;\n                boolean isDigit = true;\n                for (int i = 0; i < key.length(); i++) {\n                    if (!Character.isDigit(key.charAt(i))) {\n                        isDigit = false;\n                        break;\n                    }\n                }\n                if (isDigit && !key.isEmpty()) {\n                    int idx = Integer.parseInt(key);\n                    if (idx >= 0 && idx < list.size()) {\n                        current = list.get(idx);\n                    } else {\n                        return null;\n                    }\n                } else {\n                    return null;\n                }\n            } else {\n                return null;\n            }\n        }\n        return current;\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

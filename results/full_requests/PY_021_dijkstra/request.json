@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_021_dijkstra\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef dijkstra(graph, src, dest):\n    if graph is None:\n        return -1\n    n = len(graph)\n    dist = [float('inf')] * n\n    dist[src] = 0\n    spt_set = [False] * n\n    for _ in range(n):\n        u = -1\n        min_val = float('inf')\n        for i in range(n):\n            if not spt_set[i] and dist[i] < min_val:\n                min_val = dist[i]\n                u = i\n        if u == -1 or u == dest:\n            break\n        spt_set[u] = True\n        for v in range(n):\n            if graph[u][v] > 0 and not spt_set[v] and dist[v] > dist[u] + graph[u][v]:\n                dist[v] = dist[u] + graph[u][v]\n    return dist[dest] if dist[dest] != float('inf') else -1\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

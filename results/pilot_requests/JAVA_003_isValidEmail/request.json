@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_003_isValidEmail\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static boolean isValidEmail(String email) {\n        if (email == null || !email.contains(\"@\") || !email.contains(\".\")) {\n            return false;\n        }\n        String[] parts = email.split(\"@\");\n        if (parts.length != 2) {\n            return false;\n        }\n        String localPart = parts[0];\n        String domainPart = parts[1];\n        if (localPart.isEmpty() || domainPart.isEmpty()) {\n            return false;\n        }\n        if (!domainPart.contains(\".\") || domainPart.startsWith(\".\") || domainPart.endsWith(\".\")) {\n            return false;\n        }\n        for (int i = 0; i < localPart.length(); i++) {\n            char c = localPart.charAt(i);\n            if (!Character.isLetterOrDigit(c) && c != '.' && c != '_' && c != '-') {\n                return false;\n            }\n        }\n        return true;\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

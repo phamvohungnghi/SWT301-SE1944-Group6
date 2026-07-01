@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_023_dateDifference",
+  "started_at_utc": "2026-07-01T05:59:55.887038+00:00",
+  "finished_at_utc": "2026-07-01T06:00:02.076445+00:00",
+  "response_id": "mock-github-9a11cfd6",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "1b6023a400dcf86a12af1aaedad47e9e48e01f47560c135ba28d2af78e88996c",
+  "source_sha256": "a412afc5115d2d44d0b8873d342f81ee106b4b858d078efac82cea56017cf0fb",
+  "sdk_version": "2.43.0"
+}

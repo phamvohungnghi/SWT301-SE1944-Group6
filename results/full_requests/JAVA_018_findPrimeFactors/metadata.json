@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_018_findPrimeFactors",
+  "started_at_utc": "2026-07-01T05:59:24.396299+00:00",
+  "finished_at_utc": "2026-07-01T05:59:29.477767+00:00",
+  "response_id": "mock-github-a6e33b22",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "36563c3bffb6cef609dfff50bc4163cd650bb008d471292c4f3cb70067705a29",
+  "source_sha256": "b14ad26c1143c306b411b081b07db289eb3a472368dc9ad8241e6841b4ca5f9b",
+  "sdk_version": "2.43.0"
+}

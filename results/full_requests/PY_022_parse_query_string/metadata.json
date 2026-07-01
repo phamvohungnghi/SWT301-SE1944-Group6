@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_022_parse_query_string",
+  "started_at_utc": "2026-07-01T05:57:13.162034+00:00",
+  "finished_at_utc": "2026-07-01T05:57:18.190861+00:00",
+  "response_id": "mock-github-67a62ab9",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "e342ac6ed6d3c9d43cbb7ddd2dfebbc870da112868f4360e669bdc5ac2bb0fb4",
+  "source_sha256": "98a680ba6b05291521a3c0ad8c3cfbb4ce701f3101aa5978bb35051804b79dca",
+  "sdk_version": "2.43.0"
+}

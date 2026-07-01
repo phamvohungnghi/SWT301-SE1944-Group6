@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_007_evaluateRPN\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static int evaluateRPN(String expression) {\n        if (expression == null || expression.isEmpty()) {\n            return 0;\n        }\n        Stack<Integer> stack = new Stack<>();\n        String[] tokens = expression.split(\"\\\\s+\");\n        Set<String> operators = new HashSet<>(Arrays.asList(\"+\", \"-\", \"*\", \"/\"));\n        for (String token : tokens) {\n            if (operators.contains(token)) {\n                if (stack.size() < 2) {\n                    return 0;\n                }\n                int b = stack.pop();\n                int a = stack.pop();\n                if (\"+\".equals(token)) {\n                    stack.push(a + b);\n                } else if (\"-\".equals(token)) {\n                    stack.push(a - b);\n                } else if (\"*\".equals(token)) {\n                    stack.push(a * b);\n                } else if (\"/\".equals(token)) {\n                    if (b == 0) {\n                        return 0;\n                    }\n                    stack.push(a / b);\n                }\n            } else {\n                try {\n                    stack.push(Integer.parseInt(token));\n                } catch (NumberFormatException e) {\n                    return 0;\n                }\n            }\n        }\n        return stack.size() == 1 ? stack.pop() : 0;\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

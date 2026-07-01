@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_004_mergeIntervals",
+  "started_at_utc": "2026-07-01T05:57:57.543640+00:00",
+  "finished_at_utc": "2026-07-01T05:58:03.759261+00:00",
+  "response_id": "mock-github-8a210909",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "cd33e20e789681fe127b32a05d6605275bec61712155a6a0c46707c20a371965",
+  "source_sha256": "c1f1c2ff507711f13a3c7a6d6d4418977f715cc8a05b3b66e114cc18f4cbf385",
+  "sdk_version": "2.43.0"
+}

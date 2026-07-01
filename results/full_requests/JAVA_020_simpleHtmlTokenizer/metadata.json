@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_020_simpleHtmlTokenizer",
+  "started_at_utc": "2026-07-01T05:59:35.825418+00:00",
+  "finished_at_utc": "2026-07-01T05:59:41.370625+00:00",
+  "response_id": "mock-github-b247a6a0",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "ca8e619faef936a99bac788c34d7fc30cbb243609b47c613aa1698aef5349c23",
+  "source_sha256": "dd666c07b76151355cf1bec5ec05bb5ddfeba24ae5fbcf9424217c682cb0d4d4",
+  "sdk_version": "2.43.0"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-a49f2ff6",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\nfrom PY_006_validate_password import validate_password\n\ndef test_validate_password_empty_string():\n    assert validate_password(\"\") == False\n\ndef test_validate_password_none():\n    assert validate_password(None) == False\n\ndef test_validate_password_too_short():\n    assert validate_password(\"Ab1!\") == False\n\ndef test_validate_password_no_uppercase():\n    assert validate_password(\"abcd1234!\") == False\n\ndef test_validate_password_no_lowercase():\n    assert validate_password(\"ABCD1234!\") == False\n\ndef test_validate_password_no_digit():\n    assert validate_password(\"Abcdefg!\") == False\n\ndef test_validate_password_no_special_character():\n    assert validate_password(\"Abcdefg1\") == False\n\ndef test_validate_password_valid_password():\n    assert validate_password(\"Abc123!@\") == True\n\ndef test_validate_password_only_special_characters():\n    assert validate_password(\"!@#$%^&*()\") == False\n\ndef test_validate_password_only_digits():\n    assert validate_password(\"12345678\") == False\n\ndef test_validate_password_only_uppercase():\n    assert validate_password(\"ABCDEFGH\") == False\n\ndef test_validate_password_only_lowercase():\n    assert validate_password(\"abcdefgh\") == False\n\ndef test_validate_password_special_characters_at_boundaries():\n    assert validate_password(\"!Abc123!\") == True\n\ndef test_validate_password_repeated_characters():\n    assert validate_password(\"AAbb11!!\") == True\n\ndef test_validate_password_no_special_characters_in_set():\n    assert validate_password(\"Abc123~\") == False\n\ndef test_validate_password_special_characters_edge_case():\n    assert validate_password(\"Abc123!@#$%^&*()-_+=\") == True\n\ndef test_validate_password_all_conditions_met_min_length():\n    assert validate_password(\"A1b!cD2e\") == True\n\ndef test_validate_password_all_conditions_met_max_length():\n    assert validate_password(\"A1b!cD2eF3g@hI4jK5l#\") == True\n\ndef test_validate_password_whitespace_in_password():\n    assert validate_password(\"Abc 123!\") == False\n\ndef test_validate_password_unicode_characters():\n    assert validate_password(\"Abc123!ñ\") == False\n\ndef test_validate_password_special_characters_only_one_match():\n    assert validate_password(\"Abc123!\") == True\n    assert validate_password(\"Abc123@\") == True\n    assert validate_password(\"Abc123#\") == True\n    assert validate_password(\"Abc123$\") == True\n    assert validate_password(\"Abc123%\") == True\n    assert validate_password(\"Abc123^\") == True\n    assert validate_password(\"Abc123&\") == True\n    assert validate_password(\"Abc123*\") == True\n    assert validate_password(\"Abc123(\") == True\n    assert validate_password(\"Abc123)\") == True\n    assert validate_password(\"Abc123-\") == True\n    assert validate_password(\"Abc123_\") == True\n    assert validate_password(\"Abc123+\") == True\n    assert validate_password(\"Abc123=\") == True"
+        }
+      ]
+    }
+  ]
+}

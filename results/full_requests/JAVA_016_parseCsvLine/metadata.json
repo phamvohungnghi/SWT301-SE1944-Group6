@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_016_parseCsvLine",
+  "started_at_utc": "2026-07-01T05:59:09.348008+00:00",
+  "finished_at_utc": "2026-07-01T05:59:17.189367+00:00",
+  "response_id": "mock-github-ebd5d624",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "b010a7fcf948618b78c3cb18d52b14da4bf3dcbc21bcee7f729767d6954c4792",
+  "source_sha256": "e5e1474444a2f8e716af347f9f4c1556b75e7e63959d4b8424f60434df2ce4f8",
+  "sdk_version": "2.43.0"
+}

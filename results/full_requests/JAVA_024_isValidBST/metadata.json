@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_024_isValidBST",
+  "started_at_utc": "2026-07-01T06:00:02.099019+00:00",
+  "finished_at_utc": "2026-07-01T06:00:10.930456+00:00",
+  "response_id": "mock-github-7d6d94c3",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "d91b238d6d7c357fd61ae98b169bf4243322a7683960b713613abe76bd6d6363",
+  "source_sha256": "bdba5eea403cc63fc75671ed8f51fa752e85b3575ba4e4dc5b4fbc44e9f58871",
+  "sdk_version": "2.43.0"
+}

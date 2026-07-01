@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-3a9de285",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass Knapsack01Test {\n\n    @Test\n    void testKnapsack01ValidInput() {\n        int[] weights = {1, 2, 3};\n        int[] values = {6, 10, 12};\n        int capacity = 5;\n        assertEquals(22, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01ZeroCapacity() {\n        int[] weights = {1, 2, 3};\n        int[] values = {6, 10, 12};\n        int capacity = 0;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01EmptyWeightsAndValues() {\n        int[] weights = {};\n        int[] values = {};\n        int capacity = 5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01NullWeights() {\n        int[] weights = null;\n        int[] values = {6, 10, 12};\n        int capacity = 5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01NullValues() {\n        int[] weights = {1, 2, 3};\n        int[] values = null;\n        int capacity = 5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01NegativeCapacity() {\n        int[] weights = {1, 2, 3};\n        int[] values = {6, 10, 12};\n        int capacity = -5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01WeightsValuesLengthMismatch() {\n        int[] weights = {1, 2};\n        int[] values = {6, 10, 12};\n        int capacity = 5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01SingleItemFits() {\n        int[] weights = {5};\n        int[] values = {10};\n        int capacity = 5;\n        assertEquals(10, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01SingleItemDoesNotFit() {\n        int[] weights = {6};\n        int[] values = {10};\n        int capacity = 5;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01AllItemsFitExactly() {\n        int[] weights = {1, 2, 3};\n        int[] values = {6, 10, 12};\n        int capacity = 6;\n        assertEquals(28, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01NoItemsFit() {\n        int[] weights = {5, 6, 7};\n        int[] values = {10, 20, 30};\n        int capacity = 4;\n        assertEquals(0, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n\n    @Test\n    void testKnapsack01PartialFit() {\n        int[] weights = {3, 4, 5};\n        int[] values = {30, 40, 50};\n        int capacity = 7;\n        assertEquals(70, JAVA_008_knapsack01.knapsack01(weights, values, capacity));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

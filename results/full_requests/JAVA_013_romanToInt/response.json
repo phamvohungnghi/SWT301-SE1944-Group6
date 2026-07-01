@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-4603f99f",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class RomanToIntTest {\n\n    @Test\n    public void testValidSingleCharacters() {\n        assertEquals(1, JAVA_013_romanToInt(\"I\"));\n        assertEquals(5, JAVA_013_romanToInt(\"V\"));\n        assertEquals(10, JAVA_013_romanToInt(\"X\"));\n        assertEquals(50, JAVA_013_romanToInt(\"L\"));\n        assertEquals(100, JAVA_013_romanToInt(\"C\"));\n        assertEquals(500, JAVA_013_romanToInt(\"D\"));\n        assertEquals(1000, JAVA_013_romanToInt(\"M\"));\n    }\n\n    @Test\n    public void testValidCombinations() {\n        assertEquals(3, JAVA_013_romanToInt(\"III\"));\n        assertEquals(4, JAVA_013_romanToInt(\"IV\"));\n        assertEquals(9, JAVA_013_romanToInt(\"IX\"));\n        assertEquals(58, JAVA_013_romanToInt(\"LVIII\"));\n        assertEquals(1994, JAVA_013_romanToInt(\"MCMXCIV\"));\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(0, JAVA_013_romanToInt(\"\"));\n    }\n\n    @Test\n    public void testNullInput() {\n        assertEquals(0, JAVA_013_romanToInt(null));\n    }\n\n    @Test\n    public void testInvalidCharacters() {\n        assertEquals(0, JAVA_013_romanToInt(\"A\"));\n        assertEquals(0, JAVA_013_romanToInt(\"IIIIIIII\"));\n        assertEquals(0, JAVA_013_romanToInt(\"123\"));\n        assertEquals(0, JAVA_013_romanToInt(\"IVXQ\"));\n    }\n\n    @Test\n    public void testBoundaryCases() {\n        assertEquals(3999, JAVA_013_romanToInt(\"MMMCMXCIX\"));\n        assertEquals(1, JAVA_013_romanToInt(\"I\"));\n        assertEquals(0, JAVA_013_romanToInt(\"MMMM\")); // Invalid case\n    }\n\n    @Test\n    public void testSubtractiveNotation() {\n        assertEquals(4, JAVA_013_romanToInt(\"IV\"));\n        assertEquals(9, JAVA_013_romanToInt(\"IX\"));\n        assertEquals(40, JAVA_013_romanToInt(\"XL\"));\n        assertEquals(90, JAVA_013_romanToInt(\"XC\"));\n        assertEquals(400, JAVA_013_romanToInt(\"CD\"));\n        assertEquals(900, JAVA_013_romanToInt(\"CM\"));\n    }\n\n    @Test\n    public void testNonSubtractiveNotation() {\n        assertEquals(6, JAVA_013_romanToInt(\"VI\"));\n        assertEquals(11, JAVA_013_romanToInt(\"XI\"));\n        assertEquals(60, JAVA_013_romanToInt(\"LX\"));\n        assertEquals(110, JAVA_013_romanToInt(\"CX\"));\n        assertEquals(510, JAVA_013_romanToInt(\"DI\"));\n        assertEquals(1010, JAVA_013_romanToInt(\"MI\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

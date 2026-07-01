@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5c3af337",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom PY_018_find_prime_factors import find_prime_factors\n\ndef test_find_prime_factors_zero():\n    assert find_prime_factors(0) == []\n\ndef test_find_prime_factors_one():\n    assert find_prime_factors(1) == []\n\ndef test_find_prime_factors_negative():\n    assert find_prime_factors(-10) == []\n\ndef test_find_prime_factors_prime_number():\n    assert find_prime_factors(13) == [13]\n\ndef test_find_prime_factors_composite_number():\n    assert find_prime_factors(28) == [2, 2, 7]\n\ndef test_find_prime_factors_large_prime():\n    assert find_prime_factors(101) == [101]\n\ndef test_find_prime_factors_large_composite():\n    assert find_prime_factors(100) == [2, 2, 5, 5]\n\ndef test_find_prime_factors_power_of_two():\n    assert find_prime_factors(16) == [2, 2, 2, 2]\n\ndef test_find_prime_factors_mixed_factors():\n    assert find_prime_factors(45) == [3, 3, 5]\n\ndef test_find_prime_factors_square_of_prime():\n    assert find_prime_factors(49) == [7, 7]\n\ndef test_find_prime_factors_large_number():\n    assert find_prime_factors(123456) == [2, 2, 2, 2, 2, 3, 643]\n\ndef test_find_prime_factors_no_factors():\n    assert find_prime_factors(97) == [97]  # Prime number\n\ndef test_find_prime_factors_minimum_composite():\n    assert find_prime_factors(4) == [2, 2]"
+        }
+      ]
+    }
+  ]
+}

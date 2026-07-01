@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5b6e6c52",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\nclass BubbleSortTest {\n\n    @Test\n    void testNullArray() {\n        int[] input = null;\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertNull(result, \"Sorting a null array should return null.\");\n    }\n\n    @Test\n    void testEmptyArray() {\n        int[] input = {};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{}, result, \"Sorting an empty array should return an empty array.\");\n    }\n\n    @Test\n    void testSingleElementArray() {\n        int[] input = {5};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{5}, result, \"Sorting a single-element array should return the same array.\");\n    }\n\n    @Test\n    void testAlreadySortedArray() {\n        int[] input = {1, 2, 3, 4, 5};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result, \"Sorting an already sorted array should return the same array.\");\n    }\n\n    @Test\n    void testReverseSortedArray() {\n        int[] input = {5, 4, 3, 2, 1};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result, \"Sorting a reverse sorted array should return a sorted array.\");\n    }\n\n    @Test\n    void testUnsortedArray() {\n        int[] input = {3, 1, 4, 1, 5, 9, 2, 6, 5};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{1, 1, 2, 3, 4, 5, 5, 6, 9}, result, \"Sorting an unsorted array should return a sorted array.\");\n    }\n\n    @Test\n    void testArrayWithDuplicates() {\n        int[] input = {4, 2, 4, 2, 4};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{2, 2, 4, 4, 4}, result, \"Sorting an array with duplicates should return a sorted array with duplicates in order.\");\n    }\n\n    @Test\n    void testArrayWithNegativeNumbers() {\n        int[] input = {3, -1, 4, -1, 5, -9, 2, 6, 5};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{-9, -1, -1, 2, 3, 4, 5, 5, 6}, result, \"Sorting an array with negative numbers should return a sorted array.\");\n    }\n\n    @Test\n    void testArrayWithAllEqualElements() {\n        int[] input = {7, 7, 7, 7, 7};\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(new int[]{7, 7, 7, 7, 7}, result, \"Sorting an array with all equal elements should return the same array.\");\n    }\n\n    @Test\n    void testLargeArray() {\n        int[] input = new int[1000];\n        int[] expected = new int[1000];\n        for (int i = 0; i < 1000; i++) {\n            input[i] = 1000 - i;\n            expected[i] = i + 1;\n        }\n        int[] result = JAVA_001_bubbleSort.bubbleSort(input);\n        assertArrayEquals(expected, result, \"Sorting a large array should return a sorted array.\");\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

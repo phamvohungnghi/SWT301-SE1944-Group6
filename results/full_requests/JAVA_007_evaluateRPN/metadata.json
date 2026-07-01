@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_007_evaluateRPN",
+  "started_at_utc": "2026-07-01T05:58:14.142665+00:00",
+  "finished_at_utc": "2026-07-01T05:58:18.539913+00:00",
+  "response_id": "mock-github-5281c9a1",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "1fbe2acfb6d654108e85d0e3c9e5d68d6daf8e6562b86e12fd26b5826a052e9a",
+  "source_sha256": "bcfec215f0e86ec4c2b7b2bf7cca2e165f47ed380520a635c0d68ff95d2fc84e",
+  "sdk_version": "2.43.0"
+}

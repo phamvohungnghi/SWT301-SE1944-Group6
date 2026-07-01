@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_001_bubbleSort",
+  "started_at_utc": "2026-07-01T05:57:39.823691+00:00",
+  "finished_at_utc": "2026-07-01T05:57:47.581126+00:00",
+  "response_id": "mock-github-5b6e6c52",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "8d07b229ee1b2df38b205c31668769b12d40ad5d49714cc506e567c942e3b518",
+  "source_sha256": "a85d43fb2c865ead84b8d1f7f27a6143c6e04a7af5b0f90679dc7a3e7d3b2af3",
+  "sdk_version": "2.43.0"
+}

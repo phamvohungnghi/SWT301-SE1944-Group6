@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_002_binary_search",
+  "started_at_utc": "2026-07-01T05:55:10.230492+00:00",
+  "finished_at_utc": "2026-07-01T05:55:16.805883+00:00",
+  "response_id": "mock-github-4a9995e3",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "f9281b87a7b157981d1219bbbb149b258a284e16c564903297a73ceaaeaa99ec",
+  "source_sha256": "c04a16c23954a2eb36ff9e54a443ad28688861ddae668912648c2827fd77eb26",
+  "sdk_version": "2.43.0"
+}

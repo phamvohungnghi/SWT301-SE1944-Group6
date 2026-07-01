@@ -88,7 +88,10 @@ def validate_cc(row: dict[str, str], source_path: Path) -> None:
     expected_symbol = row["symbol"].strip()
     expected_cc = int(row["cc_lizard_1_23_0"])
     analysis = lizard.analyze_file(str(source_path))
-    candidates = [func for func in analysis.function_list if func.name == expected_symbol]
+    candidates = [
+        func for func in analysis.function_list
+        if func.name == expected_symbol or func.name.endswith("::" + expected_symbol)
+    ]
     if not candidates:
         raise ValueError(f"Lizard không tìm thấy symbol {expected_symbol} trong {source_path}")
     if not any(func.cyclomatic_complexity == expected_cc for func in candidates):
@@ -135,6 +138,153 @@ def redacted_request(user_prompt: str) -> dict[str, Any]:
     }
 
 
+class MockResponse:
+    def __init__(self, response_id: str, model: str, output_text: str):
+        self.id = response_id
+        self.model = model
+        self._output_text = output_text
+
+    @property
+    def output_text(self) -> str:
+        return self._output_text
+
+    def model_dump(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "object": "response",
+            "model": self.model,
+            "output": [
+                {
+                    "type": "message",
+                    "content": [
+                        {
+                            "type": "output_text",
+                            "text": self._output_text
+                        }
+                    ]
+                }
+            ]
+        }
+
+
+def call_alternative_api(
+    provider: str,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    temperature: float,
+    top_p: float,
+    max_tokens: int
+) -> str:
+    import httpx
+    if provider == "gemini":
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY environment variable not set")
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        headers = {"Content-Type": "application/json"}
+        payload = {
+            "systemInstruction": {
+                "parts": [{"text": system_prompt}]
+            },
+            "contents": [
+                {"role": "user", "parts": [{"text": user_prompt}]}
+            ],
+            "generationConfig": {
+                "temperature": temperature,
+                "topP": top_p,
+                "maxOutputTokens": max_tokens,
+            }
+        }
+        res = httpx.post(url, json=payload, headers=headers, timeout=120.0)
+        res.raise_for_status()
+        data = res.json()
+        try:
+            return data["candidates"][0]["content"]["parts"][0]["text"]
+        except (KeyError, IndexError) as e:
+            raise ValueError(f"Unexpected response structure from Gemini API: {data}") from e
+
+    elif provider == "openrouter":
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key:
+            raise ValueError("OPENROUTER_API_KEY environment variable not set")
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            "temperature": temperature,
+            "top_p": top_p,
+            "max_tokens": max_tokens
+        }
+        res = httpx.post(url, json=payload, headers=headers, timeout=120.0)
+        res.raise_for_status()
+        data = res.json()
+        try:
+            return data["choices"][0]["message"]["content"]
+        except (KeyError, IndexError) as e:
+            raise ValueError(f"Unexpected response structure from OpenRouter: {data}") from e
+
+    elif provider == "github":
+        api_key = os.environ.get("GITHUB_TOKEN")
+        if not api_key:
+            raise ValueError("GITHUB_TOKEN environment variable not set. Please set your GitHub Personal Access Token (PAT) to access GitHub Models for free.")
+        url = "https://models.inference.ai.azure.com/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            "temperature": temperature,
+            "top_p": top_p,
+            "max_tokens": max_tokens
+        }
+        res = httpx.post(url, json=payload, headers=headers, timeout=120.0)
+        res.raise_for_status()
+        data = res.json()
+        try:
+            return data["choices"][0]["message"]["content"]
+        except (KeyError, IndexError) as e:
+            raise ValueError(f"Unexpected response structure from GitHub Models: {data}") from e
+
+    elif provider == "ollama":
+        url = "http://localhost:11434/api/chat"
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            "options": {
+                "temperature": temperature,
+                "top_p": top_p,
+                "num_predict": max_tokens
+            },
+            "stream": False
+        }
+        res = httpx.post(url, json=payload, timeout=120.0)
+        res.raise_for_status()
+        data = res.json()
+        try:
+            return data["message"]["content"]
+        except (KeyError, IndexError) as e:
+            raise ValueError(f"Unexpected response structure from Ollama: {data}") from e
+
+    else:
+        raise ValueError(f"Unsupported provider: {provider}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, default=Path("experiment/dataset-manifest.csv"))
@@ -142,22 +292,69 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("experiment/results"))
     parser.add_argument("--mode", choices=("prepare", "generate"), default="prepare")
     parser.add_argument("--require-full", action="store_true")
+    parser.add_argument("--provider", choices=("openai", "gemini", "openrouter", "github", "ollama"), default=None)
+    parser.add_argument("--model", type=str, default=None)
     args = parser.parse_args()
 
-    if args.mode == "generate" and "OPENAI_API_KEY" not in os.environ:
-        raise SystemExit("Thiếu OPENAI_API_KEY cho mode=generate")
+    provider = args.provider
+    if provider is None:
+        if "OPENAI_API_KEY" in os.environ:
+            provider = "openai"
+        elif "GEMINI_API_KEY" in os.environ:
+            provider = "gemini"
+        elif "OPENROUTER_API_KEY" in os.environ:
+            provider = "openrouter"
+        elif "GITHUB_TOKEN" in os.environ:
+            provider = "github"
+        elif args.mode == "generate":
+            provider = "gemini"
+        else:
+            provider = "openai"
+
+    if args.mode == "generate":
+        if provider == "openai" and "OPENAI_API_KEY" not in os.environ:
+            raise SystemExit("Missing OPENAI_API_KEY for openai provider.")
+        elif provider == "gemini" and "GEMINI_API_KEY" not in os.environ:
+            raise SystemExit("Missing GEMINI_API_KEY for gemini provider. Get a free API key at https://aistudio.google.com/")
+        elif provider == "openrouter" and "OPENROUTER_API_KEY" not in os.environ:
+            raise SystemExit("Missing OPENROUTER_API_KEY for openrouter provider. Get a free API key at https://openrouter.ai/")
+        elif provider == "github" and "GITHUB_TOKEN" not in os.environ:
+            raise SystemExit("Missing GITHUB_TOKEN for github provider. Please set your GitHub Personal Access Token (PAT).")
 
     rows = read_manifest(args.manifest, args.require_full)
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    client = OpenAI(max_retries=2, timeout=120.0) if args.mode == "generate" else None
+
+    client = None
+    if args.mode == "generate":
+        if provider == "openai":
+            client = OpenAI(max_retries=2, timeout=120.0)
+        else:
+            client = "alternative"
 
     for row in rows:
         source_path, unit_source = extract_unit(row, args.sources_root)
         validate_cc(row, source_path)
         user_prompt = build_user_prompt(row, unit_source, args.sources_root)
         request = redacted_request(user_prompt)
+
+        # Assign correct model based on provider and choices
+        if args.model:
+            request["model"] = args.model
+        elif provider == "gemini":
+            if request["model"].startswith("gpt-"):
+                request["model"] = "gemini-1.5-flash"
+        elif provider == "openrouter":
+            if request["model"].startswith("gpt-"):
+                request["model"] = "google/gemini-2.5-flash:free"
+        elif provider == "github":
+            if request["model"].startswith("gpt-"):
+                request["model"] = "gpt-4o"
+        elif provider == "ollama":
+            if request["model"].startswith("gpt-"):
+                request["model"] = "qwen2.5:7b"
+
         unit_dir = args.output_dir / row["unit_id"]
-        unit_dir.mkdir(parents=True, exist_ok=False)
+        unit_dir.mkdir(parents=True, exist_ok=True)
         (unit_dir / "request.json").write_text(
             json.dumps(request, ensure_ascii=False, indent=2), encoding="utf-8"
         )
@@ -169,7 +366,35 @@ def main() -> None:
             continue
 
         started_at = datetime.now(timezone.utc).isoformat()
-        response = client.responses.create(**request)
+        print(f"[{provider.upper()}] Generating test for {row['unit_id']}...", end="", flush=True)
+        try:
+            if provider == "openai":
+                response = client.responses.create(**request)
+            else:
+                resp_text = call_alternative_api(
+                    provider=provider,
+                    model=request["model"],
+                    system_prompt=SYSTEM_PROMPT,
+                    user_prompt=user_prompt,
+                    temperature=TEMPERATURE,
+                    top_p=TOP_P,
+                    max_tokens=MAX_OUTPUT_TOKENS
+                )
+                import uuid
+                response = MockResponse(
+                    response_id=f"mock-{provider}-{uuid.uuid4().hex[:8]}",
+                    model=request["model"],
+                    output_text=resp_text
+                )
+        except Exception as e:
+            print(" Failed!")
+            print(f"\n[{provider.upper()} API Error] Failed for unit {row['unit_id']}: {e}")
+            if hasattr(e, "response") and e.response is not None:
+                try:
+                    print(f"API Response: {e.response.text}")
+                except Exception:
+                    pass
+            raise e
         finished_at = datetime.now(timezone.utc).isoformat()
         (unit_dir / "response.json").write_text(
             json.dumps(response.model_dump(), ensure_ascii=False, indent=2), encoding="utf-8"
@@ -189,6 +414,8 @@ def main() -> None:
         (unit_dir / "metadata.json").write_text(
             json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8"
         )
+        print(" Done!")
+
 
 
 if __name__ == "__main__":

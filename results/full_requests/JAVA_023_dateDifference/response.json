@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-9a11cfd6",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class DateDifferenceTest {\n\n    @Test\n    void testValidDatesSameDay() {\n        assertEquals(0, JAVA_023_dateDifference(\"2023-10-10\", \"2023-10-10\"));\n    }\n\n    @Test\n    void testValidDatesDifferentDays() {\n        assertEquals(1, JAVA_023_dateDifference(\"2023-10-10\", \"2023-10-11\"));\n        assertEquals(31, JAVA_023_dateDifference(\"2023-01-01\", \"2023-02-01\"));\n    }\n\n    @Test\n    void testValidDatesDifferentYears() {\n        assertEquals(365, JAVA_023_dateDifference(\"2022-10-10\", \"2023-10-10\"));\n        assertEquals(366, JAVA_023_dateDifference(\"2019-01-01\", \"2020-01-01\")); // Leap year\n    }\n\n    @Test\n    void testValidDatesDifferentMonths() {\n        assertEquals(30, JAVA_023_dateDifference(\"2023-04-01\", \"2023-05-01\"));\n        assertEquals(28, JAVA_023_dateDifference(\"2023-02-01\", \"2023-03-01\")); // Non-leap year February\n        assertEquals(29, JAVA_023_dateDifference(\"2020-02-01\", \"2020-03-01\")); // Leap year February\n    }\n\n    @Test\n    void testNullInputs() {\n        assertEquals(-1, JAVA_023_dateDifference(null, \"2023-10-10\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", null));\n        assertEquals(-1, JAVA_023_dateDifference(null, null));\n    }\n\n    @Test\n    void testInvalidDateFormats() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10\", \"2023-10-10\")); // Missing day\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"2023/10/10\")); // Wrong delimiter\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"10-10-2023\")); // Wrong format\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"abcd-ef-gh\")); // Non-numeric\n    }\n\n    @Test\n    void testOutOfRangeValues() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-13-10\", \"2023-10-10\")); // Invalid month\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-32\", \"2023-10-10\")); // Invalid day\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-00-10\", \"2023-10-10\")); // Invalid month (zero)\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-00\", \"2023-10-10\")); // Invalid day (zero)\n    }\n\n    @Test\n    void testExceptionHandling() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"\", \"2023-10-10\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"\", \"\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

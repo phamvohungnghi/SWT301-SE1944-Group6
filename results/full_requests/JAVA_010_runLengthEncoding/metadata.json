@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_010_runLengthEncoding",
+  "started_at_utc": "2026-07-01T05:58:29.959336+00:00",
+  "finished_at_utc": "2026-07-01T05:58:35.571993+00:00",
+  "response_id": "mock-github-daec868e",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "e25b9612e900081469cab9ee2dbe3edac50ec4fde2a45e7eac6c5c3bcb5ba5be",
+  "source_sha256": "8022b5eaef7b7e2bac0a8d9d94db64827092585a9a2fb4c559730bbc233160ba",
+  "sdk_version": "2.43.0"
+}

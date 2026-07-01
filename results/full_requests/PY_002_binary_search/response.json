@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-4a9995e3",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\ndef test_binary_search_empty_array():\n    assert binary_search([], 5) == -1\n\ndef test_binary_search_single_element_found():\n    assert binary_search([5], 5) == 0\n\ndef test_binary_search_single_element_not_found():\n    assert binary_search([5], 3) == -1\n\ndef test_binary_search_multiple_elements_found():\n    assert binary_search([1, 3, 5, 7, 9], 5) == 2\n    assert binary_search([1, 3, 5, 7, 9], 1) == 0\n    assert binary_search([1, 3, 5, 7, 9], 9) == 4\n\ndef test_binary_search_multiple_elements_not_found():\n    assert binary_search([1, 3, 5, 7, 9], 4) == -1\n    assert binary_search([1, 3, 5, 7, 9], 10) == -1\n    assert binary_search([1, 3, 5, 7, 9], -1) == -1\n\ndef test_binary_search_duplicates_target_found():\n    assert binary_search([1, 3, 3, 3, 5, 7, 9], 3) in {1, 2, 3}\n\ndef test_binary_search_duplicates_target_not_found():\n    assert binary_search([1, 3, 3, 3, 5, 7, 9], 4) == -1\n\ndef test_binary_search_large_array():\n    large_array = list(range(10000))\n    assert binary_search(large_array, 0) == 0\n    assert binary_search(large_array, 9999) == 9999\n    assert binary_search(large_array, 5000) == 5000\n    assert binary_search(large_array, 10000) == -1\n    assert binary_search(large_array, -1) == -1\n\ndef test_binary_search_negative_numbers():\n    assert binary_search([-10, -5, 0, 5, 10], -10) == 0\n    assert binary_search([-10, -5, 0, 5, 10], -5) == 1\n    assert binary_search([-10, -5, 0, 5, 10], 0) == 2\n    assert binary_search([-10, -5, 0, 5, 10], 5) == 3\n    assert binary_search([-10, -5, 0, 5, 10], 10) == 4\n    assert binary_search([-10, -5, 0, 5, 10], -15) == -1\n    assert binary_search([-10, -5, 0, 5, 10], 15) == -1\n\ndef test_binary_search_floats():\n    assert binary_search([1.1, 2.2, 3.3, 4.4, 5.5], 3.3) == 2\n    assert binary_search([1.1, 2.2, 3.3, 4.4, 5.5], 6.6) == -1\n\ndef test_binary_search_unsorted_array():\n    assert binary_search([10, 5, 1], 5) == -1\n    assert binary_search([10, 5, 1], 10) == -1\n    assert binary_search([10, 5, 1], 1) == -1"
+        }
+      ]
+    }
+  ]
+}

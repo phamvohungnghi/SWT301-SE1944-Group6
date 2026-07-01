@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5e0100d3",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom PY_010_run_length_encoding import run_length_encoding\n\ndef test_empty_string():\n    assert run_length_encoding(\"\") == \"\"\n\ndef test_single_character():\n    assert run_length_encoding(\"a\") == \"1a\"\n    assert run_length_encoding(\"z\") == \"1z\"\n\ndef test_repeated_characters():\n    assert run_length_encoding(\"aaa\") == \"3a\"\n    assert run_length_encoding(\"bbbbbb\") == \"6b\"\n\ndef test_mixed_characters():\n    assert run_length_encoding(\"aabb\") == \"2a2b\"\n    assert run_length_encoding(\"aaabbcc\") == \"3a2b2c\"\n\ndef test_no_repeated_characters():\n    assert run_length_encoding(\"abc\") == \"1a1b1c\"\n    assert run_length_encoding(\"xyz\") == \"1x1y1z\"\n\ndef test_numeric_characters():\n    assert run_length_encoding(\"123\") == \"\"\n    assert run_length_encoding(\"a1b2\") == \"\"\n\ndef test_special_characters():\n    assert run_length_encoding(\"a!b@\") == \"\"\n    assert run_length_encoding(\"a#b$c\") == \"\"\n\ndef test_mixed_valid_and_invalid_characters():\n    assert run_length_encoding(\"a1b\") == \"\"\n    assert run_length_encoding(\"abc!\") == \"\"\n\ndef test_uppercase_characters():\n    assert run_length_encoding(\"AAA\") == \"3A\"\n    assert run_length_encoding(\"AaAa\") == \"1A1a1A1a\"\n\ndef test_mixed_case_characters():\n    assert run_length_encoding(\"aAaA\") == \"1a1A1a1A\"\n    assert run_length_encoding(\"aaAA\") == \"2a2A\"\n\ndef test_long_string():\n    input_str = \"a\" * 1000 + \"b\" * 500 + \"c\" * 300\n    expected_output = \"1000a500b300c\"\n    assert run_length_encoding(input_str) == expected_output\n\ndef test_boundary_case_two_characters():\n    assert run_length_encoding(\"aa\") == \"2a\"\n    assert run_length_encoding(\"ab\") == \"1a1b\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_001_bubbleSort\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static int[] bubbleSort(int[] arr) {\n        if (arr == null) {\n            return null;\n        }\n        int n = arr.length;\n        for (int i = 0; i < n; i++) {\n            boolean swapped = false;\n            for (int j = 0; j < n - i - 1; j++) {\n                if (arr[j] > arr[j + 1]) {\n                    int temp = arr[j];\n                    arr[j] = arr[j + 1];\n                    arr[j + 1] = temp;\n                    swapped = true;\n                }\n            }\n            if (!swapped) {\n                break;\n            }\n        }\n        return arr;\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_025_isMatch\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static boolean isMatch(String s, String p) {\n        if (p == null || s == null) {\n            return false;\n        }\n        if (p.isEmpty()) {\n            return s.isEmpty();\n        }\n        boolean firstMatch = (!s.isEmpty() && (p.charAt(0) == s.charAt(0) || p.charAt(0) == '.'));\n        if (p.length() >= 2 && p.charAt(1) == '*') {\n            return (isMatch(s, p.substring(2)) || (firstMatch && isMatch(s.substring(1), p)));\n        } else {\n            return firstMatch && isMatch(s.substring(1), p.substring(1));\n        }\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

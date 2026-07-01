@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-eda37a9e",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\ndef test_is_valid_bst():\n    # Test case 1: Empty tree\n    assert is_valid_bst([], -1) == True\n\n    # Test case 2: Single node tree\n    nodes = [{\"val\": 10}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 3: Valid BST with multiple nodes\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 2},\n        {\"val\": 5, \"left\": -1, \"right\": -1},\n        {\"val\": 15, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 4: Invalid BST due to left child\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 2},\n        {\"val\": 12, \"left\": -1, \"right\": -1},\n        {\"val\": 15, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 5: Invalid BST due to right child\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 2},\n        {\"val\": 5, \"left\": -1, \"right\": -1},\n        {\"val\": 8, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 6: Invalid BST due to out-of-bounds left child index\n    nodes = [\n        {\"val\": 10, \"left\": 3, \"right\": 2},\n        {\"val\": 5, \"left\": -1, \"right\": -1},\n        {\"val\": 15, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 7: Invalid BST due to out-of-bounds right child index\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 3},\n        {\"val\": 5, \"left\": -1, \"right\": -1},\n        {\"val\": 15, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 8: Valid BST with deeper structure\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 2},\n        {\"val\": 5, \"left\": 3, \"right\": 4},\n        {\"val\": 15, \"left\": -1, \"right\": -1},\n        {\"val\": 3, \"left\": -1, \"right\": -1},\n        {\"val\": 7, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 9: Invalid BST with deeper structure\n    nodes = [\n        {\"val\": 10, \"left\": 1, \"right\": 2},\n        {\"val\": 5, \"left\": 3, \"right\": 4},\n        {\"val\": 15, \"left\": -1, \"right\": -1},\n        {\"val\": 3, \"left\": -1, \"right\": -1},\n        {\"val\": 12, \"left\": -1, \"right\": -1}\n    ]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 10: Invalid root index (negative)\n    nodes = [{\"val\": 10, \"left\": -1, \"right\": -1}]\n    assert is_valid_bst(nodes, -1) == True\n\n    # Test case 11: Invalid root index (out of bounds)\n    nodes = [{\"val\": 10, \"left\": -1, \"right\": -1}]\n    assert is_valid_bst(nodes, 1) == True\n\n    # Test case 12: Valid BST with no children specified\n    nodes = [{\"val\": 10}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 13: Invalid BST due to missing \"val\" key\n    nodes = [{\"left\": -1, \"right\": -1}]\n    with pytest.raises(KeyError):\n        is_valid_bst(nodes, 0)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-bfa5c82a",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class ValidatePasswordTest {\n\n    @Test\n    public void testNullPassword() {\n        assertFalse(JAVA_006_validatePassword(null), \"Password should be invalid if it is null\");\n    }\n\n    @Test\n    public void testShortPassword() {\n        assertFalse(JAVA_006_validatePassword(\"Ab1!\"), \"Password should be invalid if it is shorter than 8 characters\");\n    }\n\n    @Test\n    public void testPasswordWithoutUppercase() {\n        assertFalse(JAVA_006_validatePassword(\"abcd123!\"), \"Password should be invalid if it does not contain an uppercase letter\");\n    }\n\n    @Test\n    public void testPasswordWithoutLowercase() {\n        assertFalse(JAVA_006_validatePassword(\"ABCD123!\"), \"Password should be invalid if it does not contain a lowercase letter\");\n    }\n\n    @Test\n    public void testPasswordWithoutDigit() {\n        assertFalse(JAVA_006_validatePassword(\"Abcdefg!\"), \"Password should be invalid if it does not contain a digit\");\n    }\n\n    @Test\n    public void testPasswordWithoutSpecialCharacter() {\n        assertFalse(JAVA_006_validatePassword(\"Abcdefg1\"), \"Password should be invalid if it does not contain a special character\");\n    }\n\n    @Test\n    public void testValidPassword() {\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@\"), \"Password should be valid if it meets all criteria\");\n    }\n\n    @Test\n    public void testPasswordWithOnlySpecialCharacters() {\n        assertFalse(JAVA_006_validatePassword(\"!@#$%^&*\"), \"Password should be invalid if it only contains special characters\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyDigits() {\n        assertFalse(JAVA_006_validatePassword(\"12345678\"), \"Password should be invalid if it only contains digits\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyUppercaseLetters() {\n        assertFalse(JAVA_006_validatePassword(\"ABCDEFGH\"), \"Password should be invalid if it only contains uppercase letters\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyLowercaseLetters() {\n        assertFalse(JAVA_006_validatePassword(\"abcdefgh\"), \"Password should be invalid if it only contains lowercase letters\");\n    }\n\n    @Test\n    public void testPasswordWithNonSpecialCharacters() {\n        assertFalse(JAVA_006_validatePassword(\"Abc12345\"), \"Password should be invalid if it does not contain any valid special characters\");\n    }\n\n    @Test\n    public void testPasswordWithBoundaryLength() {\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@\"), \"Password should be valid if it is exactly 8 characters and meets all criteria\");\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@#\"), \"Password should be valid if it is longer than 8 characters and meets all criteria\");\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

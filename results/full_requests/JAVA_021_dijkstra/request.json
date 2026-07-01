@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_021_dijkstra\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static int dijkstra(int[][] graph, int src, int dest) {\n        if (graph == null) {\n            return -1;\n        }\n        int n = graph.length;\n        int[] dist = new int[n];\n        Arrays.fill(dist, Integer.MAX_VALUE);\n        dist[src] = 0;\n        boolean[] sptSet = new boolean[n];\n        for (int count = 0; count < n; count++) {\n            int u = -1;\n            int minDist = Integer.MAX_VALUE;\n            for (int i = 0; i < n; i++) {\n                if (!sptSet[i] && dist[i] < minDist) {\n                    minDist = dist[i];\n                    u = i;\n                }\n            }\n            if (u == -1 || u == dest) {\n                break;\n            }\n            sptSet[u] = true;\n            for (int v = 0; v < n; v++) {\n                if (graph[u][v] > 0 && !sptSet[v] && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {\n                    dist[v] = dist[u] + graph[u][v];\n                }\n            }\n        }\n        return dist[dest] == Integer.MAX_VALUE ? -1 : dist[dest];\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

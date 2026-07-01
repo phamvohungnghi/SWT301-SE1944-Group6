@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_015_longestPalindromeSubstring",
+  "started_at_utc": "2026-07-01T05:40:20.208319+00:00",
+  "finished_at_utc": "2026-07-01T05:40:26.860565+00:00",
+  "response_id": "mock-github-3f773915",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "562aa623affc2177d48038d725f888bdafb503e733ab206646b6abcee2eccec8",
+  "source_sha256": "5dc26648207a2cf5c5da102e398ab3122fbf2d29511127e2dc4403b1befe3599",
+  "sdk_version": "2.43.0"
+}

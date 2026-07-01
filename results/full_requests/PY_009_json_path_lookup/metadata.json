@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_009_json_path_lookup",
+  "started_at_utc": "2026-07-01T05:55:53.811706+00:00",
+  "finished_at_utc": "2026-07-01T05:56:01.027333+00:00",
+  "response_id": "mock-github-2c064efd",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "2fb7709b743d0f95afdd9fcf13d37ad9d4f170af171744cf5d57f8a6d22340cd",
+  "source_sha256": "90ccd7bab3089e3bb90c2538ab320310ba5f8ef2853725d82a89872aeda56b45",
+  "sdk_version": "2.43.0"
+}

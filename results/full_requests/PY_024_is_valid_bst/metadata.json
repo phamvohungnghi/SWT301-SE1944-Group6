@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_024_is_valid_bst",
+  "started_at_utc": "2026-07-01T05:57:26.464854+00:00",
+  "finished_at_utc": "2026-07-01T05:57:32.363283+00:00",
+  "response_id": "mock-github-eda37a9e",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "ece9adde3511df54c674140822d803e1f4c6362cd8fc27d20bb63b1efc89650b",
+  "source_sha256": "9a91e242167128afcf3d04232e72202a593655c7aa81d0c9d53b1b169990911d",
+  "sdk_version": "2.43.0"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-be51e103",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\ndef test_bubble_sort_none_input():\n    assert bubble_sort(None) is None\n\ndef test_bubble_sort_empty_list():\n    assert bubble_sort([]) == []\n\ndef test_bubble_sort_single_element():\n    assert bubble_sort([42]) == [42]\n\ndef test_bubble_sort_sorted_list():\n    assert bubble_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]\n\ndef test_bubble_sort_reverse_sorted_list():\n    assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]\n\ndef test_bubble_sort_unsorted_list():\n    assert bubble_sort([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]) == [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]\n\ndef test_bubble_sort_duplicates():\n    assert bubble_sort([4, 2, 2, 4, 1, 1]) == [1, 1, 2, 2, 4, 4]\n\ndef test_bubble_sort_negative_numbers():\n    assert bubble_sort([-3, -1, -4, -2, 0]) == [-4, -3, -2, -1, 0]\n\ndef test_bubble_sort_mixed_numbers():\n    assert bubble_sort([3, -1, 4, 0, -5, 2]) == [-5, -1, 0, 2, 3, 4]\n\ndef test_bubble_sort_large_numbers():\n    assert bubble_sort([1000000, 999999, 1000001]) == [999999, 1000000, 1000001]\n\ndef test_bubble_sort_floats():\n    assert bubble_sort([3.1, 2.2, 1.3, 4.4]) == [1.3, 2.2, 3.1, 4.4]\n\ndef test_bubble_sort_mixed_types():\n    with pytest.raises(TypeError):\n        bubble_sort([1, \"two\", 3])"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_018_find_prime_factors",
+  "started_at_utc": "2026-07-01T05:56:50.309389+00:00",
+  "finished_at_utc": "2026-07-01T05:56:54.698281+00:00",
+  "response_id": "mock-github-5c3af337",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "a6253c81c681e1048f540a4e7e657d66201370d0a966a8f188115a4ff12fda85",
+  "source_sha256": "4f9008e414c091adf4f891e352d14618228255f80427a68683ce05eb7ddf9a9b",
+  "sdk_version": "2.43.0"
+}

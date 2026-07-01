@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5d7854b7",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class LuhnCheckTest {\n\n    @Test\n    void testNullInput() {\n        assertFalse(JAVA_019_luhnCheck(null), \"Null input should return false\");\n    }\n\n    @Test\n    void testEmptyString() {\n        assertFalse(JAVA_019_luhnCheck(\"\"), \"Empty string should return false\");\n    }\n\n    @Test\n    void testNonDigitCharacters() {\n        assertFalse(JAVA_019_luhnCheck(\"1234a567\"), \"String with non-digit characters should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"12 34\"), \"String with spaces should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"12-34\"), \"String with special characters should return false\");\n    }\n\n    @Test\n    void testValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck(\"4532015112830366\"), \"Valid Luhn number should return true\");\n        assertTrue(JAVA_019_luhnCheck(\"79927398713\"), \"Valid Luhn number should return true\");\n    }\n\n    @Test\n    void testInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck(\"4532015112830367\"), \"Invalid Luhn number should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"79927398710\"), \"Invalid Luhn number should return false\");\n    }\n\n    @Test\n    void testSingleDigitNumbers() {\n        assertFalse(JAVA_019_luhnCheck(\"0\"), \"Single digit '0' should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"1\"), \"Single digit '1' should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"9\"), \"Single digit '9' should return false\");\n    }\n\n    @Test\n    void testBoundaryCases() {\n        assertTrue(JAVA_019_luhnCheck(\"18\"), \"Boundary case '18' should return true\");\n        assertFalse(JAVA_019_luhnCheck(\"19\"), \"Boundary case '19' should return false\");\n    }\n\n    @Test\n    void testAllZeros() {\n        assertTrue(JAVA_019_luhnCheck(\"0000000000000000\"), \"All zeros should return true\");\n    }\n\n    @Test\n    void testAlternatingDigits() {\n        assertTrue(JAVA_019_luhnCheck(\"1212121212121212\"), \"Alternating digits valid Luhn number should return true\");\n        assertFalse(JAVA_019_luhnCheck(\"1212121212121213\"), \"Alternating digits invalid Luhn number should return false\");\n    }\n\n    @Test\n    void testLongValidNumber() {\n        assertTrue(JAVA_019_luhnCheck(\"499273987164999273987164\"), \"Long valid Luhn number should return true\");\n    }\n\n    @Test\n    void testLongInvalidNumber() {\n        assertFalse(JAVA_019_luhnCheck(\"499273987164999273987165\"), \"Long invalid Luhn number should return false\");\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

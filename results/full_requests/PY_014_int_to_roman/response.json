@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-930ae2a5",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\nfrom PY_014_int_to_roman import int_to_roman\n\ndef test_int_to_roman_valid_cases():\n    # Test valid cases\n    assert int_to_roman(1) == \"I\"\n    assert int_to_roman(4) == \"IV\"\n    assert int_to_roman(9) == \"IX\"\n    assert int_to_roman(40) == \"XL\"\n    assert int_to_roman(90) == \"XC\"\n    assert int_to_roman(400) == \"CD\"\n    assert int_to_roman(900) == \"CM\"\n    assert int_to_roman(3999) == \"MMMCMXCIX\"\n    assert int_to_roman(58) == \"LVIII\"  # 50 + 5 + 3\n    assert int_to_roman(1994) == \"MCMXCIV\"  # 1000 + 900 + 90 + 4\n\ndef test_int_to_roman_boundary_cases():\n    # Test boundary cases\n    assert int_to_roman(0) == \"\"  # Below valid range\n    assert int_to_roman(-1) == \"\"  # Negative number\n    assert int_to_roman(4000) == \"\"  # Above valid range\n    assert int_to_roman(3999) == \"MMMCMXCIX\"  # Upper valid limit\n    assert int_to_roman(1) == \"I\"  # Lower valid limit\n\ndef test_int_to_roman_edge_cases():\n    # Test edge cases\n    assert int_to_roman(3) == \"III\"  # Repeated symbols\n    assert int_to_roman(8) == \"VIII\"  # Combination of repeated and single symbols\n    assert int_to_roman(49) == \"XLIX\"  # Complex combination\n    assert int_to_roman(444) == \"CDXLIV\"  # Complex combination with multiple symbols\n\ndef test_int_to_roman_invalid_cases():\n    # Test invalid cases\n    assert int_to_roman(0) == \"\"  # Zero is invalid\n    assert int_to_roman(-10) == \"\"  # Negative number\n    assert int_to_roman(4000) == \"\"  # Number greater than 3999\n    assert int_to_roman(5000) == \"\"  # Number far beyond valid range\n\ndef test_int_to_roman_large_numbers():\n    # Test large numbers within valid range\n    assert int_to_roman(1000) == \"M\"\n    assert int_to_roman(2000) == \"MM\"\n    assert int_to_roman(3000) == \"MMM\"\n    assert int_to_roman(3888) == \"MMMDCCCLXXXVIII\"  # 3000 + 500 + 300 + 80 + 8\n\ndef test_int_to_roman_small_numbers():\n    # Test small numbers within valid range\n    assert int_to_roman(2) == \"II\"\n    assert int_to_roman(6) == \"VI\"\n    assert int_to_roman(11) == \"XI\"\n    assert int_to_roman(20) == \"XX\"\n    assert int_to_roman(31) == \"XXXI\""
+        }
+      ]
+    }
+  ]
+}

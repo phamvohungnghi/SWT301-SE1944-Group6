@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-67a62ab9",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\nfrom PY_022_parse_query_string import parse_query_string\n\ndef test_parse_query_string_empty_input():\n    assert parse_query_string(\"\") == {}\n    assert parse_query_string(None) == {}\n\ndef test_parse_query_string_no_question_mark():\n    assert parse_query_string(\"key=value\") == {\"key\": \"value\"}\n    assert parse_query_string(\"key1=value1&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n    assert parse_query_string(\"key1=value1&key2=\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"key1=value1&key2\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"key1=value1&key2=value2&key3\") == {\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"\"}\n\ndef test_parse_query_string_with_question_mark():\n    assert parse_query_string(\"?key=value\") == {\"key\": \"value\"}\n    assert parse_query_string(\"?key1=value1&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n    assert parse_query_string(\"?key1=value1&key2=\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"?key1=value1&key2\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"?key1=value1&key2=value2&key3\") == {\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"\"}\n\ndef test_parse_query_string_duplicate_keys():\n    assert parse_query_string(\"key=value1&key=value2\") == {\"key\": [\"value1\", \"value2\"]}\n    assert parse_query_string(\"key=value1&key=value2&key=value3\") == {\"key\": [\"value1\", \"value2\", \"value3\"]}\n    assert parse_query_string(\"key=value1&key=&key=value3\") == {\"key\": [\"value1\", \"\", \"value3\"]}\n    assert parse_query_string(\"key=value1&key\") == {\"key\": [\"value1\", \"\"]}\n\ndef test_parse_query_string_edge_cases():\n    assert parse_query_string(\"?\") == {}\n    assert parse_query_string(\"&\") == {}\n    assert parse_query_string(\"&&\") == {}\n    assert parse_query_string(\"key=\") == {\"key\": \"\"}\n    assert parse_query_string(\"key\") == {\"key\": \"\"}\n    assert parse_query_string(\"key=value&\") == {\"key\": \"value\"}\n    assert parse_query_string(\"key=value&&key2=value2\") == {\"key\": \"value\", \"key2\": \"value2\"}\n    assert parse_query_string(\"key=value&&key=value2\") == {\"key\": [\"value\", \"value2\"]}\n\ndef test_parse_query_string_special_characters():\n    assert parse_query_string(\"key=val%20ue\") == {\"key\": \"val%20ue\"}\n    assert parse_query_string(\"key1=value1&key2=value%202\") == {\"key1\": \"value1\", \"key2\": \"value%202\"}\n    assert parse_query_string(\"key1=value1&key2=&key3=%20\") == {\"key1\": \"value1\", \"key2\": \"\", \"key3\": \"%20\"}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-0965245c",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom your_module import luhn_check\n\ndef test_luhn_check_valid_card_numbers():\n    # Valid card numbers\n    assert luhn_check(\"4532015112830366\") == True  # Visa\n    assert luhn_check(\"6011111111111117\") == True  # Discover\n    assert luhn_check(\"378282246310005\") == True   # American Express\n    assert luhn_check(\"5105105105105100\") == True  # MasterCard\n\ndef test_luhn_check_invalid_card_numbers():\n    # Invalid card numbers\n    assert luhn_check(\"4532015112830367\") == False\n    assert luhn_check(\"6011111111111118\") == False\n    assert luhn_check(\"378282246310006\") == False\n    assert luhn_check(\"5105105105105101\") == False\n\ndef test_luhn_check_empty_string():\n    # Empty string\n    assert luhn_check(\"\") == False\n\ndef test_luhn_check_non_digit_characters():\n    # Non-digit characters\n    assert luhn_check(\"abcd1234\") == False\n    assert luhn_check(\"1234abcd\") == False\n    assert luhn_check(\"!@#$%^&*()\") == False\n\ndef test_luhn_check_single_digit():\n    # Single digit cases\n    assert luhn_check(\"0\") == True  # Valid single digit\n    assert luhn_check(\"1\") == False  # Invalid single digit\n\ndef test_luhn_check_all_zeroes():\n    # All zeroes\n    assert luhn_check(\"0000000000000000\") == True\n\ndef test_luhn_check_boundary_cases():\n    # Boundary cases\n    assert luhn_check(\"9\") == False  # Single digit, invalid\n    assert luhn_check(\"90\") == True  # Two digits, valid\n    assert luhn_check(\"91\") == False  # Two digits, invalid\n\ndef test_luhn_check_large_number():\n    # Large number\n    assert luhn_check(\"12345678901234567890\") == False\n    assert luhn_check(\"7992739871300000\") == True  # Valid large number\n\ndef test_luhn_check_leading_zeroes():\n    # Leading zeroes\n    assert luhn_check(\"0004532015112830366\") == True  # Valid card number with leading zeroes\n    assert luhn_check(\"0000000000000000000\") == True  # All zeroes with leading zeroes\n\ndef test_luhn_check_special_cases():\n    # Special cases\n    assert luhn_check(None) == False  # None input\n    assert luhn_check(\" \") == False  # Whitespace input\n    assert luhn_check(\"1234567890123456789a\") == False  # Mixed digits and letters"
+        }
+      ]
+    }
+  ]
+}

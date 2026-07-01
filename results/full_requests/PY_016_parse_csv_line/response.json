@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5763b4b1",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom your_module import parse_csv_line  # Replace 'your_module' with the actual module name\n\ndef test_parse_csv_line_empty_string():\n    assert parse_csv_line(\"\") == [\"\"]\n\ndef test_parse_csv_line_none():\n    assert parse_csv_line(None) == []\n\ndef test_parse_csv_line_single_value():\n    assert parse_csv_line(\"value\") == [\"value\"]\n\ndef test_parse_csv_line_multiple_values():\n    assert parse_csv_line(\"value1,value2,value3\") == [\"value1\", \"value2\", \"value3\"]\n\ndef test_parse_csv_line_with_quotes():\n    assert parse_csv_line('\"value1\",\"value2\",\"value3\"') == [\"value1\", \"value2\", \"value3\"]\n\ndef test_parse_csv_line_with_quotes_and_commas():\n    assert parse_csv_line('\"value,1\",\"value,2\",\"value,3\"') == [\"value,1\", \"value,2\", \"value,3\"]\n\ndef test_parse_csv_line_with_escaped_quotes():\n    assert parse_csv_line('\"value\"\"1\",\"value\"\"2\",\"value\"\"3\"') == ['value\"1', 'value\"2', 'value\"3']\n\ndef test_parse_csv_line_mixed_quotes_and_plain():\n    assert parse_csv_line('value1,\"value2\",\"value,3\",value4') == [\"value1\", \"value2\", \"value,3\", \"value4\"]\n\ndef test_parse_csv_line_trailing_comma():\n    assert parse_csv_line(\"value1,value2,\") == [\"value1\", \"value2\", \"\"]\n\ndef test_parse_csv_line_leading_comma():\n    assert parse_csv_line(\",value1,value2\") == [\"\", \"value1\", \"value2\"]\n\ndef test_parse_csv_line_only_commas():\n    assert parse_csv_line(\",,,\") == [\"\", \"\", \"\", \"\"]\n\ndef test_parse_csv_line_unbalanced_quotes():\n    assert parse_csv_line('\"value1,value2') == ['value1,value2']\n\ndef test_parse_csv_line_unbalanced_quotes_with_comma():\n    assert parse_csv_line('value1,\"value2,value3') == [\"value1\", \"value2,value3\"]\n\ndef test_parse_csv_line_quotes_with_spaces():\n    assert parse_csv_line(' \"value1\" , \"value2\" ') == [\" \\\"value1\\\" \", \" \\\"value2\\\" \"]\n\ndef test_parse_csv_line_empty_quoted_field():\n    assert parse_csv_line('\"\",\"value1\",\"value2\"') == [\"\", \"value1\", \"value2\"]\n\ndef test_parse_csv_line_whitespace_only():\n    assert parse_csv_line(\"   \") == [\"   \"]"
+        }
+      ]
+    }
+  ]
+}

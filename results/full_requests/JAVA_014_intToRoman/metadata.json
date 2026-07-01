@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_014_intToRoman",
+  "started_at_utc": "2026-07-01T05:58:57.416776+00:00",
+  "finished_at_utc": "2026-07-01T05:59:02.944541+00:00",
+  "response_id": "mock-github-07ab0e9f",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "220fe71915186135b8cef7afdbbb975a820f9d8b861b04337118c1b0e8dda393",
+  "source_sha256": "241a82c7561367615040c31e411ea91c8aa71e1a660ff2bf69d29bf316a57629",
+  "sdk_version": "2.43.0"
+}

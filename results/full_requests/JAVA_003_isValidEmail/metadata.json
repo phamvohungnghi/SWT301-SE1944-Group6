@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_003_isValidEmail",
+  "started_at_utc": "2026-07-01T05:57:52.703164+00:00",
+  "finished_at_utc": "2026-07-01T05:57:57.526173+00:00",
+  "response_id": "mock-github-3f64a05a",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "6d6c4514e2801458312dda62e6ca0ee03ce697ac49e47ad90a0113884f957f41",
+  "source_sha256": "d3a0d8997af51d15b5bcff34d3a38239d4e366d2f1dfcf6e2d27fd0efcd495b1",
+  "sdk_version": "2.43.0"
+}

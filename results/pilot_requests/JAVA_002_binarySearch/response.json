@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-cd1b97b1",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass BinarySearchTest {\n\n    @Test\n    void testNullArray() {\n        int[] arr = null;\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testEmptyArray() {\n        int[] arr = {};\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetFound() {\n        int[] arr = {5};\n        int target = 5;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetNotFound() {\n        int[] arr = {5};\n        int target = 3;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtStart() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 1;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtEnd() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 9;\n        assertEquals(4, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundInMiddle() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 5;\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetNotFound() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 4;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetLessThanAll() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 0;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetGreaterThanAll() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 10;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testArrayWithDuplicatesTargetFound() {\n        int[] arr = {1, 3, 3, 5, 7, 9};\n        int target = 3;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertTrue(result == 1 || result == 2);\n    }\n\n    @Test\n    void testArrayWithDuplicatesTargetNotFound() {\n        int[] arr = {1, 3, 3, 5, 7, 9};\n        int target = 4;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

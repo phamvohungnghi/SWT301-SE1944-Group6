@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_014_int_to_roman",
+  "started_at_utc": "2026-07-01T05:56:27.994848+00:00",
+  "finished_at_utc": "2026-07-01T05:56:34.015836+00:00",
+  "response_id": "mock-github-930ae2a5",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "0f368793b09d1f3253a5a442cdbdab91e213ad06b64059123c5314a67042b3df",
+  "source_sha256": "0b9229354d3ae0117154002b08108a1ca9504cc9005b38073974014ec5aac88a",
+  "sdk_version": "2.43.0"
+}

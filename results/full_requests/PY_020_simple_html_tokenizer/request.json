@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_020_simple_html_tokenizer\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef simple_html_tokenizer(html):\n    if html is None:\n        return []\n    tokens = []\n    i = 0\n    n = len(html)\n    while i < n:\n        if html[i] == '<':\n            j = i + 1\n            while j < n and html[j] != '>':\n                j += 1\n            if j < n:\n                tokens.append((\"TAG\", html[i:j+1]))\n                i = j + 1\n            else:\n                tokens.append((\"TEXT\", html[i:]))\n                break\n        else:\n            j = i\n            while j < n and html[j] != '<':\n                j += 1\n            tokens.append((\"TEXT\", html[i:j]))\n            i = j\n    return tokens\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

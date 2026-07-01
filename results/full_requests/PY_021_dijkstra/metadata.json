@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_021_dijkstra",
+  "started_at_utc": "2026-07-01T05:57:06.021601+00:00",
+  "finished_at_utc": "2026-07-01T05:57:13.151219+00:00",
+  "response_id": "mock-github-cfac55ca",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "11ec795a2952a2fb040f20af5143504ac7281d4376ec38d4fbc14a36ab0d2938",
+  "source_sha256": "4f51f9383dc28fa99920a12cf45716b01606b4da740e764eecf49a9d84be5072",
+  "sdk_version": "2.43.0"
+}

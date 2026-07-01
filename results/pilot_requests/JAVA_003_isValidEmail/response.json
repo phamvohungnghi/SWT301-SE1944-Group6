@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-d5d1207e",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass EmailValidatorTest {\n\n    @Test\n    void testValidEmail() {\n        assertTrue(JAVA_003_isValidEmail(\"user@example.com\"));\n        assertTrue(JAVA_003_isValidEmail(\"user.name@example.com\"));\n        assertTrue(JAVA_003_isValidEmail(\"user_name@example.com\"));\n        assertTrue(JAVA_003_isValidEmail(\"user-name@example.com\"));\n        assertTrue(JAVA_003_isValidEmail(\"user123@example.com\"));\n    }\n\n    @Test\n    void testInvalidEmailNull() {\n        assertFalse(JAVA_003_isValidEmail(null));\n    }\n\n    @Test\n    void testInvalidEmailNoAtSymbol() {\n        assertFalse(JAVA_003_isValidEmail(\"userexample.com\"));\n    }\n\n    @Test\n    void testInvalidEmailNoDot() {\n        assertFalse(JAVA_003_isValidEmail(\"user@examplecom\"));\n    }\n\n    @Test\n    void testInvalidEmailMultipleAtSymbols() {\n        assertFalse(JAVA_003_isValidEmail(\"user@@example.com\"));\n    }\n\n    @Test\n    void testInvalidEmailEmptyLocalPart() {\n        assertFalse(JAVA_003_isValidEmail(\"@example.com\"));\n    }\n\n    @Test\n    void testInvalidEmailEmptyDomainPart() {\n        assertFalse(JAVA_003_isValidEmail(\"user@\"));\n    }\n\n    @Test\n    void testInvalidEmailDomainStartsWithDot() {\n        assertFalse(JAVA_003_isValidEmail(\"user@.example.com\"));\n    }\n\n    @Test\n    void testInvalidEmailDomainEndsWithDot() {\n        assertFalse(JAVA_003_isValidEmail(\"user@example.com.\"));\n    }\n\n    @Test\n    void testInvalidEmailLocalPartContainsInvalidCharacters() {\n        assertFalse(JAVA_003_isValidEmail(\"user!@example.com\"));\n        assertFalse(JAVA_003_isValidEmail(\"user#@example.com\"));\n        assertFalse(JAVA_003_isValidEmail(\"user$@example.com\"));\n        assertFalse(JAVA_003_isValidEmail(\"user%@example.com\"));\n    }\n\n    @Test\n    void testBoundaryCases() {\n        assertTrue(JAVA_003_isValidEmail(\"u@e.co\"));\n        assertFalse(JAVA_003_isValidEmail(\"u@e.c\"));\n        assertFalse(JAVA_003_isValidEmail(\"u@e.\"));\n        assertFalse(JAVA_003_isValidEmail(\"u@.co\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_005_calculateTax",
+  "started_at_utc": "2026-07-01T05:58:03.781130+00:00",
+  "finished_at_utc": "2026-07-01T05:58:09.280883+00:00",
+  "response_id": "mock-github-447116c9",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "d4e08920d3a2a9496967b52935fb1fd0fd30c911736249f0481fd365a93aa6be",
+  "source_sha256": "0bf38332f1165040886eaeedffe8c0b904a2999944eac66826614c919f609496",
+  "sdk_version": "2.43.0"
+}

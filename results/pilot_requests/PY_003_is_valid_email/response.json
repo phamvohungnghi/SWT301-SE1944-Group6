@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-4f7fc3a6",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom production_code import is_valid_email\n\ndef test_valid_email():\n    assert is_valid_email(\"test@example.com\") == True\n    assert is_valid_email(\"user.name+tag+sorting@example.com\") == True\n    assert is_valid_email(\"user_name@example.co.uk\") == True\n    assert is_valid_email(\"user-name@example.org\") == True\n    assert is_valid_email(\"user.name@example.travel\") == True\n\ndef test_missing_at_symbol():\n    assert is_valid_email(\"testexample.com\") == False\n    assert is_valid_email(\"test.example.com\") == False\n\ndef test_missing_dot_in_domain():\n    assert is_valid_email(\"test@com\") == False\n    assert is_valid_email(\"test@examplecom\") == False\n\ndef test_empty_email():\n    assert is_valid_email(\"\") == False\n    assert is_valid_email(None) == False\n\ndef test_multiple_at_symbols():\n    assert is_valid_email(\"test@@example.com\") == False\n    assert is_valid_email(\"test@sub@domain.com\") == False\n\ndef test_empty_local_or_domain_part():\n    assert is_valid_email(\"@example.com\") == False\n    assert is_valid_email(\"test@\") == False\n    assert is_valid_email(\"@\") == False\n\ndef test_domain_starts_or_ends_with_dot():\n    assert is_valid_email(\"test@.example.com\") == False\n    assert is_valid_email(\"test@example.com.\") == False\n    assert is_valid_email(\"test@.com.\") == False\n\ndef test_invalid_characters_in_local_part():\n    assert is_valid_email(\"test!@example.com\") == False\n    assert is_valid_email(\"test#@example.com\") == False\n    assert is_valid_email(\"test$@example.com\") == False\n    assert is_valid_email(\"test%@example.com\") == False\n    assert is_valid_email(\"test^@example.com\") == False\n    assert is_valid_email(\"test&@example.com\") == False\n    assert is_valid_email(\"test*@example.com\") == False\n    assert is_valid_email(\"test(@example.com\") == False\n    assert is_valid_email(\"test)@example.com\") == False\n    assert is_valid_email(\"test+@example.com\") == False\n\ndef test_valid_boundary_cases():\n    assert is_valid_email(\"a@b.c\") == True\n    assert is_valid_email(\"a.b.c@d.e.f\") == True\n    assert is_valid_email(\"a_b-c@d.e\") == True\n\ndef test_invalid_boundary_cases():\n    assert is_valid_email(\".test@example.com\") == False\n    assert is_valid_email(\"test.@example.com\") == False\n    assert is_valid_email(\"test..test@example.com\") == False\n    assert is_valid_email(\"test@.example.com\") == False\n    assert is_valid_email(\"test@example..com\") == False\n    assert is_valid_email(\"test@.com.\") == False"
+        }
+      ]
+    }
+  ]
+}

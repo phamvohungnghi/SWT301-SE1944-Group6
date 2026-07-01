@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_016_parseCsvLine\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static List<String> parseCsvLine(String line) {\n        if (line == null) {\n            return new ArrayList<>();\n        }\n        List<String> result = new ArrayList<>();\n        StringBuilder current = new StringBuilder();\n        boolean inQuotes = false;\n        int i = 0;\n        while (i < line.length()) {\n            char c = line.charAt(i);\n            if (c == '\"') {\n                if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '\"') {\n                    current.append('\"');\n                    i++;\n                } else {\n                    inQuotes = !inQuotes;\n                }\n            } else if (c == ',' && !inQuotes) {\n                result.add(current.toString());\n                current.setLength(0);\n            } else {\n                current.append(c);\n            }\n            i++;\n        }\n        result.add(current.toString());\n        return result;\n    }\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

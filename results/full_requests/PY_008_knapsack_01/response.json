@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-2c64e1fa",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom production_code import knapsack_01\n\ndef test_knapsack_01_empty_weights_and_values():\n    assert knapsack_01([], [], 10) == 0\n\ndef test_knapsack_01_zero_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 0) == 0\n\ndef test_knapsack_01_weights_values_length_mismatch():\n    assert knapsack_01([1, 2], [10], 10) == 0\n\ndef test_knapsack_01_negative_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], -5) == 0\n\ndef test_knapsack_01_single_item_fits():\n    assert knapsack_01([5], [10], 5) == 10\n\ndef test_knapsack_01_single_item_does_not_fit():\n    assert knapsack_01([10], [20], 5) == 0\n\ndef test_knapsack_01_multiple_items_exact_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 6) == 60\n\ndef test_knapsack_01_multiple_items_partial_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 5) == 50\n\ndef test_knapsack_01_multiple_items_no_fit():\n    assert knapsack_01([5, 6, 7], [10, 20, 30], 4) == 0\n\ndef test_knapsack_01_large_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 100) == 60\n\ndef test_knapsack_01_large_weights():\n    assert knapsack_01([100, 200, 300], [10, 20, 30], 50) == 0\n\ndef test_knapsack_01_large_values():\n    assert knapsack_01([1, 2, 3], [1000, 2000, 3000], 5) == 5000\n\ndef test_knapsack_01_duplicate_items():\n    assert knapsack_01([1, 1, 1], [10, 10, 10], 2) == 20\n\ndef test_knapsack_01_zero_weights():\n    assert knapsack_01([0, 0, 0], [10, 20, 30], 10) == 60\n\ndef test_knapsack_01_zero_values():\n    assert knapsack_01([1, 2, 3], [0, 0, 0], 10) == 0\n\ndef test_knapsack_01_mixed_weights_and_values():\n    assert knapsack_01([1, 3, 4, 5], [10, 40, 50, 70], 7) == 90\n\ndef test_knapsack_01_minimal_input():\n    assert knapsack_01([1], [1], 1) == 1\n\ndef test_knapsack_01_large_input():\n    weights = [i for i in range(1, 101)]\n    values = [i * 10 for i in range(1, 101)]\n    capacity = 50\n    assert knapsack_01(weights, values, capacity) == 12750\n\ndef test_knapsack_01_edge_case_capacity_equals_weight():\n    assert knapsack_01([5, 10, 15], [10, 20, 30], 15) == 30\n\ndef test_knapsack_01_edge_case_capacity_one_less_than_weight():\n    assert knapsack_01([5, 10, 15], [10, 20, 30], 14) == 20\n\ndef test_knapsack_01_edge_case_all_items_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 6) == 60\n\ndef test_knapsack_01_edge_case_no_items():\n    assert knapsack_01([], [], 0) == 0"
+        }
+      ]
+    }
+  ]
+}

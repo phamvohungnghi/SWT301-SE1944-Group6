@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_006_validate_password\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef validate_password(password):\n    if not password or len(password) < 8:\n        return False\n    has_upper = False\n    has_lower = False\n    has_digit = False\n    has_special = False\n    special_chars = \"!@#$%^&*()-_+=\"\n    for char in password:\n        if char.isupper():\n            has_upper = True\n        elif char.islower():\n            has_lower = True\n        elif char.isdigit():\n            has_digit = True\n        elif char in special_chars:\n            has_special = True\n    return has_upper and has_lower and has_digit and has_special\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

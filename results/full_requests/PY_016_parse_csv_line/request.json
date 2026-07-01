@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_016_parse_csv_line\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef parse_csv_line(line):\n    if line is None:\n        return []\n    result = []\n    current = []\n    in_quotes = False\n    i = 0\n    while i < len(line):\n        char = line[i]\n        if char == '\"':\n            if in_quotes and i + 1 < len(line) and line[i + 1] == '\"':\n                current.append('\"')\n                i += 1\n            else:\n                in_quotes = not in_quotes\n        elif char == ',' and not in_quotes:\n            result.append(\"\".join(current))\n            current = []\n        else:\n            current.append(char)\n        i += 1\n    result.append(\"\".join(current))\n    return result\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

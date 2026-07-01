@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-1f289354",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\nfrom PY_020_simple_html_tokenizer import simple_html_tokenizer\n\ndef test_empty_input():\n    assert simple_html_tokenizer(\"\") == []\n\ndef test_none_input():\n    assert simple_html_tokenizer(None) == []\n\ndef test_single_tag():\n    assert simple_html_tokenizer(\"<div>\") == [(\"TAG\", \"<div>\")]\n\ndef test_single_text():\n    assert simple_html_tokenizer(\"Hello\") == [(\"TEXT\", \"Hello\")]\n\ndef test_tag_and_text():\n    assert simple_html_tokenizer(\"<div>Hello</div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"Hello\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_nested_tags():\n    assert simple_html_tokenizer(\"<div><span>Text</span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TAG\", \"<span>\"),\n        (\"TEXT\", \"Text\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_unclosed_tag():\n    assert simple_html_tokenizer(\"<div\") == [(\"TEXT\", \"<div\")]\n\ndef test_text_with_unclosed_tag():\n    assert simple_html_tokenizer(\"Hello<div\") == [\n        (\"TEXT\", \"Hello\"),\n        (\"TEXT\", \"<div\")\n    ]\n\ndef test_multiple_tags():\n    assert simple_html_tokenizer(\"<div><span></span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TAG\", \"<span>\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_text_between_tags():\n    assert simple_html_tokenizer(\"<div>Text<span>More</span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"Text\"),\n        (\"TAG\", \"<span>\"),\n        (\"TEXT\", \"More\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_malformed_tag():\n    assert simple_html_tokenizer(\"<div><span\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"<span\")\n    ]\n\ndef test_empty_tag():\n    assert simple_html_tokenizer(\"<>\") == [(\"TAG\", \"<>\")]\n\ndef test_text_with_angle_brackets():\n    assert simple_html_tokenizer(\"Text with < and > symbols\") == [\n        (\"TEXT\", \"Text with \"),\n        (\"TAG\", \"<\"),\n        (\"TEXT\", \" and \"),\n        (\"TAG\", \">\"),\n        (\"TEXT\", \" symbols\")\n    ]\n\ndef test_only_angle_brackets():\n    assert simple_html_tokenizer(\"<>><<\") == [\n        (\"TAG\", \"<>\"),\n        (\"TAG\", \">\"),\n        (\"TAG\", \"<\")\n    ]\n\ndef test_whitespace_handling():\n    assert simple_html_tokenizer(\" <div> Text </div> \") == [\n        (\"TEXT\", \" \"),\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \" Text \"),\n        (\"TAG\", \"</div>\"),\n        (\"TEXT\", \" \")\n    ]"
+        }
+      ]
+    }
+  ]
+}

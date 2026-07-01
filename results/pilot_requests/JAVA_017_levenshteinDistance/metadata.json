@@ -1,0 +1,10 @@
+{
+  "unit_id": "JAVA_017_levenshteinDistance",
+  "started_at_utc": "2026-07-01T05:40:26.879832+00:00",
+  "finished_at_utc": "2026-07-01T05:40:34.103871+00:00",
+  "response_id": "mock-github-0df7fa4e",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "fe9fc30ceb67c5ff12e3fe5e08e9a5ff02a95a774e9f3b42ba89ad45ac8b9f05",
+  "source_sha256": "385d430c6a3499a5b58ccc3997e33c938158455a6912252c595370bda80d2e8e",
+  "sdk_version": "2.43.0"
+}

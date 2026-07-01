@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-5281c9a1",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class EvaluateRPNTest {\n\n    @Test\n    public void testNullExpression() {\n        assertEquals(0, JAVA_007_evaluateRPN(null));\n    }\n\n    @Test\n    public void testEmptyExpression() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"\"));\n    }\n\n    @Test\n    public void testSingleNumber() {\n        assertEquals(5, JAVA_007_evaluateRPN(\"5\"));\n    }\n\n    @Test\n    public void testSimpleAddition() {\n        assertEquals(7, JAVA_007_evaluateRPN(\"3 4 +\"));\n    }\n\n    @Test\n    public void testSimpleSubtraction() {\n        assertEquals(-1, JAVA_007_evaluateRPN(\"3 4 -\"));\n    }\n\n    @Test\n    public void testSimpleMultiplication() {\n        assertEquals(12, JAVA_007_evaluateRPN(\"3 4 *\"));\n    }\n\n    @Test\n    public void testSimpleDivision() {\n        assertEquals(2, JAVA_007_evaluateRPN(\"8 4 /\"));\n    }\n\n    @Test\n    public void testDivisionByZero() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"8 0 /\"));\n    }\n\n    @Test\n    public void testInvalidToken() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 4 + x\"));\n    }\n\n    @Test\n    public void testInsufficientOperandsForOperator() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"+\"));\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 +\"));\n    }\n\n    @Test\n    public void testMultipleOperators() {\n        assertEquals(9, JAVA_007_evaluateRPN(\"2 3 + 4 *\"));\n    }\n\n    @Test\n    public void testComplexExpression() {\n        assertEquals(14, JAVA_007_evaluateRPN(\"5 1 2 + 4 * + 3 -\"));\n    }\n\n    @Test\n    public void testExtraOperands() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 4 5 +\"));\n    }\n\n    @Test\n    public void testNegativeNumbers() {\n        assertEquals(-7, JAVA_007_evaluateRPN(\"-3 -4 +\"));\n    }\n\n    @Test\n    public void testMixedPositiveAndNegativeNumbers() {\n        assertEquals(-1, JAVA_007_evaluateRPN(\"3 -4 +\"));\n    }\n\n    @Test\n    public void testZeroOperands() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"0 0 +\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

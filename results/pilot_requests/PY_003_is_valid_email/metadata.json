@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_003_is_valid_email",
+  "started_at_utc": "2026-07-01T05:39:35.684578+00:00",
+  "finished_at_utc": "2026-07-01T05:39:41.110392+00:00",
+  "response_id": "mock-github-4f7fc3a6",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "a8ee292a293e1cebd685d1932fd68c790d500a98bd3a0f43833313788763402c",
+  "source_sha256": "878c3f9c1963932b1726e6a4b661dd2c14ef804c36db78bcc7c1ba4685e9f175",
+  "sdk_version": "2.43.0"
+}

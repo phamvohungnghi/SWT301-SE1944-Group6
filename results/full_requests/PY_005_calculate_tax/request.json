@@ -1,0 +1,16 @@
+{
+  "model": "gpt-4o",
+  "input": [
+    {
+      "role": "system",
+      "content": "You are a software-testing specialist. Follow the requested test framework exactly.\nReturn only one complete executable test source file. Do not use Markdown fences.\nDo not modify the production code and do not access the network, file system,\nclock, environment variables, or external services unless the supplied unit explicitly requires it."
+    },
+    {
+      "role": "user",
+      "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_005_calculate_tax\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef calculate_tax(income, status):\n    if income <= 0:\n        return 0.0\n    tax = 0.0\n    if status == \"single\":\n        if income <= 10000:\n            tax = income * 0.1\n        elif income <= 40000:\n            tax = 1000 + (income - 10000) * 0.15\n        else:\n            tax = 5500 + (income - 40000) * 0.25\n    elif status == \"married\":\n        if income <= 20000:\n            tax = income * 0.1\n        elif income <= 80000:\n            tax = 2000 + (income - 20000) * 0.15\n        else:\n            tax = 11000 + (income - 80000) * 0.25\n    else:\n        tax = income * 0.2\n    return tax\n"
+    }
+  ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_output_tokens": 2048
+}

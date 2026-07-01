@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-daec868e",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class RunLengthEncodingTest {\n\n    @Test\n    public void testNullInput() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(null), \"Null input should return an empty string.\");\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"\"), \"Empty string should return an empty string.\");\n    }\n\n    @Test\n    public void testSingleCharacterString() {\n        assertEquals(\"1A\", JAVA_010_runLengthEncoding(\"A\"), \"Single character string should return '1' followed by the character.\");\n    }\n\n    @Test\n    public void testStringWithAllUniqueCharacters() {\n        assertEquals(\"1A1B1C1D\", JAVA_010_runLengthEncoding(\"ABCD\"), \"String with all unique characters should return '1' followed by each character.\");\n    }\n\n    @Test\n    public void testStringWithRepeatingCharacters() {\n        assertEquals(\"3A2B4C\", JAVA_010_runLengthEncoding(\"AAABBCCCC\"), \"String with repeating characters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithMixedRepeatingAndUniqueCharacters() {\n        assertEquals(\"2A1B3C1D\", JAVA_010_runLengthEncoding(\"AABCCCD\"), \"String with mixed repeating and unique characters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithNonAlphabeticCharacters() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"A1B2C3\"), \"String with non-alphabetic characters should return an empty string.\");\n    }\n\n    @Test\n    public void testStringWithSpaces() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"A B C\"), \"String with spaces should return an empty string.\");\n    }\n\n    @Test\n    public void testStringWithLowercaseLetters() {\n        assertEquals(\"2a3b1c\", JAVA_010_runLengthEncoding(\"aabbbc\"), \"String with lowercase letters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithMixedCaseLetters() {\n        assertEquals(\"1A1a1B1b\", JAVA_010_runLengthEncoding(\"AaBb\"), \"String with mixed case letters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithLongRepeatingSequence() {\n        String input = \"A\".repeat(1000);\n        String expected = \"1000A\";\n        assertEquals(expected, JAVA_010_runLengthEncoding(input), \"String with long repeating sequence should return correct run-length encoding.\");\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

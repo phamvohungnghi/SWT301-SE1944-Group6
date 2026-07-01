@@ -1,0 +1,10 @@
+{
+  "unit_id": "PY_011_run_length_decoding",
+  "started_at_utc": "2026-07-01T05:56:05.750124+00:00",
+  "finished_at_utc": "2026-07-01T05:56:10.466312+00:00",
+  "response_id": "mock-github-ff816bca",
+  "response_model": "gpt-4o",
+  "prompt_sha256": "c88a6feec91e17bccb8d41ffc9553540ad3431ef3f933f1a3430be10f266dc6b",
+  "source_sha256": "9b48e74185d90d732ddaee23d7aafc061fd0c453293d74dd35455d47d3f64278",
+  "sdk_version": "2.43.0"
+}

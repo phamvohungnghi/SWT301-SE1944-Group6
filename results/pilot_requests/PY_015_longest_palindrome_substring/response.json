@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-c208689f",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import pytest\n\ndef test_longest_palindrome_substring_empty_string():\n    assert longest_palindrome_substring(\"\") == \"\"\n\ndef test_longest_palindrome_substring_single_character():\n    assert longest_palindrome_substring(\"a\") == \"a\"\n\ndef test_longest_palindrome_substring_two_characters_palindrome():\n    assert longest_palindrome_substring(\"aa\") == \"aa\"\n\ndef test_longest_palindrome_substring_two_characters_non_palindrome():\n    assert longest_palindrome_substring(\"ab\") in [\"a\", \"b\"]\n\ndef test_longest_palindrome_substring_odd_length_palindrome():\n    assert longest_palindrome_substring(\"racecar\") == \"racecar\"\n\ndef test_longest_palindrome_substring_even_length_palindrome():\n    assert longest_palindrome_substring(\"abba\") == \"abba\"\n\ndef test_longest_palindrome_substring_mixed_characters():\n    assert longest_palindrome_substring(\"babad\") in [\"bab\", \"aba\"]\n\ndef test_longest_palindrome_substring_no_palindrome():\n    assert longest_palindrome_substring(\"abcde\") in [\"a\", \"b\", \"c\", \"d\", \"e\"]\n\ndef test_longest_palindrome_substring_full_string_palindrome():\n    assert longest_palindrome_substring(\"aaaaaa\") == \"aaaaaa\"\n\ndef test_longest_palindrome_substring_palindrome_at_start():\n    assert longest_palindrome_substring(\"abacdfgdcaba\") in [\"aba\", \"aca\"]\n\ndef test_longest_palindrome_substring_palindrome_at_end():\n    assert longest_palindrome_substring(\"abacdfgdcabba\") == \"abba\"\n\ndef test_longest_palindrome_substring_with_special_characters():\n    assert longest_palindrome_substring(\"a!@#a\") == \"a!@#a\"\n\ndef test_longest_palindrome_substring_with_spaces():\n    assert longest_palindrome_substring(\"a b a\") == \"a b a\"\n\ndef test_longest_palindrome_substring_with_numbers():\n    assert longest_palindrome_substring(\"12321\") == \"12321\"\n\ndef test_longest_palindrome_substring_large_input():\n    s = \"a\" * 1000\n    assert longest_palindrome_substring(s) == s\n\ndef test_longest_palindrome_substring_mixed_case():\n    assert longest_palindrome_substring(\"Aba\") in [\"A\", \"b\", \"a\"]  # Case-sensitive check\n\ndef test_longest_palindrome_substring_nested_palindromes():\n    assert longest_palindrome_substring(\"abaxyzzyxf\") == \"xyzzyx\""
+        }
+      ]
+    }
+  ]
+}

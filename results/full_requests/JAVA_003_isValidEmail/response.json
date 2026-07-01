@@ -1,0 +1,16 @@
+{
+  "id": "mock-github-3f64a05a",
+  "object": "response",
+  "model": "gpt-4o",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class IsValidEmailTest {\n\n    @Test\n    public void testNullEmail() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(null));\n    }\n\n    @Test\n    public void testEmptyEmail() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"\"));\n    }\n\n    @Test\n    public void testEmailWithoutAtSymbol() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example.com\"));\n    }\n\n    @Test\n    public void testEmailWithoutDot() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@com\"));\n    }\n\n    @Test\n    public void testEmailWithMultipleAtSymbols() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@@domain.com\"));\n    }\n\n    @Test\n    public void testEmailWithEmptyLocalPart() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"@domain.com\"));\n    }\n\n    @Test\n    public void testEmailWithEmptyDomainPart() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@\"));\n    }\n\n    @Test\n    public void testEmailWithDomainStartingWithDot() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@.domain.com\"));\n    }\n\n    @Test\n    public void testEmailWithDomainEndingWithDot() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@domain.com.\"));\n    }\n\n    @Test\n    public void testEmailWithInvalidCharactersInLocalPart() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"exa!mple@domain.com\"));\n    }\n\n    @Test\n    public void testValidEmail() {\n        assertTrue(JAVA_003_isValidEmail.isValidEmail(\"example@domain.com\"));\n    }\n\n    @Test\n    public void testValidEmailWithSubdomain() {\n        assertTrue(JAVA_003_isValidEmail.isValidEmail(\"example@sub.domain.com\"));\n    }\n\n    @Test\n    public void testValidEmailWithAllowedSpecialCharactersInLocalPart() {\n        assertTrue(JAVA_003_isValidEmail.isValidEmail(\"exa-mple_123@domain.com\"));\n    }\n\n    @Test\n    public void testEmailWithOnlyAtSymbol() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"@\"));\n    }\n\n    @Test\n    public void testEmailWithOnlyDot() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\".\"));\n    }\n\n    @Test\n    public void testEmailWithAtAndDotButNoLocalPart() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"@.com\"));\n    }\n\n    @Test\n    public void testEmailWithAtAndDotButNoDomainPart() {\n        assertFalse(JAVA_003_isValidEmail.isValidEmail(\"example@.\"));\n    }\n\n    @Test\n    public void testEmailWithMultipleDotsInDomain() {\n        assertTrue(JAVA_003_isValidEmail.isValidEmail(\"example@domain.co.uk\"));\n    }\n\n    @Test\n    public void testEmailWithMultipleDotsInLocalPart() {\n        assertTrue(JAVA_003_isValidEmail.isValidEmail(\"exa.mple@domain.com\"));\n    }\n}"
+        }
+      ]
+    }
+  ]
+}
