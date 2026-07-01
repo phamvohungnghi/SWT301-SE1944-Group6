@@ -12,12 +12,15 @@ import csv
 import hashlib
 import json
 import os
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import httpx
 import lizard
 from openai import OpenAI
+
 
 
 MODEL = "gpt-4o-2024-08-06"
@@ -176,7 +179,6 @@ def call_alternative_api(
     top_p: float,
     max_tokens: int
 ) -> str:
-    import httpx
     if provider == "gemini":
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
@@ -380,7 +382,6 @@ def main() -> None:
                     top_p=TOP_P,
                     max_tokens=MAX_OUTPUT_TOKENS
                 )
-                import uuid
                 response = MockResponse(
                     response_id=f"mock-{provider}-{uuid.uuid4().hex[:8]}",
                     model=request["model"],
