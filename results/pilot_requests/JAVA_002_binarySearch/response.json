@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-cd1b97b1",
+  "id": "resp_0ee0078332a739fb006a54c172d93c819b9ed26cd35afb99a1",
+  "created_at": 1783939442.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0ee0078332a739fb006a54c1737b8c819b8229df6a394907c3",
       "content": [
         {
+          "annotations": [],
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class BinarySearchTest {\n\n    @Test\n    public void testBinarySearchWithNullArray() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(null, 5));\n    }\n\n    @Test\n    public void testBinarySearchWithEmptyArray() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{}, 5));\n    }\n\n    @Test\n    public void testBinarySearchWithSingleElementArray_TargetFound() {\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(new int[]{5}, 5));\n    }\n\n    @Test\n    public void testBinarySearchWithSingleElementArray_TargetNotFound() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{5}, 3));\n    }\n\n    @Test\n    public void testBinarySearchWithMultipleElements_TargetFoundAtBeginning() {\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 1));\n    }\n\n    @Test\n    public void testBinarySearchWithMultipleElements_TargetFoundAtEnd() {\n        assertEquals(4, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 5));\n    }\n\n    @Test\n    public void testBinarySearchWithMultipleElements_TargetFoundInMiddle() {\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 3));\n    }\n\n    @Test\n    public void testBinarySearchWithMultipleElements_TargetNotFound() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 6));\n    }\n\n    @Test\n    public void testBinarySearchWithNegativeNumbers_TargetFound() {\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{-5, -3, -1, 0, 2}, -1));\n    }\n\n    @Test\n    public void testBinarySearchWithNegativeNumbers_TargetNotFound() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{-5, -3, -1, 0, 2}, -4));\n    }\n\n    @Test\n    public void testBinarySearchWithDuplicates_TargetFound() {\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 2, 2, 3}, 2));\n    }\n\n    @Test\n    public void testBinarySearchWithDuplicates_TargetNotFound() {\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 2, 2, 3}, 4));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass BinarySearchTest {\n\n    @Test\n    void testNullArray() {\n        int[] arr = null;\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testEmptyArray() {\n        int[] arr = {};\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetFound() {\n        int[] arr = {5};\n        int target = 5;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetNotFound() {\n        int[] arr = {5};\n        int target = 3;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtStart() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 1;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtEnd() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 9;\n        assertEquals(4, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundInMiddle() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 5;\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetNotFound() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 4;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetLessThanAll() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 0;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetGreaterThanAll() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 10;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testArrayWithDuplicatesTargetFound() {\n        int[] arr = {1, 3, 3, 5, 7, 9};\n        int target = 3;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertTrue(result == 1 || result == 2);\n    }\n\n    @Test\n    void testArrayWithDuplicatesTargetNotFound() {\n        int[] arr = {1, 3, 3, 5, 7, 9};\n        int target = 4;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939450.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 325,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 603,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 928
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-447116c9",
+  "id": "resp_00216e9e25cd4698006a54c330b628819887b227a4f832ece6",
+  "created_at": 1783939888.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_00216e9e25cd4698006a54c33148f48198a6ecfe149801eac2",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.assertEquals;\n\npublic class TaxCalculatorTest {\n\n    @Test\n    public void testCalculateTax_ZeroIncome() {\n        assertEquals(0.0, calculateTax(0, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_NegativeIncome() {\n        assertEquals(0.0, calculateTax(-5000, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_SingleIncomeBelowThreshold() {\n        assertEquals(1000.0, calculateTax(10000, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_SingleIncomeMiddleBracket() {\n        assertEquals(4000.0, calculateTax(30000, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_SingleIncomeAboveThreshold() {\n        assertEquals(8500.0, calculateTax(60000, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_MarriedIncomeBelowThreshold() {\n        assertEquals(2000.0, calculateTax(20000, \"married\"));\n    }\n\n    @Test\n    public void testCalculateTax_MarriedIncomeMiddleBracket() {\n        assertEquals(8000.0, calculateTax(60000, \"married\"));\n    }\n\n    @Test\n    public void testCalculateTax_MarriedIncomeAboveThreshold() {\n        assertEquals(16500.0, calculateTax(100000, \"married\"));\n    }\n\n    @Test\n    public void testCalculateTax_OtherStatusIncome() {\n        assertEquals(2000.0, calculateTax(10000, \"other\"));\n    }\n\n    @Test\n    public void testCalculateTax_UpperBoundarySingle() {\n        assertEquals(5500.0, calculateTax(40000, \"single\"));\n    }\n\n    @Test\n    public void testCalculateTax_UpperBoundaryMarried() {\n        assertEquals(11000.0, calculateTax(80000, \"married\"));\n    }\n\n    @Test\n    public void testCalculateTax_UnknownStatus() {\n        assertEquals(2000.0, calculateTax(10000, \"unknown\"));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CalculateTaxTest {\n\n    @Test\n    void testCalculateTaxWithNegativeIncome() {\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-5000, \"single\"), 0.001);\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-1, \"married\"), 0.001);\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-100, \"other\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxWithZeroIncome() {\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, \"single\"), 0.001);\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, \"married\"), 0.001);\n        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, \"other\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxSingleBracket1() {\n        assertEquals(500.0, JAVA_005_calculateTax.calculateTax(5000, \"single\"), 0.001);\n        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, \"single\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxSingleBracket2() {\n        assertEquals(1750.0, JAVA_005_calculateTax.calculateTax(15000, \"single\"), 0.001);\n        assertEquals(5500.0, JAVA_005_calculateTax.calculateTax(40000, \"single\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxSingleBracket3() {\n        assertEquals(5750.0, JAVA_005_calculateTax.calculateTax(41000, \"single\"), 0.001);\n        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(50000, \"single\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxMarriedBracket1() {\n        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, \"married\"), 0.001);\n        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(20000, \"married\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxMarriedBracket2() {\n        assertEquals(2750.0, JAVA_005_calculateTax.calculateTax(25000, \"married\"), 0.001);\n        assertEquals(11000.0, JAVA_005_calculateTax.calculateTax(80000, \"married\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxMarriedBracket3() {\n        assertEquals(11250.0, JAVA_005_calculateTax.calculateTax(81000, \"married\"), 0.001);\n        assertEquals(13500.0, JAVA_005_calculateTax.calculateTax(90000, \"married\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxOtherStatus() {\n        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, \"other\"), 0.001);\n        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(40000, \"other\"), 0.001);\n        assertEquals(20000.0, JAVA_005_calculateTax.calculateTax(100000, \"other\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxCaseInsensitiveStatus() {\n        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, \"SINGLE\"), 0.001);\n        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(20000, \"MARRIED\"), 0.001);\n        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, \"OTHER\"), 0.001);\n    }\n\n    @Test\n    void testCalculateTaxInvalidStatus() {\n        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, \"unknown\"), 0.001);\n        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(40000, \"\"), 0.001);\n        assertEquals(20000.0, JAVA_005_calculateTax.calculateTax(100000, null), 0.001);\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939895.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 437,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 466,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 903
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

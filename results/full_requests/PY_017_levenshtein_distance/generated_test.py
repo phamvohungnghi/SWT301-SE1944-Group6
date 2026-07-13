@@ -1,60 +1,73 @@
 import pytest
 
-from your_module import levenshtein_distance
+def test_levenshtein_distance():
+    # Test cases for levenshtein_distance function
 
-def test_levenshtein_distance_basic():
+    # Test with two identical strings
+    assert levenshtein_distance("kitten", "kitten") == 0
+
+    # Test with one empty string
+    assert levenshtein_distance("", "abc") == 3
+    assert levenshtein_distance("abc", "") == 3
+
+    # Test with both strings empty
+    assert levenshtein_distance("", "") == 0
+
+    # Test with different strings
     assert levenshtein_distance("kitten", "sitting") == 3
     assert levenshtein_distance("flaw", "lawn") == 2
-    assert levenshtein_distance("gumbo", "gambol") == 2
-    assert levenshtein_distance("", "") == 0
-    assert levenshtein_distance("abc", "") == 3
-    assert levenshtein_distance("", "abc") == 3
+    assert levenshtein_distance("intention", "execution") == 5
 
-def test_levenshtein_distance_identical_strings():
-    assert levenshtein_distance("test", "test") == 0
-    assert levenshtein_distance("a", "a") == 0
-    assert levenshtein_distance("", "") == 0
+    # Test with strings of different lengths
+    assert levenshtein_distance("abc", "ab") == 1
+    assert levenshtein_distance("a", "abc") == 2
+    assert levenshtein_distance("abc", "a") == 2
 
-def test_levenshtein_distance_single_character():
-    assert levenshtein_distance("a", "b") == 1
-    assert levenshtein_distance("a", "") == 1
-    assert levenshtein_distance("", "a") == 1
-
-def test_levenshtein_distance_case_sensitivity():
-    assert levenshtein_distance("Test", "test") == 1
-    assert levenshtein_distance("TEST", "test") == 4
-
-def test_levenshtein_distance_special_characters():
-    assert levenshtein_distance("hello!", "hello") == 1
-    assert levenshtein_distance("hello", "hello!") == 1
-    assert levenshtein_distance("@#$%", "@#$%") == 0
-    assert levenshtein_distance("@#$%", "abcd") == 4
-
-def test_levenshtein_distance_unicode():
-    assert levenshtein_distance("你好", "你好") == 0
-    assert levenshtein_distance("你好", "您好") == 1
-    assert levenshtein_distance("你好", "") == 2
-
-def test_levenshtein_distance_none_inputs():
-    assert levenshtein_distance(None, "test") == -1
-    assert levenshtein_distance("test", None) == -1
+    # Test with None inputs
+    assert levenshtein_distance(None, "abc") == -1
+    assert levenshtein_distance("abc", None) == -1
     assert levenshtein_distance(None, None) == -1
 
-def test_levenshtein_distance_large_inputs():
-    s1 = "a" * 1000
-    s2 = "b" * 1000
-    assert levenshtein_distance(s1, s2) == 1000
-    s3 = "a" * 1000
-    s4 = "a" * 999 + "b"
-    assert levenshtein_distance(s3, s4) == 1
+    # Test with single character strings
+    assert levenshtein_distance("a", "b") == 1
+    assert levenshtein_distance("a", "a") == 0
 
-def test_levenshtein_distance_empty_strings():
-    assert levenshtein_distance("", "") == 0
-    assert levenshtein_distance("", "abc") == 3
-    assert levenshtein_distance("abc", "") == 3
+    # Test with strings that are completely different
+    assert levenshtein_distance("abc", "xyz") == 3
+    assert levenshtein_distance("abcdef", "ghijkl") == 6
 
-def test_levenshtein_distance_substring():
+    # Test with strings that require multiple operations
+    assert levenshtein_distance("abc", "yabc") == 1
+    assert levenshtein_distance("abc", "abcy") == 1
+    assert levenshtein_distance("abc", "xyzabc") == 3
+
+    # Test with long strings
+    assert levenshtein_distance("a" * 1000, "a" * 999) == 1
+    assert levenshtein_distance("a" * 1000, "b" * 1000) == 1000
+
+    # Test with strings that have repeated characters
+    assert levenshtein_distance("aaa", "a") == 2
+    assert levenshtein_distance("a", "aaa") == 2
+
+    # Test with strings that are substrings of each other
     assert levenshtein_distance("abc", "abcd") == 1
     assert levenshtein_distance("abcd", "abc") == 1
-    assert levenshtein_distance("abc", "ab") == 1
-    assert levenshtein_distance("ab", "abc") == 1
+
+    # Test with strings that are anagrams
+    assert levenshtein_distance("listen", "silent") == 6  # All characters need to be rearranged
+
+    # Test with special characters
+    assert levenshtein_distance("abc!@#", "abc") == 3
+    assert levenshtein_distance("abc", "abc!@#") == 3
+
+    # Test with numeric strings
+    assert levenshtein_distance("123", "123") == 0
+    assert levenshtein_distance("123", "456") == 3
+    assert levenshtein_distance("123", "12") == 1
+    assert levenshtein_distance("12", "123") == 1
+
+    # Test with whitespace
+    assert levenshtein_distance("abc ", "abc") == 1
+    assert levenshtein_distance("abc", "abc ") == 1
+    assert levenshtein_distance("abc ", " abc") == 1
+    assert levenshtein_distance(" abc", "abc ") == 2

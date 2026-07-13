@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-85a26d2f",
+  "id": "resp_0cd7f425e121ad1f006a54c2360628819b908d055c56ab155b",
+  "created_at": 1783939638.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0cd7f425e121ad1f006a54c23684ac819b9dd5136494543a4f",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef test_evaluate_rpn():\n    # Test with a simple addition\n    assert evaluate_rpn(\"3 4 +\") == 7\n    \n    # Test with a simple subtraction\n    assert evaluate_rpn(\"10 4 -\") == 6\n    \n    # Test with a simple multiplication\n    assert evaluate_rpn(\"2 3 *\") == 6\n    \n    # Test with a simple division\n    assert evaluate_rpn(\"8 2 /\") == 4\n    \n    # Test with division by zero\n    assert evaluate_rpn(\"8 0 /\") == 0\n    \n    # Test with multiple operations\n    assert evaluate_rpn(\"3 4 + 2 *\") == 14  # (3 + 4) * 2\n    \n    # Test with mixed operations\n    assert evaluate_rpn(\"5 1 2 + 4 * + 3 -\") == 14  # 5 + (1 + 2) * 4 - 3\n    \n    # Test with insufficient operands\n    assert evaluate_rpn(\"+\") == 0\n    assert evaluate_rpn(\"3 +\") == 0\n    assert evaluate_rpn(\"3 4 + +\") == 0\n    \n    # Test with invalid token\n    assert evaluate_rpn(\"3 4 &\") == 0\n    assert evaluate_rpn(\"3 4 + a\") == 0\n    \n    # Test with empty expression\n    assert evaluate_rpn(\"\") == 0\n    \n    # Test with a single number\n    assert evaluate_rpn(\"42\") == 42\n    \n    # Test with negative numbers\n    assert evaluate_rpn(\"-3 -4 +\") == -7  # (-3) + (-4)\n    \n    # Test with large numbers\n    assert evaluate_rpn(\"1000000 2000000 +\") == 3000000\n    \n    # Test with a complex expression\n    assert evaluate_rpn(\"3 4 2 * 1 5 - 2 3 ^ ^ / +\") == 3  # (3 + (4 * 2) / ((1 - 5) ^ (2 ^ 3)))\n    \n    # Test with a single operator\n    assert evaluate_rpn(\"+\") == 0\n    assert evaluate_rpn(\"-\") == 0\n    assert evaluate_rpn(\"*\") == 0\n    assert evaluate_rpn(\"/\") == 0\n    \n    # Test with multiple spaces\n    assert evaluate_rpn(\"   3   4   +   \") == 7\n    assert evaluate_rpn(\"   10   4   -   \") == 6\n    assert evaluate_rpn(\"   2   3   *   \") == 6\n    assert evaluate_rpn(\"   8   2   /   \") == 4",
           "type": "output_text",
-          "text": "import pytest\n\ndef test_evaluate_rpn_empty_expression():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"\") == 0\n\ndef test_evaluate_rpn_single_number():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"42\") == 42\n\ndef test_evaluate_rpn_simple_addition():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 4 +\") == 7\n\ndef test_evaluate_rpn_simple_subtraction():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"10 3 -\") == 7\n\ndef test_evaluate_rpn_simple_multiplication():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"6 7 *\") == 42\n\ndef test_evaluate_rpn_simple_division():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"8 2 /\") == 4\n\ndef test_evaluate_rpn_division_by_zero():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"8 0 /\") == 0\n\ndef test_evaluate_rpn_invalid_token():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 4 + foo\") == 0\n\ndef test_evaluate_rpn_insufficient_operands():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 +\") == 0\n\ndef test_evaluate_rpn_multiple_numbers_without_operator():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 4 5\") == 0\n\ndef test_evaluate_rpn_complex_expression():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"5 1 2 + 4 * + 3 -\") == 14\n\ndef test_evaluate_rpn_negative_result():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 5 -\") == -2\n\ndef test_evaluate_rpn_large_numbers():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"1000000 2000000 +\") == 3000000\n\ndef test_evaluate_rpn_float_input():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3.5 2 +\") == 0\n\ndef test_evaluate_rpn_extra_operators():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 4 + +\") == 0\n\ndef test_evaluate_rpn_multiple_divisions():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"100 5 / 2 /\") == 10\n\ndef test_evaluate_rpn_multiple_operations():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"2 3 + 5 * 6 -\") == 19\n\ndef test_evaluate_rpn_non_integer_input():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"3 a +\") == 0\n\ndef test_evaluate_rpn_whitespace_handling():\n    from PY_007_evaluate_rpn import evaluate_rpn\n    assert evaluate_rpn(\"   3   4   +   \") == 7"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939646.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 372,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 591,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 963
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

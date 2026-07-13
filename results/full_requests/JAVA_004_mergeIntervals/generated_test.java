@@ -1,104 +1,87 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class JAVA_004_mergeIntervalsTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class MergeIntervalsTest {
 
     @Test
-    public void testNullInput() {
+    void testMergeIntervals_NullInput() {
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(null);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.isEmpty(), "Expected empty list for null input");
     }
 
     @Test
-    public void testEmptyInput() {
+    void testMergeIntervals_EmptyInput() {
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(new ArrayList<>());
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.isEmpty(), "Expected empty list for empty input");
     }
 
     @Test
-    public void testSingleInterval() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3});
+    void testMergeIntervals_InvalidInterval_Null() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(null);
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(1, result.size());
-        assertArrayEquals(new int[]{1, 3}, result.get(0));
+        assertTrue(result.isEmpty(), "Expected empty list for input with null interval");
     }
 
     @Test
-    public void testNonOverlappingIntervals() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 2}, new int[]{3, 4});
+    void testMergeIntervals_InvalidInterval_LengthNotTwo() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{1});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(2, result.size());
-        assertArrayEquals(new int[]{1, 2}, result.get(0));
-        assertArrayEquals(new int[]{3, 4}, result.get(1));
+        assertTrue(result.isEmpty(), "Expected empty list for input with interval length not equal to 2");
     }
 
     @Test
-    public void testOverlappingIntervals() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3}, new int[]{2, 4});
+    void testMergeIntervals_InvalidInterval_StartGreaterThanEnd() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{2, 1});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(1, result.size());
-        assertArrayEquals(new int[]{1, 4}, result.get(0));
+        assertTrue(result.isEmpty(), "Expected empty list for input with start greater than end");
     }
 
     @Test
-    public void testFullyContainedIntervals() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 5}, new int[]{2, 3});
+    void testMergeIntervals_NoOverlap() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{1, 2});
+        intervals.add(new int[]{3, 4});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(1, result.size());
-        assertArrayEquals(new int[]{1, 5}, result.get(0));
+        assertEquals(2, result.size(), "Expected two intervals in the result");
+        assertArrayEquals(new int[]{1, 2}, result.get(0), "First interval should be [1, 2]");
+        assertArrayEquals(new int[]{3, 4}, result.get(1), "Second interval should be [3, 4]");
     }
 
     @Test
-    public void testTouchingIntervals() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 2}, new int[]{2, 3});
+    void testMergeIntervals_WithOverlap() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{1, 3});
+        intervals.add(new int[]{2, 4});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(1, result.size());
-        assertArrayEquals(new int[]{1, 3}, result.get(0));
+        assertEquals(1, result.size(), "Expected one merged interval in the result");
+        assertArrayEquals(new int[]{1, 4}, result.get(0), "Merged interval should be [1, 4]");
     }
 
     @Test
-    public void testUnsortedIntervals() {
-        List<int[]> intervals = Arrays.asList(new int[]{5, 6}, new int[]{1, 3}, new int[]{2, 4});
+    void testMergeIntervals_ComplexOverlap() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{1, 4});
+        intervals.add(new int[]{2, 3});
+        intervals.add(new int[]{5, 6});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(1, result.size());
-        assertArrayEquals(new int[]{1, 6}, result.get(0));
+        assertEquals(2, result.size(), "Expected two intervals in the result");
+        assertArrayEquals(new int[]{1, 4}, result.get(0), "First merged interval should be [1, 4]");
+        assertArrayEquals(new int[]{5, 6}, result.get(1), "Second interval should be [5, 6]");
     }
 
     @Test
-    public void testInvalidIntervalNullElement() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3}, null, new int[]{2, 4});
+    void testMergeIntervals_AdjacentIntervals() {
+        List<int[]> intervals = new ArrayList<>();
+        intervals.add(new int[]{1, 2});
+        intervals.add(new int[]{2, 3});
         List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    public void testInvalidIntervalLength() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3}, new int[]{2}, new int[]{2, 4});
-        List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    public void testInvalidIntervalOrder() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3}, new int[]{4, 2});
-        List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    public void testMultipleMerges() {
-        List<int[]> intervals = Arrays.asList(new int[]{1, 3}, new int[]{2, 6}, new int[]{8, 10}, new int[]{9, 12});
-        List<int[]> result = JAVA_004_mergeIntervals.mergeIntervals(intervals);
-        assertEquals(2, result.size());
-        assertArrayEquals(new int[]{1, 6}, result.get(0));
-        assertArrayEquals(new int[]{8, 12}, result.get(1));
+        assertEquals(1, result.size(), "Expected one merged interval in the result");
+        assertArrayEquals(new int[]{1, 3}, result.get(0), "Merged interval should be [1, 3]");
     }
 }

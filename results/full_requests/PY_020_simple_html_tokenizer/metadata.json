@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_020_simple_html_tokenizer",
-  "started_at_utc": "2026-07-01T05:57:00.292117+00:00",
-  "finished_at_utc": "2026-07-01T05:57:06.012686+00:00",
-  "response_id": "mock-github-1f289354",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:49:49.003535+00:00",
+  "finished_at_utc": "2026-07-13T10:49:55.359534+00:00",
+  "response_id": "resp_0bd45579bb85bfe4006a54c2ccabc881998e83f9faf5e258ce",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "12f57ac59d905828492303f6c54a82f537b23970e44d4697c40ea7e6cd107191",
   "source_sha256": "0693a3f4bf4dd964f6b88ed277610f09ff163f8d97155d2d53ffa4a1aa4713dc",
   "sdk_version": "2.43.0"

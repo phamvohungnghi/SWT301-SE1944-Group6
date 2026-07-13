@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_013_roman_to_int",
-  "started_at_utc": "2026-07-01T05:56:20.500640+00:00",
-  "finished_at_utc": "2026-07-01T05:56:27.977141+00:00",
-  "response_id": "mock-github-0a8ae0ec",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:48:34.166786+00:00",
+  "finished_at_utc": "2026-07-13T10:48:56.291825+00:00",
+  "response_id": "resp_002beb11317911fb006a54c281d91081999deb4f211eaee4e1",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "2497e849aff92865d19ee9f071c4bb59d317237472f236874730f8ec48b6a823",
   "source_sha256": "d9523ee2200ba7048b7adec7b3d455800e982ddd0650cdc140ca562c853455b6",
   "sdk_version": "2.43.0"

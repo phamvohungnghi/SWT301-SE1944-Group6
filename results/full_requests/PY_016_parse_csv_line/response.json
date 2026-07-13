@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-5763b4b1",
+  "id": "resp_0fb5c94d8422ca38006a54c2a56b9c819bbbf51612226e5cda",
+  "created_at": 1783939749.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0fb5c94d8422ca38006a54c2a5edd8819b97a39e15bf4976af",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\nfrom your_module import parse_csv_line  # Replace 'your_module' with the actual module name\n\ndef test_parse_csv_line_none():\n    assert parse_csv_line(None) == []\n\ndef test_parse_csv_line_empty():\n    assert parse_csv_line(\"\") == [\"\"]\n\ndef test_parse_csv_line_single_value():\n    assert parse_csv_line(\"value\") == [\"value\"]\n\ndef test_parse_csv_line_two_values():\n    assert parse_csv_line(\"value1,value2\") == [\"value1\", \"value2\"]\n\ndef test_parse_csv_line_with_spaces():\n    assert parse_csv_line(\" value1 , value2 \") == [\" value1 \", \" value2 \"]\n\ndef test_parse_csv_line_with_quotes():\n    assert parse_csv_line('\"value1\",\"value2\"') == [\"value1\", \"value2\"]\n\ndef test_parse_csv_line_with_escaped_quotes():\n    assert parse_csv_line('\"value1 \"\"escaped\"\" value\",\"value2\"') == ['value1 \"escaped\" value', 'value2']\n\ndef test_parse_csv_line_with_commas_in_quotes():\n    assert parse_csv_line('\"value1,value2\",\"value3\"') == [\"value1,value2\", \"value3\"]\n\ndef test_parse_csv_line_multiple_commas():\n    assert parse_csv_line(\"value1,,,value2\") == [\"value1\", \"\", \"\", \"value2\"]\n\ndef test_parse_csv_line_trailing_comma():\n    assert parse_csv_line(\"value1,value2,\") == [\"value1\", \"value2\", \"\"]\n\ndef test_parse_csv_line_leading_comma():\n    assert parse_csv_line(\",value1,value2\") == [\"\", \"value1\", \"value2\"]\n\ndef test_parse_csv_line_multiple_quotes():\n    assert parse_csv_line('\"value1\",\"value2\",\"value3\"') == [\"value1\", \"value2\", \"value3\"]\n\ndef test_parse_csv_line_unmatched_quotes():\n    assert parse_csv_line('\"value1,value2') == ['value1,value2']\n\ndef test_parse_csv_line_only_commas():\n    assert parse_csv_line(\",,,\") == [\"\", \"\", \"\", \"\"]\n\ndef test_parse_csv_line_only_quotes():\n    assert parse_csv_line('\"\"\"') == ['\"']  # Handling of quotes only\n\ndef test_parse_csv_line_complex_case():\n    assert parse_csv_line('\"value1, with, commas\",\"value2\"') == ['value1, with, commas', 'value2']",
           "type": "output_text",
-          "text": "import pytest\n\nfrom your_module import parse_csv_line  # Replace 'your_module' with the actual module name\n\ndef test_parse_csv_line_empty_string():\n    assert parse_csv_line(\"\") == [\"\"]\n\ndef test_parse_csv_line_none():\n    assert parse_csv_line(None) == []\n\ndef test_parse_csv_line_single_value():\n    assert parse_csv_line(\"value\") == [\"value\"]\n\ndef test_parse_csv_line_multiple_values():\n    assert parse_csv_line(\"value1,value2,value3\") == [\"value1\", \"value2\", \"value3\"]\n\ndef test_parse_csv_line_with_quotes():\n    assert parse_csv_line('\"value1\",\"value2\",\"value3\"') == [\"value1\", \"value2\", \"value3\"]\n\ndef test_parse_csv_line_with_quotes_and_commas():\n    assert parse_csv_line('\"value,1\",\"value,2\",\"value,3\"') == [\"value,1\", \"value,2\", \"value,3\"]\n\ndef test_parse_csv_line_with_escaped_quotes():\n    assert parse_csv_line('\"value\"\"1\",\"value\"\"2\",\"value\"\"3\"') == ['value\"1', 'value\"2', 'value\"3']\n\ndef test_parse_csv_line_mixed_quotes_and_plain():\n    assert parse_csv_line('value1,\"value2\",\"value,3\",value4') == [\"value1\", \"value2\", \"value,3\", \"value4\"]\n\ndef test_parse_csv_line_trailing_comma():\n    assert parse_csv_line(\"value1,value2,\") == [\"value1\", \"value2\", \"\"]\n\ndef test_parse_csv_line_leading_comma():\n    assert parse_csv_line(\",value1,value2\") == [\"\", \"value1\", \"value2\"]\n\ndef test_parse_csv_line_only_commas():\n    assert parse_csv_line(\",,,\") == [\"\", \"\", \"\", \"\"]\n\ndef test_parse_csv_line_unbalanced_quotes():\n    assert parse_csv_line('\"value1,value2') == ['value1,value2']\n\ndef test_parse_csv_line_unbalanced_quotes_with_comma():\n    assert parse_csv_line('value1,\"value2,value3') == [\"value1\", \"value2,value3\"]\n\ndef test_parse_csv_line_quotes_with_spaces():\n    assert parse_csv_line(' \"value1\" , \"value2\" ') == [\" \\\"value1\\\" \", \" \\\"value2\\\" \"]\n\ndef test_parse_csv_line_empty_quoted_field():\n    assert parse_csv_line('\"\",\"value1\",\"value2\"') == [\"\", \"value1\", \"value2\"]\n\ndef test_parse_csv_line_whitespace_only():\n    assert parse_csv_line(\"   \") == [\"   \"]"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939755.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 340,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 491,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 831
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

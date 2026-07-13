@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_008_knapsack01",
-  "started_at_utc": "2026-07-01T05:58:18.556498+00:00",
-  "finished_at_utc": "2026-07-01T05:58:23.792924+00:00",
-  "response_id": "mock-github-3a9de285",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:51:51.177052+00:00",
+  "finished_at_utc": "2026-07-13T10:51:59.862671+00:00",
+  "response_id": "resp_03ee02d203564599006a54c346d7c081998bf82106a7634b1b",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "ff578e7dcf84179033be34a686caa59a9612eb1d283ba1bde734b3202be84cab",
   "source_sha256": "bd499e413f3e56decaa6e85197fcae13a371d3beb2a1697c579d187962d89eb1",
   "sdk_version": "2.43.0"

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-67a62ab9",
+  "id": "resp_06f5d9142be51095006a54c2dee3708199a7e3cb373a6d68e7",
+  "created_at": 1783939806.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_06f5d9142be51095006a54c2dff0f88199bfd201eb60db5501",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef parse_query_string(qs):\n    if not qs:\n        return {}\n    if qs.startswith(\"?\"):\n        qs = qs[1:]\n    result = {}\n    pairs = qs.split(\"&\")\n    for pair in pairs:\n        if not pair:\n            continue\n        if \"=\" in pair:\n            parts = pair.split(\"=\", 1)\n            key, val = parts[0], parts[1]\n        else:\n            key, val = pair, \"\"\n        if key in result:\n            if isinstance(result[key], list):\n                result[key].append(val)\n            else:\n                result[key] = [result[key], val]\n        else:\n            result[key] = val\n    return result\n\ndef test_parse_query_string_empty():\n    assert parse_query_string(\"\") == {}\n\ndef test_parse_query_string_no_query():\n    assert parse_query_string(\"?\") == {}\n\ndef test_parse_query_string_single_key_value():\n    assert parse_query_string(\"key=value\") == {\"key\": \"value\"}\n\ndef test_parse_query_string_single_key_no_value():\n    assert parse_query_string(\"key=\") == {\"key\": \"\"}\n\ndef test_parse_query_string_multiple_keys():\n    assert parse_query_string(\"key1=value1&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n\ndef test_parse_query_string_multiple_keys_with_empty_values():\n    assert parse_query_string(\"key1=&key2=\") == {\"key1\": \"\", \"key2\": \"\"}\n\ndef test_parse_query_string_key_with_multiple_values():\n    assert parse_query_string(\"key=value1&key=value2\") == {\"key\": [\"value1\", \"value2\"]}\n\ndef test_parse_query_string_key_with_empty_and_value():\n    assert parse_query_string(\"key=&key=value\") == {\"key\": [\"\", \"value\"]}\n\ndef test_parse_query_string_key_with_no_value_and_empty_key():\n    assert parse_query_string(\"key1=&key2\") == {\"key1\": \"\", \"key2\": \"\"}\n\ndef test_parse_query_string_ignore_empty_pairs():\n    assert parse_query_string(\"key1=value1&&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n\ndef test_parse_query_string_multiple_keys_with_special_characters():\n    assert parse_query_string(\"key1=value1&key2=value2%20with%20spaces\") == {\"key1\": \"value1\", \"key2\": \"value2 with spaces\"}\n\ndef test_parse_query_string_key_with_no_value_and_special_characters():\n    assert parse_query_string(\"key1=value1&key2\") == {\"key1\": \"value1\", \"key2\": \"\"}",
           "type": "output_text",
-          "text": "import pytest\nfrom PY_022_parse_query_string import parse_query_string\n\ndef test_parse_query_string_empty_input():\n    assert parse_query_string(\"\") == {}\n    assert parse_query_string(None) == {}\n\ndef test_parse_query_string_no_question_mark():\n    assert parse_query_string(\"key=value\") == {\"key\": \"value\"}\n    assert parse_query_string(\"key1=value1&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n    assert parse_query_string(\"key1=value1&key2=\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"key1=value1&key2\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"key1=value1&key2=value2&key3\") == {\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"\"}\n\ndef test_parse_query_string_with_question_mark():\n    assert parse_query_string(\"?key=value\") == {\"key\": \"value\"}\n    assert parse_query_string(\"?key1=value1&key2=value2\") == {\"key1\": \"value1\", \"key2\": \"value2\"}\n    assert parse_query_string(\"?key1=value1&key2=\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"?key1=value1&key2\") == {\"key1\": \"value1\", \"key2\": \"\"}\n    assert parse_query_string(\"?key1=value1&key2=value2&key3\") == {\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"\"}\n\ndef test_parse_query_string_duplicate_keys():\n    assert parse_query_string(\"key=value1&key=value2\") == {\"key\": [\"value1\", \"value2\"]}\n    assert parse_query_string(\"key=value1&key=value2&key=value3\") == {\"key\": [\"value1\", \"value2\", \"value3\"]}\n    assert parse_query_string(\"key=value1&key=&key=value3\") == {\"key\": [\"value1\", \"\", \"value3\"]}\n    assert parse_query_string(\"key=value1&key\") == {\"key\": [\"value1\", \"\"]}\n\ndef test_parse_query_string_edge_cases():\n    assert parse_query_string(\"?\") == {}\n    assert parse_query_string(\"&\") == {}\n    assert parse_query_string(\"&&\") == {}\n    assert parse_query_string(\"key=\") == {\"key\": \"\"}\n    assert parse_query_string(\"key\") == {\"key\": \"\"}\n    assert parse_query_string(\"key=value&\") == {\"key\": \"value\"}\n    assert parse_query_string(\"key=value&&key2=value2\") == {\"key\": \"value\", \"key2\": \"value2\"}\n    assert parse_query_string(\"key=value&&key=value2\") == {\"key\": [\"value\", \"value2\"]}\n\ndef test_parse_query_string_special_characters():\n    assert parse_query_string(\"key=val%20ue\") == {\"key\": \"val%20ue\"}\n    assert parse_query_string(\"key1=value1&key2=value%202\") == {\"key1\": \"value1\", \"key2\": \"value%202\"}\n    assert parse_query_string(\"key1=value1&key2=&key3=%20\") == {\"key1\": \"value1\", \"key2\": \"\", \"key3\": \"%20\"}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939815.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 335,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 549,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 884
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

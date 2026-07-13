@@ -1,53 +1,40 @@
 import pytest
-from PY_005_calculate_tax import calculate_tax
 
-def test_calculate_tax_single_low_income():
-    assert calculate_tax(5000, "single") == 500.0
-
-def test_calculate_tax_single_boundary_low():
-    assert calculate_tax(10000, "single") == 1000.0
-
-def test_calculate_tax_single_mid_income():
-    assert calculate_tax(25000, "single") == 1000 + (25000 - 10000) * 0.15
-
-def test_calculate_tax_single_boundary_mid():
-    assert calculate_tax(40000, "single") == 5500.0
-
-def test_calculate_tax_single_high_income():
-    assert calculate_tax(60000, "single") == 5500 + (60000 - 40000) * 0.25
-
-def test_calculate_tax_married_low_income():
-    assert calculate_tax(10000, "married") == 1000.0
-
-def test_calculate_tax_married_boundary_low():
-    assert calculate_tax(20000, "married") == 2000.0
-
-def test_calculate_tax_married_mid_income():
-    assert calculate_tax(50000, "married") == 2000 + (50000 - 20000) * 0.15
-
-def test_calculate_tax_married_boundary_mid():
-    assert calculate_tax(80000, "married") == 11000.0
-
-def test_calculate_tax_married_high_income():
-    assert calculate_tax(100000, "married") == 11000 + (100000 - 80000) * 0.25
-
-def test_calculate_tax_other_status_low_income():
-    assert calculate_tax(5000, "head_of_household") == 5000 * 0.2
-
-def test_calculate_tax_other_status_high_income():
-    assert calculate_tax(50000, "head_of_household") == 50000 * 0.2
-
-def test_calculate_tax_zero_income():
+def test_calculate_tax():
+    # Test cases for income <= 0
     assert calculate_tax(0, "single") == 0.0
+    assert calculate_tax(-1000, "single") == 0.0
+    assert calculate_tax(0, "married") == 0.0
+    assert calculate_tax(-1000, "married") == 0.0
+    assert calculate_tax(0, "other") == 0.0
+    assert calculate_tax(-1000, "other") == 0.0
 
-def test_calculate_tax_negative_income():
-    assert calculate_tax(-5000, "single") == 0.0
+    # Test cases for single status
+    assert calculate_tax(5000, "single") == 500.0  # 10% of 5000
+    assert calculate_tax(10000, "single") == 1000.0  # 10% of 10000
+    assert calculate_tax(15000, "single") == 1000.0 + (15000 - 10000) * 0.15  # 1000 + 750
+    assert calculate_tax(40000, "single") == 1000.0 + (40000 - 10000) * 0.15  # 1000 + 4500
+    assert calculate_tax(50000, "single") == 5500.0 + (50000 - 40000) * 0.25  # 5500 + 2500
+    assert calculate_tax(100000, "single") == 5500.0 + (100000 - 40000) * 0.25  # 5500 + 15000
 
-def test_calculate_tax_invalid_status():
-    assert calculate_tax(10000, "unknown_status") == 10000 * 0.2
+    # Test cases for married status
+    assert calculate_tax(10000, "married") == 1000.0  # 10% of 10000
+    assert calculate_tax(20000, "married") == 2000.0  # 10% of 20000
+    assert calculate_tax(30000, "married") == 2000.0 + (30000 - 20000) * 0.15  # 2000 + 1500
+    assert calculate_tax(80000, "married") == 2000.0 + (80000 - 20000) * 0.15  # 2000 + 9000
+    assert calculate_tax(100000, "married") == 11000.0 + (100000 - 80000) * 0.25  # 11000 + 5000
 
-def test_calculate_tax_zero_income_invalid_status():
-    assert calculate_tax(0, "unknown_status") == 0.0
+    # Test cases for other status
+    assert calculate_tax(10000, "other") == 2000.0  # 20% of 10000
+    assert calculate_tax(20000, "other") == 4000.0  # 20% of 20000
+    assert calculate_tax(50000, "other") == 10000.0  # 20% of 50000
+    assert calculate_tax(100000, "other") == 20000.0  # 20% of 100000
 
-def test_calculate_tax_negative_income_invalid_status():
-    assert calculate_tax(-5000, "unknown_status") == 0.0
+    # Edge cases
+    assert calculate_tax(10001, "single") == 1000.0 + (10001 - 10000) * 0.15  # Just above boundary
+    assert calculate_tax(40001, "single") == 5500.0 + (40001 - 40000) * 0.25  # Just above boundary
+    assert calculate_tax(20001, "married") == 2000.0 + (20001 - 20000) * 0.15  # Just above boundary
+    assert calculate_tax(80001, "married") == 11000.0 + (80001 - 80000) * 0.25  # Just above boundary
+
+    # Invalid status
+    assert calculate_tax(50000, "invalid") == 10000.0  # 20% of 50000 for invalid status

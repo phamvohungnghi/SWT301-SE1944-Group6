@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_007_evaluate_rpn\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef evaluate_rpn(expression):\n    if not expression:\n        return 0\n    stack = []\n    tokens = expression.split()\n    operators = {\"+\", \"-\", \"*\", \"/\"}\n    for token in tokens:\n        if token in operators:\n            if len(stack) < 2:\n                return 0\n            b = stack.pop()\n            a = stack.pop()\n            if token == \"+\":\n                stack.append(a + b)\n            elif token == \"-\":\n                stack.append(a - b)\n            elif token == \"*\":\n                stack.append(a * b)\n            elif token == \"/\":\n                if b == 0:\n                    return 0\n                stack.append(int(a / b))\n        else:\n            try:\n                stack.append(int(token))\n            except ValueError:\n                return 0\n    return stack.pop() if len(stack) == 1 else 0\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

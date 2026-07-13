@@ -1,122 +1,109 @@
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class JsonPathLookupTest {
+public class JsonPathLookupTest {
 
     @Test
-    void testNullData() {
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(null, "key"));
+    public void testNullData() {
+        assertNull(jsonPathLookup(null, "key"));
     }
 
     @Test
-    void testNullPath() {
+    public void testNullPath() {
         Map<String, Object> data = new HashMap<>();
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, null));
+        assertNull(jsonPathLookup(data, null));
     }
 
     @Test
-    void testEmptyPath() {
+    public void testEmptyPath() {
         Map<String, Object> data = new HashMap<>();
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, ""));
+        assertNull(jsonPathLookup(data, ""));
     }
 
     @Test
-    void testPathNotFoundInMap() {
+    public void testNonExistentKey() {
         Map<String, Object> data = new HashMap<>();
-        data.put("key1", "value1");
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "key2"));
+        data.put("key", "value");
+        assertNull(jsonPathLookup(data, "nonExistentKey"));
     }
 
     @Test
-    void testPathFoundInMap() {
+    public void testValidKey() {
         Map<String, Object> data = new HashMap<>();
-        data.put("key1", "value1");
-        assertEquals("value1", JAVA_009_jsonPathLookup.jsonPathLookup(data, "key1"));
+        data.put("key", "value");
+        assertEquals("value", jsonPathLookup(data, "key"));
     }
 
     @Test
-    void testNestedMapPathFound() {
-        Map<String, Object> innerMap = new HashMap<>();
-        innerMap.put("innerKey", "innerValue");
+    public void testNestedMapLookup() {
         Map<String, Object> data = new HashMap<>();
-        data.put("outerKey", innerMap);
-        assertEquals("innerValue", JAVA_009_jsonPathLookup.jsonPathLookup(data, "outerKey.innerKey"));
+        Map<String, Object> nestedMap = new HashMap<>();
+        nestedMap.put("nestedKey", "nestedValue");
+        data.put("key", nestedMap);
+        assertEquals("nestedValue", jsonPathLookup(data, "key.nestedKey"));
     }
 
     @Test
-    void testNestedMapPathNotFound() {
-        Map<String, Object> innerMap = new HashMap<>();
-        innerMap.put("innerKey", "innerValue");
+    public void testListLookupByIndex() {
+        List<Object> list = Arrays.asList("zero", "one", "two");
         Map<String, Object> data = new HashMap<>();
-        data.put("outerKey", innerMap);
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "outerKey.nonExistentKey"));
+        data.put("list", list);
+        assertEquals("one", jsonPathLookup(data, "list.1"));
     }
 
     @Test
-    void testListIndexFound() {
-        List<Object> list = Arrays.asList("value1", "value2", "value3");
+    public void testListLookupInvalidIndex() {
+        List<Object> list = Arrays.asList("zero", "one", "two");
         Map<String, Object> data = new HashMap<>();
-        data.put("key", list);
-        assertEquals("value2", JAVA_009_jsonPathLookup.jsonPathLookup(data, "key.1"));
+        data.put("list", list);
+        assertNull(jsonPathLookup(data, "list.3"));
     }
 
     @Test
-    void testListIndexOutOfBounds() {
-        List<Object> list = Arrays.asList("value1", "value2", "value3");
+    public void testListLookupNonDigitKey() {
+        List<Object> list = Arrays.asList("zero", "one", "two");
         Map<String, Object> data = new HashMap<>();
-        data.put("key", list);
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "key.3"));
+        data.put("list", list);
+        assertNull(jsonPathLookup(data, "list.one"));
     }
 
     @Test
-    void testListIndexNegative() {
-        List<Object> list = Arrays.asList("value1", "value2", "value3");
+    public void testInvalidDataType() {
         Map<String, Object> data = new HashMap<>();
-        data.put("key", list);
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "key.-1"));
+        data.put("key", "value");
+        assertNull(jsonPathLookup(data, "key.nestedKey"));
     }
 
     @Test
-    void testInvalidListIndex() {
-        List<Object> list = Arrays.asList("value1", "value2", "value3");
+    public void testEmptyListLookup() {
+        List<Object> list = new ArrayList<>();
         Map<String, Object> data = new HashMap<>();
-        data.put("key", list);
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "key.invalid"));
+        data.put("list", list);
+        assertNull(jsonPathLookup(data, "list.0"));
     }
 
     @Test
-    void testMixedMapAndListPath() {
-        List<Object> list = Arrays.asList("value1", "value2", "value3");
-        Map<String, Object> innerMap = new HashMap<>();
-        innerMap.put("innerKey", list);
+    public void testValidListLookup() {
+        List<Object> list = Arrays.asList("first", "second", "third");
         Map<String, Object> data = new HashMap<>();
-        data.put("outerKey", innerMap);
-        assertEquals("value3", JAVA_009_jsonPathLookup.jsonPathLookup(data, "outerKey.innerKey.2"));
+        data.put("list", list);
+        assertEquals("third", jsonPathLookup(data, "list.2"));
     }
 
     @Test
-    void testNonNavigableObject() {
+    public void testInvalidListLookupNegativeIndex() {
+        List<Object> list = Arrays.asList("first", "second", "third");
         Map<String, Object> data = new HashMap<>();
-        data.put("key", "nonNavigable");
-        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, "key.subKey"));
+        data.put("list", list);
+        assertNull(jsonPathLookup(data, "list.-1"));
     }
 
     @Test
-    void testEmptyKeyInPath() {
+    public void testInvalidListLookupOutOfBounds() {
+        List<Object> list = Arrays.asList("first", "second", "third");
         Map<String, Object> data = new HashMap<>();
-        data.put("", "emptyKeyValue");
-        assertEquals("emptyKeyValue", JAVA_009_jsonPathLookup.jsonPathLookup(data, ""));
-    }
-
-    @Test
-    void testEmptyKeyInNestedPath() {
-        Map<String, Object> innerMap = new HashMap<>();
-        innerMap.put("", "emptyKeyValue");
-        Map<String, Object> data = new HashMap<>();
-        data.put("outerKey", innerMap);
-        assertEquals("emptyKeyValue", JAVA_009_jsonPathLookup.jsonPathLookup(data, "outerKey."));
+        data.put("list", list);
+        assertNull(jsonPathLookup(data, "list.5"));
     }
 }

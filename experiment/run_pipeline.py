@@ -21,11 +21,21 @@ import httpx
 import lizard
 from openai import OpenAI
 
+# Load environment variables from .env if it exists
+for env_path in (".env", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env") if "__file__" in locals() or "__file__" in globals() else ".env"):
+    if os.path.exists(env_path):
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    key, val = line.split("=", 1)
+                    os.environ[key.strip()] = val.strip().strip("'\"")
+        break
 
-
-MODEL = "gpt-4o-2024-08-06"
-TEMPERATURE = 0.2
-TOP_P = 1.0
+MODEL = "gpt-4o-mini-2024-07-18"
+TEMPERATURE = 0.0
 MAX_OUTPUT_TOKENS = 2048
 SYSTEM_PROMPT = """You are a software-testing specialist. Follow the requested test framework exactly.
 Return only one complete executable test source file. Do not use Markdown fences.
@@ -136,7 +146,6 @@ def redacted_request(user_prompt: str) -> dict[str, Any]:
             {"role": "user", "content": user_prompt},
         ],
         "temperature": TEMPERATURE,
-        "top_p": TOP_P,
         "max_output_tokens": MAX_OUTPUT_TOKENS,
     }
 
@@ -176,7 +185,6 @@ def call_alternative_api(
     system_prompt: str,
     user_prompt: str,
     temperature: float,
-    top_p: float,
     max_tokens: int
 ) -> str:
     if provider == "gemini":
@@ -194,7 +202,6 @@ def call_alternative_api(
             ],
             "generationConfig": {
                 "temperature": temperature,
-                "topP": top_p,
                 "maxOutputTokens": max_tokens,
             }
         }
@@ -222,7 +229,6 @@ def call_alternative_api(
                 {"role": "user", "content": user_prompt}
             ],
             "temperature": temperature,
-            "top_p": top_p,
             "max_tokens": max_tokens
         }
         res = httpx.post(url, json=payload, headers=headers, timeout=120.0)
@@ -249,7 +255,6 @@ def call_alternative_api(
                 {"role": "user", "content": user_prompt}
             ],
             "temperature": temperature,
-            "top_p": top_p,
             "max_tokens": max_tokens
         }
         res = httpx.post(url, json=payload, headers=headers, timeout=120.0)
@@ -270,7 +275,6 @@ def call_alternative_api(
             ],
             "options": {
                 "temperature": temperature,
-                "top_p": top_p,
                 "num_predict": max_tokens
             },
             "stream": False
@@ -379,7 +383,6 @@ def main() -> None:
                     system_prompt=SYSTEM_PROMPT,
                     user_prompt=user_prompt,
                     temperature=TEMPERATURE,
-                    top_p=TOP_P,
                     max_tokens=MAX_OUTPUT_TOKENS
                 )
                 response = MockResponse(

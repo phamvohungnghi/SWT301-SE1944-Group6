@@ -318,3 +318,33 @@ Proceed to executability evaluation.
 Protocol amendment required for provider/model deviation.
 High risk of compile/import failure in generated tests.
 ```
+
+
+## 12. Cập nhật ngày 2026-07-13: Kết quả chạy lại với OpenAI API
+
+Vào ngày 2026-07-13, toàn bộ pipeline đã được chạy lại bằng **OpenAI API chính thức** thay vì qua GitHub Models. Dưới đây là ghi nhận kết quả:
+
+### 12.1. Cấu hình chạy lại
+*   **Mô hình (Model)**: `gpt-4o-mini-2024-07-18` (bản snapshot cố định giúp tiết kiệm chi phí tối đa).
+*   **Tham số**: 
+    *   `TEMPERATURE = 0.0` (đảm bảo tính nhất quán cao nhất cho mã nguồn test).
+    *   Đã **loại bỏ hoàn toàn** tham số `top_p` khỏi pipeline.
+*   **Quản lý môi trường**: API Key được nạp bảo mật qua file `.env` (đã được cấu hình trong `.gitignore`).
+
+### 12.2. Kết quả đo lường Token và Chi phí (Token & Cost Analysis)
+
+*   **Pilot Run (10 bài)**:
+    *   **Input tokens**: 3,706 tokens
+    *   **Output tokens**: 7,788 tokens
+    *   **Tổng số tokens**: 11,494 tokens
+    *   **Chi phí ước tính (Cost)**: ~$0.005229 USD
+*   **Full Run (50 bài)**:
+    *   **Input tokens**: 18,790 tokens
+    *   **Output tokens**: 35,832 tokens
+    *   **Tổng số tokens**: 54,622 tokens
+    *   **Chi phí ước tính (Cost)**: ~$0.024318 USD (Chưa tới 3 cent cho toàn bộ 50 bài test chính thức).
+
+### 12.3. Đánh giá trạng thái mới
+*   **Đo lường Token**: Đã giải quyết triệt để vấn đề không đo được lượng token đầu ra. Các file `response.json` hiện lưu trữ cấu trúc phản hồi chuẩn của OpenAI với trường `usage` chính xác.
+*   **Response ID**: Các ID phản hồi là thật từ OpenAI (`resp_...`), không còn dạng `mock-github-...`.
+*   **Vấn đề sai cấu trúc/khả năng biên dịch**: Do đã chuyển sang `temperature = 0.0`, cấu trúc sinh test của mô hình ổn định hơn nhiều. Tuy nhiên, rủi ro lệch import/class vẫn cần được Quân (Java) và Văn (Python) kiểm tra ở các bước smoke-test tiếp theo.

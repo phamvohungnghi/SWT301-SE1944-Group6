@@ -1,76 +1,105 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class JAVA_025_isMatchTest {
 
     @Test
-    void testNullInputs() {
-        assertFalse(JAVA_025_isMatch.isMatch(null, null));
-        assertFalse(JAVA_025_isMatch.isMatch(null, "a*"));
+    void testNullPattern() {
         assertFalse(JAVA_025_isMatch.isMatch("abc", null));
+    }
+
+    @Test
+    void testNullString() {
+        assertFalse(JAVA_025_isMatch.isMatch(null, "a"));
+    }
+
+    @Test
+    void testBothNull() {
+        assertFalse(JAVA_025_isMatch.isMatch(null, null));
     }
 
     @Test
     void testEmptyPattern() {
         assertTrue(JAVA_025_isMatch.isMatch("", ""));
-        assertFalse(JAVA_025_isMatch.isMatch("a", ""));
     }
 
     @Test
-    void testEmptyString() {
-        assertTrue(JAVA_025_isMatch.isMatch("", "a*"));
+    void testEmptyStringWithEmptyPattern() {
+        assertTrue(JAVA_025_isMatch.isMatch("", ""));
+    }
+
+    @Test
+    void testEmptyStringWithNonEmptyPattern() {
         assertFalse(JAVA_025_isMatch.isMatch("", "a"));
-        assertTrue(JAVA_025_isMatch.isMatch("", ".*"));
     }
 
     @Test
-    void testExactMatch() {
-        assertTrue(JAVA_025_isMatch.isMatch("abc", "abc"));
-        assertFalse(JAVA_025_isMatch.isMatch("abc", "abcd"));
-        assertFalse(JAVA_025_isMatch.isMatch("abcd", "abc"));
+    void testSingleCharacterMatch() {
+        assertTrue(JAVA_025_isMatch.isMatch("a", "a"));
     }
 
     @Test
-    void testSingleCharacterWildcard() {
+    void testSingleCharacterMismatch() {
+        assertFalse(JAVA_025_isMatch.isMatch("a", "b"));
+    }
+
+    @Test
+    void testDotMatch() {
         assertTrue(JAVA_025_isMatch.isMatch("a", "."));
-        assertFalse(JAVA_025_isMatch.isMatch("", "."));
-        assertTrue(JAVA_025_isMatch.isMatch("abc", "a.c"));
-        assertFalse(JAVA_025_isMatch.isMatch("abc", "a.d"));
     }
 
     @Test
-    void testKleeneStar() {
+    void testStarWithSingleMatch() {
         assertTrue(JAVA_025_isMatch.isMatch("aa", "a*"));
+    }
+
+    @Test
+    void testStarWithMultipleMatches() {
         assertTrue(JAVA_025_isMatch.isMatch("aaa", "a*"));
-        assertTrue(JAVA_025_isMatch.isMatch("a", "a*"));
-        assertTrue(JAVA_025_isMatch.isMatch("", "a*"));
-        assertFalse(JAVA_025_isMatch.isMatch("b", "a*"));
     }
 
     @Test
-    void testCombinationOfWildcardAndStar() {
-        assertTrue(JAVA_025_isMatch.isMatch("abc", ".*"));
-        assertTrue(JAVA_025_isMatch.isMatch("a", ".*"));
-        assertTrue(JAVA_025_isMatch.isMatch("", ".*"));
-        assertTrue(JAVA_025_isMatch.isMatch("ab", ".*b"));
-        assertFalse(JAVA_025_isMatch.isMatch("ab", ".*c"));
+    void testStarWithNoMatch() {
+        assertFalse(JAVA_025_isMatch.isMatch("a", "b*"));
     }
 
     @Test
-    void testComplexPatterns() {
+    void testComplexPatternMatch() {
         assertTrue(JAVA_025_isMatch.isMatch("aab", "c*a*b"));
-        assertFalse(JAVA_025_isMatch.isMatch("mississippi", "mis*is*p*."));
-        assertTrue(JAVA_025_isMatch.isMatch("mississippi", "mis*is*ip*."));
-        assertTrue(JAVA_025_isMatch.isMatch("ab", ".*c*"));
-        assertFalse(JAVA_025_isMatch.isMatch("abc", ".*c*d"));
     }
 
     @Test
-    void testEdgeCases() {
-        assertFalse(JAVA_025_isMatch.isMatch("a", "a*a*a*a*a*a*a*a*a*a*b"));
-        assertTrue(JAVA_025_isMatch.isMatch("aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*b"));
-        assertTrue(JAVA_025_isMatch.isMatch("a", ".*..a*"));
-        assertFalse(JAVA_025_isMatch.isMatch("a", ".*..b*"));
+    void testComplexPatternMismatch() {
+        assertFalse(JAVA_025_isMatch.isMatch("mississippi", "mis*is*p*."));
+    }
+
+    @Test
+    void testPatternWithMultipleStars() {
+        assertTrue(JAVA_025_isMatch.isMatch("ab", ".*"));
+    }
+
+    @Test
+    void testPatternWithLeadingStar() {
+        assertFalse(JAVA_025_isMatch.isMatch("abc", "*a"));
+    }
+
+    @Test
+    void testPatternWithTrailingStar() {
+        assertTrue(JAVA_025_isMatch.isMatch("abc", "abc*"));
+    }
+
+    @Test
+    void testPatternWithOnlyStar() {
+        assertTrue(JAVA_025_isMatch.isMatch("abc", ".*"));
+    }
+
+    @Test
+    void testLongStringWithStar() {
+        assertTrue(JAVA_025_isMatch.isMatch("abbbbbbc", "ab*bc"));
+    }
+
+    @Test
+    void testLongStringWithStarMismatch() {
+        assertFalse(JAVA_025_isMatch.isMatch("abbbbbbc", "ab*cd"));
     }
 }

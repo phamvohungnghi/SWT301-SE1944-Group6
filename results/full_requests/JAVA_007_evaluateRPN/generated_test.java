@@ -1,86 +1,78 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EvaluateRPNTest {
+class EvaluateRPNTest {
 
     @Test
-    public void testNullExpression() {
-        assertEquals(0, JAVA_007_evaluateRPN(null));
+    void testNullExpression() {
+        assertEquals(0, evaluateRPN(null));
     }
 
     @Test
-    public void testEmptyExpression() {
-        assertEquals(0, JAVA_007_evaluateRPN(""));
+    void testEmptyExpression() {
+        assertEquals(0, evaluateRPN(""));
     }
 
     @Test
-    public void testSingleNumber() {
-        assertEquals(5, JAVA_007_evaluateRPN("5"));
+    void testSingleNumber() {
+        assertEquals(5, evaluateRPN("5"));
     }
 
     @Test
-    public void testSimpleAddition() {
-        assertEquals(7, JAVA_007_evaluateRPN("3 4 +"));
+    void testAddition() {
+        assertEquals(7, evaluateRPN("2 5 +"));
     }
 
     @Test
-    public void testSimpleSubtraction() {
-        assertEquals(-1, JAVA_007_evaluateRPN("3 4 -"));
+    void testSubtraction() {
+        assertEquals(3, evaluateRPN("5 2 -"));
     }
 
     @Test
-    public void testSimpleMultiplication() {
-        assertEquals(12, JAVA_007_evaluateRPN("3 4 *"));
+    void testMultiplication() {
+        assertEquals(10, evaluateRPN("2 5 *"));
     }
 
     @Test
-    public void testSimpleDivision() {
-        assertEquals(2, JAVA_007_evaluateRPN("8 4 /"));
+    void testDivision() {
+        assertEquals(2, evaluateRPN("6 3 /"));
     }
 
     @Test
-    public void testDivisionByZero() {
-        assertEquals(0, JAVA_007_evaluateRPN("8 0 /"));
+    void testDivisionByZero() {
+        assertEquals(0, evaluateRPN("6 0 /"));
     }
 
     @Test
-    public void testInvalidToken() {
-        assertEquals(0, JAVA_007_evaluateRPN("3 4 + x"));
+    void testInsufficientOperands() {
+        assertEquals(0, evaluateRPN("+"));
+        assertEquals(0, evaluateRPN("1 +"));
     }
 
     @Test
-    public void testInsufficientOperandsForOperator() {
-        assertEquals(0, JAVA_007_evaluateRPN("+"));
-        assertEquals(0, JAVA_007_evaluateRPN("3 +"));
+    void testInvalidNumber() {
+        assertEquals(0, evaluateRPN("2 a +"));
     }
 
     @Test
-    public void testMultipleOperators() {
-        assertEquals(9, JAVA_007_evaluateRPN("2 3 + 4 *"));
+    void testMultipleOperations() {
+        assertEquals(1, evaluateRPN("3 4 + 2 -"));
+        assertEquals(14, evaluateRPN("2 3 4 * +"));
+        assertEquals(1, evaluateRPN("4 2 / 1 +"));
     }
 
     @Test
-    public void testComplexExpression() {
-        assertEquals(14, JAVA_007_evaluateRPN("5 1 2 + 4 * + 3 -"));
+    void testExtraOperands() {
+        assertEquals(0, evaluateRPN("2 3 + 4"));
     }
 
     @Test
-    public void testExtraOperands() {
-        assertEquals(0, JAVA_007_evaluateRPN("3 4 5 +"));
+    void testNegativeResult() {
+        assertEquals(-1, evaluateRPN("2 3 -"));
     }
 
     @Test
-    public void testNegativeNumbers() {
-        assertEquals(-7, JAVA_007_evaluateRPN("-3 -4 +"));
-    }
-
-    @Test
-    public void testMixedPositiveAndNegativeNumbers() {
-        assertEquals(-1, JAVA_007_evaluateRPN("3 -4 +"));
-    }
-
-    @Test
-    public void testZeroOperands() {
-        assertEquals(0, JAVA_007_evaluateRPN("0 0 +"));
+    void testComplexExpression() {
+        assertEquals(6, evaluateRPN("2 3 + 1 - 4 *"));
     }
 }

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-5281c9a1",
+  "id": "resp_0206c5844b85b98b006a54c3402dac819b827b308ab8b3585e",
+  "created_at": 1783939904.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0206c5844b85b98b006a54c340b324819ba5d04173b7ac8dcd",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass EvaluateRPNTest {\n\n    @Test\n    void testNullExpression() {\n        assertEquals(0, evaluateRPN(null));\n    }\n\n    @Test\n    void testEmptyExpression() {\n        assertEquals(0, evaluateRPN(\"\"));\n    }\n\n    @Test\n    void testSingleNumber() {\n        assertEquals(5, evaluateRPN(\"5\"));\n    }\n\n    @Test\n    void testAddition() {\n        assertEquals(7, evaluateRPN(\"2 5 +\"));\n    }\n\n    @Test\n    void testSubtraction() {\n        assertEquals(3, evaluateRPN(\"5 2 -\"));\n    }\n\n    @Test\n    void testMultiplication() {\n        assertEquals(10, evaluateRPN(\"2 5 *\"));\n    }\n\n    @Test\n    void testDivision() {\n        assertEquals(2, evaluateRPN(\"6 3 /\"));\n    }\n\n    @Test\n    void testDivisionByZero() {\n        assertEquals(0, evaluateRPN(\"6 0 /\"));\n    }\n\n    @Test\n    void testInsufficientOperands() {\n        assertEquals(0, evaluateRPN(\"+\"));\n        assertEquals(0, evaluateRPN(\"1 +\"));\n    }\n\n    @Test\n    void testInvalidNumber() {\n        assertEquals(0, evaluateRPN(\"2 a +\"));\n    }\n\n    @Test\n    void testMultipleOperations() {\n        assertEquals(1, evaluateRPN(\"3 4 + 2 -\"));\n        assertEquals(14, evaluateRPN(\"2 3 4 * +\"));\n        assertEquals(1, evaluateRPN(\"4 2 / 1 +\"));\n    }\n\n    @Test\n    void testExtraOperands() {\n        assertEquals(0, evaluateRPN(\"2 3 + 4\"));\n    }\n\n    @Test\n    void testNegativeResult() {\n        assertEquals(-1, evaluateRPN(\"2 3 -\"));\n    }\n\n    @Test\n    void testComplexExpression() {\n        assertEquals(6, evaluateRPN(\"2 3 + 1 - 4 *\"));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class EvaluateRPNTest {\n\n    @Test\n    public void testNullExpression() {\n        assertEquals(0, JAVA_007_evaluateRPN(null));\n    }\n\n    @Test\n    public void testEmptyExpression() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"\"));\n    }\n\n    @Test\n    public void testSingleNumber() {\n        assertEquals(5, JAVA_007_evaluateRPN(\"5\"));\n    }\n\n    @Test\n    public void testSimpleAddition() {\n        assertEquals(7, JAVA_007_evaluateRPN(\"3 4 +\"));\n    }\n\n    @Test\n    public void testSimpleSubtraction() {\n        assertEquals(-1, JAVA_007_evaluateRPN(\"3 4 -\"));\n    }\n\n    @Test\n    public void testSimpleMultiplication() {\n        assertEquals(12, JAVA_007_evaluateRPN(\"3 4 *\"));\n    }\n\n    @Test\n    public void testSimpleDivision() {\n        assertEquals(2, JAVA_007_evaluateRPN(\"8 4 /\"));\n    }\n\n    @Test\n    public void testDivisionByZero() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"8 0 /\"));\n    }\n\n    @Test\n    public void testInvalidToken() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 4 + x\"));\n    }\n\n    @Test\n    public void testInsufficientOperandsForOperator() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"+\"));\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 +\"));\n    }\n\n    @Test\n    public void testMultipleOperators() {\n        assertEquals(9, JAVA_007_evaluateRPN(\"2 3 + 4 *\"));\n    }\n\n    @Test\n    public void testComplexExpression() {\n        assertEquals(14, JAVA_007_evaluateRPN(\"5 1 2 + 4 * + 3 -\"));\n    }\n\n    @Test\n    public void testExtraOperands() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"3 4 5 +\"));\n    }\n\n    @Test\n    public void testNegativeNumbers() {\n        assertEquals(-7, JAVA_007_evaluateRPN(\"-3 -4 +\"));\n    }\n\n    @Test\n    public void testMixedPositiveAndNegativeNumbers() {\n        assertEquals(-1, JAVA_007_evaluateRPN(\"3 -4 +\"));\n    }\n\n    @Test\n    public void testZeroOperands() {\n        assertEquals(0, JAVA_007_evaluateRPN(\"0 0 +\"));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939910.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 455,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 913
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

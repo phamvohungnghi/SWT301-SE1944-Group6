@@ -1,84 +1,72 @@
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class JAVA_011_runLengthDecodingTest {
+class RunLengthDecodingTest {
 
     @Test
     void testNullInput() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(null), "Null input should return an empty string");
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(null));
     }
 
     @Test
     void testEmptyInput() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(""), "Empty input should return an empty string");
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(""));
     }
 
     @Test
-    void testValidSingleCharacterDecoding() {
-        assertEquals("aaa", JAVA_011_runLengthDecoding.runLengthDecoding("3a"), "Input '3a' should decode to 'aaa'");
+    void testSingleCharacter() {
+        assertEquals("a", JAVA_011_runLengthDecoding.runLengthDecoding("1a"));
     }
 
     @Test
-    void testValidMultipleCharacterDecoding() {
-        assertEquals("aaabbbccc", JAVA_011_runLengthDecoding.runLengthDecoding("3a3b3c"), "Input '3a3b3c' should decode to 'aaabbbccc'");
+    void testMultipleCharacters() {
+        assertEquals("aa", JAVA_011_runLengthDecoding.runLengthDecoding("2a"));
+        assertEquals("aaa", JAVA_011_runLengthDecoding.runLengthDecoding("3a"));
     }
 
     @Test
-    void testValidMixedDecoding() {
-        assertEquals("aabbcccc", JAVA_011_runLengthDecoding.runLengthDecoding("2a2b4c"), "Input '2a2b4c' should decode to 'aabbcccc'");
+    void testDifferentCharacters() {
+        assertEquals("aabb", JAVA_011_runLengthDecoding.runLengthDecoding("2a2b"));
+        assertEquals("aaabbb", JAVA_011_runLengthDecoding.runLengthDecoding("3a3b"));
     }
 
     @Test
-    void testInvalidInputNonDigitStart() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("a3"), "Input starting with a non-digit should return an empty string");
+    void testInvalidInputStartsWithCharacter() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("a2b"));
     }
 
     @Test
-    void testInvalidInputMissingCharacter() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("3"), "Input with a number but no character should return an empty string");
+    void testInvalidInputWithLeadingZero() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("02a"));
     }
 
     @Test
-    void testInvalidInputOnlyDigits() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("123"), "Input with only digits should return an empty string");
+    void testInvalidInputWithNonDigit() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1a2b3c4d5e6f7g8h9i0j"));
     }
 
     @Test
-    void testInvalidInputEmptyCount() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("3a2"), "Input with an incomplete count should return an empty string");
+    void testInputWithNoCharacters() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1"));
     }
 
     @Test
-    void testInvalidInputInterleavedNonDigit() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("3a2b1c!"), "Input with interleaved non-digit characters should return an empty string");
+    void testInputWithCountZero() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("0a"));
     }
 
     @Test
-    void testZeroCount() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("0a"), "Input '0a' should decode to an empty string");
+    void testInputWithLargeCount() {
+        assertEquals("a", JAVA_011_runLengthDecoding.runLengthDecoding("1000000a").substring(0, 1));
     }
 
     @Test
-    void testLargeCount() {
-        String result = JAVA_011_runLengthDecoding.runLengthDecoding("100a");
-        assertEquals(100, result.length(), "Input '100a' should decode to a string of length 100");
-        assertTrue(result.chars().allMatch(c -> c == 'a'), "Decoded string should consist only of 'a'");
+    void testInputWithMultipleCounts() {
+        assertEquals("aaabbbccc", JAVA_011_runLengthDecoding.runLengthDecoding("3a3b3c"));
     }
 
     @Test
-    void testMultipleZeroCounts() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("0a0b0c"), "Input '0a0b0c' should decode to an empty string");
-    }
-
-    @Test
-    void testEdgeCaseSingleCharacter() {
-        assertEquals("b", JAVA_011_runLengthDecoding.runLengthDecoding("1b"), "Input '1b' should decode to 'b'");
-    }
-
-    @Test
-    void testEdgeCaseLongSequence() {
-        String input = "1a1b1c1d1e1f1g1h1i1j1k1l1m1n1o1p1q1r1s1t1u1v1w1x1y1z";
-        String expected = "abcdefghijklmnopqrstuvwxyz";
-        assertEquals(expected, JAVA_011_runLengthDecoding.runLengthDecoding(input), "Input with single counts for all letters should decode correctly");
+    void testInputWithInvalidCount() {
+        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1a1b1c1d1e1f1g1h1i1j1k1l1m1n1o1p1q1r1s1t1u1v1w1x1y1z1"));
     }
 }

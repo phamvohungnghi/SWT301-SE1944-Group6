@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_012_checkSudokuBoard\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static boolean checkSudokuBoard(int[][] board) {\n        if (board == null || board.length != 9) {\n            return false;\n        }\n        for (int r = 0; r < 9; r++) {\n            Set<Integer> rowSet = new HashSet<>();\n            Set<Integer> colSet = new HashSet<>();\n            for (int c = 0; c < 9; c++) {\n                int rv = board[r][c];\n                int cv = board[c][r];\n                if (rv != 0) {\n                    if (rowSet.contains(rv) || rv < 1 || rv > 9) {\n                        return false;\n                    }\n                    rowSet.add(rv);\n                }\n                if (cv != 0) {\n                    if (colSet.contains(cv) || cv < 1 || cv > 9) {\n                        return false;\n                    }\n                    colSet.add(cv);\n                }\n            }\n        }\n        return true;\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

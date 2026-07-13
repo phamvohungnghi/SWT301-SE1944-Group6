@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-5c3af337",
+  "id": "resp_023e3f21f0508fab006a54c2b8b7b48198b441ed540694fb33",
+  "created_at": 1783939768.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_023e3f21f0508fab006a54c2b9202c8198aeca156fee15bd3f",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\nfrom your_module import find_prime_factors  # Adjust the import based on your module structure\n\ndef test_find_prime_factors_with_negative_number():\n    assert find_prime_factors(-10) == []\n\ndef test_find_prime_factors_with_zero():\n    assert find_prime_factors(0) == []\n\ndef test_find_prime_factors_with_one():\n    assert find_prime_factors(1) == []\n\ndef test_find_prime_factors_with_two():\n    assert find_prime_factors(2) == [2]\n\ndef test_find_prime_factors_with_three():\n    assert find_prime_factors(3) == [3]\n\ndef test_find_prime_factors_with_four():\n    assert find_prime_factors(4) == [2, 2]\n\ndef test_find_prime_factors_with_six():\n    assert find_prime_factors(6) == [2, 3]\n\ndef test_find_prime_factors_with_twelve():\n    assert find_prime_factors(12) == [2, 2, 3]\n\ndef test_find_prime_factors_with_prime_number():\n    assert find_prime_factors(29) == [29]\n\ndef test_find_prime_factors_with_large_composite_number():\n    assert find_prime_factors(100) == [2, 2, 5, 5]\n\ndef test_find_prime_factors_with_large_prime_number():\n    assert find_prime_factors(9973) == [9973]\n\ndef test_find_prime_factors_with_product_of_primes():\n    assert find_prime_factors(15) == [3, 5]\n\ndef test_find_prime_factors_with_square_of_prime():\n    assert find_prime_factors(49) == [7, 7]\n\ndef test_find_prime_factors_with_even_and_odd_primes():\n    assert find_prime_factors(2310) == [2, 3, 5, 7, 11]",
           "type": "output_text",
-          "text": "import pytest\n\nfrom PY_018_find_prime_factors import find_prime_factors\n\ndef test_find_prime_factors_zero():\n    assert find_prime_factors(0) == []\n\ndef test_find_prime_factors_one():\n    assert find_prime_factors(1) == []\n\ndef test_find_prime_factors_negative():\n    assert find_prime_factors(-10) == []\n\ndef test_find_prime_factors_prime_number():\n    assert find_prime_factors(13) == [13]\n\ndef test_find_prime_factors_composite_number():\n    assert find_prime_factors(28) == [2, 2, 7]\n\ndef test_find_prime_factors_large_prime():\n    assert find_prime_factors(101) == [101]\n\ndef test_find_prime_factors_large_composite():\n    assert find_prime_factors(100) == [2, 2, 5, 5]\n\ndef test_find_prime_factors_power_of_two():\n    assert find_prime_factors(16) == [2, 2, 2, 2]\n\ndef test_find_prime_factors_mixed_factors():\n    assert find_prime_factors(45) == [3, 3, 5]\n\ndef test_find_prime_factors_square_of_prime():\n    assert find_prime_factors(49) == [7, 7]\n\ndef test_find_prime_factors_large_number():\n    assert find_prime_factors(123456) == [2, 2, 2, 2, 2, 3, 643]\n\ndef test_find_prime_factors_no_factors():\n    assert find_prime_factors(97) == [97]  # Prime number\n\ndef test_find_prime_factors_minimum_composite():\n    assert find_prime_factors(4) == [2, 2]"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939775.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 294,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 386,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 680
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

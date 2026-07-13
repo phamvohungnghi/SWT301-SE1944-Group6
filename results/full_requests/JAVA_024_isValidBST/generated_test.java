@@ -1,125 +1,144 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
-public class JAVA_024_isValidBSTTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class IsValidBSTTest {
 
     @Test
     void testNullNodes() {
-        assertTrue(JAVA_024_isValidBST(null, 0));
+        assertTrue(JAVA_024_isValidBST.isValidBST(null, 0));
     }
 
     @Test
     void testEmptyNodes() {
-        assertTrue(JAVA_024_isValidBST(new ArrayList<>(), 0));
+        assertTrue(JAVA_024_isValidBST.isValidBST(new ArrayList<>(), 0));
     }
 
     @Test
-    void testInvalidRootIndexNegative() {
+    void testSingleNode() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10));
-        assertTrue(JAVA_024_isValidBST(nodes, -1));
+        Map<String, Integer> node = new HashMap<>();
+        node.put("val", 5);
+        nodes.add(node);
+        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testInvalidRootIndexOutOfBounds() {
+    void testValidBST() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10));
-        assertTrue(JAVA_024_isValidBST(nodes, 1));
+        Map<String, Integer> node1 = new HashMap<>();
+        node1.put("val", 2);
+        node1.put("left", -1);
+        node1.put("right", 1);
+        nodes.add(node1);
+        
+        Map<String, Integer> node2 = new HashMap<>();
+        node2.put("val", 3);
+        node2.put("left", -1);
+        node2.put("right", -1);
+        nodes.add(node2);
+        
+        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testSingleNodeValidBST() {
+    void testInvalidBST() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10));
-        assertTrue(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node1 = new HashMap<>();
+        node1.put("val", 5);
+        node1.put("left", 1);
+        node1.put("right", 2);
+        nodes.add(node1);
+        
+        Map<String, Integer> node2 = new HashMap<>();
+        node2.put("val", 1);
+        node2.put("left", -1);
+        node2.put("right", -1);
+        nodes.add(node2);
+        
+        Map<String, Integer> node3 = new HashMap<>();
+        node3.put("val", 4);
+        node3.put("left", -1);
+        node3.put("right", -1);
+        nodes.add(node3);
+        
+        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testTwoNodesValidBST() {
+    void testInvalidLeftChild() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1));
-        nodes.add(Map.of("val", 5));
-        assertTrue(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node1 = new HashMap<>();
+        node1.put("val", 5);
+        node1.put("left", 1);
+        node1.put("right", -1);
+        nodes.add(node1);
+        
+        Map<String, Integer> node2 = new HashMap<>();
+        node2.put("val", 6);
+        node2.put("left", -1);
+        node2.put("right", -1);
+        nodes.add(node2);
+        
+        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testTwoNodesInvalidBST() {
+    void testInvalidRightChild() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1));
-        nodes.add(Map.of("val", 15));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node1 = new HashMap<>();
+        node1.put("val", 5);
+        node1.put("left", -1);
+        node1.put("right", 1);
+        nodes.add(node1);
+        
+        Map<String, Integer> node2 = new HashMap<>();
+        node2.put("val", 3);
+        node2.put("left", -1);
+        node2.put("right", -1);
+        nodes.add(node2);
+        
+        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testThreeNodesValidBST() {
+    void testOutOfBoundsLeftChild() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 5));
-        nodes.add(Map.of("val", 15));
-        assertTrue(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node = new HashMap<>();
+        node.put("val", 5);
+        node.put("left", 1);
+        node.put("right", -1);
+        nodes.add(node);
+        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testThreeNodesInvalidBSTLeft() {
+    void testOutOfBoundsRightChild() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 15));
-        nodes.add(Map.of("val", 20));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node = new HashMap<>();
+        node.put("val", 5);
+        node.put("left", -1);
+        node.put("right", 1);
+        nodes.add(node);
+        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));
     }
 
     @Test
-    void testThreeNodesInvalidBSTRight() {
+    void testNegativeIndex() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 5));
-        nodes.add(Map.of("val", 5));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node = new HashMap<>();
+        node.put("val", 5);
+        nodes.add(node);
+        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, -1));
     }
 
     @Test
-    void testInvalidLeftChildIndex() {
+    void testIndexOutOfBounds() {
         List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 2));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
-    }
-
-    @Test
-    void testInvalidRightChildIndex() {
-        List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "right", 2));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
-    }
-
-    @Test
-    void testComplexValidBST() {
-        List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 20, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 10, "left", 3, "right", 4));
-        nodes.add(Map.of("val", 30));
-        nodes.add(Map.of("val", 5));
-        nodes.add(Map.of("val", 15));
-        assertTrue(JAVA_024_isValidBST(nodes, 0));
-    }
-
-    @Test
-    void testComplexInvalidBST() {
-        List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 20, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 10, "left", 3, "right", 4));
-        nodes.add(Map.of("val", 30));
-        nodes.add(Map.of("val", 25));
-        nodes.add(Map.of("val", 15));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
-    }
-
-    @Test
-    void testDuplicateValues() {
-        List<Map<String, Integer>> nodes = new ArrayList<>();
-        nodes.add(Map.of("val", 10, "left", 1, "right", 2));
-        nodes.add(Map.of("val", 10));
-        nodes.add(Map.of("val", 15));
-        assertFalse(JAVA_024_isValidBST(nodes, 0));
+        Map<String, Integer> node = new HashMap<>();
+        node.put("val", 5);
+        nodes.add(node);
+        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 2));
     }
 }

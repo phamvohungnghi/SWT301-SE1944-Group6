@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-a49f2ff6",
+  "id": "resp_041a6b1cde5c1eb6006a54c231047081998dc18361bf39455f",
+  "created_at": 1783939633.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_041a6b1cde5c1eb6006a54c23184808199925474215ee43aba",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\nfrom your_module import validate_password  # Adjust the import based on your project structure\n\ndef test_empty_password():\n    assert validate_password(\"\") == False\n\ndef test_short_password():\n    assert validate_password(\"Short1!\") == False\n    assert validate_password(\"Short\") == False\n\ndef test_no_uppercase():\n    assert validate_password(\"lowercase1!\") == False\n\ndef test_no_lowercase():\n    assert validate_password(\"UPPERCASE1!\") == False\n\ndef test_no_digit():\n    assert validate_password(\"NoDigit!\") == False\n\ndef test_no_special_character():\n    assert validate_password(\"NoSpecial1\") == False\n\ndef test_valid_password():\n    assert validate_password(\"Valid1!\") == True\n\ndef test_only_special_characters():\n    assert validate_password(\"!@#$%^&*()\") == False\n\ndef test_only_digits():\n    assert validate_password(\"12345678\") == False\n\ndef test_only_uppercase():\n    assert validate_password(\"UPPERCASE\") == False\n\ndef test_only_lowercase():\n    assert validate_password(\"lowercase\") == False\n\ndef test_valid_password_with_boundary_length():\n    assert validate_password(\"Valid1!\") == True\n    assert validate_password(\"ValidPassword1!\") == True\n\ndef test_special_character_at_start():\n    assert validate_password(\"!Valid1\") == True\n\ndef test_special_character_at_end():\n    assert validate_password(\"Valid1!\") == True\n\ndef test_multiple_special_characters():\n    assert validate_password(\"Valid1!@\") == True\n\ndef test_password_with_spaces():\n    assert validate_password(\"Valid 1!\") == False\n\ndef test_password_with_unicode():\n    assert validate_password(\"Val1d!😊\") == True\n    assert validate_password(\"Val1d😊\") == False\n    assert validate_password(\"!😊\") == False",
           "type": "output_text",
-          "text": "import pytest\nfrom PY_006_validate_password import validate_password\n\ndef test_validate_password_empty_string():\n    assert validate_password(\"\") == False\n\ndef test_validate_password_none():\n    assert validate_password(None) == False\n\ndef test_validate_password_too_short():\n    assert validate_password(\"Ab1!\") == False\n\ndef test_validate_password_no_uppercase():\n    assert validate_password(\"abcd1234!\") == False\n\ndef test_validate_password_no_lowercase():\n    assert validate_password(\"ABCD1234!\") == False\n\ndef test_validate_password_no_digit():\n    assert validate_password(\"Abcdefg!\") == False\n\ndef test_validate_password_no_special_character():\n    assert validate_password(\"Abcdefg1\") == False\n\ndef test_validate_password_valid_password():\n    assert validate_password(\"Abc123!@\") == True\n\ndef test_validate_password_only_special_characters():\n    assert validate_password(\"!@#$%^&*()\") == False\n\ndef test_validate_password_only_digits():\n    assert validate_password(\"12345678\") == False\n\ndef test_validate_password_only_uppercase():\n    assert validate_password(\"ABCDEFGH\") == False\n\ndef test_validate_password_only_lowercase():\n    assert validate_password(\"abcdefgh\") == False\n\ndef test_validate_password_special_characters_at_boundaries():\n    assert validate_password(\"!Abc123!\") == True\n\ndef test_validate_password_repeated_characters():\n    assert validate_password(\"AAbb11!!\") == True\n\ndef test_validate_password_no_special_characters_in_set():\n    assert validate_password(\"Abc123~\") == False\n\ndef test_validate_password_special_characters_edge_case():\n    assert validate_password(\"Abc123!@#$%^&*()-_+=\") == True\n\ndef test_validate_password_all_conditions_met_min_length():\n    assert validate_password(\"A1b!cD2e\") == True\n\ndef test_validate_password_all_conditions_met_max_length():\n    assert validate_password(\"A1b!cD2eF3g@hI4jK5l#\") == True\n\ndef test_validate_password_whitespace_in_password():\n    assert validate_password(\"Abc 123!\") == False\n\ndef test_validate_password_unicode_characters():\n    assert validate_password(\"Abc123!ñ\") == False\n\ndef test_validate_password_special_characters_only_one_match():\n    assert validate_password(\"Abc123!\") == True\n    assert validate_password(\"Abc123@\") == True\n    assert validate_password(\"Abc123#\") == True\n    assert validate_password(\"Abc123$\") == True\n    assert validate_password(\"Abc123%\") == True\n    assert validate_password(\"Abc123^\") == True\n    assert validate_password(\"Abc123&\") == True\n    assert validate_password(\"Abc123*\") == True\n    assert validate_password(\"Abc123(\") == True\n    assert validate_password(\"Abc123)\") == True\n    assert validate_password(\"Abc123-\") == True\n    assert validate_password(\"Abc123_\") == True\n    assert validate_password(\"Abc123+\") == True\n    assert validate_password(\"Abc123=\") == True"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939637.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 320,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 371,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 691
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

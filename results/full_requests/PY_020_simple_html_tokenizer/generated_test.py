@@ -1,92 +1,45 @@
-import pytest
+def test_simple_html_tokenizer():
+    from PY_020_simple_html_tokenizer import simple_html_tokenizer
 
-from PY_020_simple_html_tokenizer import simple_html_tokenizer
-
-def test_empty_input():
-    assert simple_html_tokenizer("") == []
-
-def test_none_input():
+    # Test with None input
     assert simple_html_tokenizer(None) == []
 
-def test_single_tag():
-    assert simple_html_tokenizer("<div>") == [("TAG", "<div>")]
+    # Test with empty string
+    assert simple_html_tokenizer("") == []
 
-def test_single_text():
-    assert simple_html_tokenizer("Hello") == [("TEXT", "Hello")]
+    # Test with a simple tag
+    assert simple_html_tokenizer("<tag>") == [("TAG", "<tag>")]
 
-def test_tag_and_text():
-    assert simple_html_tokenizer("<div>Hello</div>") == [
-        ("TAG", "<div>"),
-        ("TEXT", "Hello"),
-        ("TAG", "</div>")
-    ]
+    # Test with text before a tag
+    assert simple_html_tokenizer("Hello <tag>") == [("TEXT", "Hello "), ("TAG", "<tag>")]
 
-def test_nested_tags():
-    assert simple_html_tokenizer("<div><span>Text</span></div>") == [
-        ("TAG", "<div>"),
-        ("TAG", "<span>"),
-        ("TEXT", "Text"),
-        ("TAG", "</span>"),
-        ("TAG", "</div>")
-    ]
+    # Test with text after a tag
+    assert simple_html_tokenizer("<tag>Hello") == [("TAG", "<tag>"), ("TEXT", "Hello")]
 
-def test_unclosed_tag():
-    assert simple_html_tokenizer("<div") == [("TEXT", "<div")]
+    # Test with multiple tags
+    assert simple_html_tokenizer("<tag1><tag2>") == [("TAG", "<tag1>"), ("TAG", "<tag2>")]
 
-def test_text_with_unclosed_tag():
-    assert simple_html_tokenizer("Hello<div") == [
-        ("TEXT", "Hello"),
-        ("TEXT", "<div")
-    ]
+    # Test with text between tags
+    assert simple_html_tokenizer("<tag1>Text<tag2>") == [("TAG", "<tag1>"), ("TEXT", "Text"), ("TAG", "<tag2>")]
 
-def test_multiple_tags():
-    assert simple_html_tokenizer("<div><span></span></div>") == [
-        ("TAG", "<div>"),
-        ("TAG", "<span>"),
-        ("TAG", "</span>"),
-        ("TAG", "</div>")
-    ]
+    # Test with unclosed tag
+    assert simple_html_tokenizer("<tag1>Text") == [("TAG", "<tag1>"), ("TEXT", "Text")]
 
-def test_text_between_tags():
-    assert simple_html_tokenizer("<div>Text<span>More</span></div>") == [
-        ("TAG", "<div>"),
-        ("TEXT", "Text"),
-        ("TAG", "<span>"),
-        ("TEXT", "More"),
-        ("TAG", "</span>"),
-        ("TAG", "</div>")
-    ]
+    # Test with text only
+    assert simple_html_tokenizer("Just some text") == [("TEXT", "Just some text")]
 
-def test_malformed_tag():
-    assert simple_html_tokenizer("<div><span") == [
-        ("TAG", "<div>"),
-        ("TEXT", "<span")
-    ]
+    # Test with tags and text mixed
+    assert simple_html_tokenizer("<tag1>Text1<tag2>Text2") == [("TAG", "<tag1>"), ("TEXT", "Text1"), ("TAG", "<tag2>"), ("TEXT", "Text2")]
 
-def test_empty_tag():
-    assert simple_html_tokenizer("<>") == [("TAG", "<>")]
+    # Test with nested tags
+    assert simple_html_tokenizer("<tag1><tag2></tag2></tag1>") == [("TAG", "<tag1>"), ("TAG", "<tag2>"), ("TAG", "</tag2>"), ("TAG", "</tag1>")]
 
-def test_text_with_angle_brackets():
-    assert simple_html_tokenizer("Text with < and > symbols") == [
-        ("TEXT", "Text with "),
-        ("TAG", "<"),
-        ("TEXT", " and "),
-        ("TAG", ">"),
-        ("TEXT", " symbols")
-    ]
-
-def test_only_angle_brackets():
-    assert simple_html_tokenizer("<>><<") == [
-        ("TAG", "<>"),
-        ("TAG", ">"),
-        ("TAG", "<")
-    ]
-
-def test_whitespace_handling():
-    assert simple_html_tokenizer(" <div> Text </div> ") == [
-        ("TEXT", " "),
-        ("TAG", "<div>"),
-        ("TEXT", " Text "),
-        ("TAG", "</div>"),
-        ("TEXT", " ")
+    # Test with text before and after nested tags
+    assert simple_html_tokenizer("Before<tag1><tag2></tag2></tag1>After") == [
+        ("TEXT", "Before"),
+        ("TAG", "<tag1>"),
+        ("TAG", "<tag2>"),
+        ("TAG", "</tag2>"),
+        ("TAG", "</tag1>"),
+        ("TEXT", "After")
     ]

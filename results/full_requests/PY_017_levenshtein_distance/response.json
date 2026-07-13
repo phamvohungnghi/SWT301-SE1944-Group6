@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-d571cbc5",
+  "id": "resp_00d8c5a1334e304d006a54c2abae6081989df1313cb65c5479",
+  "created_at": 1783939755.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_00d8c5a1334e304d006a54c2ac34ec8198896660a6441325fd",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef test_levenshtein_distance():\n    # Test cases for levenshtein_distance function\n\n    # Test with two identical strings\n    assert levenshtein_distance(\"kitten\", \"kitten\") == 0\n\n    # Test with one empty string\n    assert levenshtein_distance(\"\", \"abc\") == 3\n    assert levenshtein_distance(\"abc\", \"\") == 3\n\n    # Test with both strings empty\n    assert levenshtein_distance(\"\", \"\") == 0\n\n    # Test with different strings\n    assert levenshtein_distance(\"kitten\", \"sitting\") == 3\n    assert levenshtein_distance(\"flaw\", \"lawn\") == 2\n    assert levenshtein_distance(\"intention\", \"execution\") == 5\n\n    # Test with strings of different lengths\n    assert levenshtein_distance(\"abc\", \"ab\") == 1\n    assert levenshtein_distance(\"a\", \"abc\") == 2\n    assert levenshtein_distance(\"abc\", \"a\") == 2\n\n    # Test with None inputs\n    assert levenshtein_distance(None, \"abc\") == -1\n    assert levenshtein_distance(\"abc\", None) == -1\n    assert levenshtein_distance(None, None) == -1\n\n    # Test with single character strings\n    assert levenshtein_distance(\"a\", \"b\") == 1\n    assert levenshtein_distance(\"a\", \"a\") == 0\n\n    # Test with strings that are completely different\n    assert levenshtein_distance(\"abc\", \"xyz\") == 3\n    assert levenshtein_distance(\"abcdef\", \"ghijkl\") == 6\n\n    # Test with strings that require multiple operations\n    assert levenshtein_distance(\"abc\", \"yabc\") == 1\n    assert levenshtein_distance(\"abc\", \"abcy\") == 1\n    assert levenshtein_distance(\"abc\", \"xyzabc\") == 3\n\n    # Test with long strings\n    assert levenshtein_distance(\"a\" * 1000, \"a\" * 999) == 1\n    assert levenshtein_distance(\"a\" * 1000, \"b\" * 1000) == 1000\n\n    # Test with strings that have repeated characters\n    assert levenshtein_distance(\"aaa\", \"a\") == 2\n    assert levenshtein_distance(\"a\", \"aaa\") == 2\n\n    # Test with strings that are substrings of each other\n    assert levenshtein_distance(\"abc\", \"abcd\") == 1\n    assert levenshtein_distance(\"abcd\", \"abc\") == 1\n\n    # Test with strings that are anagrams\n    assert levenshtein_distance(\"listen\", \"silent\") == 6  # All characters need to be rearranged\n\n    # Test with special characters\n    assert levenshtein_distance(\"abc!@#\", \"abc\") == 3\n    assert levenshtein_distance(\"abc\", \"abc!@#\") == 3\n\n    # Test with numeric strings\n    assert levenshtein_distance(\"123\", \"123\") == 0\n    assert levenshtein_distance(\"123\", \"456\") == 3\n    assert levenshtein_distance(\"123\", \"12\") == 1\n    assert levenshtein_distance(\"12\", \"123\") == 1\n\n    # Test with whitespace\n    assert levenshtein_distance(\"abc \", \"abc\") == 1\n    assert levenshtein_distance(\"abc\", \"abc \") == 1\n    assert levenshtein_distance(\"abc \", \" abc\") == 1\n    assert levenshtein_distance(\" abc\", \"abc \") == 2",
           "type": "output_text",
-          "text": "import pytest\n\nfrom your_module import levenshtein_distance\n\ndef test_levenshtein_distance_basic():\n    assert levenshtein_distance(\"kitten\", \"sitting\") == 3\n    assert levenshtein_distance(\"flaw\", \"lawn\") == 2\n    assert levenshtein_distance(\"gumbo\", \"gambol\") == 2\n    assert levenshtein_distance(\"\", \"\") == 0\n    assert levenshtein_distance(\"abc\", \"\") == 3\n    assert levenshtein_distance(\"\", \"abc\") == 3\n\ndef test_levenshtein_distance_identical_strings():\n    assert levenshtein_distance(\"test\", \"test\") == 0\n    assert levenshtein_distance(\"a\", \"a\") == 0\n    assert levenshtein_distance(\"\", \"\") == 0\n\ndef test_levenshtein_distance_single_character():\n    assert levenshtein_distance(\"a\", \"b\") == 1\n    assert levenshtein_distance(\"a\", \"\") == 1\n    assert levenshtein_distance(\"\", \"a\") == 1\n\ndef test_levenshtein_distance_case_sensitivity():\n    assert levenshtein_distance(\"Test\", \"test\") == 1\n    assert levenshtein_distance(\"TEST\", \"test\") == 4\n\ndef test_levenshtein_distance_special_characters():\n    assert levenshtein_distance(\"hello!\", \"hello\") == 1\n    assert levenshtein_distance(\"hello\", \"hello!\") == 1\n    assert levenshtein_distance(\"@#$%\", \"@#$%\") == 0\n    assert levenshtein_distance(\"@#$%\", \"abcd\") == 4\n\ndef test_levenshtein_distance_unicode():\n    assert levenshtein_distance(\"你好\", \"你好\") == 0\n    assert levenshtein_distance(\"你好\", \"您好\") == 1\n    assert levenshtein_distance(\"你好\", \"\") == 2\n\ndef test_levenshtein_distance_none_inputs():\n    assert levenshtein_distance(None, \"test\") == -1\n    assert levenshtein_distance(\"test\", None) == -1\n    assert levenshtein_distance(None, None) == -1\n\ndef test_levenshtein_distance_large_inputs():\n    s1 = \"a\" * 1000\n    s2 = \"b\" * 1000\n    assert levenshtein_distance(s1, s2) == 1000\n    s3 = \"a\" * 1000\n    s4 = \"a\" * 999 + \"b\"\n    assert levenshtein_distance(s3, s4) == 1\n\ndef test_levenshtein_distance_empty_strings():\n    assert levenshtein_distance(\"\", \"\") == 0\n    assert levenshtein_distance(\"\", \"abc\") == 3\n    assert levenshtein_distance(\"abc\", \"\") == 3\n\ndef test_levenshtein_distance_substring():\n    assert levenshtein_distance(\"abc\", \"abcd\") == 1\n    assert levenshtein_distance(\"abcd\", \"abc\") == 1\n    assert levenshtein_distance(\"abc\", \"ab\") == 1\n    assert levenshtein_distance(\"ab\", \"abc\") == 1"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939768.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 407,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 783,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1190
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

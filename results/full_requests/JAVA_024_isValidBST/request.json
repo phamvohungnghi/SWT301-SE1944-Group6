@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_024_isValidBST\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static boolean isValidBST(List<Map<String, Integer>> nodes, int rootIdx) {\n        if (nodes == null || rootIdx < 0 || rootIdx >= nodes.size()) {\n            return true;\n        }\n        class StackElement {\n            int idx;\n            long low;\n            long high;\n            StackElement(int idx, long low, long high) {\n                this.idx = idx;\n                this.low = low;\n                this.high = high;\n            }\n        }\n        Stack<StackElement> stack = new Stack<>();\n        stack.push(new StackElement(rootIdx, Long.MIN_VALUE, Long.MAX_VALUE));\n        while (!stack.isEmpty()) {\n            StackElement curr = stack.pop();\n            Map<String, Integer> node = nodes.get(curr.idx);\n            int val = node.get(\"val\");\n            if (val <= curr.low || val >= curr.high) {\n                return false;\n            }\n            int left = node.getOrDefault(\"left\", -1);\n            int right = node.getOrDefault(\"right\", -1);\n            if (left >= 0 && left < nodes.size()) {\n                stack.push(new StackElement(left, curr.low, val));\n            } else if (left != -1) {\n                return false;\n            }\n            if (right >= 0 && right < nodes.size()) {\n                stack.push(new StackElement(right, val, curr.high));\n            } else if (right != -1) {\n                return false;\n            }\n        }\n        return true;\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

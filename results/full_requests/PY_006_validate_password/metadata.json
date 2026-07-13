@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_006_validate_password",
-  "started_at_utc": "2026-07-01T05:55:35.315128+00:00",
-  "finished_at_utc": "2026-07-01T05:55:40.934149+00:00",
-  "response_id": "mock-github-a49f2ff6",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:47:13.350836+00:00",
+  "finished_at_utc": "2026-07-13T10:47:18.343358+00:00",
+  "response_id": "resp_041a6b1cde5c1eb6006a54c231047081998dc18361bf39455f",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "0c4aa1e7d17edd4f2af8d9874d28101a1239b23f43bddae858d12ea053842825",
   "source_sha256": "8e6b0f5ae3082ff29f09e01fb52de75dbbe8cf5dfcf0fb4956f1bb5effa8cae4",
   "sdk_version": "2.43.0"

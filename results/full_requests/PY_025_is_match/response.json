@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-1b7bdc3b",
+  "id": "resp_0f0b88bdcf430bd6006a54c2fb43f0819b81f1e34418384ede",
+  "created_at": 1783939835.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0f0b88bdcf430bd6006a54c2fbb99c819b9c9694e9ac733657",
       "content": [
         {
+          "annotations": [],
+          "text": "def test_is_match():\n    # Test cases for is_match function\n\n    # Test with None inputs\n    assert not is_match(None, None)\n    assert not is_match(\"abc\", None)\n    assert not is_match(None, \"a*b\")\n\n    # Test with empty pattern\n    assert is_match(\"\", \"\")\n    assert not is_match(\"a\", \"\")\n    assert not is_match(\"abc\", \"\")\n\n    # Test with simple character matches\n    assert is_match(\"a\", \"a\")\n    assert not is_match(\"a\", \"b\")\n    assert is_match(\"abc\", \"abc\")\n    assert not is_match(\"abc\", \"abcd\")\n\n    # Test with single character and dot\n    assert is_match(\"a\", \".\")\n    assert is_match(\"b\", \".\")\n    assert not is_match(\"a\", \"b\")\n\n    # Test with star operator\n    assert is_match(\"aa\", \"a*\")\n    assert is_match(\"aab\", \"c*a*b\")\n    assert not is_match(\"mississippi\", \"mis*is*p*.\")\n    assert is_match(\"ab\", \".*\")\n    assert is_match(\"aab\", \".*\")\n    assert is_match(\"aaa\", \"a*\")\n    assert is_match(\"ab\", \".*c\")\n\n    # Test with edge cases\n    assert is_match(\"a\", \"a*\")\n    assert is_match(\"\", \".*\")\n    assert not is_match(\"a\", \".*b\")\n    assert is_match(\"abc\", \".*c\")\n    assert not is_match(\"abc\", \".*d\")\n    assert is_match(\"abc\", \".*\")  # Full match with any character\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n\n    # Test with patterns that include multiple stars\n    assert is_match(\"a\", \"a**\")\n    assert is_match(\"aaa\", \"a**\")\n    assert is_match(\"aa\", \"a*b*\")\n    assert is_match(\"a\", \"a*b*\")\n    assert not is_match(\"a\", \"b*a*\")  # Should not match\n\n    # Test with patterns that have leading/trailing stars\n    assert is_match(\"abc\", \"*abc\")\n    assert is_match(\"abc\", \"abc*\")\n    assert not is_match(\"abc\", \"*xyz*\")  # Should not match\n    assert is_match(\"abc\", \"*\")  # Match with any string\n    assert is_match(\"\", \"*\")  # Match with empty string\n\n    # Test with complex patterns\n    assert is_match(\"ab\", \".*b\")\n    assert is_match(\"ab\", \".*a*b\")\n    assert not is_match(\"ab\", \".*c\")\n    assert is_match(\"abc\", \".*\")  # Full match with any character\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n\n    # Test with patterns that have no matches\n    assert not is_match(\"abc\", \"xyz\")\n    assert not is_match(\"abc\", \"a.c\")  # Should not match\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n    assert not is_match(\"abc\", \".*xyz\")  # Should not match\n\n    # Test with patterns that are just wildcards\n    assert is_match(\"abc\", \".*\")  # Full match with any character\n    assert is_match(\"\", \".*\")  # Match with empty string\n    assert is_match(\"abc\", \".*c\")  # Should match\n    assert not is_match(\"abc\", \".*d\")  # Should not match\n\n    # Test with patterns that have multiple characters and stars\n    assert is_match(\"aabb\", \"a*b*\")  # Should match\n    assert is_match(\"aabb\", \".*\")  # Full match with any character\n    assert not is_match(\"aabb\", \"a*b*c\")  # Should not match\n    assert is_match(\"aabb\", \".*b\")  # Should match\n    assert not is_match(\"aabb\", \".*c\")  # Should not match\n\n    # Test with patterns that have leading/trailing characters\n    assert is_match(\"abc\", \"a.*c\")  # Should match\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n    assert is_match(\"abc\", \".*b\")  # Should match\n    assert not is_match(\"abc\", \".*d\")  # Should not match\n\n    # Test with patterns that have no matches\n    assert not is_match(\"abc\", \"xyz\")  # Should not match\n    assert not is_match(\"abc\", \"a.c\")  # Should not match\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n    assert not is_match(\"abc\", \".*xyz\")  # Should not match\n\n    # Test with patterns that are just wildcards\n    assert is_match(\"abc\", \".*\")  # Full match with any character\n    assert is_match(\"\", \".*\")  # Match with empty string\n    assert is_match(\"abc\", \".*c\")  # Should match\n    assert not is_match(\"abc\", \".*d\")  # Should not match\n\n    # Test with patterns that have multiple characters and stars\n    assert is_match(\"aabb\", \"a*b*\")  # Should match\n    assert is_match(\"aabb\", \".*\")  # Full match with any character\n    assert not is_match(\"aabb\", \"a*b*c\")  # Should not match\n    assert is_match(\"aabb\", \".*b\")  # Should match\n    assert not is_match(\"aabb\", \".*c\")  # Should not match\n\n    # Test with patterns that have leading/trailing characters\n    assert is_match(\"abc\", \"a.*c\")  # Should match\n    assert not is_match(\"abc\", \"a.*d\")  # Should not match\n    assert is_match(\"abc\", \".*b\")  # Should match\n    assert not is_match(\"abc\", \".*d\")  # Should not match",
           "type": "output_text",
-          "text": "import pytest\n\ndef test_is_match():\n    # Test cases for empty string and pattern\n    assert is_match(\"\", \"\") == True  # Both empty\n    assert is_match(\"\", \"a\") == False  # Empty string, non-empty pattern\n    assert is_match(\"a\", \"\") == False  # Non-empty string, empty pattern\n    \n    # Test cases for None inputs\n    assert is_match(None, None) == False  # Both None\n    assert is_match(None, \"a\") == False  # String is None\n    assert is_match(\"a\", None) == False  # Pattern is None\n    \n    # Test cases for exact matches\n    assert is_match(\"abc\", \"abc\") == True  # Exact match\n    assert is_match(\"abc\", \"abcd\") == False  # Pattern longer than string\n    assert is_match(\"abcd\", \"abc\") == False  # String longer than pattern\n    \n    # Test cases for '.' wildcard\n    assert is_match(\"abc\", \"a.c\") == True  # '.' matches any single character\n    assert is_match(\"abc\", \"a..\") == True  # Multiple '.' wildcards\n    assert is_match(\"abc\", \"a.d\") == False  # '.' does not match different character\n    \n    # Test cases for '*' wildcard\n    assert is_match(\"aa\", \"a*\") == True  # '*' matches zero or more of the preceding character\n    assert is_match(\"aaa\", \"a*\") == True  # '*' matches multiple occurrences\n    assert is_match(\"aab\", \"c*a*b\") == True  # Complex pattern with '*'\n    assert is_match(\"mississippi\", \"mis*is*p*.\") == False  # Complex pattern with '*' and '.'\n    assert is_match(\"ab\", \".*\") == True  # '.*' matches any string\n    assert is_match(\"abc\", \".*c\") == True  # '.*' followed by specific character\n    assert is_match(\"abc\", \".*d\") == False  # '.*' followed by non-matching character\n    \n    # Test cases for edge cases with '*' wildcard\n    assert is_match(\"\", \"a*\") == True  # '*' matches zero occurrences\n    assert is_match(\"a\", \"a*\") == True  # '*' matches one occurrence\n    assert is_match(\"aa\", \".*\") == True  # '.*' matches any string\n    assert is_match(\"ab\", \".*c\") == False  # '.*' does not match additional character\n    \n    # Test cases for mixed patterns\n    assert is_match(\"abc\", \"a*b*c*\") == True  # '*' matches zero occurrences\n    assert is_match(\"aaa\", \"a*a\") == True  # '*' matches multiple occurrences\n    assert is_match(\"aaa\", \"a*aa\") == True  # '*' matches multiple occurrences followed by exact match\n    assert is_match(\"aaa\", \"a*aaa\") == True  # '*' matches multiple occurrences followed by exact match\n    assert is_match(\"aaa\", \"a*aaaa\") == False  # '*' matches multiple occurrences but pattern is longer\n    \n    # Test cases for patterns with no wildcards\n    assert is_match(\"abc\", \"abc\") == True  # Exact match\n    assert is_match(\"abc\", \"abd\") == False  # Mismatch in pattern\n    assert is_match(\"abc\", \"abcd\") == False  # Pattern longer than string\n    assert is_match(\"abcd\", \"abc\") == False  # String longer than pattern\n    \n    # Test cases for patterns with multiple wildcards\n    assert is_match(\"abc\", \"a.*c\") == True  # '.' and '*' combined\n    assert is_match(\"abc\", \"a.*d\") == False  # '.' and '*' combined with mismatch\n    assert is_match(\"abc\", \".*.*\") == True  # Multiple '.*' wildcards\n    assert is_match(\"abc\", \".*.*d\") == False  # Multiple '.*' wildcards with mismatch\n    \n    # Test cases for patterns with '*' following '.'\n    assert is_match(\"abc\", \".*\") == True  # '.*' matches any string\n    assert is_match(\"abc\", \".*c\") == True  # '.*' followed by specific character\n    assert is_match(\"abc\", \".*d\") == False  # '.*' followed by non-matching character\n    \n    # Test cases for patterns with '*' following specific characters\n    assert is_match(\"aaab\", \"a*b\") == True  # '*' matches multiple occurrences\n    assert is_match(\"b\", \"a*b\") == True  # '*' matches zero occurrences\n    assert is_match(\"aaa\", \"a*b\") == False  # '*' matches multiple occurrences but pattern is longer\n    \n    # Test cases for patterns with no wildcards and mismatches\n    assert is_match(\"abc\", \"abd\") == False  # Mismatch in pattern\n    assert is_match(\"abc\", \"abcd\") == False  # Pattern longer than string\n    assert is_match(\"abcd\", \"abc\") == False  # String longer than pattern"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939851.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 304,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 1282,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1586
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

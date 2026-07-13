@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-d70773ed",
+  "id": "resp_02f0aa1a9eb824cb006a54c3fadc24819982661630025593da",
+  "created_at": 1783940090.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_02f0aa1a9eb824cb006a54c3fb52ac819989b2be56b7d0a8be",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_025_isMatchTest {\n\n    @Test\n    void testNullPattern() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", null));\n    }\n\n    @Test\n    void testNullString() {\n        assertFalse(JAVA_025_isMatch.isMatch(null, \"a\"));\n    }\n\n    @Test\n    void testBothNull() {\n        assertFalse(JAVA_025_isMatch.isMatch(null, null));\n    }\n\n    @Test\n    void testEmptyPattern() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"\"));\n    }\n\n    @Test\n    void testEmptyStringWithEmptyPattern() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"\"));\n    }\n\n    @Test\n    void testEmptyStringWithNonEmptyPattern() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"\", \"a\"));\n    }\n\n    @Test\n    void testSingleCharacterMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \"a\"));\n    }\n\n    @Test\n    void testSingleCharacterMismatch() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"b\"));\n    }\n\n    @Test\n    void testDotMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".\"));\n    }\n\n    @Test\n    void testStarWithSingleMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aa\", \"a*\"));\n    }\n\n    @Test\n    void testStarWithMultipleMatches() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aaa\", \"a*\"));\n    }\n\n    @Test\n    void testStarWithNoMatch() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"b*\"));\n    }\n\n    @Test\n    void testComplexPatternMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aab\", \"c*a*b\"));\n    }\n\n    @Test\n    void testComplexPatternMismatch() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"mississippi\", \"mis*is*p*.\"));\n    }\n\n    @Test\n    void testPatternWithMultipleStars() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"ab\", \".*\"));\n    }\n\n    @Test\n    void testPatternWithLeadingStar() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \"*a\"));\n    }\n\n    @Test\n    void testPatternWithTrailingStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \"abc*\"));\n    }\n\n    @Test\n    void testPatternWithOnlyStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \".*\"));\n    }\n\n    @Test\n    void testLongStringWithStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abbbbbbc\", \"ab*bc\"));\n    }\n\n    @Test\n    void testLongStringWithStarMismatch() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"abbbbbbc\", \"ab*cd\"));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_025_isMatchTest {\n\n    @Test\n    void testNullInputs() {\n        assertFalse(JAVA_025_isMatch.isMatch(null, null));\n        assertFalse(JAVA_025_isMatch.isMatch(null, \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", null));\n    }\n\n    @Test\n    void testEmptyPattern() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"\"));\n    }\n\n    @Test\n    void testEmptyString() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"\", \"a\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \".*\"));\n    }\n\n    @Test\n    void testExactMatch() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \"abc\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \"abcd\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abcd\", \"abc\"));\n    }\n\n    @Test\n    void testSingleCharacterWildcard() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"\", \".\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \"a.c\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \"a.d\"));\n    }\n\n    @Test\n    void testKleeneStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aa\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"aaa\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \"a*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \"a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"b\", \"a*\"));\n    }\n\n    @Test\n    void testCombinationOfWildcardAndStar() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"abc\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"\", \".*\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"ab\", \".*b\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"ab\", \".*c\"));\n    }\n\n    @Test\n    void testComplexPatterns() {\n        assertTrue(JAVA_025_isMatch.isMatch(\"aab\", \"c*a*b\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"mississippi\", \"mis*is*p*.\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"mississippi\", \"mis*is*ip*.\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"ab\", \".*c*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"abc\", \".*c*d\"));\n    }\n\n    @Test\n    void testEdgeCases() {\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \"a*a*a*a*a*a*a*a*a*a*b\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"aaaaaaaaaaaaab\", \"a*a*a*a*a*a*a*a*a*a*b\"));\n        assertTrue(JAVA_025_isMatch.isMatch(\"a\", \".*..a*\"));\n        assertFalse(JAVA_025_isMatch.isMatch(\"a\", \".*..b*\"));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940099.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 346,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 660,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1006
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

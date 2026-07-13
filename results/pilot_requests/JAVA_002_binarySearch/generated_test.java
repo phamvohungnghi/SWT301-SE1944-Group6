@@ -1,90 +1,65 @@
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-class BinarySearchTest {
+public class BinarySearchTest {
 
     @Test
-    void testNullArray() {
-        int[] arr = null;
-        int target = 5;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithNullArray() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(null, 5));
     }
 
     @Test
-    void testEmptyArray() {
-        int[] arr = {};
-        int target = 5;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithEmptyArray() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{}, 5));
     }
 
     @Test
-    void testSingleElementArrayTargetFound() {
-        int[] arr = {5};
-        int target = 5;
-        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithSingleElementArray_TargetFound() {
+        assertEquals(0, JAVA_002_binarySearch.binarySearch(new int[]{5}, 5));
     }
 
     @Test
-    void testSingleElementArrayTargetNotFound() {
-        int[] arr = {5};
-        int target = 3;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithSingleElementArray_TargetNotFound() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{5}, 3));
     }
 
     @Test
-    void testMultipleElementsTargetFoundAtStart() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 1;
-        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithMultipleElements_TargetFoundAtBeginning() {
+        assertEquals(0, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 1));
     }
 
     @Test
-    void testMultipleElementsTargetFoundAtEnd() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 9;
-        assertEquals(4, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithMultipleElements_TargetFoundAtEnd() {
+        assertEquals(4, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 5));
     }
 
     @Test
-    void testMultipleElementsTargetFoundInMiddle() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 5;
-        assertEquals(2, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithMultipleElements_TargetFoundInMiddle() {
+        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 3));
     }
 
     @Test
-    void testMultipleElementsTargetNotFound() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 4;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithMultipleElements_TargetNotFound() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 3, 4, 5}, 6));
     }
 
     @Test
-    void testMultipleElementsTargetLessThanAll() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 0;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithNegativeNumbers_TargetFound() {
+        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{-5, -3, -1, 0, 2}, -1));
     }
 
     @Test
-    void testMultipleElementsTargetGreaterThanAll() {
-        int[] arr = {1, 3, 5, 7, 9};
-        int target = 10;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithNegativeNumbers_TargetNotFound() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{-5, -3, -1, 0, 2}, -4));
     }
 
     @Test
-    void testArrayWithDuplicatesTargetFound() {
-        int[] arr = {1, 3, 3, 5, 7, 9};
-        int target = 3;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertTrue(result == 1 || result == 2);
+    public void testBinarySearchWithDuplicates_TargetFound() {
+        assertEquals(2, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 2, 2, 3}, 2));
     }
 
     @Test
-    void testArrayWithDuplicatesTargetNotFound() {
-        int[] arr = {1, 3, 3, 5, 7, 9};
-        int target = 4;
-        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));
+    public void testBinarySearchWithDuplicates_TargetNotFound() {
+        assertEquals(-1, JAVA_002_binarySearch.binarySearch(new int[]{1, 2, 2, 2, 3}, 4));
     }
 }

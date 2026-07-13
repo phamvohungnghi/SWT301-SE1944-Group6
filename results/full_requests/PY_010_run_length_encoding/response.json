@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-5e0100d3",
+  "id": "resp_02de04eb50011d4e006a54c26520c0819ba1562b2a250e905e",
+  "created_at": 1783939685.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_02de04eb50011d4e006a54c265a2b0819ba5baac8fdc792c97",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\nfrom your_module import run_length_encoding  # Adjust the import based on your module structure\n\ndef test_run_length_encoding_empty_string():\n    assert run_length_encoding(\"\") == \"\"\n\ndef test_run_length_encoding_single_character():\n    assert run_length_encoding(\"a\") == \"1a\"\n    assert run_length_encoding(\"z\") == \"1z\"\n\ndef test_run_length_encoding_repeated_characters():\n    assert run_length_encoding(\"aa\") == \"2a\"\n    assert run_length_encoding(\"aaa\") == \"3a\"\n    assert run_length_encoding(\"aaaa\") == \"4a\"\n\ndef test_run_length_encoding_mixed_characters():\n    assert run_length_encoding(\"aaabbb\") == \"3a3b\"\n    assert run_length_encoding(\"aabbcc\") == \"2a2b2c\"\n    assert run_length_encoding(\"abc\") == \"1a1b1c\"\n\ndef test_run_length_encoding_non_alpha_characters():\n    assert run_length_encoding(\"abc123\") == \"\"\n    assert run_length_encoding(\"a!b\") == \"\"\n    assert run_length_encoding(\"hello!\") == \"\"\n\ndef test_run_length_encoding_boundary_cases():\n    assert run_length_encoding(\"a\" * 1000) == \"1000a\"\n    assert run_length_encoding(\"b\" * 500 + \"c\" * 500) == \"500b500c\"\n\ndef test_run_length_encoding_case_sensitivity():\n    assert run_length_encoding(\"aaAA\") == \"2a2A\"\n    assert run_length_encoding(\"aAaA\") == \"1a1A1a1A\"\n\ndef test_run_length_encoding_long_string():\n    assert run_length_encoding(\"a\" * 100 + \"b\" * 100 + \"c\" * 100) == \"100a100b100c\"",
           "type": "output_text",
-          "text": "import pytest\n\nfrom PY_010_run_length_encoding import run_length_encoding\n\ndef test_empty_string():\n    assert run_length_encoding(\"\") == \"\"\n\ndef test_single_character():\n    assert run_length_encoding(\"a\") == \"1a\"\n    assert run_length_encoding(\"z\") == \"1z\"\n\ndef test_repeated_characters():\n    assert run_length_encoding(\"aaa\") == \"3a\"\n    assert run_length_encoding(\"bbbbbb\") == \"6b\"\n\ndef test_mixed_characters():\n    assert run_length_encoding(\"aabb\") == \"2a2b\"\n    assert run_length_encoding(\"aaabbcc\") == \"3a2b2c\"\n\ndef test_no_repeated_characters():\n    assert run_length_encoding(\"abc\") == \"1a1b1c\"\n    assert run_length_encoding(\"xyz\") == \"1x1y1z\"\n\ndef test_numeric_characters():\n    assert run_length_encoding(\"123\") == \"\"\n    assert run_length_encoding(\"a1b2\") == \"\"\n\ndef test_special_characters():\n    assert run_length_encoding(\"a!b@\") == \"\"\n    assert run_length_encoding(\"a#b$c\") == \"\"\n\ndef test_mixed_valid_and_invalid_characters():\n    assert run_length_encoding(\"a1b\") == \"\"\n    assert run_length_encoding(\"abc!\") == \"\"\n\ndef test_uppercase_characters():\n    assert run_length_encoding(\"AAA\") == \"3A\"\n    assert run_length_encoding(\"AaAa\") == \"1A1a1A1a\"\n\ndef test_mixed_case_characters():\n    assert run_length_encoding(\"aAaA\") == \"1a1A1a1A\"\n    assert run_length_encoding(\"aaAA\") == \"2a2A\"\n\ndef test_long_string():\n    input_str = \"a\" * 1000 + \"b\" * 500 + \"c\" * 300\n    expected_output = \"1000a500b300c\"\n    assert run_length_encoding(input_str) == expected_output\n\ndef test_boundary_case_two_characters():\n    assert run_length_encoding(\"aa\") == \"2a\"\n    assert run_length_encoding(\"ab\") == \"1a1b\""
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939689.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 302,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 369,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 671
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

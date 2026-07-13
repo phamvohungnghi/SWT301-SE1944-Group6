@@ -1,10 +1,27 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CheckSudokuBoardTest {
+import java.util.HashSet;
+import java.util.Set;
+
+public class SudokuBoardTest {
 
     @Test
-    public void testValidSudokuBoard() {
+    public void testNullBoard() {
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(null));
+    }
+
+    @Test
+    public void testInvalidBoardSize() {
+        int[][] invalidBoard = new int[8][9];
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));
+        
+        invalidBoard = new int[10][9];
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));
+    }
+
+    @Test
+    public void testValidBoard() {
         int[][] validBoard = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
@@ -16,43 +33,13 @@ public class CheckSudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertTrue(JAVA_012_checkSudokuBoard(validBoard));
-    }
-
-    @Test
-    public void testNullBoard() {
-        assertFalse(JAVA_012_checkSudokuBoard(null));
-    }
-
-    @Test
-    public void testIncorrectRowCount() {
-        int[][] board = {
-            {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0}
-        };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
-    }
-
-    @Test
-    public void testIncorrectColumnCount() {
-        int[][] board = {
-            {5, 3, 0, 0, 7, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0},
-            {0, 9, 8, 0, 0, 0, 0, 6, 0},
-            {8, 0, 0, 0, 6, 0, 0, 0, 3},
-            {4, 0, 0, 8, 0, 3, 0, 0, 1},
-            {7, 0, 0, 0, 2, 0, 0, 0, 6},
-            {0, 6, 0, 0, 0, 0, 2, 8, 0},
-            {0, 0, 0, 4, 1, 9, 0, 0, 5},
-            {0, 0, 0, 0, 8, 0, 0, 7, 9}
-        };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
+        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoard));
     }
 
     @Test
     public void testDuplicateInRow() {
-        int[][] board = {
-            {5, 3, 3, 0, 7, 0, 0, 0, 0},
+        int[][] boardWithRowDuplication = {
+            {5, 3, 5, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
@@ -62,29 +49,13 @@ public class CheckSudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithRowDuplication));
     }
 
     @Test
     public void testDuplicateInColumn() {
-        int[][] board = {
+        int[][] boardWithColumnDuplication = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0},
-            {0, 9, 8, 0, 0, 0, 0, 6, 0},
-            {8, 0, 0, 0, 6, 0, 0, 0, 3},
-            {4, 0, 0, 8, 0, 3, 0, 0, 1},
-            {7, 0, 0, 0, 2, 0, 0, 0, 6},
-            {0, 6, 0, 0, 0, 0, 2, 8, 0},
-            {0, 0, 0, 4, 1, 9, 0, 0, 5},
-            {5, 0, 0, 0, 8, 0, 0, 7, 9}
-        };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
-    }
-
-    @Test
-    public void testInvalidValueInRow() {
-        int[][] board = {
-            {5, 3, 0, 0, 7, 0, 0, 0, 10},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
@@ -94,28 +65,38 @@ public class CheckSudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithColumnDuplication));
     }
 
     @Test
-    public void testInvalidValueInColumn() {
-        int[][] board = {
+    public void testInvalidNumberInBoard() {
+        int[][] boardWithInvalidNumber = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0},
+            {6, 0, 0, 1, 10, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
             {4, 0, 0, 8, 0, 3, 0, 0, 1},
             {7, 0, 0, 0, 2, 0, 0, 0, 6},
             {0, 6, 0, 0, 0, 0, 2, 8, 0},
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
-            {0, 0, 0, 0, 8, 0, 0, 7, -1}
+            {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertFalse(JAVA_012_checkSudokuBoard(board));
+        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithInvalidNumber));
     }
 
     @Test
-    public void testEmptyBoard() {
-        int[][] emptyBoard = new int[9][9];
-        assertTrue(JAVA_012_checkSudokuBoard(emptyBoard));
+    public void testValidBoardWithZeros() {
+        int[][] validBoardWithZeros = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoardWithZeros));
     }
 }

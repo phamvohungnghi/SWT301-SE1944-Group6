@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-3f773915",
+  "id": "resp_0763f3e08ebd5818006a54c1a6d60c8199942735ff9017d411",
+  "created_at": 1783939494.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0763f3e08ebd5818006a54c1a75c008199acad2e89ca38a5e5",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class LongestPalindromeSubstringTest {\n\n    @Test\n    public void testNullInput() {\n        assertEquals(\"\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(null));\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(\"\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"\"));\n    }\n\n    @Test\n    public void testSingleCharacter() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"a\"));\n    }\n\n    @Test\n    public void testTwoIdenticalCharacters() {\n        assertEquals(\"aa\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"aa\"));\n    }\n\n    @Test\n    public void testTwoDifferentCharacters() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"ab\"));\n    }\n\n    @Test\n    public void testOddLengthPalindrome() {\n        assertEquals(\"aba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abacdfgdcaba\"));\n    }\n\n    @Test\n    public void testEvenLengthPalindrome() {\n        assertEquals(\"abba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"cbbd\"));\n    }\n\n    @Test\n    public void testNoPalindrome() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abc\"));\n    }\n\n    @Test\n    public void testMultiplePalindromes() {\n        assertEquals(\"racecar\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"racecarxyz\"));\n    }\n\n    @Test\n    public void testLongestPalindromeAtStart() {\n        assertEquals(\"madam\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"madamxyz\"));\n    }\n\n    @Test\n    public void testLongestPalindromeAtEnd() {\n        assertEquals(\"deified\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"xyzdeified\"));\n    }\n\n    @Test\n    public void testLongestPalindromeInMiddle() {\n        assertEquals(\"anana\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"bananas\"));\n    }\n\n    @Test\n    public void testAllIdenticalCharacters() {\n        assertEquals(\"aaaa\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"aaaa\"));\n    }\n\n    @Test\n    public void testLongStringWithNoPalindrome() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abcdefgh\"));\n    }\n\n    @Test\n    public void testLongStringWithMultiplePalindromes() {\n        assertEquals(\"abcba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abcbaabcba\"));\n    }\n}",
           "type": "output_text",
-          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class JAVA_015_longestPalindromeSubstringTest {\n\n    @Test\n    void testNullInput() {\n        assertEquals(\"\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(null), \"Null input should return an empty string.\");\n    }\n\n    @Test\n    void testEmptyString() {\n        assertEquals(\"\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"\"), \"Empty string should return an empty string.\");\n    }\n\n    @Test\n    void testSingleCharacterString() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"a\"), \"Single character string should return the character itself.\");\n    }\n\n    @Test\n    void testTwoDifferentCharacters() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"ab\"), \"For two different characters, the first character should be returned.\");\n    }\n\n    @Test\n    void testTwoSameCharacters() {\n        assertEquals(\"aa\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"aa\"), \"For two same characters, the entire string should be returned.\");\n    }\n\n    @Test\n    void testPalindromeOddLength() {\n        assertEquals(\"aba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"aba\"), \"Odd-length palindrome should return the entire string.\");\n    }\n\n    @Test\n    void testPalindromeEvenLength() {\n        assertEquals(\"abba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abba\"), \"Even-length palindrome should return the entire string.\");\n    }\n\n    @Test\n    void testNonPalindromeString() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abc\"), \"For a non-palindromic string, the first character should be returned.\");\n    }\n\n    @Test\n    void testStringWithMultiplePalindromes() {\n        assertEquals(\"aba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abacdfgdcaba\"), \"Should return the longest palindrome substring.\");\n    }\n\n    @Test\n    void testStringWithPalindromeAtStart() {\n        assertEquals(\"aba\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abacdef\"), \"Should return the palindrome at the start of the string.\");\n    }\n\n    @Test\n    void testStringWithPalindromeAtEnd() {\n        assertEquals(\"cdc\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abacdc\"), \"Should return the palindrome at the end of the string.\");\n    }\n\n    @Test\n    void testStringWithEntireStringAsPalindrome() {\n        assertEquals(\"racecar\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"racecar\"), \"Should return the entire string if it is a palindrome.\");\n    }\n\n    @Test\n    void testStringWithNoRepeatingCharacters() {\n        assertEquals(\"a\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"abcdefg\"), \"Should return the first character for a string with no repeating characters.\");\n    }\n\n    @Test\n    void testStringWithAllSameCharacters() {\n        assertEquals(\"aaaaa\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"aaaaa\"), \"Should return the entire string if all characters are the same.\");\n    }\n\n    @Test\n    void testStringWithSpecialCharacters() {\n        assertEquals(\"!@#\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"!@#!@#\"), \"Should handle special characters and return the longest palindrome.\");\n    }\n\n    @Test\n    void testStringWithMixedCasePalindrome() {\n        assertEquals(\"AaA\", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"AaA\"), \"Should treat mixed case as valid palindrome.\");\n    }\n\n    @Test\n    void testStringWithSpaces() {\n        assertEquals(\" a \", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(\"a b a\"), \"Should include spaces in the palindrome.\");\n    }\n\n    @Test\n    void testLongString() {\n        String input = \"a\".repeat(1000) + \"b\" + \"a\".repeat(1000);\n        assertEquals(\"a\".repeat(1000) + \"b\" + \"a\".repeat(1000), JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(input), \"Should handle very long strings.\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939502.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 402,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 572,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 974
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

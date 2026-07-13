@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_016_parseCsvLine",
-  "started_at_utc": "2026-07-01T05:59:09.348008+00:00",
-  "finished_at_utc": "2026-07-01T05:59:17.189367+00:00",
-  "response_id": "mock-github-ebd5d624",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:53:24.452345+00:00",
+  "finished_at_utc": "2026-07-13T10:53:38.537665+00:00",
+  "response_id": "resp_0686d6cea1f776cd006a54c3a42084819abad92ff27a9c3f5c",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "b010a7fcf948618b78c3cb18d52b14da4bf3dcbc21bcee7f729767d6954c4792",
   "source_sha256": "e5e1474444a2f8e716af347f9f4c1556b75e7e63959d4b8424f60434df2ce4f8",
   "sdk_version": "2.43.0"

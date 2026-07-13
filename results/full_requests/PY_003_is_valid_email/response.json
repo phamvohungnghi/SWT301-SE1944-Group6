@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-c1a91f69",
+  "id": "resp_0768dd36b49a5641006a54c218751c819b90e089090797a17d",
+  "created_at": 1783939608.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0768dd36b49a5641006a54c219021c819b9d6e637ecd92beb7",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\nfrom your_module import is_valid_email  # Adjust the import based on your module structure\n\ndef test_valid_email():\n    assert is_valid_email(\"test@example.com\") == True\n    assert is_valid_email(\"user.name+tag+sorting@example.com\") == True\n    assert is_valid_email(\"user-name@example.co.uk\") == True\n\ndef test_invalid_email_no_at_symbol():\n    assert is_valid_email(\"test.example.com\") == False\n\ndef test_invalid_email_no_dot():\n    assert is_valid_email(\"test@com\") == False\n\ndef test_invalid_email_empty_string():\n    assert is_valid_email(\"\") == False\n\ndef test_invalid_email_no_local_part():\n    assert is_valid_email(\"@example.com\") == False\n\ndef test_invalid_email_no_domain_part():\n    assert is_valid_email(\"test@\") == False\n\ndef test_invalid_email_multiple_at_symbols():\n    assert is_valid_email(\"test@@example.com\") == False\n\ndef test_invalid_email_domain_starts_with_dot():\n    assert is_valid_email(\"test@.com\") == False\n\ndef test_invalid_email_domain_ends_with_dot():\n    assert is_valid_email(\"test@example.com.\") == False\n\ndef test_invalid_email_local_part_invalid_characters():\n    assert is_valid_email(\"test@ex!ample.com\") == False\n    assert is_valid_email(\"test@ex#ample.com\") == False\n    assert is_valid_email(\"test@ex$ample.com\") == False\n\ndef test_invalid_email_local_part_empty():\n    assert is_valid_email(\"@example.com\") == False\n\ndef test_invalid_email_domain_part_empty():\n    assert is_valid_email(\"test@\") == False\n\ndef test_valid_email_with_subdomain():\n    assert is_valid_email(\"test@mail.example.com\") == True\n\ndef test_valid_email_with_special_characters():\n    assert is_valid_email(\"test.email@example.com\") == True\n    assert is_valid_email(\"test-email@example.com\") == True\n    assert is_valid_email(\"test_email@example.com\") == True\n\ndef test_invalid_email_with_consecutive_special_characters():\n    assert is_valid_email(\"test..email@example.com\") == False\n    assert is_valid_email(\"test--email@example.com\") == False\n\ndef test_invalid_email_with_space():\n    assert is_valid_email(\"test email@example.com\") == False\n    assert is_valid_email(\"test@example .com\") == False\n\ndef test_invalid_email_with_only_special_characters():\n    assert is_valid_email(\"..@example.com\") == False\n    assert is_valid_email(\"--@example.com\") == False\n    assert is_valid_email(\"..@..com\") == False",
           "type": "output_text",
-          "text": "import pytest\n\nfrom production_code import is_valid_email\n\ndef test_valid_email():\n    assert is_valid_email(\"test@example.com\") == True\n    assert is_valid_email(\"user.name+tag+sorting@example.com\") == True\n    assert is_valid_email(\"user_name@example.co.uk\") == True\n    assert is_valid_email(\"user-name@example.org\") == True\n    assert is_valid_email(\"user.name@example.travel\") == True\n\ndef test_missing_at_symbol():\n    assert is_valid_email(\"testexample.com\") == False\n    assert is_valid_email(\"test.example.com\") == False\n\ndef test_missing_dot():\n    assert is_valid_email(\"test@examplecom\") == False\n    assert is_valid_email(\"test@com\") == False\n\ndef test_empty_email():\n    assert is_valid_email(\"\") == False\n    assert is_valid_email(None) == False\n\ndef test_multiple_at_symbols():\n    assert is_valid_email(\"test@@example.com\") == False\n    assert is_valid_email(\"test@sub@domain.com\") == False\n\ndef test_empty_local_or_domain_part():\n    assert is_valid_email(\"@example.com\") == False\n    assert is_valid_email(\"test@\") == False\n    assert is_valid_email(\"@\") == False\n\ndef test_invalid_domain_format():\n    assert is_valid_email(\"test@.com\") == False\n    assert is_valid_email(\"test@example.\") == False\n    assert is_valid_email(\"test@.example.com\") == False\n    assert is_valid_email(\"test@example..com\") == False\n\ndef test_invalid_characters_in_local_part():\n    assert is_valid_email(\"test!@example.com\") == False\n    assert is_valid_email(\"test#@example.com\") == False\n    assert is_valid_email(\"test$@example.com\") == False\n    assert is_valid_email(\"test%@example.com\") == False\n    assert is_valid_email(\"test^@example.com\") == False\n    assert is_valid_email(\"test&@example.com\") == False\n    assert is_valid_email(\"test*@example.com\") == False\n    assert is_valid_email(\"test(@example.com\") == False\n    assert is_valid_email(\"test)@example.com\") == False\n    assert is_valid_email(\"test+@example.com\") == False\n\ndef test_valid_characters_in_local_part():\n    assert is_valid_email(\"test.email@example.com\") == True\n    assert is_valid_email(\"test-email@example.com\") == True\n    assert is_valid_email(\"test_email@example.com\") == True\n    assert is_valid_email(\"test.email123@example.com\") == True\n\ndef test_edge_cases():\n    assert is_valid_email(\"a@b.c\") == True  # Minimum valid email\n    assert is_valid_email(\"a@b.c.d\") == True  # Nested domain\n    assert is_valid_email(\"a@b..c\") == False  # Double dot in domain\n    assert is_valid_email(\"a@.b.c\") == False  # Domain starts with dot\n    assert is_valid_email(\"a@b.c.\") == False  # Domain ends with dot\n    assert is_valid_email(\"a..b@c.d\") == True  # Double dot in local part is valid\n    assert is_valid_email(\"a.b.c@d.e\") == True  # Multiple dots in local and domain parts"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939615.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 322,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 536,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 858
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

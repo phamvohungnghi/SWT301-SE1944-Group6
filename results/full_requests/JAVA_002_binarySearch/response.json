@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-03d60a8c",
+  "id": "resp_0ee0af2a78cca6fd006a54c312e308819a94737b83f72c38d2",
+  "created_at": 1783939858.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0ee0af2a78cca6fd006a54c3135bb0819a84fe1d59f84faba8",
       "content": [
         {
+          "annotations": [],
+          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class BinarySearchTest {\n\n    @Test\n    public void testBinarySearch_TargetInMiddle() {\n        int[] arr = {1, 2, 3, 4, 5};\n        int target = 3;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(2, result);\n    }\n\n    @Test\n    public void testBinarySearch_TargetAtStart() {\n        int[] arr = {1, 2, 3, 4, 5};\n        int target = 1;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testBinarySearch_TargetAtEnd() {\n        int[] arr = {1, 2, 3, 4, 5};\n        int target = 5;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(4, result);\n    }\n\n    @Test\n    public void testBinarySearch_TargetNotFound() {\n        int[] arr = {1, 2, 3, 4, 5};\n        int target = 6;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testBinarySearch_EmptyArray() {\n        int[] arr = {};\n        int target = 1;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testBinarySearch_NullArray() {\n        int[] arr = null;\n        int target = 1;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testBinarySearch_SingleElementArray_TargetFound() {\n        int[] arr = {1};\n        int target = 1;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testBinarySearch_SingleElementArray_TargetNotFound() {\n        int[] arr = {1};\n        int target = 2;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testBinarySearch_MultipleSameElements_TargetFound() {\n        int[] arr = {1, 1, 1, 1, 1};\n        int target = 1;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertTrue(result >= 0 && result < arr.length);\n    }\n\n    @Test\n    public void testBinarySearch_MultipleSameElements_TargetNotFound() {\n        int[] arr = {1, 1, 1, 1, 1};\n        int target = 2;\n        int result = JAVA_002_binarySearch.binarySearch(arr, target);\n        assertEquals(-1, result);\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass BinarySearchTest {\n\n    @Test\n    void testNullArray() {\n        int[] arr = null;\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testEmptyArray() {\n        int[] arr = {};\n        int target = 5;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetFound() {\n        int[] arr = {5};\n        int target = 5;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testSingleElementArrayTargetNotFound() {\n        int[] arr = {5};\n        int target = 3;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtStart() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 1;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundAtEnd() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 9;\n        assertEquals(4, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetFoundInMiddle() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 5;\n        assertEquals(2, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetNotFoundLessThanMin() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = -1;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetNotFoundGreaterThanMax() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 11;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testMultipleElementsTargetNotFoundInRange() {\n        int[] arr = {1, 3, 5, 7, 9};\n        int target = 4;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testTwoElementsTargetFoundAtStart() {\n        int[] arr = {1, 3};\n        int target = 1;\n        assertEquals(0, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testTwoElementsTargetFoundAtEnd() {\n        int[] arr = {1, 3};\n        int target = 3;\n        assertEquals(1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n\n    @Test\n    void testTwoElementsTargetNotFound() {\n        int[] arr = {1, 3};\n        int target = 2;\n        assertEquals(-1, JAVA_002_binarySearch.binarySearch(arr, target));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939868.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 325,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 661,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 986
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

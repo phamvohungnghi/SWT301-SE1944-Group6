@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_004_merge_intervals",
-  "started_at_utc": "2026-07-01T05:55:22.954188+00:00",
-  "finished_at_utc": "2026-07-01T05:55:29.434557+00:00",
-  "response_id": "mock-github-bb984110",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:46:57.585026+00:00",
+  "finished_at_utc": "2026-07-13T10:47:03.726244+00:00",
+  "response_id": "resp_098fb1f340e04a9a006a54c2214034819987127d06d9ac9400",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "df2a9116f49bfebd8e9b6ebb39967ca5b42204527eaa8ba1873f2677c25b527d",
   "source_sha256": "faaac65aefe33bccc657a7dd4bd1d5a5b197922335b84dca5da192b15ad9f42f",
   "sdk_version": "2.43.0"

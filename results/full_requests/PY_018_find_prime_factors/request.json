@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_018_find_prime_factors\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef find_prime_factors(n):\n    if n <= 1:\n        return []\n    factors = []\n    while n % 2 == 0:\n        factors.append(2)\n        n //= 2\n    d = 3\n    while d * d <= n:\n        while n % d == 0:\n            factors.append(d)\n            n //= d\n        d += 2\n    if n > 1:\n        factors.append(n)\n    return factors\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

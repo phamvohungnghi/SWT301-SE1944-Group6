@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-b247a6a0",
+  "id": "resp_04136f6eafcb1e31006a54c3c65a14819bb9faefae91d0802a",
+  "created_at": 1783940038.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_04136f6eafcb1e31006a54c3cb1abc819bb08eb0e14f123183",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport java.util.List;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass SimpleHtmlTokenizerTest {\n\n    @Test\n    void testNullInput() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(null);\n        assertTrue(result.isEmpty(), \"Expected empty list for null input\");\n    }\n\n    @Test\n    void testEmptyString() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"\");\n        assertTrue(result.isEmpty(), \"Expected empty list for empty string\");\n    }\n\n    @Test\n    void testSingleTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<tag>\");\n        assertEquals(1, result.size(), \"Expected one token for single tag\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag>\"}, result.get(0), \"Token mismatch for single tag\");\n    }\n\n    @Test\n    void testTextBeforeTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"Hello <tag>\");\n        assertEquals(2, result.size(), \"Expected two tokens for text before tag\");\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello \"}, result.get(0), \"Token mismatch for text before tag\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag>\"}, result.get(1), \"Token mismatch for tag\");\n    }\n\n    @Test\n    void testTextAfterTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<tag> World\");\n        assertEquals(2, result.size(), \"Expected two tokens for tag followed by text\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag>\"}, result.get(0), \"Token mismatch for tag\");\n        assertArrayEquals(new String[]{\"TEXT\", \" World\"}, result.get(1), \"Token mismatch for text after tag\");\n    }\n\n    @Test\n    void testMultipleTags() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<tag1>Text1<tag2>Text2</tag2>\");\n        assertEquals(4, result.size(), \"Expected four tokens for multiple tags and text\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag1>\"}, result.get(0), \"Token mismatch for first tag\");\n        assertArrayEquals(new String[]{\"TEXT\", \"Text1\"}, result.get(1), \"Token mismatch for first text\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag2>\"}, result.get(2), \"Token mismatch for second tag\");\n        assertArrayEquals(new String[]{\"TEXT\", \"Text2\"}, result.get(3), \"Token mismatch for second text\");\n    }\n\n    @Test\n    void testUnclosedTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<tag>\");\n        assertEquals(1, result.size(), \"Expected one token for unclosed tag\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag>\"}, result.get(0), \"Token mismatch for unclosed tag\");\n    }\n\n    @Test\n    void testTextOnly() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"Just some text.\");\n        assertEquals(1, result.size(), \"Expected one token for text only\");\n        assertArrayEquals(new String[]{\"TEXT\", \"Just some text.\"}, result.get(0), \"Token mismatch for text only\");\n    }\n\n    @Test\n    void testTagsWithNoText() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<tag1><tag2>\");\n        assertEquals(2, result.size(), \"Expected two tokens for tags with no text\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag1>\"}, result.get(0), \"Token mismatch for first tag\");\n        assertArrayEquals(new String[]{\"TAG\", \"<tag2>\"}, result.get(1), \"Token mismatch for second tag\");\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\nimport java.util.List;\n\npublic class SimpleHtmlTokenizerTest {\n\n    @Test\n    public void testNullInput() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(null);\n        assertNotNull(result);\n        assertTrue(result.isEmpty());\n    }\n\n    @Test\n    public void testEmptyString() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"\");\n        assertNotNull(result);\n        assertTrue(result.isEmpty());\n    }\n\n    @Test\n    public void testOnlyText() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"Hello World\");\n        assertEquals(1, result.size());\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello World\"}, result.get(0));\n    }\n\n    @Test\n    public void testOnlyTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div>\");\n        assertEquals(1, result.size());\n        assertArrayEquals(new String[]{\"TAG\", \"<div>\"}, result.get(0));\n    }\n\n    @Test\n    public void testTextFollowedByTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"Hello<div>\");\n        assertEquals(2, result.size());\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello\"}, result.get(0));\n        assertArrayEquals(new String[]{\"TAG\", \"<div>\"}, result.get(1));\n    }\n\n    @Test\n    public void testTagFollowedByText() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div>Hello\");\n        assertEquals(2, result.size());\n        assertArrayEquals(new String[]{\"TAG\", \"<div>\"}, result.get(0));\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello\"}, result.get(1));\n    }\n\n    @Test\n    public void testMultipleTagsAndText() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div>Hello</div>World\");\n        assertEquals(4, result.size());\n        assertArrayEquals(new String[]{\"TAG\", \"<div>\"}, result.get(0));\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello\"}, result.get(1));\n        assertArrayEquals(new String[]{\"TAG\", \"</div>\"}, result.get(2));\n        assertArrayEquals(new String[]{\"TEXT\", \"World\"}, result.get(3));\n    }\n\n    @Test\n    public void testUnclosedTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div\");\n        assertEquals(1, result.size());\n        assertArrayEquals(new String[]{\"TEXT\", \"<div\"}, result.get(0));\n    }\n\n    @Test\n    public void testTextWithUnclosedTag() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"Hello<div\");\n        assertEquals(2, result.size());\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello\"}, result.get(0));\n        assertArrayEquals(new String[]{\"TEXT\", \"<div\"}, result.get(1));\n    }\n\n    @Test\n    public void testTagWithAttributes() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div class=\\\"test\\\">\");\n        assertEquals(1, result.size());\n        assertArrayEquals(new String[]{\"TAG\", \"<div class=\\\"test\\\">\"}, result.get(0));\n    }\n\n    @Test\n    public void testComplexHtml() {\n        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(\"<div>Hello<span>World</span></div>\");\n        assertEquals(6, result.size());\n        assertArrayEquals(new String[]{\"TAG\", \"<div>\"}, result.get(0));\n        assertArrayEquals(new String[]{\"TEXT\", \"Hello\"}, result.get(1));\n        assertArrayEquals(new String[]{\"TAG\", \"<span>\"}, result.get(2));\n        assertArrayEquals(new String[]{\"TEXT\", \"World\"}, result.get(3));\n        assertArrayEquals(new String[]{\"TAG\", \"</span>\"}, result.get(4));\n        assertArrayEquals(new String[]{\"TAG\", \"</div>\"}, result.get(5));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940050.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 411,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 819,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1230
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

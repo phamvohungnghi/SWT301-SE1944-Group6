@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_024_is_valid_bst\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef is_valid_bst(nodes, root_idx):\n    if not nodes or root_idx < 0 or root_idx >= len(nodes):\n        return True\n    stack = [(root_idx, float('-inf'), float('inf'))]\n    while stack:\n        curr, low, high = stack.pop()\n        node = nodes[curr]\n        val = node[\"val\"]\n        if val <= low or val >= high:\n            return False\n        left = node.get(\"left\", -1)\n        right = node.get(\"right\", -1)\n        if left >= 0 and left < len(nodes):\n            stack.append((left, low, val))\n        elif left != -1:\n            return False\n        if right >= 0 and right < len(nodes):\n            stack.append((right, val, high))\n        elif right != -1:\n            return False\n    return True\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

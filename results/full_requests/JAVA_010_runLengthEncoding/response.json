@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-daec868e",
+  "id": "resp_0b8a8a92909d3a5f006a54c35b408c81998378ebd25eeeb603",
+  "created_at": 1783939931.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0b8a8a92909d3a5f006a54c35bc6088199b79b9f25a234db69",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass RunLengthEncodingTest {\n\n    @Test\n    void testNullInput() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding.runLengthEncoding(null));\n    }\n\n    @Test\n    void testEmptyString() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding.runLengthEncoding(\"\"));\n    }\n\n    @Test\n    void testSingleCharacter() {\n        assertEquals(\"1a\", JAVA_010_runLengthEncoding.runLengthEncoding(\"a\"));\n        assertEquals(\"1b\", JAVA_010_runLengthEncoding.runLengthEncoding(\"b\"));\n    }\n\n    @Test\n    void testTwoDifferentCharacters() {\n        assertEquals(\"1a1b\", JAVA_010_runLengthEncoding.runLengthEncoding(\"ab\"));\n    }\n\n    @Test\n    void testTwoSameCharacters() {\n        assertEquals(\"2a\", JAVA_010_runLengthEncoding.runLengthEncoding(\"aa\"));\n        assertEquals(\"2b\", JAVA_010_runLengthEncoding.runLengthEncoding(\"bb\"));\n    }\n\n    @Test\n    void testMultipleSameCharacters() {\n        assertEquals(\"3a\", JAVA_010_runLengthEncoding.runLengthEncoding(\"aaa\"));\n        assertEquals(\"4b\", JAVA_010_runLengthEncoding.runLengthEncoding(\"bbbb\"));\n    }\n\n    @Test\n    void testMixedCharacters() {\n        assertEquals(\"2a1b2c\", JAVA_010_runLengthEncoding.runLengthEncoding(\"aabbcc\"));\n        assertEquals(\"1a1b1c1d\", JAVA_010_runLengthEncoding.runLengthEncoding(\"abcd\"));\n    }\n\n    @Test\n    void testLongSequence() {\n        assertEquals(\"5a\", JAVA_010_runLengthEncoding.runLengthEncoding(\"aaaaa\"));\n        assertEquals(\"1a1b1c1d1e1f\", JAVA_010_runLengthEncoding.runLengthEncoding(\"abcdef\"));\n    }\n\n    @Test\n    void testInvalidCharacter() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding.runLengthEncoding(\"a1b\"));\n        assertEquals(\"\", JAVA_010_runLengthEncoding.runLengthEncoding(\"abc!\"));\n    }\n\n    @Test\n    void testAllSameCharacters() {\n        assertEquals(\"10a\", JAVA_010_runLengthEncoding.runLengthEncoding(\"aaaaaaaaaa\"));\n    }\n\n    @Test\n    void testLargeInput() {\n        String input = \"a\".repeat(1000);\n        assertEquals(\"1000a\", JAVA_010_runLengthEncoding.runLengthEncoding(input));\n    }\n}",
           "type": "output_text",
-          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class RunLengthEncodingTest {\n\n    @Test\n    public void testNullInput() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(null), \"Null input should return an empty string.\");\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"\"), \"Empty string should return an empty string.\");\n    }\n\n    @Test\n    public void testSingleCharacterString() {\n        assertEquals(\"1A\", JAVA_010_runLengthEncoding(\"A\"), \"Single character string should return '1' followed by the character.\");\n    }\n\n    @Test\n    public void testStringWithAllUniqueCharacters() {\n        assertEquals(\"1A1B1C1D\", JAVA_010_runLengthEncoding(\"ABCD\"), \"String with all unique characters should return '1' followed by each character.\");\n    }\n\n    @Test\n    public void testStringWithRepeatingCharacters() {\n        assertEquals(\"3A2B4C\", JAVA_010_runLengthEncoding(\"AAABBCCCC\"), \"String with repeating characters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithMixedRepeatingAndUniqueCharacters() {\n        assertEquals(\"2A1B3C1D\", JAVA_010_runLengthEncoding(\"AABCCCD\"), \"String with mixed repeating and unique characters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithNonAlphabeticCharacters() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"A1B2C3\"), \"String with non-alphabetic characters should return an empty string.\");\n    }\n\n    @Test\n    public void testStringWithSpaces() {\n        assertEquals(\"\", JAVA_010_runLengthEncoding(\"A B C\"), \"String with spaces should return an empty string.\");\n    }\n\n    @Test\n    public void testStringWithLowercaseLetters() {\n        assertEquals(\"2a3b1c\", JAVA_010_runLengthEncoding(\"aabbbc\"), \"String with lowercase letters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithMixedCaseLetters() {\n        assertEquals(\"1A1a1B1b\", JAVA_010_runLengthEncoding(\"AaBb\"), \"String with mixed case letters should return correct run-length encoding.\");\n    }\n\n    @Test\n    public void testStringWithLongRepeatingSequence() {\n        String input = \"A\".repeat(1000);\n        String expected = \"1000A\";\n        assertEquals(expected, JAVA_010_runLengthEncoding(input), \"String with long repeating sequence should return correct run-length encoding.\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939938.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 364,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 519,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 883
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

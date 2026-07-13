@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_011_run_length_decoding",
-  "started_at_utc": "2026-07-01T05:56:05.750124+00:00",
-  "finished_at_utc": "2026-07-01T05:56:10.466312+00:00",
-  "response_id": "mock-github-ff816bca",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:48:10.445489+00:00",
+  "finished_at_utc": "2026-07-13T10:48:15.075578+00:00",
+  "response_id": "resp_02d698699ab1ce10006a54c26a1d0c819a936293b8c4497a1a",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "c88a6feec91e17bccb8d41ffc9553540ad3431ef3f933f1a3430be10f266dc6b",
   "source_sha256": "9b48e74185d90d732ddaee23d7aafc061fd0c453293d74dd35455d47d3f64278",
   "sdk_version": "2.43.0"

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-bfa5c82a",
+  "id": "resp_0695f2bbd42286ea006a54c33812c4819aaf5e27051d8c3ac9",
+  "created_at": 1783939896.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0695f2bbd42286ea006a54c338a110819abecc0e410487bea6",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass PasswordValidatorTest {\n\n    @Test\n    void testNullPassword() {\n        assertFalse(validatePassword(null), \"Password should be invalid when null\");\n    }\n\n    @Test\n    void testEmptyPassword() {\n        assertFalse(validatePassword(\"\"), \"Password should be invalid when empty\");\n    }\n\n    @Test\n    void testShortPassword() {\n        assertFalse(validatePassword(\"Short1!\"), \"Password should be invalid if less than 8 characters\");\n    }\n\n    @Test\n    void testValidPassword() {\n        assertTrue(validatePassword(\"Valid1!\"), \"Password should be valid with upper, lower, digit, and special character\");\n    }\n\n    @Test\n    void testMissingUppercase() {\n        assertFalse(validatePassword(\"missingupper1!\"), \"Password should be invalid if missing uppercase letter\");\n    }\n\n    @Test\n    void testMissingLowercase() {\n        assertFalse(validatePassword(\"MISSINGLOWER1!\"), \"Password should be invalid if missing lowercase letter\");\n    }\n\n    @Test\n    void testMissingDigit() {\n        assertFalse(validatePassword(\"MissingSpecial!\"), \"Password should be invalid if missing digit\");\n    }\n\n    @Test\n    void testMissingSpecial() {\n        assertFalse(validatePassword(\"Missing1Upper\"), \"Password should be invalid if missing special character\");\n    }\n\n    @Test\n    void testOnlyUppercase() {\n        assertFalse(validatePassword(\"ALLUPPERCASE1!\"), \"Password should be invalid if only uppercase letters\");\n    }\n\n    @Test\n    void testOnlyLowercase() {\n        assertFalse(validatePassword(\"alllowercase1!\"), \"Password should be invalid if only lowercase letters\");\n    }\n\n    @Test\n    void testOnlyDigits() {\n        assertFalse(validatePassword(\"12345678\"), \"Password should be invalid if only digits\");\n    }\n\n    @Test\n    void testOnlySpecialCharacters() {\n        assertFalse(validatePassword(\"!@#$%^&*\"), \"Password should be invalid if only special characters\");\n    }\n\n    @Test\n    void testValidPasswordWithDifferentSpecialChars() {\n        assertTrue(validatePassword(\"ValidPassword1@\"), \"Password should be valid with different special characters\");\n    }\n\n    @Test\n    void testPasswordWithSpaces() {\n        assertFalse(validatePassword(\"Valid 1!\"), \"Password should be invalid if it contains spaces\");\n    }\n\n    @Test\n    void testPasswordWithAllRequirementsMet() {\n        assertTrue(validatePassword(\"A1b!cdef\"), \"Password should be valid with all requirements met\");\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class ValidatePasswordTest {\n\n    @Test\n    public void testNullPassword() {\n        assertFalse(JAVA_006_validatePassword(null), \"Password should be invalid if it is null\");\n    }\n\n    @Test\n    public void testShortPassword() {\n        assertFalse(JAVA_006_validatePassword(\"Ab1!\"), \"Password should be invalid if it is shorter than 8 characters\");\n    }\n\n    @Test\n    public void testPasswordWithoutUppercase() {\n        assertFalse(JAVA_006_validatePassword(\"abcd123!\"), \"Password should be invalid if it does not contain an uppercase letter\");\n    }\n\n    @Test\n    public void testPasswordWithoutLowercase() {\n        assertFalse(JAVA_006_validatePassword(\"ABCD123!\"), \"Password should be invalid if it does not contain a lowercase letter\");\n    }\n\n    @Test\n    public void testPasswordWithoutDigit() {\n        assertFalse(JAVA_006_validatePassword(\"Abcdefg!\"), \"Password should be invalid if it does not contain a digit\");\n    }\n\n    @Test\n    public void testPasswordWithoutSpecialCharacter() {\n        assertFalse(JAVA_006_validatePassword(\"Abcdefg1\"), \"Password should be invalid if it does not contain a special character\");\n    }\n\n    @Test\n    public void testValidPassword() {\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@\"), \"Password should be valid if it meets all criteria\");\n    }\n\n    @Test\n    public void testPasswordWithOnlySpecialCharacters() {\n        assertFalse(JAVA_006_validatePassword(\"!@#$%^&*\"), \"Password should be invalid if it only contains special characters\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyDigits() {\n        assertFalse(JAVA_006_validatePassword(\"12345678\"), \"Password should be invalid if it only contains digits\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyUppercaseLetters() {\n        assertFalse(JAVA_006_validatePassword(\"ABCDEFGH\"), \"Password should be invalid if it only contains uppercase letters\");\n    }\n\n    @Test\n    public void testPasswordWithOnlyLowercaseLetters() {\n        assertFalse(JAVA_006_validatePassword(\"abcdefgh\"), \"Password should be invalid if it only contains lowercase letters\");\n    }\n\n    @Test\n    public void testPasswordWithNonSpecialCharacters() {\n        assertFalse(JAVA_006_validatePassword(\"Abc12345\"), \"Password should be invalid if it does not contain any valid special characters\");\n    }\n\n    @Test\n    public void testPasswordWithBoundaryLength() {\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@\"), \"Password should be valid if it is exactly 8 characters and meets all criteria\");\n        assertTrue(JAVA_006_validatePassword(\"Abc123!@#\"), \"Password should be valid if it is longer than 8 characters and meets all criteria\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939903.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 386,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 543,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 929
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_022_parseQueryString\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static Map<String, Object> parseQueryString(String qs) {\n        if (qs == null || qs.isEmpty()) {\n            return new HashMap<>();\n        }\n        if (qs.startsWith(\"?\")) {\n            qs = qs.substring(1);\n        }\n        Map<String, Object> result = new HashMap<>();\n        String[] pairs = qs.split(\"&\");\n        for (String pair : pairs) {\n            if (pair.isEmpty()) {\n                continue;\n            }\n            String key;\n            String val;\n            if (pair.contains(\"=\")) {\n                String[] parts = pair.split(\"=\", 2);\n                key = parts[0];\n                val = parts[1];\n            } else {\n                key = pair;\n                val = \"\";\n            }\n            if (result.containsKey(key)) {\n                Object existing = result.get(key);\n                if (existing instanceof List) {\n                    @SuppressWarnings(\"unchecked\")\n                    List<String> list = (List<String>) existing;\n                    list.add(val);\n                } else {\n                    List<String> list = new ArrayList<>();\n                    list.add((String) existing);\n                    list.add(val);\n                    result.put(key, list);\n                }\n            } else {\n                result.put(key, val);\n            }\n        }\n        return result;\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

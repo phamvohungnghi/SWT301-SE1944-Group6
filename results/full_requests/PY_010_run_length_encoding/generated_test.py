@@ -1,51 +1,35 @@
 import pytest
+from your_module import run_length_encoding  # Adjust the import based on your module structure
 
-from PY_010_run_length_encoding import run_length_encoding
-
-def test_empty_string():
+def test_run_length_encoding_empty_string():
     assert run_length_encoding("") == ""
 
-def test_single_character():
+def test_run_length_encoding_single_character():
     assert run_length_encoding("a") == "1a"
     assert run_length_encoding("z") == "1z"
 
-def test_repeated_characters():
-    assert run_length_encoding("aaa") == "3a"
-    assert run_length_encoding("bbbbbb") == "6b"
-
-def test_mixed_characters():
-    assert run_length_encoding("aabb") == "2a2b"
-    assert run_length_encoding("aaabbcc") == "3a2b2c"
-
-def test_no_repeated_characters():
-    assert run_length_encoding("abc") == "1a1b1c"
-    assert run_length_encoding("xyz") == "1x1y1z"
-
-def test_numeric_characters():
-    assert run_length_encoding("123") == ""
-    assert run_length_encoding("a1b2") == ""
-
-def test_special_characters():
-    assert run_length_encoding("a!b@") == ""
-    assert run_length_encoding("a#b$c") == ""
-
-def test_mixed_valid_and_invalid_characters():
-    assert run_length_encoding("a1b") == ""
-    assert run_length_encoding("abc!") == ""
-
-def test_uppercase_characters():
-    assert run_length_encoding("AAA") == "3A"
-    assert run_length_encoding("AaAa") == "1A1a1A1a"
-
-def test_mixed_case_characters():
-    assert run_length_encoding("aAaA") == "1a1A1a1A"
-    assert run_length_encoding("aaAA") == "2a2A"
-
-def test_long_string():
-    input_str = "a" * 1000 + "b" * 500 + "c" * 300
-    expected_output = "1000a500b300c"
-    assert run_length_encoding(input_str) == expected_output
-
-def test_boundary_case_two_characters():
+def test_run_length_encoding_repeated_characters():
     assert run_length_encoding("aa") == "2a"
-    assert run_length_encoding("ab") == "1a1b"
+    assert run_length_encoding("aaa") == "3a"
+    assert run_length_encoding("aaaa") == "4a"
+
+def test_run_length_encoding_mixed_characters():
+    assert run_length_encoding("aaabbb") == "3a3b"
+    assert run_length_encoding("aabbcc") == "2a2b2c"
+    assert run_length_encoding("abc") == "1a1b1c"
+
+def test_run_length_encoding_non_alpha_characters():
+    assert run_length_encoding("abc123") == ""
+    assert run_length_encoding("a!b") == ""
+    assert run_length_encoding("hello!") == ""
+
+def test_run_length_encoding_boundary_cases():
+    assert run_length_encoding("a" * 1000) == "1000a"
+    assert run_length_encoding("b" * 500 + "c" * 500) == "500b500c"
+
+def test_run_length_encoding_case_sensitivity():
+    assert run_length_encoding("aaAA") == "2a2A"
+    assert run_length_encoding("aAaA") == "1a1A1a1A"
+
+def test_run_length_encoding_long_string():
+    assert run_length_encoding("a" * 100 + "b" * 100 + "c" * 100) == "100a100b100c"

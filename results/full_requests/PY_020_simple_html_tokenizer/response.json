@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-1f289354",
+  "id": "resp_0bd45579bb85bfe4006a54c2ccabc881998e83f9faf5e258ce",
+  "created_at": 1783939788.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0bd45579bb85bfe4006a54c2cd25cc819997331c824abcbf23",
       "content": [
         {
+          "annotations": [],
+          "text": "def test_simple_html_tokenizer():\n    from PY_020_simple_html_tokenizer import simple_html_tokenizer\n\n    # Test with None input\n    assert simple_html_tokenizer(None) == []\n\n    # Test with empty string\n    assert simple_html_tokenizer(\"\") == []\n\n    # Test with a simple tag\n    assert simple_html_tokenizer(\"<tag>\") == [(\"TAG\", \"<tag>\")]\n\n    # Test with text before a tag\n    assert simple_html_tokenizer(\"Hello <tag>\") == [(\"TEXT\", \"Hello \"), (\"TAG\", \"<tag>\")]\n\n    # Test with text after a tag\n    assert simple_html_tokenizer(\"<tag>Hello\") == [(\"TAG\", \"<tag>\"), (\"TEXT\", \"Hello\")]\n\n    # Test with multiple tags\n    assert simple_html_tokenizer(\"<tag1><tag2>\") == [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\")]\n\n    # Test with text between tags\n    assert simple_html_tokenizer(\"<tag1>Text<tag2>\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text\"), (\"TAG\", \"<tag2>\")]\n\n    # Test with unclosed tag\n    assert simple_html_tokenizer(\"<tag1>Text\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text\")]\n\n    # Test with text only\n    assert simple_html_tokenizer(\"Just some text\") == [(\"TEXT\", \"Just some text\")]\n\n    # Test with tags and text mixed\n    assert simple_html_tokenizer(\"<tag1>Text1<tag2>Text2\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\")]\n\n    # Test with nested tags\n    assert simple_html_tokenizer(\"<tag1><tag2></tag2></tag1>\") == [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\"), (\"TAG\", \"</tag2>\"), (\"TAG\", \"</tag1>\")]\n\n    # Test with text before and after nested tags\n    assert simple_html_tokenizer(\"Before<tag1><tag2></tag2></tag1>After\") == [\n        (\"TEXT\", \"Before\"),\n        (\"TAG\", \"<tag1>\"),\n        (\"TAG\", \"<tag2>\"),\n        (\"TAG\", \"</tag2>\"),\n        (\"TAG\", \"</tag1>\"),\n        (\"TEXT\", \"After\")\n    ]",
           "type": "output_text",
-          "text": "import pytest\n\nfrom PY_020_simple_html_tokenizer import simple_html_tokenizer\n\ndef test_empty_input():\n    assert simple_html_tokenizer(\"\") == []\n\ndef test_none_input():\n    assert simple_html_tokenizer(None) == []\n\ndef test_single_tag():\n    assert simple_html_tokenizer(\"<div>\") == [(\"TAG\", \"<div>\")]\n\ndef test_single_text():\n    assert simple_html_tokenizer(\"Hello\") == [(\"TEXT\", \"Hello\")]\n\ndef test_tag_and_text():\n    assert simple_html_tokenizer(\"<div>Hello</div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"Hello\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_nested_tags():\n    assert simple_html_tokenizer(\"<div><span>Text</span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TAG\", \"<span>\"),\n        (\"TEXT\", \"Text\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_unclosed_tag():\n    assert simple_html_tokenizer(\"<div\") == [(\"TEXT\", \"<div\")]\n\ndef test_text_with_unclosed_tag():\n    assert simple_html_tokenizer(\"Hello<div\") == [\n        (\"TEXT\", \"Hello\"),\n        (\"TEXT\", \"<div\")\n    ]\n\ndef test_multiple_tags():\n    assert simple_html_tokenizer(\"<div><span></span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TAG\", \"<span>\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_text_between_tags():\n    assert simple_html_tokenizer(\"<div>Text<span>More</span></div>\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"Text\"),\n        (\"TAG\", \"<span>\"),\n        (\"TEXT\", \"More\"),\n        (\"TAG\", \"</span>\"),\n        (\"TAG\", \"</div>\")\n    ]\n\ndef test_malformed_tag():\n    assert simple_html_tokenizer(\"<div><span\") == [\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \"<span\")\n    ]\n\ndef test_empty_tag():\n    assert simple_html_tokenizer(\"<>\") == [(\"TAG\", \"<>\")]\n\ndef test_text_with_angle_brackets():\n    assert simple_html_tokenizer(\"Text with < and > symbols\") == [\n        (\"TEXT\", \"Text with \"),\n        (\"TAG\", \"<\"),\n        (\"TEXT\", \" and \"),\n        (\"TAG\", \">\"),\n        (\"TEXT\", \" symbols\")\n    ]\n\ndef test_only_angle_brackets():\n    assert simple_html_tokenizer(\"<>><<\") == [\n        (\"TAG\", \"<>\"),\n        (\"TAG\", \">\"),\n        (\"TAG\", \"<\")\n    ]\n\ndef test_whitespace_handling():\n    assert simple_html_tokenizer(\" <div> Text </div> \") == [\n        (\"TEXT\", \" \"),\n        (\"TAG\", \"<div>\"),\n        (\"TEXT\", \" Text \"),\n        (\"TAG\", \"</div>\"),\n        (\"TEXT\", \" \")\n    ]"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939794.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 353,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 519,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 872
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

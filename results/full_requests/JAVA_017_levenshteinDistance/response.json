@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-1cafec36",
+  "id": "resp_0ad32c73878923e5006a54c3b23db08199ae02dcab75273164",
+  "created_at": 1783940018.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0ad32c73878923e5006a54c3b2c274819988debeae2623e5ac",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass LevenshteinDistanceTest {\n\n    @Test\n    void testNullInputs() {\n        assertEquals(-1, levenshteinDistance(null, null));\n        assertEquals(-1, levenshteinDistance(\"test\", null));\n        assertEquals(-1, levenshteinDistance(null, \"test\"));\n    }\n\n    @Test\n    void testEmptyStrings() {\n        assertEquals(0, levenshteinDistance(\"\", \"\"));\n        assertEquals(4, levenshteinDistance(\"test\", \"\"));\n        assertEquals(4, levenshteinDistance(\"\", \"test\"));\n    }\n\n    @Test\n    void testIdenticalStrings() {\n        assertEquals(0, levenshteinDistance(\"same\", \"same\"));\n    }\n\n    @Test\n    void testSingleCharacterDifferences() {\n        assertEquals(1, levenshteinDistance(\"a\", \"b\"));\n        assertEquals(1, levenshteinDistance(\"b\", \"a\"));\n        assertEquals(1, levenshteinDistance(\"a\", \"\"));\n        assertEquals(1, levenshteinDistance(\"\", \"a\"));\n    }\n\n    @Test\n    void testDifferentLengthStrings() {\n        assertEquals(3, levenshteinDistance(\"kitten\", \"sitting\"));\n        assertEquals(2, levenshteinDistance(\"flaw\", \"lawn\"));\n        assertEquals(5, levenshteinDistance(\"intention\", \"execution\"));\n    }\n\n    @Test\n    void testSameLengthDifferentStrings() {\n        assertEquals(2, levenshteinDistance(\"abc\", \"ybc\"));\n        assertEquals(1, levenshteinDistance(\"abc\", \"ab\"));\n        assertEquals(1, levenshteinDistance(\"abc\", \"ac\"));\n    }\n\n    @Test\n    void testLongStrings() {\n        assertEquals(7, levenshteinDistance(\"kitten\", \"sitting\"));\n        assertEquals(3, levenshteinDistance(\"abcdef\", \"azced\"));\n    }\n\n    @Test\n    void testPerformance() {\n        String s1 = \"a\".repeat(1000);\n        String s2 = \"b\".repeat(1000);\n        assertEquals(1000, levenshteinDistance(s1, s2));\n    }\n}",
           "type": "output_text",
-          "text": "import static org.junit.jupiter.api.Assertions.assertEquals;\nimport org.junit.jupiter.api.Test;\n\npublic class LevenshteinDistanceTest {\n\n    @Test\n    public void testNullInputs() {\n        assertEquals(-1, JAVA_017_levenshteinDistance(null, \"test\"), \"Null first string should return -1\");\n        assertEquals(-1, JAVA_017_levenshteinDistance(\"test\", null), \"Null second string should return -1\");\n        assertEquals(-1, JAVA_017_levenshteinDistance(null, null), \"Both strings null should return -1\");\n    }\n\n    @Test\n    public void testEmptyStrings() {\n        assertEquals(0, JAVA_017_levenshteinDistance(\"\", \"\"), \"Both strings empty should return 0\");\n        assertEquals(4, JAVA_017_levenshteinDistance(\"\", \"test\"), \"Empty first string should return length of second string\");\n        assertEquals(4, JAVA_017_levenshteinDistance(\"test\", \"\"), \"Empty second string should return length of first string\");\n    }\n\n    @Test\n    public void testIdenticalStrings() {\n        assertEquals(0, JAVA_017_levenshteinDistance(\"test\", \"test\"), \"Identical strings should return 0\");\n        assertEquals(0, JAVA_017_levenshteinDistance(\"a\", \"a\"), \"Single identical characters should return 0\");\n    }\n\n    @Test\n    public void testSingleCharacterStrings() {\n        assertEquals(1, JAVA_017_levenshteinDistance(\"a\", \"b\"), \"Different single characters should return 1\");\n        assertEquals(1, JAVA_017_levenshteinDistance(\"a\", \"\"), \"Single character and empty string should return 1\");\n        assertEquals(1, JAVA_017_levenshteinDistance(\"\", \"b\"), \"Empty string and single character should return 1\");\n    }\n\n    @Test\n    public void testGeneralCases() {\n        assertEquals(3, JAVA_017_levenshteinDistance(\"kitten\", \"sitting\"), \"Distance between 'kitten' and 'sitting' should be 3\");\n        assertEquals(1, JAVA_017_levenshteinDistance(\"flaw\", \"flaws\"), \"Distance between 'flaw' and 'flaws' should be 1\");\n        assertEquals(2, JAVA_017_levenshteinDistance(\"gumbo\", \"gambol\"), \"Distance between 'gumbo' and 'gambol' should be 2\");\n        assertEquals(4, JAVA_017_levenshteinDistance(\"book\", \"back\"), \"Distance between 'book' and 'back' should be 4\");\n    }\n\n    @Test\n    public void testCaseSensitivity() {\n        assertEquals(1, JAVA_017_levenshteinDistance(\"Test\", \"test\"), \"Case difference should count as one edit\");\n        assertEquals(4, JAVA_017_levenshteinDistance(\"TEST\", \"test\"), \"All characters different in case should return string length\");\n    }\n\n    @Test\n    public void testLongStrings() {\n        assertEquals(6, JAVA_017_levenshteinDistance(\"abcdef\", \"ghijkl\"), \"Completely different strings of same length should return length\");\n        assertEquals(3, JAVA_017_levenshteinDistance(\"abcdef\", \"abcxyz\"), \"Half different strings should return half length\");\n    }\n\n    @Test\n    public void testPrefixSuffixCases() {\n        assertEquals(3, JAVA_017_levenshteinDistance(\"abc\", \"abcdef\"), \"Adding suffix should return suffix length\");\n        assertEquals(3, JAVA_017_levenshteinDistance(\"abcdef\", \"abc\"), \"Removing suffix should return suffix length\");\n        assertEquals(3, JAVA_017_levenshteinDistance(\"def\", \"abcdef\"), \"Adding prefix should return prefix length\");\n        assertEquals(3, JAVA_017_levenshteinDistance(\"abcdef\", \"def\"), \"Removing prefix should return prefix length\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940024.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 456,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 474,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 930
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

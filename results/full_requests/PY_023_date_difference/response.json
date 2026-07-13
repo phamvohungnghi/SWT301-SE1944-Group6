@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-9ccacc08",
+  "id": "resp_05a4d320f69fa9e7006a54c2e8478c819ba08575d8cd2a6fe2",
+  "created_at": 1783939816.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_05a4d320f69fa9e7006a54c2e8a8c8819bb7473db29e47f817",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef test_date_difference():\n    # Test with valid dates\n    assert date_difference(\"2023-10-01\", \"2023-10-01\") == 0\n    assert date_difference(\"2023-01-01\", \"2023-01-02\") == 1\n    assert date_difference(\"2020-02-29\", \"2021-03-01\") == 366  # Leap year\n    assert date_difference(\"2021-12-31\", \"2022-01-01\") == 1\n\n    # Test with None values\n    assert date_difference(None, \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", None) == -1\n    assert date_difference(None, None) == -1\n\n    # Test with invalid date formats\n    assert date_difference(\"2023-10\", \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", \"2023\") == -1\n    assert date_difference(\"2023-10-01\", \"2023-10-01-01\") == -1\n\n    # Test with invalid date values\n    assert date_difference(\"2023-13-01\", \"2023-10-01\") == -1  # Invalid month\n    assert date_difference(\"2023-10-32\", \"2023-10-01\") == -1  # Invalid day\n    assert date_difference(\"2023-10-01\", \"2023-10-00\") == -1  # Invalid day\n\n    # Test with dates that are far apart\n    assert date_difference(\"1900-01-01\", \"2100-01-01\") == 73050  # 200 years\n    assert date_difference(\"2000-01-01\", \"3000-01-01\") == 365242  # 1000 years\n\n    # Test with edge cases\n    assert date_difference(\"2023-02-28\", \"2023-03-01\") == 1  # End of February to start of March\n    assert date_difference(\"2024-02-29\", \"2024-03-01\") == 1  # Leap year end of February to start of March\n    assert date_difference(\"2023-01-01\", \"2023-12-31\") == 364  # Start to end of the year\n\n    # Test with same year, different months\n    assert date_difference(\"2023-01-01\", \"2023-06-01\") == 151  # January to June\n    assert date_difference(\"2023-06-01\", \"2023-01-01\") == 151  # June to January (same dates, different order)",
           "type": "output_text",
-          "text": "import pytest\n\ndef test_date_difference_valid_dates():\n    # Test with valid dates\n    assert date_difference(\"2023-10-01\", \"2023-10-02\") == 1\n    assert date_difference(\"2023-10-01\", \"2023-09-30\") == 1\n    assert date_difference(\"2023-10-01\", \"2023-10-01\") == 0\n    assert date_difference(\"2020-02-28\", \"2020-03-01\") == 2  # Leap year\n    assert date_difference(\"2019-02-28\", \"2019-03-01\") == 1  # Non-leap year\n    assert date_difference(\"2000-01-01\", \"1900-01-01\") == 36524  # Century leap year difference\n    assert date_difference(\"2000-01-01\", \"2100-01-01\") == 36524  # Non-century leap year difference\n\ndef test_date_difference_invalid_format():\n    # Test with invalid date formats\n    assert date_difference(\"2023-10-01\", \"2023/10/02\") == -1\n    assert date_difference(\"2023-10-01\", \"2023-10\") == -1\n    assert date_difference(\"2023-10-01\", \"2023-10-02-01\") == -1\n    assert date_difference(\"2023-10-01\", \"2023-13-01\") == -1  # Invalid month\n    assert date_difference(\"2023-10-01\", \"2023-10-32\") == -1  # Invalid day\n    assert date_difference(\"2023-10-01\", \"abcd-ef-gh\") == -1  # Non-numeric date\n\ndef test_date_difference_none_input():\n    # Test with None as input\n    assert date_difference(None, \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", None) == -1\n    assert date_difference(None, None) == -1\n\ndef test_date_difference_empty_string():\n    # Test with empty string as input\n    assert date_difference(\"\", \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", \"\") == -1\n    assert date_difference(\"\", \"\") == -1\n\ndef test_date_difference_non_string_input():\n    # Test with non-string input\n    assert date_difference(20231001, \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", 20231001) == -1\n    assert date_difference(20231001, 20231001) == -1\n    assert date_difference([\"2023-10-01\"], \"2023-10-01\") == -1\n    assert date_difference(\"2023-10-01\", [\"2023-10-01\"]) == -1\n\ndef test_date_difference_large_date_difference():\n    # Test with a large date difference\n    assert date_difference(\"0001-01-01\", \"9999-12-31\") == 3652058\n\ndef test_date_difference_edge_cases():\n    # Test with edge cases\n    assert date_difference(\"0001-01-01\", \"0001-01-02\") == 1  # Minimum valid date\n    assert date_difference(\"9999-12-30\", \"9999-12-31\") == 1  # Maximum valid date\n    assert date_difference(\"2023-02-28\", \"2023-03-01\") == 1  # Non-leap year February\n    assert date_difference(\"2024-02-28\", \"2024-03-01\") == 2  # Leap year February\n\ndef test_date_difference_exception_handling():\n    # Test with inputs that may raise exceptions\n    assert date_difference(\"2023-10-01\", \"2023-10-01-01\") == -1  # Too many parts after split\n    assert date_difference(\"2023-10-01\", \"2023-10-XX\") == -1  # Non-integer parts\n    assert date_difference(\"2023-10-01\", \"2023-10-\") == -1  # Missing day part\n    assert date_difference(\"2023-10-01\", \"2023--01\") == -1  # Missing month part\n    assert date_difference(\"2023-10-01\", \"-10-01\") == -1  # Missing year part"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939823.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 470,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 591,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1061
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

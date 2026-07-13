@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-ff816bca",
+  "id": "resp_02d698699ab1ce10006a54c26a1d0c819a936293b8c4497a1a",
+  "created_at": 1783939690.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_02d698699ab1ce10006a54c26aa3e4819abb85ad438698e819",
       "content": [
         {
+          "annotations": [],
+          "text": "def test_run_length_decoding():\n    from your_module import run_length_decoding  # Replace 'your_module' with the actual module name\n\n    # Test with a normal case\n    assert run_length_decoding(\"3a2b1c\") == \"aaabbc\"\n    \n    # Test with a single character\n    assert run_length_decoding(\"1a\") == \"a\"\n    \n    # Test with multiple characters\n    assert run_length_decoding(\"4x2y\") == \"xxxxyy\"\n    \n    # Test with no input\n    assert run_length_decoding(\"\") == \"\"\n    \n    # Test with invalid input (non-digit at start)\n    assert run_length_decoding(\"a3b\") == \"\"\n    \n    # Test with invalid input (non-digit in the middle)\n    assert run_length_decoding(\"3a2b1c4\") == \"\"\n    \n    # Test with input ending with digits\n    assert run_length_decoding(\"3a2b1\") == \"\"\n    \n    # Test with input having only digits\n    assert run_length_decoding(\"123\") == \"\"\n    \n    # Test with input having characters but no digits\n    assert run_length_decoding(\"abc\") == \"\"\n    \n    # Test with large numbers\n    assert run_length_decoding(\"10a\") == \"aaaaaaaaaa\"\n    \n    # Test with a long sequence\n    assert run_length_decoding(\"5a3b2c1d\") == \"aaaaabbbcc\"",
           "type": "output_text",
-          "text": "import pytest\n\ndef test_run_length_decoding_empty_string():\n    assert run_length_decoding(\"\") == \"\"\n\ndef test_run_length_decoding_single_character_repeated():\n    assert run_length_decoding(\"3a\") == \"aaa\"\n    assert run_length_decoding(\"1b\") == \"b\"\n\ndef test_run_length_decoding_multiple_characters():\n    assert run_length_decoding(\"3a2b1c\") == \"aaabbc\"\n    assert run_length_decoding(\"10x5y\") == \"xxxxxxxxxxyyyyy\"\n\ndef test_run_length_decoding_invalid_input_no_digits():\n    assert run_length_decoding(\"abc\") == \"\"\n    assert run_length_decoding(\"a1b2\") == \"\"\n\ndef test_run_length_decoding_invalid_input_incomplete_pair():\n    assert run_length_decoding(\"3\") == \"\"\n    assert run_length_decoding(\"3a2\") == \"\"\n    assert run_length_decoding(\"3a2b1\") == \"\"\n\ndef test_run_length_decoding_invalid_input_non_digit_prefix():\n    assert run_length_decoding(\"a3b\") == \"\"\n    assert run_length_decoding(\"x10y\") == \"\"\n\ndef test_run_length_decoding_large_numbers():\n    assert run_length_decoding(\"100a\") == \"a\" * 100\n    assert run_length_decoding(\"50b50c\") == \"b\" * 50 + \"c\" * 50\n\ndef test_run_length_decoding_mixed_valid_and_invalid():\n    assert run_length_decoding(\"3a2b1cX\") == \"\"\n    assert run_length_decoding(\"3a2b1c3\") == \"\"\n    assert run_length_decoding(\"3a2b1c1\") == \"\"\n\ndef test_run_length_decoding_edge_cases():\n    assert run_length_decoding(\"0a\") == \"\"\n    assert run_length_decoding(\"00a\") == \"\"\n    assert run_length_decoding(\"01a\") == \"a\"\n    assert run_length_decoding(\"001a\") == \"a\""
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939694.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 305,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 305,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 610
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

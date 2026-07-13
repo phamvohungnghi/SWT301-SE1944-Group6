@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-a6e33b22",
+  "id": "resp_07f64ab8d793da10006a54c3b90590819a9b729839d32baed9",
+  "created_at": 1783940025.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_07f64ab8d793da10006a54c3ba4d18819a84bb9365e5f09262",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport java.util.List;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass PrimeFactorsTest {\n\n    @Test\n    void testFindPrimeFactors_Zero() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(0);\n        assertTrue(result.isEmpty(), \"Expected empty list for input 0\");\n    }\n\n    @Test\n    void testFindPrimeFactors_One() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(1);\n        assertTrue(result.isEmpty(), \"Expected empty list for input 1\");\n    }\n\n    @Test\n    void testFindPrimeFactors_PrimeNumber() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(13);\n        assertEquals(List.of(13), result, \"Expected list containing the prime number itself\");\n    }\n\n    @Test\n    void testFindPrimeFactors_SmallComposite() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(12);\n        assertEquals(List.of(2, 2, 3), result, \"Expected prime factors for 12\");\n    }\n\n    @Test\n    void testFindPrimeFactors_LargeComposite() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(100);\n        assertEquals(List.of(2, 2, 5, 5), result, \"Expected prime factors for 100\");\n    }\n\n    @Test\n    void testFindPrimeFactors_PerfectSquare() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(36);\n        assertEquals(List.of(2, 2, 3, 3), result, \"Expected prime factors for 36\");\n    }\n\n    @Test\n    void testFindPrimeFactors_LargePrime() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(97);\n        assertEquals(List.of(97), result, \"Expected list containing the large prime number itself\");\n    }\n\n    @Test\n    void testFindPrimeFactors_ProductOfPrimes() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(15);\n        assertEquals(List.of(3, 5), result, \"Expected prime factors for 15\");\n    }\n\n    @Test\n    void testFindPrimeFactors_Two() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(2);\n        assertEquals(List.of(2), result, \"Expected list containing the prime number 2\");\n    }\n\n    @Test\n    void testFindPrimeFactors_CompositeWithMultipleFactors() {\n        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(60);\n        assertEquals(List.of(2, 2, 3, 5), result, \"Expected prime factors for 60\");\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic class JAVA_018_findPrimeFactorsTest {\n\n    @Test\n    public void testNegativeNumber() {\n        // Negative numbers should return an empty list\n        assertEquals(new ArrayList<>(), JAVA_018_findPrimeFactors.findPrimeFactors(-10));\n    }\n\n    @Test\n    public void testZero() {\n        // Zero should return an empty list\n        assertEquals(new ArrayList<>(), JAVA_018_findPrimeFactors.findPrimeFactors(0));\n    }\n\n    @Test\n    public void testOne() {\n        // One should return an empty list\n        assertEquals(new ArrayList<>(), JAVA_018_findPrimeFactors.findPrimeFactors(1));\n    }\n\n    @Test\n    public void testPrimeNumber() {\n        // Prime number should return itself as the only factor\n        assertEquals(List.of(7), JAVA_018_findPrimeFactors.findPrimeFactors(7));\n    }\n\n    @Test\n    public void testPowerOfTwo() {\n        // Power of two should return multiple 2s\n        assertEquals(List.of(2, 2, 2), JAVA_018_findPrimeFactors.findPrimeFactors(8));\n    }\n\n    @Test\n    public void testCompositeNumber() {\n        // Composite number should return all prime factors\n        assertEquals(List.of(2, 3, 3, 5), JAVA_018_findPrimeFactors.findPrimeFactors(90));\n    }\n\n    @Test\n    public void testLargePrimeNumber() {\n        // Large prime number should return itself\n        assertEquals(List.of(101), JAVA_018_findPrimeFactors.findPrimeFactors(101));\n    }\n\n    @Test\n    public void testLargeCompositeNumber() {\n        // Large composite number should return all prime factors\n        assertEquals(List.of(2, 2, 2, 7, 7, 11), JAVA_018_findPrimeFactors.findPrimeFactors(4312));\n    }\n\n    @Test\n    public void testSquareOfPrime() {\n        // Square of a prime number should return the prime number twice\n        assertEquals(List.of(13, 13), JAVA_018_findPrimeFactors.findPrimeFactors(169));\n    }\n\n    @Test\n    public void testProductOfTwoPrimes() {\n        // Product of two primes should return both primes\n        assertEquals(List.of(11, 17), JAVA_018_findPrimeFactors.findPrimeFactors(187));\n    }\n\n    @Test\n    public void testNumberWithMultiplePrimeFactors() {\n        // Number with multiple prime factors should return all factors\n        assertEquals(List.of(2, 2, 3, 5, 7), JAVA_018_findPrimeFactors.findPrimeFactors(420));\n    }\n\n    @Test\n    public void testVeryLargeNumber() {\n        // Very large number to test performance and correctness\n        assertEquals(List.of(2, 2, 2, 2, 2, 3, 3, 5, 7, 11, 13), JAVA_018_findPrimeFactors.findPrimeFactors(55440));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940031.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 330,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 594,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 924
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

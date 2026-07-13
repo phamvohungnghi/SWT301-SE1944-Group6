@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-cfac55ca",
+  "id": "resp_040bdb988c103295006a54c2d308f0819a9e7ace9614ef44da",
+  "created_at": 1783939795.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_040bdb988c103295006a54c2d3a310819a8f78abc506363bbd",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef test_dijkstra_none_graph():\n    assert dijkstra(None, 0, 1) == -1\n\ndef test_dijkstra_empty_graph():\n    assert dijkstra([], 0, 1) == -1\n\ndef test_dijkstra_single_node():\n    graph = [[0]]\n    assert dijkstra(graph, 0, 0) == 0\n    assert dijkstra(graph, 0, 1) == -1\n\ndef test_dijkstra_two_nodes_no_edge():\n    graph = [[0, 0], [0, 0]]\n    assert dijkstra(graph, 0, 1) == -1\n\ndef test_dijkstra_two_nodes_with_edge():\n    graph = [[0, 1], [0, 0]]\n    assert dijkstra(graph, 0, 1) == 1\n\ndef test_dijkstra_three_nodes():\n    graph = [[0, 1, 4], [0, 0, 2], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 3\n    assert dijkstra(graph, 1, 2) == 2\n    assert dijkstra(graph, 0, 1) == 1\n\ndef test_dijkstra_disconnected_graph():\n    graph = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == -1\n\ndef test_dijkstra_multiple_paths():\n    graph = [[0, 10, 5], [0, 0, 2], [0, 3, 0]]\n    assert dijkstra(graph, 0, 1) == 8\n    assert dijkstra(graph, 0, 2) == 5\n\ndef test_dijkstra_path_with_zero_weight():\n    graph = [[0, 0, 1], [0, 0, 0], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 1\n\ndef test_dijkstra_large_graph():\n    graph = [[0, 1, 2, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 3], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]\n    assert dijkstra(graph, 0, 4) == 5\n\ndef test_dijkstra_no_path():\n    graph = [[0, 1, 0], [0, 0, 1], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 2\n    assert dijkstra(graph, 1, 0) == -1\n\ndef test_dijkstra_same_source_dest():\n    graph = [[0, 1], [1, 0]]\n    assert dijkstra(graph, 0, 0) == 0\n    assert dijkstra(graph, 1, 1) == 0",
           "type": "output_text",
-          "text": "import pytest\n\ndef test_dijkstra_valid_path():\n    graph = [\n        [0, 1, 4, 0, 0],\n        [1, 0, 4, 2, 7],\n        [4, 4, 0, 3, 5],\n        [0, 2, 3, 0, 4],\n        [0, 7, 5, 4, 0]\n    ]\n    assert dijkstra(graph, 0, 4) == 8  # Shortest path: 0 -> 1 -> 3 -> 4\n\ndef test_dijkstra_no_path():\n    graph = [\n        [0, 1, 0, 0],\n        [1, 0, 0, 0],\n        [0, 0, 0, 1],\n        [0, 0, 1, 0]\n    ]\n    assert dijkstra(graph, 0, 3) == -1  # No path exists between 0 and 3\n\ndef test_dijkstra_same_source_and_destination():\n    graph = [\n        [0, 1, 4],\n        [1, 0, 2],\n        [4, 2, 0]\n    ]\n    assert dijkstra(graph, 1, 1) == 0  # Source and destination are the same\n\ndef test_dijkstra_disconnected_graph():\n    graph = [\n        [0, 0, 0],\n        [0, 0, 0],\n        [0, 0, 0]\n    ]\n    assert dijkstra(graph, 0, 2) == -1  # Completely disconnected graph\n\ndef test_dijkstra_negative_weights():\n    graph = [\n        [0, -1, 4],\n        [-1, 0, 2],\n        [4, 2, 0]\n    ]\n    assert dijkstra(graph, 0, 2) == 4  # Ignores negative weights as per the logic\n\ndef test_dijkstra_invalid_source():\n    graph = [\n        [0, 1, 4],\n        [1, 0, 2],\n        [4, 2, 0]\n    ]\n    with pytest.raises(IndexError):\n        dijkstra(graph, -1, 2)  # Invalid source index\n\ndef test_dijkstra_invalid_destination():\n    graph = [\n        [0, 1, 4],\n        [1, 0, 2],\n        [4, 2, 0]\n    ]\n    with pytest.raises(IndexError):\n        dijkstra(graph, 0, 3)  # Invalid destination index\n\ndef test_dijkstra_empty_graph():\n    graph = []\n    assert dijkstra(graph, 0, 0) == -1  # Empty graph, no nodes\n\ndef test_dijkstra_none_graph():\n    graph = None\n    assert dijkstra(graph, 0, 0) == -1  # Graph is None\n\ndef test_dijkstra_single_node_graph():\n    graph = [[0]]\n    assert dijkstra(graph, 0, 0) == 0  # Single node, source and destination are the same\n\ndef test_dijkstra_large_graph():\n    graph = [\n        [0, 10, 0, 0, 0, 0, 0, 0, 0, 0],\n        [10, 0, 5, 0, 0, 0, 0, 0, 0, 0],\n        [0, 5, 0, 20, 0, 0, 0, 0, 0, 0],\n        [0, 0, 20, 0, 1, 0, 0, 0, 0, 0],\n        [0, 0, 0, 1, 0, 2, 0, 0, 0, 0],\n        [0, 0, 0, 0, 2, 0, 3, 0, 0, 0],\n        [0, 0, 0, 0, 0, 3, 0, 4, 0, 0],\n        [0, 0, 0, 0, 0, 0, 4, 0, 5, 0],\n        [0, 0, 0, 0, 0, 0, 0, 5, 0, 6],\n        [0, 0, 0, 0, 0, 0, 0, 0, 6, 0]\n    ]\n    assert dijkstra(graph, 0, 9) == 26  # Shortest path: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939806.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 399,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 661,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1060
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

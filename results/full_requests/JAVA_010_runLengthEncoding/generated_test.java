@@ -1,62 +1,67 @@
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class RunLengthEncodingTest {
+class RunLengthEncodingTest {
 
     @Test
-    public void testNullInput() {
-        assertEquals("", JAVA_010_runLengthEncoding(null), "Null input should return an empty string.");
+    void testNullInput() {
+        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding(null));
     }
 
     @Test
-    public void testEmptyString() {
-        assertEquals("", JAVA_010_runLengthEncoding(""), "Empty string should return an empty string.");
+    void testEmptyString() {
+        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding(""));
     }
 
     @Test
-    public void testSingleCharacterString() {
-        assertEquals("1A", JAVA_010_runLengthEncoding("A"), "Single character string should return '1' followed by the character.");
+    void testSingleCharacter() {
+        assertEquals("1a", JAVA_010_runLengthEncoding.runLengthEncoding("a"));
+        assertEquals("1b", JAVA_010_runLengthEncoding.runLengthEncoding("b"));
     }
 
     @Test
-    public void testStringWithAllUniqueCharacters() {
-        assertEquals("1A1B1C1D", JAVA_010_runLengthEncoding("ABCD"), "String with all unique characters should return '1' followed by each character.");
+    void testTwoDifferentCharacters() {
+        assertEquals("1a1b", JAVA_010_runLengthEncoding.runLengthEncoding("ab"));
     }
 
     @Test
-    public void testStringWithRepeatingCharacters() {
-        assertEquals("3A2B4C", JAVA_010_runLengthEncoding("AAABBCCCC"), "String with repeating characters should return correct run-length encoding.");
+    void testTwoSameCharacters() {
+        assertEquals("2a", JAVA_010_runLengthEncoding.runLengthEncoding("aa"));
+        assertEquals("2b", JAVA_010_runLengthEncoding.runLengthEncoding("bb"));
     }
 
     @Test
-    public void testStringWithMixedRepeatingAndUniqueCharacters() {
-        assertEquals("2A1B3C1D", JAVA_010_runLengthEncoding("AABCCCD"), "String with mixed repeating and unique characters should return correct run-length encoding.");
+    void testMultipleSameCharacters() {
+        assertEquals("3a", JAVA_010_runLengthEncoding.runLengthEncoding("aaa"));
+        assertEquals("4b", JAVA_010_runLengthEncoding.runLengthEncoding("bbbb"));
     }
 
     @Test
-    public void testStringWithNonAlphabeticCharacters() {
-        assertEquals("", JAVA_010_runLengthEncoding("A1B2C3"), "String with non-alphabetic characters should return an empty string.");
+    void testMixedCharacters() {
+        assertEquals("2a1b2c", JAVA_010_runLengthEncoding.runLengthEncoding("aabbcc"));
+        assertEquals("1a1b1c1d", JAVA_010_runLengthEncoding.runLengthEncoding("abcd"));
     }
 
     @Test
-    public void testStringWithSpaces() {
-        assertEquals("", JAVA_010_runLengthEncoding("A B C"), "String with spaces should return an empty string.");
+    void testLongSequence() {
+        assertEquals("5a", JAVA_010_runLengthEncoding.runLengthEncoding("aaaaa"));
+        assertEquals("1a1b1c1d1e1f", JAVA_010_runLengthEncoding.runLengthEncoding("abcdef"));
     }
 
     @Test
-    public void testStringWithLowercaseLetters() {
-        assertEquals("2a3b1c", JAVA_010_runLengthEncoding("aabbbc"), "String with lowercase letters should return correct run-length encoding.");
+    void testInvalidCharacter() {
+        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding("a1b"));
+        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding("abc!"));
     }
 
     @Test
-    public void testStringWithMixedCaseLetters() {
-        assertEquals("1A1a1B1b", JAVA_010_runLengthEncoding("AaBb"), "String with mixed case letters should return correct run-length encoding.");
+    void testAllSameCharacters() {
+        assertEquals("10a", JAVA_010_runLengthEncoding.runLengthEncoding("aaaaaaaaaa"));
     }
 
     @Test
-    public void testStringWithLongRepeatingSequence() {
-        String input = "A".repeat(1000);
-        String expected = "1000A";
-        assertEquals(expected, JAVA_010_runLengthEncoding(input), "String with long repeating sequence should return correct run-length encoding.");
+    void testLargeInput() {
+        String input = "a".repeat(1000);
+        assertEquals("1000a", JAVA_010_runLengthEncoding.runLengthEncoding(input));
     }
 }

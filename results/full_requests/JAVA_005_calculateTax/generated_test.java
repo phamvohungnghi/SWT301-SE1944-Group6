@@ -1,77 +1,65 @@
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CalculateTaxTest {
+public class TaxCalculatorTest {
 
     @Test
-    void testCalculateTaxWithNegativeIncome() {
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-5000, "single"), 0.001);
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-1, "married"), 0.001);
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(-100, "other"), 0.001);
+    public void testCalculateTax_ZeroIncome() {
+        assertEquals(0.0, calculateTax(0, "single"));
     }
 
     @Test
-    void testCalculateTaxWithZeroIncome() {
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, "single"), 0.001);
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, "married"), 0.001);
-        assertEquals(0.0, JAVA_005_calculateTax.calculateTax(0, "other"), 0.001);
+    public void testCalculateTax_NegativeIncome() {
+        assertEquals(0.0, calculateTax(-5000, "single"));
     }
 
     @Test
-    void testCalculateTaxSingleBracket1() {
-        assertEquals(500.0, JAVA_005_calculateTax.calculateTax(5000, "single"), 0.001);
-        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, "single"), 0.001);
+    public void testCalculateTax_SingleIncomeBelowThreshold() {
+        assertEquals(1000.0, calculateTax(10000, "single"));
     }
 
     @Test
-    void testCalculateTaxSingleBracket2() {
-        assertEquals(1750.0, JAVA_005_calculateTax.calculateTax(15000, "single"), 0.001);
-        assertEquals(5500.0, JAVA_005_calculateTax.calculateTax(40000, "single"), 0.001);
+    public void testCalculateTax_SingleIncomeMiddleBracket() {
+        assertEquals(4000.0, calculateTax(30000, "single"));
     }
 
     @Test
-    void testCalculateTaxSingleBracket3() {
-        assertEquals(5750.0, JAVA_005_calculateTax.calculateTax(41000, "single"), 0.001);
-        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(50000, "single"), 0.001);
+    public void testCalculateTax_SingleIncomeAboveThreshold() {
+        assertEquals(8500.0, calculateTax(60000, "single"));
     }
 
     @Test
-    void testCalculateTaxMarriedBracket1() {
-        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, "married"), 0.001);
-        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(20000, "married"), 0.001);
+    public void testCalculateTax_MarriedIncomeBelowThreshold() {
+        assertEquals(2000.0, calculateTax(20000, "married"));
     }
 
     @Test
-    void testCalculateTaxMarriedBracket2() {
-        assertEquals(2750.0, JAVA_005_calculateTax.calculateTax(25000, "married"), 0.001);
-        assertEquals(11000.0, JAVA_005_calculateTax.calculateTax(80000, "married"), 0.001);
+    public void testCalculateTax_MarriedIncomeMiddleBracket() {
+        assertEquals(8000.0, calculateTax(60000, "married"));
     }
 
     @Test
-    void testCalculateTaxMarriedBracket3() {
-        assertEquals(11250.0, JAVA_005_calculateTax.calculateTax(81000, "married"), 0.001);
-        assertEquals(13500.0, JAVA_005_calculateTax.calculateTax(90000, "married"), 0.001);
+    public void testCalculateTax_MarriedIncomeAboveThreshold() {
+        assertEquals(16500.0, calculateTax(100000, "married"));
     }
 
     @Test
-    void testCalculateTaxOtherStatus() {
-        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, "other"), 0.001);
-        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(40000, "other"), 0.001);
-        assertEquals(20000.0, JAVA_005_calculateTax.calculateTax(100000, "other"), 0.001);
+    public void testCalculateTax_OtherStatusIncome() {
+        assertEquals(2000.0, calculateTax(10000, "other"));
     }
 
     @Test
-    void testCalculateTaxCaseInsensitiveStatus() {
-        assertEquals(1000.0, JAVA_005_calculateTax.calculateTax(10000, "SINGLE"), 0.001);
-        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(20000, "MARRIED"), 0.001);
-        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, "OTHER"), 0.001);
+    public void testCalculateTax_UpperBoundarySingle() {
+        assertEquals(5500.0, calculateTax(40000, "single"));
     }
 
     @Test
-    void testCalculateTaxInvalidStatus() {
-        assertEquals(2000.0, JAVA_005_calculateTax.calculateTax(10000, "unknown"), 0.001);
-        assertEquals(8000.0, JAVA_005_calculateTax.calculateTax(40000, ""), 0.001);
-        assertEquals(20000.0, JAVA_005_calculateTax.calculateTax(100000, null), 0.001);
+    public void testCalculateTax_UpperBoundaryMarried() {
+        assertEquals(11000.0, calculateTax(80000, "married"));
+    }
+
+    @Test
+    public void testCalculateTax_UnknownStatus() {
+        assertEquals(2000.0, calculateTax(10000, "unknown"));
     }
 }

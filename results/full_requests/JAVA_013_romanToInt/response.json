@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-4603f99f",
+  "id": "resp_03ae703fa2227d2c006a54c3858c14819a8e0b4d60b80aabdb",
+  "created_at": 1783939973.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_03ae703fa2227d2c006a54c3861500819a9902b72ad3c04f42",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class RomanToIntTest {\n\n    @Test\n    public void testNullInput() {\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(null));\n    }\n\n    @Test\n    public void testEmptyInput() {\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"\"));\n    }\n\n    @Test\n    public void testInvalidCharacter() {\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"ABC\"));\n    }\n\n    @Test\n    public void testSingleCharacter() {\n        assertEquals(1, JAVA_013_romanToInt.romanToInt(\"I\"));\n        assertEquals(5, JAVA_013_romanToInt.romanToInt(\"V\"));\n        assertEquals(10, JAVA_013_romanToInt.romanToInt(\"X\"));\n        assertEquals(50, JAVA_013_romanToInt.romanToInt(\"L\"));\n        assertEquals(100, JAVA_013_romanToInt.romanToInt(\"C\"));\n        assertEquals(500, JAVA_013_romanToInt.romanToInt(\"D\"));\n        assertEquals(1000, JAVA_013_romanToInt.romanToInt(\"M\"));\n    }\n\n    @Test\n    public void testTwoCharacterCombinations() {\n        assertEquals(4, JAVA_013_romanToInt.romanToInt(\"IV\"));\n        assertEquals(9, JAVA_013_romanToInt.romanToInt(\"IX\"));\n        assertEquals(40, JAVA_013_romanToInt.romanToInt(\"XL\"));\n        assertEquals(90, JAVA_013_romanToInt.romanToInt(\"XC\"));\n        assertEquals(400, JAVA_013_romanToInt.romanToInt(\"CD\"));\n        assertEquals(900, JAVA_013_romanToInt.romanToInt(\"CM\"));\n    }\n\n    @Test\n    public void testMultipleCharacters() {\n        assertEquals(3, JAVA_013_romanToInt.romanToInt(\"III\"));\n        assertEquals(58, JAVA_013_romanToInt.romanToInt(\"LVIII\"));\n        assertEquals(1994, JAVA_013_romanToInt.romanToInt(\"MCMXCIV\"));\n    }\n\n    @Test\n    public void testInvalidSequence() {\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"IIII\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"VV\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"XXXX\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"LL\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"CCCC\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"DD\"));\n        assertEquals(0, JAVA_013_romanToInt.romanToInt(\"MMMM\"));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class RomanToIntTest {\n\n    @Test\n    public void testValidSingleCharacters() {\n        assertEquals(1, JAVA_013_romanToInt(\"I\"));\n        assertEquals(5, JAVA_013_romanToInt(\"V\"));\n        assertEquals(10, JAVA_013_romanToInt(\"X\"));\n        assertEquals(50, JAVA_013_romanToInt(\"L\"));\n        assertEquals(100, JAVA_013_romanToInt(\"C\"));\n        assertEquals(500, JAVA_013_romanToInt(\"D\"));\n        assertEquals(1000, JAVA_013_romanToInt(\"M\"));\n    }\n\n    @Test\n    public void testValidCombinations() {\n        assertEquals(3, JAVA_013_romanToInt(\"III\"));\n        assertEquals(4, JAVA_013_romanToInt(\"IV\"));\n        assertEquals(9, JAVA_013_romanToInt(\"IX\"));\n        assertEquals(58, JAVA_013_romanToInt(\"LVIII\"));\n        assertEquals(1994, JAVA_013_romanToInt(\"MCMXCIV\"));\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(0, JAVA_013_romanToInt(\"\"));\n    }\n\n    @Test\n    public void testNullInput() {\n        assertEquals(0, JAVA_013_romanToInt(null));\n    }\n\n    @Test\n    public void testInvalidCharacters() {\n        assertEquals(0, JAVA_013_romanToInt(\"A\"));\n        assertEquals(0, JAVA_013_romanToInt(\"IIIIIIII\"));\n        assertEquals(0, JAVA_013_romanToInt(\"123\"));\n        assertEquals(0, JAVA_013_romanToInt(\"IVXQ\"));\n    }\n\n    @Test\n    public void testBoundaryCases() {\n        assertEquals(3999, JAVA_013_romanToInt(\"MMMCMXCIX\"));\n        assertEquals(1, JAVA_013_romanToInt(\"I\"));\n        assertEquals(0, JAVA_013_romanToInt(\"MMMM\")); // Invalid case\n    }\n\n    @Test\n    public void testSubtractiveNotation() {\n        assertEquals(4, JAVA_013_romanToInt(\"IV\"));\n        assertEquals(9, JAVA_013_romanToInt(\"IX\"));\n        assertEquals(40, JAVA_013_romanToInt(\"XL\"));\n        assertEquals(90, JAVA_013_romanToInt(\"XC\"));\n        assertEquals(400, JAVA_013_romanToInt(\"CD\"));\n        assertEquals(900, JAVA_013_romanToInt(\"CM\"));\n    }\n\n    @Test\n    public void testNonSubtractiveNotation() {\n        assertEquals(6, JAVA_013_romanToInt(\"VI\"));\n        assertEquals(11, JAVA_013_romanToInt(\"XI\"));\n        assertEquals(60, JAVA_013_romanToInt(\"LX\"));\n        assertEquals(110, JAVA_013_romanToInt(\"CX\"));\n        assertEquals(510, JAVA_013_romanToInt(\"DI\"));\n        assertEquals(1010, JAVA_013_romanToInt(\"MI\"));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939984.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 436,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 658,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1094
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

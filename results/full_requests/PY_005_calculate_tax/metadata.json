@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_005_calculate_tax",
-  "started_at_utc": "2026-07-01T05:55:29.446623+00:00",
-  "finished_at_utc": "2026-07-01T05:55:35.299739+00:00",
-  "response_id": "mock-github-bc6e823b",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:47:03.736020+00:00",
+  "finished_at_utc": "2026-07-13T10:47:13.338314+00:00",
+  "response_id": "resp_02c5567ed0e77a6d006a54c2276864819abbbb4f0bfefb0629",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "3ac5949453035f4a06a2118ef76fb3888c0e1d3d74634c7b47d957221223840a",
   "source_sha256": "c489bc154b704d5379c7aa472c61beb01a55e77a3ea8d14adace1486a2c86dc9",
   "sdk_version": "2.43.0"

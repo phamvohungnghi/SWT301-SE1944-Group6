@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_006_validatePassword\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static boolean validatePassword(String password) {\n        if (password == null || password.length() < 8) {\n            return false;\n        }\n        boolean hasUpper = false;\n        boolean hasLower = false;\n        boolean hasDigit = false;\n        boolean hasSpecial = false;\n        String specialChars = \"!@#$%^&*()-_+=\";\n        for (int i = 0; i < password.length(); i++) {\n            char c = password.charAt(i);\n            if (Character.isUpperCase(c)) {\n                hasUpper = true;\n            } else if (Character.isLowerCase(c)) {\n                hasLower = true;\n            } else if (Character.isDigit(c)) {\n                hasDigit = true;\n            } else if (specialChars.indexOf(c) >= 0) {\n                hasSpecial = true;\n            }\n        }\n        return hasUpper && hasLower && hasDigit && hasSpecial;\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

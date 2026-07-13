@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_002_binary_search",
-  "started_at_utc": "2026-07-01T05:39:28.797522+00:00",
-  "finished_at_utc": "2026-07-01T05:39:35.675053+00:00",
-  "response_id": "mock-github-becde280",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:43:10.373441+00:00",
+  "finished_at_utc": "2026-07-13T10:43:19.788101+00:00",
+  "response_id": "resp_04024cfa055a6c68006a54c13eee10819890e9e0f9e34fe9ae",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "f9281b87a7b157981d1219bbbb149b258a284e16c564903297a73ceaaeaa99ec",
   "source_sha256": "c04a16c23954a2eb36ff9e54a443ad28688861ddae668912648c2827fd77eb26",
   "sdk_version": "2.43.0"

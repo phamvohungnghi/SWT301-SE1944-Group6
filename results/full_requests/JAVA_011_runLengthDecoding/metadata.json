@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_011_runLengthDecoding",
-  "started_at_utc": "2026-07-01T05:58:35.590917+00:00",
-  "finished_at_utc": "2026-07-01T05:58:43.435151+00:00",
-  "response_id": "mock-github-fca8c221",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:52:19.527783+00:00",
+  "finished_at_utc": "2026-07-13T10:52:27.913825+00:00",
+  "response_id": "resp_04b6ce0f43e523a6006a54c363313c8198b7fd4d82e61c8e93",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "6da2ca06cbfa017c2c9afb69671db803df7a42919e70e09a92de5c2ce8d188da",
   "source_sha256": "36a2461bbd22df6f90af81a1e9f778d772c2cba5fae3f8a263cd4beaad5e233a",
   "sdk_version": "2.43.0"

@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_019_luhn_check",
-  "started_at_utc": "2026-07-01T05:56:54.705994+00:00",
-  "finished_at_utc": "2026-07-01T05:57:00.281487+00:00",
-  "response_id": "mock-github-0965245c",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:49:35.920390+00:00",
+  "finished_at_utc": "2026-07-13T10:49:48.996358+00:00",
+  "response_id": "resp_0dbae915be01c5f7006a54c2c002448198af35ec8d73e3c761",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "e0197e4f5cb3ffd8d1332d18a6810bd6f79e477398a4e388c14fd14a0cc8a629",
   "source_sha256": "4389291ac7c83d0625a068373a545bb50343a211d16a00ce01c1ed9e791846d0",
   "sdk_version": "2.43.0"

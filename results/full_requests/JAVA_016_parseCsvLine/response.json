@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-ebd5d624",
+  "id": "resp_0686d6cea1f776cd006a54c3a42084819abad92ff27a9c3f5c",
+  "created_at": 1783940004.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0686d6cea1f776cd006a54c3a7c288819abd3d1bf348ba9beb",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport java.util.List;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CsvParserTest {\n\n    @Test\n    void testParseCsvLine_NullInput() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(null);\n        assertTrue(result.isEmpty(), \"Expected empty list for null input\");\n    }\n\n    @Test\n    void testParseCsvLine_EmptyString() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"\");\n        assertEquals(1, result.size(), \"Expected one empty string in the result\");\n        assertEquals(\"\", result.get(0), \"Expected the first element to be an empty string\");\n    }\n\n    @Test\n    void testParseCsvLine_SingleValue() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"value\");\n        assertEquals(1, result.size(), \"Expected one value in the result\");\n        assertEquals(\"value\", result.get(0), \"Expected the first element to match the input value\");\n    }\n\n    @Test\n    void testParseCsvLine_TwoValues() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"value1,value2\");\n        assertEquals(2, result.size(), \"Expected two values in the result\");\n        assertEquals(\"value1\", result.get(0), \"Expected the first element to match value1\");\n        assertEquals(\"value2\", result.get(1), \"Expected the second element to match value2\");\n    }\n\n    @Test\n    void testParseCsvLine_QuotedValue() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"\\\"value\\\"\");\n        assertEquals(1, result.size(), \"Expected one quoted value in the result\");\n        assertEquals(\"value\", result.get(0), \"Expected the first element to match the unquoted value\");\n    }\n\n    @Test\n    void testParseCsvLine_QuotedComma() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"\\\"value1,value2\\\"\");\n        assertEquals(1, result.size(), \"Expected one value in the result\");\n        assertEquals(\"value1,value2\", result.get(0), \"Expected the first element to match the quoted value with comma\");\n    }\n\n    @Test\n    void testParseCsvLine_EscapedQuote() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"\\\"value with \\\"\\\"escaped quotes\\\"\\\"\");\n        assertEquals(1, result.size(), \"Expected one value in the result\");\n        assertEquals(\"value with \\\"escaped quotes\\\"\", result.get(0), \"Expected the first element to match the value with escaped quotes\");\n    }\n\n    @Test\n    void testParseCsvLine_MultipleValuesWithQuotes() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"value1,\\\"value2,value3\\\",value4\");\n        assertEquals(3, result.size(), \"Expected three values in the result\");\n        assertEquals(\"value1\", result.get(0), \"Expected the first element to match value1\");\n        assertEquals(\"value2,value3\", result.get(1), \"Expected the second element to match value2,value3\");\n        assertEquals(\"value4\", result.get(2), \"Expected the third element to match value4\");\n    }\n\n    @Test\n    void testParseCsvLine_ConsecutiveCommas() {\n        List<String> result = JAVA_016_parseCsvLine.parseCsvLine(\"value1,,value2\");\n        assertEquals(3, result.size(), \"Expected three values in the result due to consecutive commas\");\n        assertEquals(\"value1\", result.get(0), \"Expected the first element to match value1\");\n        assertEquals(\"\", result.get(1), \"Expected the second element to be an empty string\");\n        assertEquals(\"value2\", result.get(2), \"Expected the third element to match value2\");\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\nimport java.util.List;\n\npublic class ParseCsvLineTest {\n\n    @Test\n    public void testNullInput() {\n        List<String> result = JAVA_016_parseCsvLine(null);\n        assertNotNull(result, \"Result should not be null for null input\");\n        assertTrue(result.isEmpty(), \"Result should be empty for null input\");\n    }\n\n    @Test\n    public void testEmptyString() {\n        List<String> result = JAVA_016_parseCsvLine(\"\");\n        assertNotNull(result, \"Result should not be null for empty string input\");\n        assertEquals(1, result.size(), \"Result should contain one element for empty string input\");\n        assertEquals(\"\", result.get(0), \"The single element should be an empty string\");\n    }\n\n    @Test\n    public void testSingleValueNoQuotes() {\n        List<String> result = JAVA_016_parseCsvLine(\"value\");\n        assertNotNull(result, \"Result should not be null for single value input\");\n        assertEquals(1, result.size(), \"Result should contain one element for single value input\");\n        assertEquals(\"value\", result.get(0), \"The single element should match the input value\");\n    }\n\n    @Test\n    public void testMultipleValuesNoQuotes() {\n        List<String> result = JAVA_016_parseCsvLine(\"value1,value2,value3\");\n        assertNotNull(result, \"Result should not be null for multiple values input\");\n        assertEquals(3, result.size(), \"Result should contain three elements for multiple values input\");\n        assertEquals(\"value1\", result.get(0), \"First element should match the first value\");\n        assertEquals(\"value2\", result.get(1), \"Second element should match the second value\");\n        assertEquals(\"value3\", result.get(2), \"Third element should match the third value\");\n    }\n\n    @Test\n    public void testValuesWithQuotes() {\n        List<String> result = JAVA_016_parseCsvLine(\"\\\"value1\\\",\\\"value2\\\",\\\"value3\\\"\");\n        assertNotNull(result, \"Result should not be null for quoted values input\");\n        assertEquals(3, result.size(), \"Result should contain three elements for quoted values input\");\n        assertEquals(\"value1\", result.get(0), \"First element should match the first quoted value\");\n        assertEquals(\"value2\", result.get(1), \"Second element should match the second quoted value\");\n        assertEquals(\"value3\", result.get(2), \"Third element should match the third quoted value\");\n    }\n\n    @Test\n    public void testValuesWithEscapedQuotes() {\n        List<String> result = JAVA_016_parseCsvLine(\"\\\"value1\\\",\\\"va\\\"\\\"lue2\\\",\\\"value3\\\"\");\n        assertNotNull(result, \"Result should not be null for values with escaped quotes\");\n        assertEquals(3, result.size(), \"Result should contain three elements for values with escaped quotes\");\n        assertEquals(\"value1\", result.get(0), \"First element should match the first quoted value\");\n        assertEquals(\"va\\\"lue2\", result.get(1), \"Second element should match the second quoted value with escaped quotes\");\n        assertEquals(\"value3\", result.get(2), \"Third element should match the third quoted value\");\n    }\n\n    @Test\n    public void testValuesWithMixedQuotesAndCommas() {\n        List<String> result = JAVA_016_parseCsvLine(\"\\\"value1,with,commas\\\",value2,\\\"value3\\\"\");\n        assertNotNull(result, \"Result should not be null for values with mixed quotes and commas\");\n        assertEquals(3, result.size(), \"Result should contain three elements for values with mixed quotes and commas\");\n        assertEquals(\"value1,with,commas\", result.get(0), \"First element should match the first quoted value with commas\");\n        assertEquals(\"value2\", result.get(1), \"Second element should match the second value\");\n        assertEquals(\"value3\", result.get(2), \"Third element should match the third quoted value\");\n    }\n\n    @Test\n    public void testTrailingComma() {\n        List<String> result = JAVA_016_parseCsvLine(\"value1,value2,\");\n        assertNotNull(result, \"Result should not be null for input with trailing comma\");\n        assertEquals(3, result.size(), \"Result should contain three elements for input with trailing comma\");\n        assertEquals(\"value1\", result.get(0), \"First element should match the first value\");\n        assertEquals(\"value2\", result.get(1), \"Second element should match the second value\");\n        assertEquals(\"\", result.get(2), \"Third element should be an empty string for trailing comma\");\n    }\n\n    @Test\n    public void testLeadingComma() {\n        List<String> result = JAVA_016_parseCsvLine(\",value1,value2\");\n        assertNotNull(result, \"Result should not be null for input with leading comma\");\n        assertEquals(3, result.size(), \"Result should contain three elements for input with leading comma\");\n        assertEquals(\"\", result.get(0), \"First element should be an empty string for leading comma\");\n        assertEquals(\"value1\", result.get(1), \"Second element should match the first value\");\n        assertEquals(\"value2\", result.get(2), \"Third element should match the second value\");\n    }\n\n    @Test\n    public void testOnlyCommas() {\n        List<String> result = JAVA_016_parseCsvLine(\",,,\");\n        assertNotNull(result, \"Result should not be null for input with only commas\");\n        assertEquals(4, result.size(), \"Result should contain four elements for input with three commas\");\n        assertEquals(\"\", result.get(0), \"First element should be an empty string\");\n        assertEquals(\"\", result.get(1), \"Second element should be an empty string\");\n        assertEquals(\"\", result.get(2), \"Third element should be an empty string\");\n        assertEquals(\"\", result.get(3), \"Fourth element should be an empty string\");\n    }\n\n    @Test\n    public void testUnclosedQuotes() {\n        List<String> result = JAVA_016_parseCsvLine(\"\\\"value1,value2\");\n        assertNotNull(result, \"Result should not be null for input with unclosed quotes\");\n        assertEquals(1, result.size(), \"Result should contain one element for input with unclosed quotes\");\n        assertEquals(\"value1,value2\", result.get(0), \"Element should contain the entire input with unclosed quotes\");\n    }\n\n    @Test\n    public void testEmptyQuotedValue() {\n        List<String> result = JAVA_016_parseCsvLine(\"\\\"\\\"\");\n        assertNotNull(result, \"Result should not be null for input with empty quoted value\");\n        assertEquals(1, result.size(), \"Result should contain one element for input with empty quoted value\");\n        assertEquals(\"\", result.get(0), \"Element should be an empty string for empty quoted value\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940017.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 388,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 824,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1212
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

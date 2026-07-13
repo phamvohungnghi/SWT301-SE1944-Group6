@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_021_dijkstra",
-  "started_at_utc": "2026-07-01T05:59:41.390732+00:00",
-  "finished_at_utc": "2026-07-01T05:59:46.642601+00:00",
-  "response_id": "mock-github-03184bcb",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:54:11.173777+00:00",
+  "finished_at_utc": "2026-07-13T10:54:17.093486+00:00",
+  "response_id": "resp_0424a52b3a9354bc006a54c3d2da7c8198ab8061ea20603327",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "c480ce506736ed03343dd85d26ddb6a5bac149f63e0b210cf02aa471a936195e",
   "source_sha256": "5b1135e0e6b6c30030e291fdc4e1cfb40d298c0b11ea3aa75088e7bc9c319b9d",
   "sdk_version": "2.43.0"

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-5d7854b7",
+  "id": "resp_05f1c9f2446d9790006a54c3bfbb4881989dde1c94fe43f70f",
+  "created_at": 1783940031.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_05f1c9f2446d9790006a54c3c03ce08198b45aa7b64760dd9c",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass LuhnCheckTest {\n\n    @Test\n    void testNullInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(null));\n    }\n\n    @Test\n    void testEmptyInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"\"));\n    }\n\n    @Test\n    void testNonDigitCharacters() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234a6789\"));\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234-5678-9012-3456\"));\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234 5678 9012 3456\"));\n    }\n\n    @Test\n    void testValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"4532015112830366\")); // Visa\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"6011514433546201\")); // Discover\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"371449635398431\"));  // American Express\n    }\n\n    @Test\n    void testInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"4532015112830365\")); // Invalid Visa\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"6011514433546200\")); // Invalid Discover\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"371449635398432\"));  // Invalid American Express\n    }\n\n    @Test\n    void testSingleDigitInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"5\")); // Single digit cannot be valid\n    }\n\n    @Test\n    void testTwoDigitInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"12\")); // Two digits cannot be valid\n    }\n\n    @Test\n    void testLongValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"79927398713\")); // Valid Luhn number\n    }\n\n    @Test\n    void testLongInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"79927398714\")); // Invalid Luhn number\n    }\n}",
           "type": "output_text",
-          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class LuhnCheckTest {\n\n    @Test\n    void testNullInput() {\n        assertFalse(JAVA_019_luhnCheck(null), \"Null input should return false\");\n    }\n\n    @Test\n    void testEmptyString() {\n        assertFalse(JAVA_019_luhnCheck(\"\"), \"Empty string should return false\");\n    }\n\n    @Test\n    void testNonDigitCharacters() {\n        assertFalse(JAVA_019_luhnCheck(\"1234a567\"), \"String with non-digit characters should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"12 34\"), \"String with spaces should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"12-34\"), \"String with special characters should return false\");\n    }\n\n    @Test\n    void testValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck(\"4532015112830366\"), \"Valid Luhn number should return true\");\n        assertTrue(JAVA_019_luhnCheck(\"79927398713\"), \"Valid Luhn number should return true\");\n    }\n\n    @Test\n    void testInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck(\"4532015112830367\"), \"Invalid Luhn number should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"79927398710\"), \"Invalid Luhn number should return false\");\n    }\n\n    @Test\n    void testSingleDigitNumbers() {\n        assertFalse(JAVA_019_luhnCheck(\"0\"), \"Single digit '0' should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"1\"), \"Single digit '1' should return false\");\n        assertFalse(JAVA_019_luhnCheck(\"9\"), \"Single digit '9' should return false\");\n    }\n\n    @Test\n    void testBoundaryCases() {\n        assertTrue(JAVA_019_luhnCheck(\"18\"), \"Boundary case '18' should return true\");\n        assertFalse(JAVA_019_luhnCheck(\"19\"), \"Boundary case '19' should return false\");\n    }\n\n    @Test\n    void testAllZeros() {\n        assertTrue(JAVA_019_luhnCheck(\"0000000000000000\"), \"All zeros should return true\");\n    }\n\n    @Test\n    void testAlternatingDigits() {\n        assertTrue(JAVA_019_luhnCheck(\"1212121212121212\"), \"Alternating digits valid Luhn number should return true\");\n        assertFalse(JAVA_019_luhnCheck(\"1212121212121213\"), \"Alternating digits invalid Luhn number should return false\");\n    }\n\n    @Test\n    void testLongValidNumber() {\n        assertTrue(JAVA_019_luhnCheck(\"499273987164999273987164\"), \"Long valid Luhn number should return true\");\n    }\n\n    @Test\n    void testLongInvalidNumber() {\n        assertFalse(JAVA_019_luhnCheck(\"499273987164999273987165\"), \"Long invalid Luhn number should return false\");\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940037.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 370,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 499,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 869
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-df535ce2",
+  "id": "resp_02c476701a73b065006a54c34f8f30819aa4b6362e2ecb6222",
+  "created_at": 1783939919.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_02c476701a73b065006a54c35029a4819ab238aa09660b9812",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\nimport java.util.*;\n\npublic class JsonPathLookupTest {\n\n    @Test\n    public void testNullData() {\n        assertNull(jsonPathLookup(null, \"key\"));\n    }\n\n    @Test\n    public void testNullPath() {\n        Map<String, Object> data = new HashMap<>();\n        assertNull(jsonPathLookup(data, null));\n    }\n\n    @Test\n    public void testEmptyPath() {\n        Map<String, Object> data = new HashMap<>();\n        assertNull(jsonPathLookup(data, \"\"));\n    }\n\n    @Test\n    public void testNonExistentKey() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", \"value\");\n        assertNull(jsonPathLookup(data, \"nonExistentKey\"));\n    }\n\n    @Test\n    public void testValidKey() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", \"value\");\n        assertEquals(\"value\", jsonPathLookup(data, \"key\"));\n    }\n\n    @Test\n    public void testNestedMapLookup() {\n        Map<String, Object> data = new HashMap<>();\n        Map<String, Object> nestedMap = new HashMap<>();\n        nestedMap.put(\"nestedKey\", \"nestedValue\");\n        data.put(\"key\", nestedMap);\n        assertEquals(\"nestedValue\", jsonPathLookup(data, \"key.nestedKey\"));\n    }\n\n    @Test\n    public void testListLookupByIndex() {\n        List<Object> list = Arrays.asList(\"zero\", \"one\", \"two\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertEquals(\"one\", jsonPathLookup(data, \"list.1\"));\n    }\n\n    @Test\n    public void testListLookupInvalidIndex() {\n        List<Object> list = Arrays.asList(\"zero\", \"one\", \"two\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertNull(jsonPathLookup(data, \"list.3\"));\n    }\n\n    @Test\n    public void testListLookupNonDigitKey() {\n        List<Object> list = Arrays.asList(\"zero\", \"one\", \"two\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertNull(jsonPathLookup(data, \"list.one\"));\n    }\n\n    @Test\n    public void testInvalidDataType() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", \"value\");\n        assertNull(jsonPathLookup(data, \"key.nestedKey\"));\n    }\n\n    @Test\n    public void testEmptyListLookup() {\n        List<Object> list = new ArrayList<>();\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertNull(jsonPathLookup(data, \"list.0\"));\n    }\n\n    @Test\n    public void testValidListLookup() {\n        List<Object> list = Arrays.asList(\"first\", \"second\", \"third\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertEquals(\"third\", jsonPathLookup(data, \"list.2\"));\n    }\n\n    @Test\n    public void testInvalidListLookupNegativeIndex() {\n        List<Object> list = Arrays.asList(\"first\", \"second\", \"third\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertNull(jsonPathLookup(data, \"list.-1\"));\n    }\n\n    @Test\n    public void testInvalidListLookupOutOfBounds() {\n        List<Object> list = Arrays.asList(\"first\", \"second\", \"third\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"list\", list);\n        assertNull(jsonPathLookup(data, \"list.5\"));\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\n\nimport java.util.*;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JsonPathLookupTest {\n\n    @Test\n    void testNullData() {\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(null, \"key\"));\n    }\n\n    @Test\n    void testNullPath() {\n        Map<String, Object> data = new HashMap<>();\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, null));\n    }\n\n    @Test\n    void testEmptyPath() {\n        Map<String, Object> data = new HashMap<>();\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"\"));\n    }\n\n    @Test\n    void testPathNotFoundInMap() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key1\", \"value1\");\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key2\"));\n    }\n\n    @Test\n    void testPathFoundInMap() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key1\", \"value1\");\n        assertEquals(\"value1\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key1\"));\n    }\n\n    @Test\n    void testNestedMapPathFound() {\n        Map<String, Object> innerMap = new HashMap<>();\n        innerMap.put(\"innerKey\", \"innerValue\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"outerKey\", innerMap);\n        assertEquals(\"innerValue\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"outerKey.innerKey\"));\n    }\n\n    @Test\n    void testNestedMapPathNotFound() {\n        Map<String, Object> innerMap = new HashMap<>();\n        innerMap.put(\"innerKey\", \"innerValue\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"outerKey\", innerMap);\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"outerKey.nonExistentKey\"));\n    }\n\n    @Test\n    void testListIndexFound() {\n        List<Object> list = Arrays.asList(\"value1\", \"value2\", \"value3\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", list);\n        assertEquals(\"value2\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key.1\"));\n    }\n\n    @Test\n    void testListIndexOutOfBounds() {\n        List<Object> list = Arrays.asList(\"value1\", \"value2\", \"value3\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", list);\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key.3\"));\n    }\n\n    @Test\n    void testListIndexNegative() {\n        List<Object> list = Arrays.asList(\"value1\", \"value2\", \"value3\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", list);\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key.-1\"));\n    }\n\n    @Test\n    void testInvalidListIndex() {\n        List<Object> list = Arrays.asList(\"value1\", \"value2\", \"value3\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", list);\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key.invalid\"));\n    }\n\n    @Test\n    void testMixedMapAndListPath() {\n        List<Object> list = Arrays.asList(\"value1\", \"value2\", \"value3\");\n        Map<String, Object> innerMap = new HashMap<>();\n        innerMap.put(\"innerKey\", list);\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"outerKey\", innerMap);\n        assertEquals(\"value3\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"outerKey.innerKey.2\"));\n    }\n\n    @Test\n    void testNonNavigableObject() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"key\", \"nonNavigable\");\n        assertNull(JAVA_009_jsonPathLookup.jsonPathLookup(data, \"key.subKey\"));\n    }\n\n    @Test\n    void testEmptyKeyInPath() {\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"\", \"emptyKeyValue\");\n        assertEquals(\"emptyKeyValue\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"\"));\n    }\n\n    @Test\n    void testEmptyKeyInNestedPath() {\n        Map<String, Object> innerMap = new HashMap<>();\n        innerMap.put(\"\", \"emptyKeyValue\");\n        Map<String, Object> data = new HashMap<>();\n        data.put(\"outerKey\", innerMap);\n        assertEquals(\"emptyKeyValue\", JAVA_009_jsonPathLookup.jsonPathLookup(data, \"outerKey.\"));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939930.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 454,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 821,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1275
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

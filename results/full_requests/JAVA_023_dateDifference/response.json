@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-9a11cfd6",
+  "id": "resp_0d8b32c00d6ff4ab006a54c3e14338819897af0b5c4c74d2ca",
+  "created_at": 1783940065.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0d8b32c00d6ff4ab006a54c3e1d30c8198b0449c179828f9c4",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass DateDifferenceTest {\n\n    @Test\n    void testNullDate1() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(null, \"2023-10-01\"));\n    }\n\n    @Test\n    void testNullDate2() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", null));\n    }\n\n    @Test\n    void testInvalidFormatDate1() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-10\", \"2023-10-01\"));\n    }\n\n    @Test\n    void testInvalidFormatDate2() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", \"2023-10\"));\n    }\n\n    @Test\n    void testInvalidDate1() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-13-01\", \"2023-10-01\"));\n    }\n\n    @Test\n    void testInvalidDate2() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", \"2023-13-01\"));\n    }\n\n    @Test\n    void testValidDatesSameYear() {\n        assertEquals(0, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", \"2023-10-01\"));\n    }\n\n    @Test\n    void testValidDatesDifferentDaysSameMonth() {\n        assertEquals(1, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", \"2023-10-02\"));\n    }\n\n    @Test\n    void testValidDatesDifferentMonths() {\n        assertEquals(30, JAVA_023_dateDifference.dateDifference(\"2023-09-01\", \"2023-10-01\"));\n    }\n\n    @Test\n    void testValidDatesDifferentYears() {\n        assertEquals(365, JAVA_023_dateDifference.dateDifference(\"2022-10-01\", \"2023-10-01\"));\n    }\n\n    @Test\n    void testLeapYearDifference() {\n        assertEquals(1, JAVA_023_dateDifference.dateDifference(\"2020-02-28\", \"2020-02-29\"));\n    }\n\n    @Test\n    void testInvalidIntegerParsing() {\n        assertEquals(-1, JAVA_023_dateDifference.dateDifference(\"2023-10-01\", \"2023-10-xx\"));\n    }\n\n    @Test\n    void testBoundaryDates() {\n        assertEquals(0, JAVA_023_dateDifference.dateDifference(\"0001-01-01\", \"0001-01-01\"));\n        assertEquals(365, JAVA_023_dateDifference.dateDifference(\"0001-01-01\", \"0002-01-01\"));\n    }\n}",
           "type": "output_text",
-          "text": "import static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class DateDifferenceTest {\n\n    @Test\n    void testValidDatesSameDay() {\n        assertEquals(0, JAVA_023_dateDifference(\"2023-10-10\", \"2023-10-10\"));\n    }\n\n    @Test\n    void testValidDatesDifferentDays() {\n        assertEquals(1, JAVA_023_dateDifference(\"2023-10-10\", \"2023-10-11\"));\n        assertEquals(31, JAVA_023_dateDifference(\"2023-01-01\", \"2023-02-01\"));\n    }\n\n    @Test\n    void testValidDatesDifferentYears() {\n        assertEquals(365, JAVA_023_dateDifference(\"2022-10-10\", \"2023-10-10\"));\n        assertEquals(366, JAVA_023_dateDifference(\"2019-01-01\", \"2020-01-01\")); // Leap year\n    }\n\n    @Test\n    void testValidDatesDifferentMonths() {\n        assertEquals(30, JAVA_023_dateDifference(\"2023-04-01\", \"2023-05-01\"));\n        assertEquals(28, JAVA_023_dateDifference(\"2023-02-01\", \"2023-03-01\")); // Non-leap year February\n        assertEquals(29, JAVA_023_dateDifference(\"2020-02-01\", \"2020-03-01\")); // Leap year February\n    }\n\n    @Test\n    void testNullInputs() {\n        assertEquals(-1, JAVA_023_dateDifference(null, \"2023-10-10\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", null));\n        assertEquals(-1, JAVA_023_dateDifference(null, null));\n    }\n\n    @Test\n    void testInvalidDateFormats() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10\", \"2023-10-10\")); // Missing day\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"2023/10/10\")); // Wrong delimiter\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"10-10-2023\")); // Wrong format\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"abcd-ef-gh\")); // Non-numeric\n    }\n\n    @Test\n    void testOutOfRangeValues() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-13-10\", \"2023-10-10\")); // Invalid month\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-32\", \"2023-10-10\")); // Invalid day\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-00-10\", \"2023-10-10\")); // Invalid month (zero)\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-00\", \"2023-10-10\")); // Invalid day (zero)\n    }\n\n    @Test\n    void testExceptionHandling() {\n        assertEquals(-1, JAVA_023_dateDifference(\"2023-10-10\", \"\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"\", \"2023-10-10\"));\n        assertEquals(-1, JAVA_023_dateDifference(\"\", \"\"));\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783940073.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 552,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 601,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1153
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

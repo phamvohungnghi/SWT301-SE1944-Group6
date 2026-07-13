@@ -1,9 +1,9 @@
 {
   "unit_id": "PY_015_longest_palindrome_substring",
-  "started_at_utc": "2026-07-01T05:39:51.137852+00:00",
-  "finished_at_utc": "2026-07-01T05:39:55.628300+00:00",
-  "response_id": "mock-github-c208689f",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:43:49.506644+00:00",
+  "finished_at_utc": "2026-07-13T10:43:56.043752+00:00",
+  "response_id": "resp_0741c815631d775d006a54c1652bb4819a9bcfcf18c47d14b6",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "723248675e6fa1907a59f9eae91a8d73220c7c13f297c5706f1baa62482a0dc5",
   "source_sha256": "7248aa45b08692244821f296fc19c8c2fb431e09e46662bb035fedf92344127f",
   "sdk_version": "2.43.0"

@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_004_mergeIntervals\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static List<int[]> mergeIntervals(List<int[]> intervals) {\n        if (intervals == null || intervals.isEmpty()) {\n            return new ArrayList<>();\n        }\n        for (int[] interval : intervals) {\n            if (interval == null || interval.length != 2 || interval[0] > interval[1]) {\n                return new ArrayList<>();\n            }\n        }\n        intervals.sort(Comparator.comparingInt(a -> a[0]));\n        List<int[]> merged = new ArrayList<>();\n        merged.add(intervals.get(0));\n        for (int i = 1; i < intervals.size(); i++) {\n            int[] current = intervals.get(i);\n            int[] prev = merged.get(merged.size() - 1);\n            if (current[0] <= prev[1]) {\n                prev[1] = Math.max(prev[1], current[1]);\n            } else {\n                merged.add(current);\n            }\n        }\n        return merged;\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

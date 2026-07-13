@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: java\nTest framework: junit5\nProduction unit identifier: JAVA_011_runLengthDecoding\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\n    public static String runLengthDecoding(String s) {\n        if (s == null || s.isEmpty()) {\n            return \"\";\n        }\n        StringBuilder decoded = new StringBuilder();\n        int i = 0;\n        while (i < s.length()) {\n            if (!Character.isDigit(s.charAt(i))) {\n                return \"\";\n            }\n            StringBuilder numStr = new StringBuilder();\n            while (i < s.length() && Character.isDigit(s.charAt(i))) {\n                numStr.append(s.charAt(i));\n                i++;\n            }\n            if (i >= s.length()) {\n                return \"\";\n            }\n            char c = s.charAt(i);\n            int count = Integer.parseInt(numStr.toString());\n            for (int k = 0; k < count; k++) {\n                decoded.append(c);\n            }\n            i++;\n        }\n        return decoded.toString();\n    }\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

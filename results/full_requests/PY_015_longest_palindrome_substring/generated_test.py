@@ -1,54 +1,66 @@
 import pytest
 
-def test_longest_palindrome_substring_empty_string():
-    assert longest_palindrome_substring("") == ""
+def longest_palindrome_substring(s):
+    if not s:
+        return ""
+    longest = ""
+    for i in range(len(s)):
+        l, r = i, i
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if (r - l + 1) > len(longest):
+                longest = s[l:r+1]
+            l -= 1
+            r += 1
+        l, r = i, i + 1
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if (r - l + 1) > len(longest):
+                longest = s[l:r+1]
+            l -= 1
+            r += 1
+    return longest
 
-def test_longest_palindrome_substring_single_character():
+def test_longest_palindrome_substring():
+    # Test with a simple palindrome
+    assert longest_palindrome_substring("babad") in ["bab", "aba"]
+    
+    # Test with a single character
     assert longest_palindrome_substring("a") == "a"
-
-def test_longest_palindrome_substring_two_identical_characters():
+    
+    # Test with two identical characters
     assert longest_palindrome_substring("aa") == "aa"
-
-def test_longest_palindrome_substring_two_different_characters():
-    assert longest_palindrome_substring("ab") == "a" or longest_palindrome_substring("ab") == "b"
-
-def test_longest_palindrome_substring_odd_length_palindrome():
+    
+    # Test with two different characters
+    assert longest_palindrome_substring("ab") == "a"
+    
+    # Test with an empty string
+    assert longest_palindrome_substring("") == ""
+    
+    # Test with a longer palindrome
     assert longest_palindrome_substring("racecar") == "racecar"
-
-def test_longest_palindrome_substring_even_length_palindrome():
+    
+    # Test with a string that has no palindrome longer than 1
+    assert longest_palindrome_substring("abcde") == "a"
+    
+    # Test with a string that has multiple palindromes
+    assert longest_palindrome_substring("cbbd") in ["bb", "b"]
+    
+    # Test with a string that is a palindrome
+    assert longest_palindrome_substring("aibohphobia") == "aibohphobia"
+    
+    # Test with a string that has mixed case
+    assert longest_palindrome_substring("Aibohphobia") == "A"
+    
+    # Test with a string that has special characters
+    assert longest_palindrome_substring("!@#$$#@!") == "$$"
+    
+    # Test with a long string with no palindromes
+    assert longest_palindrome_substring("abcdefghijklmnopqrstuvwxyz") == "a"
+    
+    # Test with a string that is a palindrome with spaces
+    assert longest_palindrome_substring("a man a plan a canal panama") == " a "
+    
+    # Test with a string that has a palindrome at the end
+    assert longest_palindrome_substring("abcba") == "abcba"
+    
+    # Test with a string that has a palindrome at the start
     assert longest_palindrome_substring("abccba") == "abccba"
-
-def test_longest_palindrome_substring_palindrome_at_start():
-    assert longest_palindrome_substring("abacdfgdcaba") == "aba"
-
-def test_longest_palindrome_substring_palindrome_at_end():
-    assert longest_palindrome_substring("abcddcba") == "abcddcba"
-
-def test_longest_palindrome_substring_no_palindrome():
-    result = longest_palindrome_substring("abcdefg")
-    assert result in {"a", "b", "c", "d", "e", "f", "g"}
-
-def test_longest_palindrome_substring_mixed_case():
-    assert longest_palindrome_substring("AbaBa") == "aba" or longest_palindrome_substring("AbaBa") == "Bab"
-
-def test_longest_palindrome_substring_special_characters():
-    assert longest_palindrome_substring("a!@#@!a") == "a!@#@!a"
-
-def test_longest_palindrome_substring_numeric_characters():
-    assert longest_palindrome_substring("12321") == "12321"
-
-def test_longest_palindrome_substring_full_string_palindrome():
-    assert longest_palindrome_substring("madam") == "madam"
-
-def test_longest_palindrome_substring_multiple_palindromes():
-    assert longest_palindrome_substring("abaxyzzyxf") == "xyzzyx"
-
-def test_longest_palindrome_substring_large_input():
-    input_str = "a" * 1000
-    assert longest_palindrome_substring(input_str) == input_str
-
-def test_longest_palindrome_substring_single_repeating_character():
-    assert longest_palindrome_substring("aaaa") == "aaaa"
-
-def test_longest_palindrome_substring_nested_palindromes():
-    assert longest_palindrome_substring("abacdcaba") == "abacdcaba"

@@ -1,16 +1,98 @@
 {
-  "id": "mock-github-2c064efd",
+  "id": "resp_097fe60e2115ffbd006a54c24ac3488198b13869493c4bbc28",
+  "created_at": 1783939658.0,
+  "error": null,
+  "incomplete_details": {
+    "reason": "max_output_tokens"
+  },
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_097fe60e2115ffbd006a54c24b478c8198b0de98f4334aa4af",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef json_path_lookup(data, path):\n    if data is None or not path:\n        return None\n    keys = path.split(\".\")\n    current = data\n    for key in keys:\n        if isinstance(current, dict):\n            if key in current:\n                current = current[key]\n            else:\n                return None\n        elif isinstance(current, list):\n            if key.isdigit():\n                idx = int(key)\n                if 0 <= idx < len(current):\n                    current = current[idx]\n                else:\n                    return None\n            else:\n                return None\n        else:\n            return None\n    return current\n\ndef test_json_path_lookup():\n    # Test with a simple dictionary\n    data = {\"a\": {\"b\": {\"c\": 1}}}\n    assert json_path_lookup(data, \"a.b.c\") == 1\n    assert json_path_lookup(data, \"a.b\") == {\"c\": 1}\n    assert json_path_lookup(data, \"a.x\") is None\n    assert json_path_lookup(data, \"x.b\") is None\n\n    # Test with a list\n    data = {\"a\": [1, 2, 3]}\n    assert json_path_lookup(data, \"a.0\") == 1\n    assert json_path_lookup(data, \"a.2\") == 3\n    assert json_path_lookup(data, \"a.3\") is None\n    assert json_path_lookup(data, \"a.x\") is None\n\n    # Test with nested lists and dictionaries\n    data = {\"a\": [{\"b\": 1}, {\"b\": 2}]}\n    assert json_path_lookup(data, \"a.0.b\") == 1\n    assert json_path_lookup(data, \"a.1.b\") == 2\n    assert json_path_lookup(data, \"a.2.b\") is None\n\n    # Test with None data\n    assert json_path_lookup(None, \"a.b\") is None\n    assert json_path_lookup({\"a\": 1}, \"\") is None\n\n    # Test with empty list\n    data = {\"a\": []}\n    assert json_path_lookup(data, \"a.0\") is None\n\n    # Test with invalid path\n    data = {\"a\": {\"b\": {\"c\": 1}}}\n    assert json_path_lookup(data, \"a.b.c.d\") is None\n    assert json_path_lookup(data, \"a.b.0\") is None\n\n    # Test with non-string path\n    assert json_path_lookup(data, 123) is None\n    assert json_path_lookup(data, None) is None\n\n    # Test with complex structure\n    data = {\"a\": {\"b\": [1, 2, {\"c\": 3}]}}\n    assert json_path_lookup(data, \"a.b.2.c\") == 3\n    assert json_path_lookup(data, \"a.b.3\") is None\n    assert json_path_lookup(data, \"a.b.x\") is None\n\n    # Test with boolean values\n    data = {\"a\": True}\n    assert json_path_lookup(data, \"a\") is True\n    assert json_path_lookup(data, \"b\") is None\n\n    # Test with numeric values\n    data = {\"a\": 42}\n    assert json_path_lookup(data, \"a\") == 42\n    assert json_path_lookup(data, \"b\") is None\n\n    # Test with empty dictionary\n    data = {}\n    assert json_path_lookup(data, \"a\") is None\n    assert json_path_lookup(data, \"\") is None\n\n    # Test with deeply nested structure\n    data = {\"a\": {\"b\": {\"c\": {\"d\": {\"e\": 5}}}}}\n    assert json_path_lookup(data, \"a.b.c.d.e\") == 5\n    assert json_path_lookup(data, \"a.b.c.d.x\") is None\n    assert json_path_lookup(data, \"a.b.x\") is None\n    assert json_path_lookup(data, \"x.b.c\") is None\n\n    # Test with list of dictionaries\n    data = [{\"name\": \"Alice\"}, {\"name\": \"Bob\"}]\n    assert json_path_lookup(data, \"0.name\") == \"Alice\"\n    assert json_path_lookup(data, \"1.name\") == \"Bob\"\n    assert json_path_lookup(data, \"2.name\") is None\n    assert json_path_lookup(data, \"0.age\") is None\n\n    # Test with mixed types\n    data = {\"a\": [1, {\"b\": 2}, 3]}\n    assert json_path_lookup(data, \"a.1.b\") == 2\n    assert json_path_lookup(data, \"a.0\") == 1\n    assert json_path_lookup(data, \"a.2\") == 3\n    assert json_path_lookup(data, \"a.3\") is None\n\n    # Test with invalid index\n    data = {\"a\": [1, 2, 3]}\n    assert json_path_lookup(data, \"a.3\") is None\n    assert json_path_lookup(data, \"a.-1\") is None\n\n    # Test with invalid key in dictionary\n    data = {\"a\": {\"b\": 1}}\n    assert json_path_lookup(data, \"a.c\") is None\n    assert json_path_lookup(data, \"a.b.c\") is None\n\n    # Test with empty path\n    assert json_path_lookup(data, \"\") is None\n    assert json_path_lookup(data, \"a.\") is None\n\n    # Test with path containing only digits\n    data = [10, 20, 30]\n    assert json_path_lookup(data, \"0\") == 10\n    assert json_path_lookup(data, \"1\") == 20\n    assert json_path_lookup(data, \"2\") == 30\n    assert json_path_lookup(data, \"3\") is None\n\n    # Test with path that is a single digit\n    data = {\"0\": \"zero\", \"1\": \"one\"}\n    assert json_path_lookup(data, \"0\") == \"zero\"\n    assert json_path_lookup(data, \"1\") == \"one\"\n    assert json_path_lookup(data, \"2\") is None\n\n    # Test with path that is a single character\n    data = {\"a\": \"apple\", \"b\": \"banana\"}\n    assert json_path_lookup(data, \"a\") == \"apple\"\n    assert json_path_lookup(data, \"b\") == \"banana\"\n    assert json_path_lookup(data, \"c\") is None\n\n    # Test with path that is a mix of keys and indices\n    data = {\"a\": [{\"b\": 1}, {\"b\": 2}]}\n    assert json_path_lookup(data, \"a.0.b\") == 1\n    assert json_path_lookup(data, \"a.1.b\") == 2\n    assert json_path_lookup(data, \"a.2.b\") is None\n    assert json_path_lookup(data, \"a.x\") is None\n\n    # Test with path that has leading/trailing dots\n    data = {\"a\": {\"b\": 1}}\n    assert json_path_lookup(data, \".a.b\") is None\n    assert json_path_lookup(data, \"a.b.\") is None\n    assert json_path_lookup(data, \".a.b.\") is None\n\n    # Test with path that is just a dot\n    assert json_path_lookup(data, \".\") is None\n    assert json_path_lookup(data, \"..\") is None\n\n    # Test with path that is empty\n    assert json_path_lookup(data, \"\") is None\n\n    # Test with path that is a single space\n    assert json_path_lookup(data, \" \") is None\n\n    # Test with path that is a mix of valid and invalid keys\n    data = {\"a\": {\"b\": 1, \"c\": 2}}\n    assert json_path_lookup(data, \"a.b.c\") is None\n    assert json_path_lookup(data, \"a.c.b\") is None\n\n    # Test with path that is a mix of valid and invalid indices\n    data = [{\"a\": 1}, {\"a\": 2}]\n    assert json_path_lookup(data, \"0.a\") == 1\n    assert json_path_lookup(data, \"1.a\") == 2\n    assert json_path_lookup(data, \"2.a\") is None\n    assert json_path_lookup(data, \"0.b\") is None\n\n    # Test with path that is a mix of valid keys and invalid indices\n    data = {\"a\": [1, 2, 3]}\n    assert json_path_lookup(data, \"a.0\") == 1\n    assert json_path_lookup(data, \"a.1\") == 2\n    assert json_path_lookup(data, \"a.2\") == 3\n    assert json_path_lookup(data, \"a.3\") is None\n    assert json_path_lookup(data, \"a.x\") is None\n\n    # Test with path that is a mix of valid indices and invalid keys\n    data = [{\"a\": 1}, {\"b\": 2}]\n    assert json_path_lookup(data, \"0.a\") == 1\n    assert json_path_lookup(data, \"1.a\") is None\n    assert json_path_lookup(data, \"0.b\") is None\n    assert json_path_lookup(data, \"1.b\") == 2\n\n    # Test with path that is a mix of valid keys and invalid keys\n    data = {\"a\": {\"b\": 1, \"c\": 2}}\n    assert json_path_lookup(data, \"a.b\") == 1\n    assert json_path_lookup(data, \"a.c\") == 2\n    assert json_path_lookup(data, \"a.d\") is None\n    assert json_path_lookup(data, \"b.c\") is None\n\n    # Test with path that is a mix of valid indices and invalid indices\n    data = [{\"a\": 1},",
           "type": "output_text",
-          "text": "import pytest\n\nfrom your_module import json_path_lookup  # Replace 'your_module' with the actual module name\n\ndef test_json_path_lookup_valid_dict_path():\n    data = {\"a\": {\"b\": {\"c\": \"value\"}}}\n    path = \"a.b.c\"\n    assert json_path_lookup(data, path) == \"value\"\n\ndef test_json_path_lookup_valid_list_path():\n    data = {\"a\": [10, 20, 30]}\n    path = \"a.1\"\n    assert json_path_lookup(data, path) == 20\n\ndef test_json_path_lookup_empty_path():\n    data = {\"a\": {\"b\": \"value\"}}\n    path = \"\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_none_data():\n    data = None\n    path = \"a.b.c\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_key_not_found():\n    data = {\"a\": {\"b\": \"value\"}}\n    path = \"a.c\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_index_out_of_range():\n    data = {\"a\": [10, 20, 30]}\n    path = \"a.5\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_invalid_index_in_list():\n    data = {\"a\": [10, 20, 30]}\n    path = \"a.one\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_non_dict_or_list():\n    data = {\"a\": \"string_value\"}\n    path = \"a.b\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_empty_dict():\n    data = {}\n    path = \"a.b.c\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_empty_list():\n    data = {\"a\": []}\n    path = \"a.0\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_nested_list():\n    data = {\"a\": [[1, 2], [3, 4]]}\n    path = \"a.1.0\"\n    assert json_path_lookup(data, path) == 3\n\ndef test_json_path_lookup_nested_list_out_of_range():\n    data = {\"a\": [[1, 2], [3, 4]]}\n    path = \"a.2.0\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_mixed_types():\n    data = {\"a\": {\"b\": [10, {\"c\": \"value\"}]}}\n    path = \"a.b.1.c\"\n    assert json_path_lookup(data, path) == \"value\"\n\ndef test_json_path_lookup_root_level_key():\n    data = {\"key\": \"value\"}\n    path = \"key\"\n    assert json_path_lookup(data, path) == \"value\"\n\ndef test_json_path_lookup_root_level_list():\n    data = [10, 20, 30]\n    path = \"1\"\n    assert json_path_lookup(data, path) == 20\n\ndef test_json_path_lookup_root_level_list_out_of_range():\n    data = [10, 20, 30]\n    path = \"5\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_root_level_list_invalid_index():\n    data = [10, 20, 30]\n    path = \"one\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_non_string_path():\n    data = {\"a\": {\"b\": \"value\"}}\n    path = None\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_nonexistent_nested_key():\n    data = {\"a\": {\"b\": {\"c\": \"value\"}}}\n    path = \"a.b.d\"\n    assert json_path_lookup(data, path) is None\n\ndef test_json_path_lookup_partial_path():\n    data = {\"a\": {\"b\": {\"c\": \"value\"}}}\n    path = \"a.b\"\n    assert json_path_lookup(data, path) == {\"c\": \"value\"}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "incomplete",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": null,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "incomplete",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 318,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 2048,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 2366
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

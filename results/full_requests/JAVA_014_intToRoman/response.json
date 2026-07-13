@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-07ab0e9f",
+  "id": "resp_081ec4395113ebdd006a54c390a9b0819882d2564282949a57",
+  "created_at": 1783939984.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_081ec4395113ebdd006a54c391313c81989381304f0c13ea9a",
       "content": [
         {
+          "annotations": [],
+          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass IntToRomanTest {\n\n    @Test\n    void testZero() {\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(0), \"Expected empty string for input 0\");\n    }\n\n    @Test\n    void testNegative() {\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(-1), \"Expected empty string for negative input\");\n    }\n\n    @Test\n    void testAboveMax() {\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(4000), \"Expected empty string for input above 3999\");\n    }\n\n    @Test\n    void testOne() {\n        assertEquals(\"I\", JAVA_014_intToRoman.intToRoman(1), \"Expected 'I' for input 1\");\n    }\n\n    @Test\n    void testFour() {\n        assertEquals(\"IV\", JAVA_014_intToRoman.intToRoman(4), \"Expected 'IV' for input 4\");\n    }\n\n    @Test\n    void testFive() {\n        assertEquals(\"V\", JAVA_014_intToRoman.intToRoman(5), \"Expected 'V' for input 5\");\n    }\n\n    @Test\n    void testNine() {\n        assertEquals(\"IX\", JAVA_014_intToRoman.intToRoman(9), \"Expected 'IX' for input 9\");\n    }\n\n    @Test\n    void testTen() {\n        assertEquals(\"X\", JAVA_014_intToRoman.intToRoman(10), \"Expected 'X' for input 10\");\n    }\n\n    @Test\n    void testForty() {\n        assertEquals(\"XL\", JAVA_014_intToRoman.intToRoman(40), \"Expected 'XL' for input 40\");\n    }\n\n    @Test\n    void testFifty() {\n        assertEquals(\"L\", JAVA_014_intToRoman.intToRoman(50), \"Expected 'L' for input 50\");\n    }\n\n    @Test\n    void testNinety() {\n        assertEquals(\"XC\", JAVA_014_intToRoman.intToRoman(90), \"Expected 'XC' for input 90\");\n    }\n\n    @Test\n    void testFourHundred() {\n        assertEquals(\"CD\", JAVA_014_intToRoman.intToRoman(400), \"Expected 'CD' for input 400\");\n    }\n\n    @Test\n    void testFiveHundred() {\n        assertEquals(\"D\", JAVA_014_intToRoman.intToRoman(500), \"Expected 'D' for input 500\");\n    }\n\n    @Test\n    void testNineHundred() {\n        assertEquals(\"CM\", JAVA_014_intToRoman.intToRoman(900), \"Expected 'CM' for input 900\");\n    }\n\n    @Test\n    void testOneThousand() {\n        assertEquals(\"M\", JAVA_014_intToRoman.intToRoman(1000), \"Expected 'M' for input 1000\");\n    }\n\n    @Test\n    void testMixedValues() {\n        assertEquals(\"MCMXCIV\", JAVA_014_intToRoman.intToRoman(1994), \"Expected 'MCMXCIV' for input 1994\");\n    }\n\n    @Test\n    void testThreeThousand() {\n        assertEquals(\"MMM\", JAVA_014_intToRoman.intToRoman(3000), \"Expected 'MMM' for input 3000\");\n    }\n\n    @Test\n    void testThreeThousandNineHundredNinetyNine() {\n        assertEquals(\"MMMCMXCIX\", JAVA_014_intToRoman.intToRoman(3999), \"Expected 'MMMCMXCIX' for input 3999\");\n    }\n}",
           "type": "output_text",
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_014_intToRomanTest {\n\n    @Test\n    void testValidInputs() {\n        assertEquals(\"I\", JAVA_014_intToRoman.intToRoman(1));\n        assertEquals(\"IV\", JAVA_014_intToRoman.intToRoman(4));\n        assertEquals(\"V\", JAVA_014_intToRoman.intToRoman(5));\n        assertEquals(\"IX\", JAVA_014_intToRoman.intToRoman(9));\n        assertEquals(\"X\", JAVA_014_intToRoman.intToRoman(10));\n        assertEquals(\"XL\", JAVA_014_intToRoman.intToRoman(40));\n        assertEquals(\"L\", JAVA_014_intToRoman.intToRoman(50));\n        assertEquals(\"XC\", JAVA_014_intToRoman.intToRoman(90));\n        assertEquals(\"C\", JAVA_014_intToRoman.intToRoman(100));\n        assertEquals(\"CD\", JAVA_014_intToRoman.intToRoman(400));\n        assertEquals(\"D\", JAVA_014_intToRoman.intToRoman(500));\n        assertEquals(\"CM\", JAVA_014_intToRoman.intToRoman(900));\n        assertEquals(\"M\", JAVA_014_intToRoman.intToRoman(1000));\n        assertEquals(\"MMMCMXCIX\", JAVA_014_intToRoman.intToRoman(3999));\n    }\n\n    @Test\n    void testBoundaryValues() {\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(0)); // Below minimum valid input\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(-1)); // Negative input\n        assertEquals(\"\", JAVA_014_intToRoman.intToRoman(4000)); // Above maximum valid input\n    }\n\n    @Test\n    void testComplexNumbers() {\n        assertEquals(\"MMMDXLIX\", JAVA_014_intToRoman.intToRoman(3549));\n        assertEquals(\"MMCCCLXXXVIII\", JAVA_014_intToRoman.intToRoman(2388));\n        assertEquals(\"CDXLIV\", JAVA_014_intToRoman.intToRoman(444));\n        assertEquals(\"DCCCXC\", JAVA_014_intToRoman.intToRoman(890));\n    }\n\n    @Test\n    void testEdgeCases() {\n        assertEquals(\"MMM\", JAVA_014_intToRoman.intToRoman(3000)); // Maximum valid number with repeated symbols\n        assertEquals(\"I\", JAVA_014_intToRoman.intToRoman(1)); // Minimum valid number\n        assertEquals(\"MM\", JAVA_014_intToRoman.intToRoman(2000)); // Multiple of 1000\n        assertEquals(\"CC\", JAVA_014_intToRoman.intToRoman(200)); // Multiple of 100\n        assertEquals(\"XX\", JAVA_014_intToRoman.intToRoman(20)); // Multiple of 10\n        assertEquals(\"II\", JAVA_014_intToRoman.intToRoman(2)); // Multiple of 1\n    }\n}"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939995.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 397,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 781,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1178
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

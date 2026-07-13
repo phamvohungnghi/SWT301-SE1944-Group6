@@ -1,16 +1,96 @@
 {
-  "id": "mock-github-2c64e1fa",
+  "id": "resp_0a9cf0e1aa38b59a006a54c23ebe4c819b80a4760b8bcd62b5",
+  "created_at": 1783939646.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-4o-mini-2024-07-18",
   "object": "response",
-  "model": "gpt-4o",
   "output": [
     {
-      "type": "message",
+      "id": "msg_0a9cf0e1aa38b59a006a54c23f4c34819b829423dbb4b6a31d",
       "content": [
         {
+          "annotations": [],
+          "text": "import pytest\n\ndef test_knapsack_01():\n    # Test case 1: Basic test with a few items\n    weights = [1, 2, 3]\n    values = [10, 15, 40]\n    capacity = 6\n    assert knapsack_01(weights, values, capacity) == 55\n\n    # Test case 2: Exact fit\n    weights = [1, 2, 3]\n    values = [10, 15, 40]\n    capacity = 3\n    assert knapsack_01(weights, values, capacity) == 25\n\n    # Test case 3: No items\n    weights = []\n    values = []\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 4: Capacity is zero\n    weights = [1, 2, 3]\n    values = [10, 15, 40]\n    capacity = 0\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 5: Weights and values length mismatch\n    weights = [1, 2]\n    values = [10]\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 6: All items too heavy\n    weights = [10, 20, 30]\n    values = [60, 100, 120]\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 7: Single item fits\n    weights = [5]\n    values = [10]\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 10\n\n    # Test case 8: Single item too heavy\n    weights = [10]\n    values = [10]\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 9: Multiple items, some fit\n    weights = [1, 2, 3, 8]\n    values = [20, 5, 10, 40]\n    capacity = 9\n    assert knapsack_01(weights, values, capacity) == 65\n\n    # Test case 10: Large capacity with small items\n    weights = [1, 2, 3]\n    values = [10, 15, 40]\n    capacity = 100\n    assert knapsack_01(weights, values, capacity) == 65\n\n    # Test case 11: Large values and weights\n    weights = [10, 20, 30]\n    values = [60, 100, 120]\n    capacity = 50\n    assert knapsack_01(weights, values, capacity) == 220\n\n    # Test case 12: Edge case with negative capacity\n    weights = [1, 2, 3]\n    values = [10, 15, 40]\n    capacity = -5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 13: Edge case with empty weights and non-empty values\n    weights = []\n    values = [10, 15, 40]\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 14: Edge case with empty values and non-empty weights\n    weights = [1, 2, 3]\n    values = []\n    capacity = 5\n    assert knapsack_01(weights, values, capacity) == 0\n\n    # Test case 15: Large input test\n    weights = list(range(1, 101))\n    values = list(range(1, 101))\n    capacity = 100\n    assert knapsack_01(weights, values, capacity) == 5050",
           "type": "output_text",
-          "text": "import pytest\n\nfrom production_code import knapsack_01\n\ndef test_knapsack_01_empty_weights_and_values():\n    assert knapsack_01([], [], 10) == 0\n\ndef test_knapsack_01_zero_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 0) == 0\n\ndef test_knapsack_01_weights_values_length_mismatch():\n    assert knapsack_01([1, 2], [10], 10) == 0\n\ndef test_knapsack_01_negative_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], -5) == 0\n\ndef test_knapsack_01_single_item_fits():\n    assert knapsack_01([5], [10], 5) == 10\n\ndef test_knapsack_01_single_item_does_not_fit():\n    assert knapsack_01([10], [20], 5) == 0\n\ndef test_knapsack_01_multiple_items_exact_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 6) == 60\n\ndef test_knapsack_01_multiple_items_partial_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 5) == 50\n\ndef test_knapsack_01_multiple_items_no_fit():\n    assert knapsack_01([5, 6, 7], [10, 20, 30], 4) == 0\n\ndef test_knapsack_01_large_capacity():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 100) == 60\n\ndef test_knapsack_01_large_weights():\n    assert knapsack_01([100, 200, 300], [10, 20, 30], 50) == 0\n\ndef test_knapsack_01_large_values():\n    assert knapsack_01([1, 2, 3], [1000, 2000, 3000], 5) == 5000\n\ndef test_knapsack_01_duplicate_items():\n    assert knapsack_01([1, 1, 1], [10, 10, 10], 2) == 20\n\ndef test_knapsack_01_zero_weights():\n    assert knapsack_01([0, 0, 0], [10, 20, 30], 10) == 60\n\ndef test_knapsack_01_zero_values():\n    assert knapsack_01([1, 2, 3], [0, 0, 0], 10) == 0\n\ndef test_knapsack_01_mixed_weights_and_values():\n    assert knapsack_01([1, 3, 4, 5], [10, 40, 50, 70], 7) == 90\n\ndef test_knapsack_01_minimal_input():\n    assert knapsack_01([1], [1], 1) == 1\n\ndef test_knapsack_01_large_input():\n    weights = [i for i in range(1, 101)]\n    values = [i * 10 for i in range(1, 101)]\n    capacity = 50\n    assert knapsack_01(weights, values, capacity) == 12750\n\ndef test_knapsack_01_edge_case_capacity_equals_weight():\n    assert knapsack_01([5, 10, 15], [10, 20, 30], 15) == 30\n\ndef test_knapsack_01_edge_case_capacity_one_less_than_weight():\n    assert knapsack_01([5, 10, 15], [10, 20, 30], 14) == 20\n\ndef test_knapsack_01_edge_case_all_items_fit():\n    assert knapsack_01([1, 2, 3], [10, 20, 30], 6) == 60\n\ndef test_knapsack_01_edge_case_no_items():\n    assert knapsack_01([], [], 0) == 0"
+          "logprobs": []
         }
-      ]
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message",
+      "phase": null
     }
-  ]
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 0.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "completed_at": 1783939658.0,
+  "conversation": null,
+  "max_output_tokens": 2048,
+  "max_tool_calls": null,
+  "moderation": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 357,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 830,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1187
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true,
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  }
 }

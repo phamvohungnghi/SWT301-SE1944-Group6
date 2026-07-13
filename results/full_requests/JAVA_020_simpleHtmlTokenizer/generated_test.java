@@ -1,94 +1,73 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class SimpleHtmlTokenizerTest {
+class SimpleHtmlTokenizerTest {
 
     @Test
-    public void testNullInput() {
+    void testNullInput() {
         List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer(null);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.isEmpty(), "Expected empty list for null input");
     }
 
     @Test
-    public void testEmptyString() {
+    void testEmptyString() {
         List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("");
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
+        assertTrue(result.isEmpty(), "Expected empty list for empty string");
     }
 
     @Test
-    public void testOnlyText() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("Hello World");
-        assertEquals(1, result.size());
-        assertArrayEquals(new String[]{"TEXT", "Hello World"}, result.get(0));
+    void testSingleTag() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<tag>");
+        assertEquals(1, result.size(), "Expected one token for single tag");
+        assertArrayEquals(new String[]{"TAG", "<tag>"}, result.get(0), "Token mismatch for single tag");
     }
 
     @Test
-    public void testOnlyTag() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div>");
-        assertEquals(1, result.size());
-        assertArrayEquals(new String[]{"TAG", "<div>"}, result.get(0));
+    void testTextBeforeTag() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("Hello <tag>");
+        assertEquals(2, result.size(), "Expected two tokens for text before tag");
+        assertArrayEquals(new String[]{"TEXT", "Hello "}, result.get(0), "Token mismatch for text before tag");
+        assertArrayEquals(new String[]{"TAG", "<tag>"}, result.get(1), "Token mismatch for tag");
     }
 
     @Test
-    public void testTextFollowedByTag() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("Hello<div>");
-        assertEquals(2, result.size());
-        assertArrayEquals(new String[]{"TEXT", "Hello"}, result.get(0));
-        assertArrayEquals(new String[]{"TAG", "<div>"}, result.get(1));
+    void testTextAfterTag() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<tag> World");
+        assertEquals(2, result.size(), "Expected two tokens for tag followed by text");
+        assertArrayEquals(new String[]{"TAG", "<tag>"}, result.get(0), "Token mismatch for tag");
+        assertArrayEquals(new String[]{"TEXT", " World"}, result.get(1), "Token mismatch for text after tag");
     }
 
     @Test
-    public void testTagFollowedByText() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div>Hello");
-        assertEquals(2, result.size());
-        assertArrayEquals(new String[]{"TAG", "<div>"}, result.get(0));
-        assertArrayEquals(new String[]{"TEXT", "Hello"}, result.get(1));
+    void testMultipleTags() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<tag1>Text1<tag2>Text2</tag2>");
+        assertEquals(4, result.size(), "Expected four tokens for multiple tags and text");
+        assertArrayEquals(new String[]{"TAG", "<tag1>"}, result.get(0), "Token mismatch for first tag");
+        assertArrayEquals(new String[]{"TEXT", "Text1"}, result.get(1), "Token mismatch for first text");
+        assertArrayEquals(new String[]{"TAG", "<tag2>"}, result.get(2), "Token mismatch for second tag");
+        assertArrayEquals(new String[]{"TEXT", "Text2"}, result.get(3), "Token mismatch for second text");
     }
 
     @Test
-    public void testMultipleTagsAndText() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div>Hello</div>World");
-        assertEquals(4, result.size());
-        assertArrayEquals(new String[]{"TAG", "<div>"}, result.get(0));
-        assertArrayEquals(new String[]{"TEXT", "Hello"}, result.get(1));
-        assertArrayEquals(new String[]{"TAG", "</div>"}, result.get(2));
-        assertArrayEquals(new String[]{"TEXT", "World"}, result.get(3));
+    void testUnclosedTag() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<tag>");
+        assertEquals(1, result.size(), "Expected one token for unclosed tag");
+        assertArrayEquals(new String[]{"TAG", "<tag>"}, result.get(0), "Token mismatch for unclosed tag");
     }
 
     @Test
-    public void testUnclosedTag() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div");
-        assertEquals(1, result.size());
-        assertArrayEquals(new String[]{"TEXT", "<div"}, result.get(0));
+    void testTextOnly() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("Just some text.");
+        assertEquals(1, result.size(), "Expected one token for text only");
+        assertArrayEquals(new String[]{"TEXT", "Just some text."}, result.get(0), "Token mismatch for text only");
     }
 
     @Test
-    public void testTextWithUnclosedTag() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("Hello<div");
-        assertEquals(2, result.size());
-        assertArrayEquals(new String[]{"TEXT", "Hello"}, result.get(0));
-        assertArrayEquals(new String[]{"TEXT", "<div"}, result.get(1));
-    }
-
-    @Test
-    public void testTagWithAttributes() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div class=\"test\">");
-        assertEquals(1, result.size());
-        assertArrayEquals(new String[]{"TAG", "<div class=\"test\">"}, result.get(0));
-    }
-
-    @Test
-    public void testComplexHtml() {
-        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<div>Hello<span>World</span></div>");
-        assertEquals(6, result.size());
-        assertArrayEquals(new String[]{"TAG", "<div>"}, result.get(0));
-        assertArrayEquals(new String[]{"TEXT", "Hello"}, result.get(1));
-        assertArrayEquals(new String[]{"TAG", "<span>"}, result.get(2));
-        assertArrayEquals(new String[]{"TEXT", "World"}, result.get(3));
-        assertArrayEquals(new String[]{"TAG", "</span>"}, result.get(4));
-        assertArrayEquals(new String[]{"TAG", "</div>"}, result.get(5));
+    void testTagsWithNoText() {
+        List<String[]> result = JAVA_020_simpleHtmlTokenizer.simpleHtmlTokenizer("<tag1><tag2>");
+        assertEquals(2, result.size(), "Expected two tokens for tags with no text");
+        assertArrayEquals(new String[]{"TAG", "<tag1>"}, result.get(0), "Token mismatch for first tag");
+        assertArrayEquals(new String[]{"TAG", "<tag2>"}, result.get(1), "Token mismatch for second tag");
     }
 }

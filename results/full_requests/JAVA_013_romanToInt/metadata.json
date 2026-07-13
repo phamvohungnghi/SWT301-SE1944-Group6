@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_013_romanToInt",
-  "started_at_utc": "2026-07-01T05:58:52.330357+00:00",
-  "finished_at_utc": "2026-07-01T05:58:57.396857+00:00",
-  "response_id": "mock-github-4603f99f",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:52:53.877421+00:00",
+  "finished_at_utc": "2026-07-13T10:53:04.945658+00:00",
+  "response_id": "resp_03ae703fa2227d2c006a54c3858c14819a8e0b4d60b80aabdb",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "15a2c3da79451a7065727095f5710ae7ca18483ff94a32dcddce9fab5c509f7b",
   "source_sha256": "6ceae07b135ce7d4fac05f6b8e274b6a1197e3c9cc87d7e6ca1814669bc1bc6d",
   "sdk_version": "2.43.0"

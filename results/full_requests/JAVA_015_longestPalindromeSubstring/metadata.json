@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_015_longestPalindromeSubstring",
-  "started_at_utc": "2026-07-01T05:59:02.966100+00:00",
-  "finished_at_utc": "2026-07-01T05:59:09.328558+00:00",
-  "response_id": "mock-github-bf7f0981",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:53:16.537416+00:00",
+  "finished_at_utc": "2026-07-13T10:53:24.427249+00:00",
+  "response_id": "resp_0d6a6d2fc069fdef006a54c39c36dc8198a367dc6b873dbcfb",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "562aa623affc2177d48038d725f888bdafb503e733ab206646b6abcee2eccec8",
   "source_sha256": "5dc26648207a2cf5c5da102e398ab3122fbf2d29511127e2dc4403b1befe3599",
   "sdk_version": "2.43.0"

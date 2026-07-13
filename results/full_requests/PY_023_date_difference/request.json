@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini-2024-07-18",
   "input": [
     {
       "role": "system",
@@ -10,7 +10,6 @@
       "content": "Language: python\nTest framework: pytest\nProduction unit identifier: PY_023_date_difference\n\nTask: Write a comprehensive unit test suite for the production unit below.\nRequirements:\n1. The test file must compile/run with the pinned project fixture.\n2. Maximize branch coverage of the target unit.\n3. Include assertions that can detect logical faults, including boundary and exceptional cases supported by the code.\n4. Do not change the production unit.\n5. Return only the complete test source file, without Markdown fences or explanation.\n\nProduction context required to compile the unit:\n(none)\n\nTarget production unit:\ndef date_difference(date1, date2):\n    if date1 is None or date2 is None:\n        return -1\n    try:\n        p1 = date1.split('-')\n        p2 = date2.split('-')\n        if len(p1) != 3 or len(p2) != 3:\n            return -1\n        y1, m1, d1 = map(int, p1)\n        y2, m2, d2 = map(int, p2)\n\n        ny1, nm1 = y1, m1\n        if nm1 < 3:\n            ny1 -= 1\n            nm1 += 12\n        days1 = 365 * ny1 + ny1 // 4 - ny1 // 100 + ny1 // 400 + (153 * nm1 + 2) // 5 + d1\n\n        ny2, nm2 = y2, m2\n        if nm2 < 3:\n            ny2 -= 1\n            nm2 += 12\n        days2 = 365 * ny2 + ny2 // 4 - ny2 // 100 + ny2 // 400 + (153 * nm2 + 2) // 5 + d2\n\n        return abs(days1 - days2)\n    except Exception:\n        return -1\n"
     }
   ],
-  "temperature": 0.2,
-  "top_p": 1.0,
+  "temperature": 0.0,
   "max_output_tokens": 2048
 }

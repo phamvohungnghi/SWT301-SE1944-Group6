@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_002_binarySearch",
-  "started_at_utc": "2026-07-01T05:40:01.832092+00:00",
-  "finished_at_utc": "2026-07-01T05:40:06.876233+00:00",
-  "response_id": "mock-github-cd1b97b1",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:44:03.181843+00:00",
+  "finished_at_utc": "2026-07-13T10:44:10.901007+00:00",
+  "response_id": "resp_0ee0078332a739fb006a54c172d93c819b9ed26cd35afb99a1",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "12fb7d88b89c57e9e4dd1cd0299a240b0e41286774ab25ff49bb1058112db20b",
   "source_sha256": "ecbfe609739ed007dfbec02f533c991670fcaa8631627c037d6d84f3daa76460",
   "sdk_version": "2.43.0"

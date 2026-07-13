@@ -1,9 +1,9 @@
 {
   "unit_id": "JAVA_006_validatePassword",
-  "started_at_utc": "2026-07-01T05:58:09.302040+00:00",
-  "finished_at_utc": "2026-07-01T05:58:14.117355+00:00",
-  "response_id": "mock-github-bfa5c82a",
-  "response_model": "gpt-4o",
+  "started_at_utc": "2026-07-13T10:51:36.400318+00:00",
+  "finished_at_utc": "2026-07-13T10:51:44.492791+00:00",
+  "response_id": "resp_0695f2bbd42286ea006a54c33812c4819aaf5e27051d8c3ac9",
+  "response_model": "gpt-4o-mini-2024-07-18",
   "prompt_sha256": "24dfdbd3951bb6ace916a11d83f1239b779fe3bf610137fd417ba4cd996799fb",
   "source_sha256": "f68d64c886753dbaed161f1ba0c3376db6620216fd0e5a87a26d4543a4b73b9b",
   "sdk_version": "2.43.0"
