@@ -14,3 +14,7 @@ target/
 ~$*
 .agents/
 .codex/
+.coverage
+coverage.json
+scratch/
+.papers/

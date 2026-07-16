@@ -1,0 +1,26 @@
+unit_id,symbol,cc,executability,mutants_generated,mutants_killed,mutants_invalid,mutation_score,status,notes
+PY_001_bubble_sort,bubble_sort,6,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_002_binary_search,binary_search,5,EXECUTABLE,2,NA,0,NA,EXECUTABLE,"Base test suite failed on unmutated code, mutagen aborted"
+PY_003_is_valid_email,is_valid_email,13,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_004_merge_intervals,merge_intervals,7,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_005_calculate_tax,calculate_tax,8,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_006_validate_password,validate_password,11,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_007_evaluate_rpn,evaluate_rpn,12,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_008_knapsack_01,knapsack_01,9,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_009_json_path_lookup,json_path_lookup,9,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_010_run_length_encoding,run_length_encoding,6,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_011_run_length_decoding,run_length_decoding,7,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_012_check_sudoku_board,check_sudoku_board,14,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_013_roman_to_int,roman_to_int,6,NON_EXECUTABLE,NA,NA,NA,NA,TEST_RUNTIME_ERROR,Syntax error in the generated test file
+PY_014_int_to_roman,int_to_roman,5,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_015_longest_palindrome_substring,longest_palindrome_substring,11,EXECUTABLE,2,NA,0,NA,EXECUTABLE,"Base test suite failed on unmutated code, mutagen aborted"
+PY_016_parse_csv_line,parse_csv_line,9,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_017_levenshtein_distance,levenshtein_distance,9,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_018_find_prime_factors,find_prime_factors,6,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_019_luhn_check,luhn_check,6,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_020_simple_html_tokenizer,simple_html_tokenizer,9,NON_EXECUTABLE,NA,NA,NA,NA,TEST_RUNTIME_ERROR,Syntax error in the generated test file
+PY_021_dijkstra,dijkstra,13,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_022_parse_query_string,parse_query_string,8,EXECUTABLE,2,NA,0,NA,EXECUTABLE,"Base test suite failed on unmutated code, mutagen aborted"
+PY_023_date_difference,date_difference,8,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_024_is_valid_bst,is_valid_bst,13,EXECUTABLE,0,0,0,NA,EXECUTABLE,No mutants defined for this function
+PY_025_is_match,is_match,10,NON_EXECUTABLE,NA,NA,NA,NA,TEST_RUNTIME_ERROR,Syntax error in the generated test file
