@@ -17,3 +17,4 @@ target/
 .coverage
 coverage.json
 scratch/
+.papers/
