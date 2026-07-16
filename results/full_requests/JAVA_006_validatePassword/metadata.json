@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_006_validatePassword",
-  "started_at_utc": "2026-07-13T10:51:36.400318+00:00",
-  "finished_at_utc": "2026-07-13T10:51:44.492791+00:00",
-  "response_id": "resp_0695f2bbd42286ea006a54c33812c4819aaf5e27051d8c3ac9",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "24dfdbd3951bb6ace916a11d83f1239b779fe3bf610137fd417ba4cd996799fb",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:02:20.527413+00:00",
+  "finished_at_utc": "2026-07-16T09:02:28.699258+00:00",
+  "response_id": "openai-f52cc241dd38",
+  "prompt_sha256": "d4fcbadd1d05f6c506fcc77d4a86ed0d3fd38262a71d4fa393c25914c1c0a5d0",
   "source_sha256": "f68d64c886753dbaed161f1ba0c3376db6620216fd0e5a87a26d4543a4b73b9b",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6244,
+    "output_tokens": 493,
+    "total_tokens": 6737
+  }
 }

@@ -1,96 +1,18 @@
 {
-  "id": "resp_011420d72e13b656006a54c209e004819a8a03a2a0c76d5a37",
-  "created_at": 1783939593.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-ad5365fde60c",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_011420d72e13b656006a54c20a62b0819aae7e952f8964002d",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\n\nfrom your_module import bubble_sort  # Replace 'your_module' with the actual module name\n\ndef test_bubble_sort_normal_case():\n    assert bubble_sort([64, 34, 25, 12, 22, 11, 90]) == [11, 12, 22, 25, 34, 64, 90]\n\ndef test_bubble_sort_already_sorted():\n    assert bubble_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]\n\ndef test_bubble_sort_reverse_sorted():\n    assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]\n\ndef test_bubble_sort_empty():\n    assert bubble_sort([]) == []\n\ndef test_bubble_sort_single_element():\n    assert bubble_sort([42]) == [42]\n\ndef test_bubble_sort_none():\n    assert bubble_sort(None) is None\n\ndef test_bubble_sort_negative_numbers():\n    assert bubble_sort([-1, -3, -2, 0, 2, 1]) == [-3, -2, -1, 0, 1, 2]\n\ndef test_bubble_sort_floats():\n    assert bubble_sort([1.1, 2.2, 0.5, 3.3]) == [0.5, 1.1, 2.2, 3.3]\n\ndef test_bubble_sort_duplicates():\n    assert bubble_sort([3, 1, 2, 3, 2, 1]) == [1, 1, 2, 2, 3, 3]\n\ndef test_bubble_sort_large_numbers():\n    assert bubble_sort([1000000, 500000, 10000000, 0]) == [0, 500000, 1000000, 10000000]\n\ndef test_bubble_sort_large_array():\n    assert bubble_sort(list(range(1000, 0, -1))) == list(range(1, 1001))",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import pytest\nfrom python_functions import bubble_sort\n\ndef test_bubble_sort_normal_cases():\n    assert bubble_sort([5, 2, 9, 1, 5, 6]) == [1, 2, 5, 5, 6, 9]\n    assert bubble_sort([3, 0, 2, 5, -1, 4, 1]) == [-1, 0, 1, 2, 3, 4, 5]\n    assert bubble_sort([1]) == [1]\n    assert bubble_sort([]) == []\n\ndef test_bubble_sort_edge_cases():\n    assert bubble_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]  # Already sorted\n    assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]  # Reverse sorted\n    assert bubble_sort([1, 1, 1, 1]) == [1, 1, 1, 1]  # All elements the same\n\ndef test_bubble_sort_none_input():\n    assert bubble_sort(None) is None\n\ndef test_bubble_sort_large_numbers():\n    assert bubble_sort([1000000, 500000, 0, -1000000]) == [-1000000, 0, 500000, 1000000]\n\ndef test_bubble_sort_floats():\n    assert bubble_sort([1.1, 2.2, 0.5, 3.3]) == [0.5, 1.1, 2.2, 3.3]\n\ndef test_bubble_sort_negative_numbers():\n    assert bubble_sort([-1, -3, -2, -5, 0]) == [-5, -3, -2, -1, 0]"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939599.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 290,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 447,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 737
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4457,
+    "output_tokens": 410,
+    "total_tokens": 4867
   }
 }

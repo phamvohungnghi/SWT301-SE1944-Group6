@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_020_simpleHtmlTokenizer",
-  "started_at_utc": "2026-07-13T10:53:58.670801+00:00",
-  "finished_at_utc": "2026-07-13T10:54:11.145942+00:00",
-  "response_id": "resp_04136f6eafcb1e31006a54c3c65a14819bb9faefae91d0802a",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "ca8e619faef936a99bac788c34d7fc30cbb243609b47c613aa1698aef5349c23",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:05:43.742690+00:00",
+  "finished_at_utc": "2026-07-16T09:06:01.269259+00:00",
+  "response_id": "openai-1034ecd88266",
+  "prompt_sha256": "906ad5ae5f88b16aaced4cb04f9ec3301313b951fbd8b9ac79189a34ed03474c",
   "source_sha256": "dd666c07b76151355cf1bec5ec05bb5ddfeba24ae5fbcf9424217c682cb0d4d4",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6269,
+    "output_tokens": 1003,
+    "total_tokens": 7272
+  }
 }

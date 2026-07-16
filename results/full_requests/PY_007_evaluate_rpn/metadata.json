@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_007_evaluate_rpn",
-  "started_at_utc": "2026-07-13T10:47:18.353012+00:00",
-  "finished_at_utc": "2026-07-13T10:47:27.073943+00:00",
-  "response_id": "resp_0cd7f425e121ad1f006a54c2360628819b908d055c56ab155b",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "412ef2d59f561acdf9a8136d9946f933a14eb2aa09a1bb0f507c9646b7721e15",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:54:58.035831+00:00",
+  "finished_at_utc": "2026-07-16T08:55:06.115311+00:00",
+  "response_id": "openai-a047c4059b18",
+  "prompt_sha256": "d1587dff90afe4388722f4267c376cdc49ed0dc5d18261a570cfa8c73bb4d3c5",
   "source_sha256": "6d35a19dae8fbc57bcc2b6f53ba6248ef05de128592b0ddaefb4396402cf2c8c",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4539,
+    "output_tokens": 616,
+    "total_tokens": 5155
+  }
 }

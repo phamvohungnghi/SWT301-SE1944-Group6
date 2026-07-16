@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_017_levenshtein_distance",
-  "started_at_utc": "2026-07-13T10:43:56.051521+00:00",
-  "finished_at_utc": "2026-07-13T10:44:03.164913+00:00",
-  "response_id": "resp_0baccb2cb4c123f7006a54c16bba6c819bad9434f2d866888b",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "95c2774dbabe8447310f69677ef0cd8d03ed8b7b91d4138f0230f067ee4a46b2",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:45:58.300564+00:00",
+  "finished_at_utc": "2026-07-16T08:46:08.112187+00:00",
+  "response_id": "openai-6aa40b153d3d",
+  "prompt_sha256": "6ecde59b12354618d4450918d44ba68d834fb010f749a89c9123fd82fcdf71b4",
   "source_sha256": "7a976d4c49bb78f5c834df893f5dc2b3ec806687ac2d60a3a4cbaa8ab319c5e1",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4574,
+    "output_tokens": 410,
+    "total_tokens": 4984
+  }
 }

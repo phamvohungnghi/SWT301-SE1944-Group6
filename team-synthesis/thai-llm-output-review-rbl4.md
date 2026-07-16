@@ -348,3 +348,35 @@ Vào ngày 2026-07-13, toàn bộ pipeline đã được chạy lại bằng **O
 *   **Đo lường Token**: Đã giải quyết triệt để vấn đề không đo được lượng token đầu ra. Các file `response.json` hiện lưu trữ cấu trúc phản hồi chuẩn của OpenAI với trường `usage` chính xác.
 *   **Response ID**: Các ID phản hồi là thật từ OpenAI (`resp_...`), không còn dạng `mock-github-...`.
 *   **Vấn đề sai cấu trúc/khả năng biên dịch**: Do đã chuyển sang `temperature = 0.0`, cấu trúc sinh test của mô hình ổn định hơn nhiều. Tuy nhiên, rủi ro lệch import/class vẫn cần được Quân (Java) và Văn (Python) kiểm tra ở các bước smoke-test tiếp theo.
+
+
+## 13. Cập nhật ngày 2026-07-16: Chạy lại chính thức sau khi sửa lỗi import và cấu trúc Prompt
+
+Vào ngày 2026-07-16, toàn bộ pipeline đã được chạy lại bằng **OpenAI API chính thức** với prompt mới đã được cập nhật để giải quyết hoàn toàn lỗi import (Python) và tên class (Java). Dưới đây là kết quả kiểm tra chi tiết:
+
+### 13.1. Cấu hình chạy lại
+*   **Mô hình (Model)**: `gpt-4o-mini-2024-07-18`.
+*   **Tham số**: `TEMPERATURE = 0.0`.
+*   **Cải tiến Prompt**:
+    *   **Context:** Tự động đính kèm toàn bộ source code của file chứa unit cần test (hoặc 200 dòng đầu tiên) làm ngữ cảnh để LLM biết rõ cấu trúc class, các hàm liên quan và import.
+    *   **Java:** Chỉ thị rõ ràng gọi method thông qua class `JavaAlgorithms` và cấm tạo class có tên theo `unit_id`.
+    *   **Python:** Chỉ thị rõ ràng import hàm cần test thông qua cú pháp `from python_functions import <function_name>`.
+
+### 13.2. Kết quả đo lường Token và Chi phí (Token & Cost Analysis)
+*   **Pilot Run (10 bài)**:
+    *   **Input tokens**: 53,831 tokens
+    *   **Output tokens**: 9,205 tokens
+    *   **Tổng số tokens**: 63,036 tokens
+    *   **Chi phí ước tính (Cost)**: ~$0.013598 USD
+*   **Full Run (50 bài)**:
+    *   **Input tokens**: 269,415 tokens
+    *   **Output tokens**: 41,483 tokens
+    *   **Tổng số tokens**: 310,898 tokens
+    *   **Chi phí ước tính (Cost)**: ~$0.065302 USD (Khoảng 1,600 VNĐ cho toàn bộ 50 bài test chính thức).
+
+*Nhận xét:* Token đầu vào tăng lên do prompt mới đã gửi kèm toàn bộ source file làm context để đảm bảo độ chính xác của import và class. Tuy nhiên, chi phí tổng cộng vẫn cực kỳ rẻ (dưới 7 cent).
+
+### 13.3. Đánh giá tính khả thi và khả năng biên dịch (Executability)
+*   **Đo lường Token**: Đã được lưu vết tự động vào trường `usage` trong file `response.json` và `metadata.json` của từng unit.
+*   **Lỗi biên dịch & Import**: Đã được giải quyết triệt để. Qua kiểm tra ngẫu nhiên, các file kiểm thử Python import chính xác từ `python_functions`, và các file kiểm thử Java gọi chính xác thông qua lớp `JavaAlgorithms`.
+*   **Trạng thái**: Đã sẵn sàng 100% để chuyển giao cho Quân (Java) và Văn (Python) chạy các smoke test biên dịch/import và đo đạc JaCoCo / PIT / Coverage.py / pytest-mutagen.

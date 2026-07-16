@@ -1,96 +1,18 @@
 {
-  "id": "resp_04b6ce0f43e523a6006a54c363313c8198b7fd4d82e61c8e93",
-  "created_at": 1783939939.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-7b9df08664ec",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_04b6ce0f43e523a6006a54c363a08881988455ac2097c601b4",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass RunLengthDecodingTest {\n\n    @Test\n    void testNullInput() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(null));\n    }\n\n    @Test\n    void testEmptyInput() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"\"));\n    }\n\n    @Test\n    void testSingleCharacter() {\n        assertEquals(\"a\", JAVA_011_runLengthDecoding.runLengthDecoding(\"1a\"));\n    }\n\n    @Test\n    void testMultipleCharacters() {\n        assertEquals(\"aa\", JAVA_011_runLengthDecoding.runLengthDecoding(\"2a\"));\n        assertEquals(\"aaa\", JAVA_011_runLengthDecoding.runLengthDecoding(\"3a\"));\n    }\n\n    @Test\n    void testDifferentCharacters() {\n        assertEquals(\"aabb\", JAVA_011_runLengthDecoding.runLengthDecoding(\"2a2b\"));\n        assertEquals(\"aaabbb\", JAVA_011_runLengthDecoding.runLengthDecoding(\"3a3b\"));\n    }\n\n    @Test\n    void testInvalidInputStartsWithCharacter() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"a2b\"));\n    }\n\n    @Test\n    void testInvalidInputWithLeadingZero() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"02a\"));\n    }\n\n    @Test\n    void testInvalidInputWithNonDigit() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"1a2b3c4d5e6f7g8h9i0j\"));\n    }\n\n    @Test\n    void testInputWithNoCharacters() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"1\"));\n    }\n\n    @Test\n    void testInputWithCountZero() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"0a\"));\n    }\n\n    @Test\n    void testInputWithLargeCount() {\n        assertEquals(\"a\", JAVA_011_runLengthDecoding.runLengthDecoding(\"1000000a\").substring(0, 1));\n    }\n\n    @Test\n    void testInputWithMultipleCounts() {\n        assertEquals(\"aaabbbccc\", JAVA_011_runLengthDecoding.runLengthDecoding(\"3a3b3c\"));\n    }\n\n    @Test\n    void testInputWithInvalidCount() {\n        assertEquals(\"\", JAVA_011_runLengthDecoding.runLengthDecoding(\"1a1b1c1d1e1f1g1h1i1j1k1l1m1n1o1p1q1r1s1t1u1v1w1x1y1z1\"));\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testRunLengthDecoding_ValidInput() {\n        assertEquals(\"aaabb\", JavaAlgorithms.runLengthDecoding(\"3a2b\"));\n        assertEquals(\"cccc\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n        assertEquals(\"xxyyy\", JavaAlgorithms.runLengthDecoding(\"2x3y\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_EmptyString() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_NullInput() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(null));\n    }\n\n    @Test\n    public void testRunLengthDecoding_InvalidCharacter() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2b4c1d!\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2b4c1d#\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_NonDigitStart() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"a3b2\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"b4c1d\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_MissingCharacterAfterCount() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_ConsecutiveDigits() {\n        assertEquals(\"aaa\", JavaAlgorithms.runLengthDecoding(\"3a\"));\n        assertEquals(\"bb\", JavaAlgorithms.runLengthDecoding(\"2b\"));\n        assertEquals(\"cccc\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_LargeCounts() {\n        assertEquals(\"a\", JavaAlgorithms.runLengthDecoding(\"1a\"));\n        assertEquals(\"bbbb\", JavaAlgorithms.runLengthDecoding(\"4b\"));\n        assertEquals(\"cccccccccc\", JavaAlgorithms.runLengthDecoding(\"10c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_ComplexValidInput() {\n        assertEquals(\"aaabbbcccc\", JavaAlgorithms.runLengthDecoding(\"3a3b4c\"));\n        assertEquals(\"xyzxyz\", JavaAlgorithms.runLengthDecoding(\"3x2y2z\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_OnlyDigits() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"12345\"));\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939947.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 379,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 598,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 977
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6237,
+    "output_tokens": 554,
+    "total_tokens": 6791
   }
 }

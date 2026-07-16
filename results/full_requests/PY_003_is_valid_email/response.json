@@ -1,96 +1,18 @@
 {
-  "id": "resp_0768dd36b49a5641006a54c218751c819b90e089090797a17d",
-  "created_at": 1783939608.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-2ec595636d14",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0768dd36b49a5641006a54c219021c819b9d6e637ecd92beb7",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\n\nfrom your_module import is_valid_email  # Adjust the import based on your module structure\n\ndef test_valid_email():\n    assert is_valid_email(\"test@example.com\") == True\n    assert is_valid_email(\"user.name+tag+sorting@example.com\") == True\n    assert is_valid_email(\"user-name@example.co.uk\") == True\n\ndef test_invalid_email_no_at_symbol():\n    assert is_valid_email(\"test.example.com\") == False\n\ndef test_invalid_email_no_dot():\n    assert is_valid_email(\"test@com\") == False\n\ndef test_invalid_email_empty_string():\n    assert is_valid_email(\"\") == False\n\ndef test_invalid_email_no_local_part():\n    assert is_valid_email(\"@example.com\") == False\n\ndef test_invalid_email_no_domain_part():\n    assert is_valid_email(\"test@\") == False\n\ndef test_invalid_email_multiple_at_symbols():\n    assert is_valid_email(\"test@@example.com\") == False\n\ndef test_invalid_email_domain_starts_with_dot():\n    assert is_valid_email(\"test@.com\") == False\n\ndef test_invalid_email_domain_ends_with_dot():\n    assert is_valid_email(\"test@example.com.\") == False\n\ndef test_invalid_email_local_part_invalid_characters():\n    assert is_valid_email(\"test@ex!ample.com\") == False\n    assert is_valid_email(\"test@ex#ample.com\") == False\n    assert is_valid_email(\"test@ex$ample.com\") == False\n\ndef test_invalid_email_local_part_empty():\n    assert is_valid_email(\"@example.com\") == False\n\ndef test_invalid_email_domain_part_empty():\n    assert is_valid_email(\"test@\") == False\n\ndef test_valid_email_with_subdomain():\n    assert is_valid_email(\"test@mail.example.com\") == True\n\ndef test_valid_email_with_special_characters():\n    assert is_valid_email(\"test.email@example.com\") == True\n    assert is_valid_email(\"test-email@example.com\") == True\n    assert is_valid_email(\"test_email@example.com\") == True\n\ndef test_invalid_email_with_consecutive_special_characters():\n    assert is_valid_email(\"test..email@example.com\") == False\n    assert is_valid_email(\"test--email@example.com\") == False\n\ndef test_invalid_email_with_space():\n    assert is_valid_email(\"test email@example.com\") == False\n    assert is_valid_email(\"test@example .com\") == False\n\ndef test_invalid_email_with_only_special_characters():\n    assert is_valid_email(\"..@example.com\") == False\n    assert is_valid_email(\"--@example.com\") == False\n    assert is_valid_email(\"..@..com\") == False",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "from python_functions import is_valid_email\n\ndef test_is_valid_email():\n    # Test valid email addresses\n    assert is_valid_email(\"test@example.com\") == True\n    assert is_valid_email(\"user.name+tag+sorting@example.com\") == True\n    assert is_valid_email(\"user_name@example.co.uk\") == True\n    assert is_valid_email(\"user-name@example.com\") == True\n    assert is_valid_email(\"user.name@example.com\") == True\n\n    # Test invalid email addresses\n    assert is_valid_email(\"\") == False  # Empty string\n    assert is_valid_email(\"plainaddress\") == False  # No @ and no dot\n    assert is_valid_email(\"@missinglocalpart.com\") == False  # Missing local part\n    assert is_valid_email(\"missingdomain@.com\") == False  # Missing domain part\n    assert is_valid_email(\"missingat.com\") == False  # Missing @\n    assert is_valid_email(\"user@.com\") == False  # Domain starts with dot\n    assert is_valid_email(\"user@domain.\") == False  # Domain ends with dot\n    assert is_valid_email(\"user@domain..com\") == False  # Consecutive dots in domain\n    assert is_valid_email(\"user@domain.com.\") == False  # Domain ends with dot\n    assert is_valid_email(\"user@domain.c\") == True  # Valid TLD with one character\n    assert is_valid_email(\"user@domain.c1\") == True  # Valid TLD with one character followed by digit\n\n    # Test special characters in local part\n    assert is_valid_email(\"user.name@example.com\") == True  # Valid special character\n    assert is_valid_email(\"user_name@example.com\") == True  # Valid special character\n    assert is_valid_email(\"user-name@example.com\") == True  # Valid special character\n    assert is_valid_email(\"user.name@sub.domain.com\") == True  # Subdomain\n    assert is_valid_email(\"user@domain.com\") == True  # Simple valid email\n\n    # Test invalid characters in local part\n    assert is_valid_email(\"user@domain.com!\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com#\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com$\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com%\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com^\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com&\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com*\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com(\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com)\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com+\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com=\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com;\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com:\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com<\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com>\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com?\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com|\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com/\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com\\\\\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com{\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com}\") == False  # Invalid character in local part\n    assert is_valid_email(\"user@domain.com~\") == False  # Invalid character in local part\n\n    # Test edge cases\n    assert is_valid_email(\"user@domain.c\") == True  # Valid TLD with one character\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com.\") == False  # Invalid email\n    assert is_valid_email(\"user@.com\") == False  # Invalid email\n    assert is_valid_email(\"user@domain..com\") == False  # Invalid email\n    assert is_valid_email(\"user@domain.com.\") == False  # Invalid email\n    assert is_valid_email(\"user@domain.c1\") == True  # Valid TLD with one character followed by digit\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email\n    assert is_valid_email(\"user@domain.com\") == True  # Valid email"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939615.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 322,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 536,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 858
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4489,
+    "output_tokens": 2048,
+    "total_tokens": 6537
   }
 }

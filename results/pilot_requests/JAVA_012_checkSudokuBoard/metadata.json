@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_012_checkSudokuBoard",
-  "started_at_utc": "2026-07-13T10:44:34.901145+00:00",
-  "finished_at_utc": "2026-07-13T10:44:55.147278+00:00",
-  "response_id": "resp_0b165b2334bcb272006a54c1929328819b91abd066ef08e504",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "9fa0d598e7ce6835da63f8a6ac9c2babfc3d335c7ec4d2783039a6eadaa7269c",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:46:23.249939+00:00",
+  "finished_at_utc": "2026-07-16T08:46:44.147633+00:00",
+  "response_id": "openai-67330d763a6f",
+  "prompt_sha256": "b35e48aa5612b7eba98eb1b0db680e2599a7dcdb38704ff81f5043a4b74e0e6e",
   "source_sha256": "0b73e8b2911ab8c3d6c8ce5a33affb4ef5ddd7ab6dff64b22eb06bcaeb3195ff",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6256,
+    "output_tokens": 1538,
+    "total_tokens": 7794
+  }
 }

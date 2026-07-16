@@ -1,80 +1,80 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class PasswordValidatorTest {
+public class JavaAlgorithmsTest {
 
     @Test
-    void testNullPassword() {
-        assertFalse(validatePassword(null), "Password should be invalid when null");
+    public void testValidatePassword_NullPassword() {
+        assertFalse(JavaAlgorithms.validatePassword(null));
     }
 
     @Test
-    void testEmptyPassword() {
-        assertFalse(validatePassword(""), "Password should be invalid when empty");
+    public void testValidatePassword_TooShort() {
+        assertFalse(JavaAlgorithms.validatePassword("Short1!"));
     }
 
     @Test
-    void testShortPassword() {
-        assertFalse(validatePassword("Short1!"), "Password should be invalid if less than 8 characters");
+    public void testValidatePassword_NoUpperCase() {
+        assertFalse(JavaAlgorithms.validatePassword("lowercase1!"));
     }
 
     @Test
-    void testValidPassword() {
-        assertTrue(validatePassword("Valid1!"), "Password should be valid with upper, lower, digit, and special character");
+    public void testValidatePassword_NoLowerCase() {
+        assertFalse(JavaAlgorithms.validatePassword("UPPERCASE1!"));
     }
 
     @Test
-    void testMissingUppercase() {
-        assertFalse(validatePassword("missingupper1!"), "Password should be invalid if missing uppercase letter");
+    public void testValidatePassword_NoDigit() {
+        assertFalse(JavaAlgorithms.validatePassword("NoDigit!"));
     }
 
     @Test
-    void testMissingLowercase() {
-        assertFalse(validatePassword("MISSINGLOWER1!"), "Password should be invalid if missing lowercase letter");
+    public void testValidatePassword_NoSpecialCharacter() {
+        assertFalse(JavaAlgorithms.validatePassword("NoSpecial1"));
     }
 
     @Test
-    void testMissingDigit() {
-        assertFalse(validatePassword("MissingSpecial!"), "Password should be invalid if missing digit");
+    public void testValidatePassword_ValidPassword() {
+        assertTrue(JavaAlgorithms.validatePassword("Valid1!"));
     }
 
     @Test
-    void testMissingSpecial() {
-        assertFalse(validatePassword("Missing1Upper"), "Password should be invalid if missing special character");
+    public void testValidatePassword_OnlyUpperCase() {
+        assertFalse(JavaAlgorithms.validatePassword("UPPERCASE!"));
     }
 
     @Test
-    void testOnlyUppercase() {
-        assertFalse(validatePassword("ALLUPPERCASE1!"), "Password should be invalid if only uppercase letters");
+    public void testValidatePassword_OnlyLowerCase() {
+        assertFalse(JavaAlgorithms.validatePassword("lowercase!"));
     }
 
     @Test
-    void testOnlyLowercase() {
-        assertFalse(validatePassword("alllowercase1!"), "Password should be invalid if only lowercase letters");
+    public void testValidatePassword_OnlyDigits() {
+        assertFalse(JavaAlgorithms.validatePassword("12345678"));
     }
 
     @Test
-    void testOnlyDigits() {
-        assertFalse(validatePassword("12345678"), "Password should be invalid if only digits");
+    public void testValidatePassword_OnlySpecialCharacters() {
+        assertFalse(JavaAlgorithms.validatePassword("!@#$%^&*"));
     }
 
     @Test
-    void testOnlySpecialCharacters() {
-        assertFalse(validatePassword("!@#$%^&*"), "Password should be invalid if only special characters");
+    public void testValidatePassword_ValidPasswordWithAllCharacters() {
+        assertTrue(JavaAlgorithms.validatePassword("A1b!cdef"));
     }
 
     @Test
-    void testValidPasswordWithDifferentSpecialChars() {
-        assertTrue(validatePassword("ValidPassword1@"), "Password should be valid with different special characters");
+    public void testValidatePassword_ValidPasswordWithMultipleSpecialCharacters() {
+        assertTrue(JavaAlgorithms.validatePassword("A1b!c@d#e$"));
     }
 
     @Test
-    void testPasswordWithSpaces() {
-        assertFalse(validatePassword("Valid 1!"), "Password should be invalid if it contains spaces");
+    public void testValidatePassword_ValidPasswordWithSpaces() {
+        assertTrue(JavaAlgorithms.validatePassword("A1b! cdef"));
     }
 
     @Test
-    void testPasswordWithAllRequirementsMet() {
-        assertTrue(validatePassword("A1b!cdef"), "Password should be valid with all requirements met");
+    public void testValidatePassword_ValidPasswordWithDifferentSpecialCharacters() {
+        assertTrue(JavaAlgorithms.validatePassword("A1b-c_d+e"));
     }
 }

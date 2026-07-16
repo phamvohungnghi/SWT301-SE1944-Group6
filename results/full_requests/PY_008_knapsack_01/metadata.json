@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_008_knapsack_01",
-  "started_at_utc": "2026-07-13T10:47:27.082457+00:00",
-  "finished_at_utc": "2026-07-13T10:47:39.084421+00:00",
-  "response_id": "resp_0a9cf0e1aa38b59a006a54c23ebe4c819b80a4760b8bcd62b5",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "18e601d7f3c426723007b19dc0e940107a20d5e7dfc3581e04e407bd5c43c1e2",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:55:06.128219+00:00",
+  "finished_at_utc": "2026-07-16T08:55:16.557957+00:00",
+  "response_id": "openai-2678ff64491f",
+  "prompt_sha256": "d420262936780ef1b479c60c0baf81868c330925a9d6ab5524cdbfddf7462cc2",
   "source_sha256": "13b3b60741e8f4c29c90a0417689bb9c413296a8ac5b839ab90426c7a2e6023b",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4524,
+    "output_tokens": 868,
+    "total_tokens": 5392
+  }
 }

@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_009_jsonPathLookup",
-  "started_at_utc": "2026-07-13T10:51:59.878404+00:00",
-  "finished_at_utc": "2026-07-13T10:52:11.559623+00:00",
-  "response_id": "resp_02c476701a73b065006a54c34f8f30819aa4b6362e2ecb6222",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "25b3470d72b19cbba0c2ec634803b026ded5590d3a0d0d043521776ca71f2113",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:02:56.331198+00:00",
+  "finished_at_utc": "2026-07-16T09:03:11.296796+00:00",
+  "response_id": "openai-fe316f76a875",
+  "prompt_sha256": "9f5ec78fb2529d5e0e8b02cf64a8a81ba9b5afb5bb6be544e5d7e67abc6e8368",
   "source_sha256": "608866ad662e1261600336ef35830b740c123992115ac1a274a0b3183364ed58",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6312,
+    "output_tokens": 573,
+    "total_tokens": 6885
+  }
 }

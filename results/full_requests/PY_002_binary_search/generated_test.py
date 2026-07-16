@@ -1,21 +1,17 @@
 import pytest
+from python_functions import binary_search
 
-def binary_search(arr, target):
-    if not arr:
-        return -1
-    low = 0
-    high = len(arr) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return -1
+def test_binary_search_found():
+    assert binary_search([1, 2, 3, 4, 5], 3) == 2
+    assert binary_search([1, 2, 3, 4, 5], 1) == 0
+    assert binary_search([1, 2, 3, 4, 5], 5) == 4
 
-def test_binary_search_empty():
+def test_binary_search_not_found():
+    assert binary_search([1, 2, 3, 4, 5], 0) == -1
+    assert binary_search([1, 2, 3, 4, 5], 6) == -1
+    assert binary_search([1, 2, 3, 4, 5], 10) == -1
+
+def test_binary_search_empty_array():
     assert binary_search([], 1) == -1
 
 def test_binary_search_single_element_found():
@@ -24,34 +20,20 @@ def test_binary_search_single_element_found():
 def test_binary_search_single_element_not_found():
     assert binary_search([1], 2) == -1
 
-def test_binary_search_multiple_elements_found():
-    assert binary_search([1, 2, 3, 4, 5], 3) == 2
-    assert binary_search([1, 2, 3, 4, 5], 1) == 0
-    assert binary_search([1, 2, 3, 4, 5], 5) == 4
-
-def test_binary_search_multiple_elements_not_found():
-    assert binary_search([1, 2, 3, 4, 5], 0) == -1
-    assert binary_search([1, 2, 3, 4, 5], 6) == -1
-
-def test_binary_search_target_at_start():
-    assert binary_search([1, 2, 3, 4, 5], 1) == 0
-
-def test_binary_search_target_at_end():
-    assert binary_search([1, 2, 3, 4, 5], 5) == 4
-
-def test_binary_search_target_in_middle():
-    assert binary_search([1, 2, 3, 4, 5], 3) == 2
-
 def test_binary_search_negative_numbers():
-    assert binary_search([-5, -3, -1, 0, 2, 4], -3) == 1
-    assert binary_search([-5, -3, -1, 0, 2, 4], -6) == -1
-
-def test_binary_search_large_numbers():
-    assert binary_search([100, 200, 300, 400, 500], 300) == 2
-    assert binary_search([100, 200, 300, 400, 500], 600) == -1
+    assert binary_search([-5, -3, -1, 0, 2], -3) == 1
+    assert binary_search([-5, -3, -1, 0, 2], -6) == -1
 
 def test_binary_search_duplicates():
     assert binary_search([1, 2, 2, 2, 3], 2) == 1  # First occurrence
-    assert binary_search([1, 2, 2, 2, 3], 1) == 0
     assert binary_search([1, 2, 2, 2, 3], 3) == 4
-    assert binary_search([1, 2, 2, 2, 3], 4) == -1
+
+def test_binary_search_large_array():
+    arr = list(range(1000000))
+    assert binary_search(arr, 999999) == 999999
+    assert binary_search(arr, 500000) == 500000
+    assert binary_search(arr, -1) == -1
+    assert binary_search(arr, 1000000) == -1
+
+def test_binary_search_non_sorted_array():
+    assert binary_search([3, 1, 4, 2, 5], 3) == -1  # Not sorted, should return -1

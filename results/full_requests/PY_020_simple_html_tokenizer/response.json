@@ -1,96 +1,18 @@
 {
-  "id": "resp_0bd45579bb85bfe4006a54c2ccabc881998e83f9faf5e258ce",
-  "created_at": 1783939788.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-3c12d5b5c83d",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0bd45579bb85bfe4006a54c2cd25cc819997331c824abcbf23",
-      "content": [
-        {
-          "annotations": [],
-          "text": "def test_simple_html_tokenizer():\n    from PY_020_simple_html_tokenizer import simple_html_tokenizer\n\n    # Test with None input\n    assert simple_html_tokenizer(None) == []\n\n    # Test with empty string\n    assert simple_html_tokenizer(\"\") == []\n\n    # Test with a simple tag\n    assert simple_html_tokenizer(\"<tag>\") == [(\"TAG\", \"<tag>\")]\n\n    # Test with text before a tag\n    assert simple_html_tokenizer(\"Hello <tag>\") == [(\"TEXT\", \"Hello \"), (\"TAG\", \"<tag>\")]\n\n    # Test with text after a tag\n    assert simple_html_tokenizer(\"<tag>Hello\") == [(\"TAG\", \"<tag>\"), (\"TEXT\", \"Hello\")]\n\n    # Test with multiple tags\n    assert simple_html_tokenizer(\"<tag1><tag2>\") == [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\")]\n\n    # Test with text between tags\n    assert simple_html_tokenizer(\"<tag1>Text<tag2>\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text\"), (\"TAG\", \"<tag2>\")]\n\n    # Test with unclosed tag\n    assert simple_html_tokenizer(\"<tag1>Text\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text\")]\n\n    # Test with text only\n    assert simple_html_tokenizer(\"Just some text\") == [(\"TEXT\", \"Just some text\")]\n\n    # Test with tags and text mixed\n    assert simple_html_tokenizer(\"<tag1>Text1<tag2>Text2\") == [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\")]\n\n    # Test with nested tags\n    assert simple_html_tokenizer(\"<tag1><tag2></tag2></tag1>\") == [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\"), (\"TAG\", \"</tag2>\"), (\"TAG\", \"</tag1>\")]\n\n    # Test with text before and after nested tags\n    assert simple_html_tokenizer(\"Before<tag1><tag2></tag2></tag1>After\") == [\n        (\"TEXT\", \"Before\"),\n        (\"TAG\", \"<tag1>\"),\n        (\"TAG\", \"<tag2>\"),\n        (\"TAG\", \"</tag2>\"),\n        (\"TAG\", \"</tag1>\"),\n        (\"TEXT\", \"After\")\n    ]",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "from python_functions import simple_html_tokenizer\n\ndef test_simple_html_tokenizer():\n    # Test with a simple HTML string\n    html = \"<html><body>Hello</body></html>\"\n    expected = [(\"TAG\", \"<html>\"), (\"TAG\", \"<body>\"), (\"TEXT\", \"Hello\"), (\"TAG\", \"</body>\"), (\"TAG\", \"</html>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string containing no tags\n    html = \"Hello World\"\n    expected = [(\"TEXT\", \"Hello World\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string containing only tags\n    html = \"<tag1><tag2></tag2></tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\"), (\"TAG\", \"</tag2>\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a malformed tag\n    html = \"<tag1><tag2></tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with an empty string\n    html = \"\"\n    expected = [(\"TEXT\", \"\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with None input\n    html = None\n    expected = []\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that starts with a tag\n    html = \"<tag>Hello</tag>\"\n    expected = [(\"TAG\", \"<tag>\"), (\"TEXT\", \"Hello\"), (\"TAG\", \"</tag>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that ends with a tag\n    html = \"Hello <tag>\"\n    expected = [(\"TEXT\", \"Hello \"), (\"TAG\", \"<tag>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with multiple consecutive tags\n    html = \"<tag1><tag2></tag2><tag3></tag3></tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TAG\", \"<tag2>\"), (\"TAG\", \"</tag2>\"), (\"TAG\", \"<tag3>\"), (\"TAG\", \"</tag3>\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with text before and after tags\n    html = \"Start <tag>Middle</tag> End\"\n    expected = [(\"TEXT\", \"Start \"), (\"TAG\", \"<tag>\"), (\"TEXT\", \"Middle\"), (\"TAG\", \"</tag>\"), (\"TEXT\", \" End\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with nested tags\n    html = \"<outer><inner>Content</inner></outer>\"\n    expected = [(\"TAG\", \"<outer>\"), (\"TAG\", \"<inner>\"), (\"TEXT\", \"Content\"), (\"TAG\", \"</inner>\"), (\"TAG\", \"</outer>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with tags containing attributes\n    html = '<tag attribute=\"value\">Content</tag>'\n    expected = [(\"TAG\", '<tag attribute=\"value\">'), (\"TEXT\", \"Content\"), (\"TAG\", \"</tag>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with unclosed tag\n    html = \"<tag>Content\"\n    expected = [(\"TAG\", \"<tag>\"), (\"TEXT\", \"Content\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with special characters in text\n    html = \"<tag>Content & more</tag>\"\n    expected = [(\"TAG\", \"<tag>\"), (\"TEXT\", \"Content & more\"), (\"TAG\", \"</tag>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a tag that has no content\n    html = \"<tag></tag>\"\n    expected = [(\"TAG\", \"<tag>\"), (\"TAG\", \"</tag>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has only text and no tags\n    html = \"Just text\"\n    expected = [(\"TEXT\", \"Just text\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has multiple tags and text\n    html = \"<tag1>Text1</tag1><tag2>Text2</tag2>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1\"), (\"TAG\", \"</tag1>\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\"), (\"TAG\", \"</tag2>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with no closing angle bracket\n    html = \"<tag1>Text1<tag2>Text2\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with no opening angle bracket\n    html = \"Text1<tag2>Text2</tag2>\"\n    expected = [(\"TEXT\", \"Text1\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\"), (\"TAG\", \"</tag2>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with no closing tag\n    html = \"<tag1>Text1<tag2>Text2</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1\"), (\"TAG\", \"<tag2>\"), (\"TEXT\", \"Text2\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with no opening tag\n    html = \"Text1</tag2>\"\n    expected = [(\"TEXT\", \"Text1\"), (\"TAG\", \"</tag2>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with no content\n    html = \"<tag1></tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with special characters\n    html = \"<tag1>Text1 & Text2</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1 & Text2\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a newline\n    html = \"<tag1>\\nText1\\n</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"\\nText1\\n\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with multiple spaces\n    html = \"<tag1>   Text1   </tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"   Text1   \"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a single space\n    html = \"<tag1> Text1 </tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \" Text1 \"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a tab\n    html = \"<tag1>\\tText1\\t</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"\\tText1\\t\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a carriage return\n    html = \"<tag1>\\rText1\\r</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"\\rText1\\r\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a mix of spaces and text\n    html = \"<tag1>   Text1   </tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"   Text1   \"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a mix of special characters and text\n    html = \"<tag1>Text1 & Text2</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"Text1 & Text2\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a mix of newlines and text\n    html = \"<tag1>\\nText1\\n</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"\\nText1\\n\"), (\"TAG\", \"</tag1>\")]\n    assert simple_html_tokenizer(html) == expected\n\n    # Test with a string that has a tag with a mix of tabs and text\n    html = \"<tag1>\\tText1\\t</tag1>\"\n    expected = [(\"TAG\", \"<tag1>\"), (\"TEXT\", \"\\tText1\\t\"), (\"TAG\", \"</tag"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939794.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 353,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 519,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 872
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4520,
+    "output_tokens": 2048,
+    "total_tokens": 6568
   }
 }

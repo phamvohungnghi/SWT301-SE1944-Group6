@@ -1,85 +1,83 @@
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class BinarySearchTest {
+public class JavaAlgorithmsTest {
 
-    @Test
-    public void testBinarySearch_TargetInMiddle() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int target = 3;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(2, result);
+    private int[] sortedArray;
+
+    @BeforeEach
+    public void setUp() {
+        sortedArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     }
 
     @Test
-    public void testBinarySearch_TargetAtStart() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int target = 1;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void testBinarySearch_TargetAtEnd() {
-        int[] arr = {1, 2, 3, 4, 5};
+    public void testBinarySearchFound() {
         int target = 5;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(4, result);
+        int expectedIndex = 4;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(expectedIndex, result);
     }
 
     @Test
-    public void testBinarySearch_TargetNotFound() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int target = 6;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(-1, result);
+    public void testBinarySearchNotFound() {
+        int target = 11;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(-1, result);
     }
 
     @Test
-    public void testBinarySearch_EmptyArray() {
-        int[] arr = {};
+    public void testBinarySearchEmptyArray() {
+        int[] emptyArray = {};
         int target = 1;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(-1, result);
+        int result = JavaAlgorithms.binarySearch(emptyArray, target);
+        Assertions.assertEquals(-1, result);
     }
 
     @Test
-    public void testBinarySearch_NullArray() {
-        int[] arr = null;
+    public void testBinarySearchNullArray() {
         int target = 1;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(-1, result);
+        int result = JavaAlgorithms.binarySearch(null, target);
+        Assertions.assertEquals(-1, result);
     }
 
     @Test
-    public void testBinarySearch_SingleElementArray_TargetFound() {
-        int[] arr = {1};
+    public void testBinarySearchFirstElement() {
         int target = 1;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(0, result);
+        int expectedIndex = 0;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(expectedIndex, result);
     }
 
     @Test
-    public void testBinarySearch_SingleElementArray_TargetNotFound() {
-        int[] arr = {1};
+    public void testBinarySearchLastElement() {
+        int target = 10;
+        int expectedIndex = 9;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(expectedIndex, result);
+    }
+
+    @Test
+    public void testBinarySearchNegativeTarget() {
+        int target = -1;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(-1, result);
+    }
+
+    @Test
+    public void testBinarySearchTargetAtMid() {
+        int target = 5;
+        int expectedIndex = 4;
+        int result = JavaAlgorithms.binarySearch(sortedArray, target);
+        Assertions.assertEquals(expectedIndex, result);
+    }
+
+    @Test
+    public void testBinarySearchDuplicateElements() {
+        int[] arrayWithDuplicates = {1, 2, 2, 3, 4, 5};
         int target = 2;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(-1, result);
-    }
-
-    @Test
-    public void testBinarySearch_MultipleSameElements_TargetFound() {
-        int[] arr = {1, 1, 1, 1, 1};
-        int target = 1;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertTrue(result >= 0 && result < arr.length);
-    }
-
-    @Test
-    public void testBinarySearch_MultipleSameElements_TargetNotFound() {
-        int[] arr = {1, 1, 1, 1, 1};
-        int target = 2;
-        int result = JAVA_002_binarySearch.binarySearch(arr, target);
-        assertEquals(-1, result);
+        int expectedIndex = 1; // First occurrence of 2
+        int result = JavaAlgorithms.binarySearch(arrayWithDuplicates, target);
+        Assertions.assertEquals(expectedIndex, result);
     }
 }

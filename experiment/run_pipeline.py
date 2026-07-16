@@ -248,7 +248,7 @@ def build_chat_messages(user_prompt: str) -> list[dict[str, str]]:
     ]
 
 
-def call_openai_api(client: OpenAI, model: str, user_prompt: str) -> str:
+def call_openai_api(client: OpenAI, model: str, user_prompt: str) -> tuple[str, dict[str, int] | None]:
     """Gọi OpenAI Chat Completions API (openai>=1.x)."""
     response = client.chat.completions.create(
         model=model,
@@ -256,7 +256,15 @@ def call_openai_api(client: OpenAI, model: str, user_prompt: str) -> str:
         temperature=TEMPERATURE,
         max_tokens=MAX_OUTPUT_TOKENS,
     )
-    return response.choices[0].message.content or ""
+    content = response.choices[0].message.content or ""
+    usage = None
+    if response.usage:
+        usage = {
+            "input_tokens": response.usage.prompt_tokens,
+            "output_tokens": response.usage.completion_tokens,
+            "total_tokens": response.usage.total_tokens,
+        }
+    return content, usage
 
 
 def call_alternative_api(
@@ -361,17 +369,18 @@ def pick_model(provider: str, user_model: str | None) -> str:
 class GeneratedResponse:
     """Wrapper thống nhất cho cả OpenAI SDK response và alternative API response."""
 
-    def __init__(self, response_id: str, model: str, output_text: str):
+    def __init__(self, response_id: str, model: str, output_text: str, usage: dict[str, Any] | None = None):
         self.id = response_id
         self.model = model
         self._output_text = output_text
+        self.usage = usage
 
     @property
     def output_text(self) -> str:
         return self._output_text
 
     def model_dump(self) -> dict[str, Any]:
-        return {
+        dump_data = {
             "id": self.id,
             "object": "chat.completion",
             "model": self.model,
@@ -384,6 +393,9 @@ class GeneratedResponse:
                 }
             ],
         }
+        if self.usage:
+            dump_data["usage"] = self.usage
+        return dump_data
 
 
 # ---------------------------------------------------------------------------
@@ -507,8 +519,9 @@ def main() -> None:
         # ---- Generate mode: call API ----
         started_at = datetime.now(timezone.utc).isoformat()
         try:
+            usage = None
             if provider == "openai" and client is not None:
-                text = call_openai_api(client, model, user_prompt)
+                text, usage = call_openai_api(client, model, user_prompt)
             else:
                 text = call_alternative_api(
                     provider=provider,
@@ -521,6 +534,7 @@ def main() -> None:
                 response_id=f"{provider}-{uuid.uuid4().hex[:12]}",
                 model=model,
                 output_text=text,
+                usage=usage,
             )
         except Exception as e:
             print(f" API ERROR: {e}")
@@ -551,6 +565,8 @@ def main() -> None:
             "prompt_sha256": sha256_text(SYSTEM_PROMPT + "\n" + user_prompt),
             "source_sha256": sha256_text(unit_source),
         }
+        if response.usage:
+            metadata["usage"] = response.usage
         (unit_dir / "metadata.json").write_text(
             json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8"
         )

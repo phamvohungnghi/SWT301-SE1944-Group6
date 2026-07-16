@@ -1,65 +1,83 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TaxCalculatorTest {
-
-    @Test
-    public void testCalculateTax_ZeroIncome() {
-        assertEquals(0.0, calculateTax(0, "single"));
-    }
-
-    @Test
-    public void testCalculateTax_NegativeIncome() {
-        assertEquals(0.0, calculateTax(-5000, "single"));
-    }
+public class JavaAlgorithmsTest {
 
     @Test
     public void testCalculateTax_SingleIncomeBelowThreshold() {
-        assertEquals(1000.0, calculateTax(10000, "single"));
+        double result = JavaAlgorithms.calculateTax(5000, "single");
+        Assertions.assertEquals(500.0, result, 0.001);
     }
 
     @Test
-    public void testCalculateTax_SingleIncomeMiddleBracket() {
-        assertEquals(4000.0, calculateTax(30000, "single"));
+    public void testCalculateTax_SingleIncomeAtThreshold() {
+        double result = JavaAlgorithms.calculateTax(10000, "single");
+        Assertions.assertEquals(1000.0, result, 0.001);
     }
 
     @Test
     public void testCalculateTax_SingleIncomeAboveThreshold() {
-        assertEquals(8500.0, calculateTax(60000, "single"));
+        double result = JavaAlgorithms.calculateTax(30000, "single");
+        Assertions.assertEquals(4000.0, result, 0.001);
+    }
+
+    @Test
+    public void testCalculateTax_SingleIncomeAboveUpperThreshold() {
+        double result = JavaAlgorithms.calculateTax(50000, "single");
+        Assertions.assertEquals(10500.0, result, 0.001);
     }
 
     @Test
     public void testCalculateTax_MarriedIncomeBelowThreshold() {
-        assertEquals(2000.0, calculateTax(20000, "married"));
+        double result = JavaAlgorithms.calculateTax(15000, "married");
+        Assertions.assertEquals(1500.0, result, 0.001);
     }
 
     @Test
-    public void testCalculateTax_MarriedIncomeMiddleBracket() {
-        assertEquals(8000.0, calculateTax(60000, "married"));
+    public void testCalculateTax_MarriedIncomeAtThreshold() {
+        double result = JavaAlgorithms.calculateTax(20000, "married");
+        Assertions.assertEquals(2000.0, result, 0.001);
     }
 
     @Test
     public void testCalculateTax_MarriedIncomeAboveThreshold() {
-        assertEquals(16500.0, calculateTax(100000, "married"));
+        double result = JavaAlgorithms.calculateTax(60000, "married");
+        Assertions.assertEquals(8000.0, result, 0.001);
+    }
+
+    @Test
+    public void testCalculateTax_MarriedIncomeAboveUpperThreshold() {
+        double result = JavaAlgorithms.calculateTax(100000, "married");
+        Assertions.assertEquals(18500.0, result, 0.001);
     }
 
     @Test
     public void testCalculateTax_OtherStatusIncome() {
-        assertEquals(2000.0, calculateTax(10000, "other"));
+        double result = JavaAlgorithms.calculateTax(30000, "other");
+        Assertions.assertEquals(6000.0, result, 0.001);
     }
 
     @Test
-    public void testCalculateTax_UpperBoundarySingle() {
-        assertEquals(5500.0, calculateTax(40000, "single"));
+    public void testCalculateTax_NegativeIncome() {
+        double result = JavaAlgorithms.calculateTax(-5000, "single");
+        Assertions.assertEquals(0.0, result, 0.001);
     }
 
     @Test
-    public void testCalculateTax_UpperBoundaryMarried() {
-        assertEquals(11000.0, calculateTax(80000, "married"));
+    public void testCalculateTax_ZeroIncome() {
+        double result = JavaAlgorithms.calculateTax(0, "single");
+        Assertions.assertEquals(0.0, result, 0.001);
     }
 
     @Test
-    public void testCalculateTax_UnknownStatus() {
-        assertEquals(2000.0, calculateTax(10000, "unknown"));
+    public void testCalculateTax_IncomeWithNullStatus() {
+        double result = JavaAlgorithms.calculateTax(30000, null);
+        Assertions.assertEquals(6000.0, result, 0.001);
+    }
+
+    @Test
+    public void testCalculateTax_IncomeWithEmptyStatus() {
+        double result = JavaAlgorithms.calculateTax(30000, "");
+        Assertions.assertEquals(6000.0, result, 0.001);
     }
 }

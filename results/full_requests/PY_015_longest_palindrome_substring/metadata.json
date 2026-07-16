@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_015_longest_palindrome_substring",
-  "started_at_utc": "2026-07-13T10:49:03.057943+00:00",
-  "finished_at_utc": "2026-07-13T10:49:09.748287+00:00",
-  "response_id": "resp_07b8f9e884ddcead006a54c29eb9c4819abda080a4d192e8b8",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "723248675e6fa1907a59f9eae91a8d73220c7c13f297c5706f1baa62482a0dc5",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:57:01.277346+00:00",
+  "finished_at_utc": "2026-07-16T08:57:07.011202+00:00",
+  "response_id": "openai-0c551e91161a",
+  "prompt_sha256": "b46354ad3ce172c339a5d58bc7b757c61e30f072433aa99067db273fa2e246b9",
   "source_sha256": "7248aa45b08692244821f296fc19c8c2fb431e09e46662bb035fedf92344127f",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4533,
+    "output_tokens": 499,
+    "total_tokens": 5032
+  }
 }

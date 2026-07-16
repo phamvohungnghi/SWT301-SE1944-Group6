@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_020_simple_html_tokenizer",
-  "started_at_utc": "2026-07-13T10:49:49.003535+00:00",
-  "finished_at_utc": "2026-07-13T10:49:55.359534+00:00",
-  "response_id": "resp_0bd45579bb85bfe4006a54c2ccabc881998e83f9faf5e258ce",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "12f57ac59d905828492303f6c54a82f537b23970e44d4697c40ea7e6cd107191",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:58:14.799380+00:00",
+  "finished_at_utc": "2026-07-16T08:58:55.085544+00:00",
+  "response_id": "openai-3c12d5b5c83d",
+  "prompt_sha256": "accb0de91ecca34f69327ddbf25e1817165e290763ee8cd12e53b0e5c23740aa",
   "source_sha256": "0693a3f4bf4dd964f6b88ed277610f09ff163f8d97155d2d53ffa4a1aa4713dc",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4520,
+    "output_tokens": 2048,
+    "total_tokens": 6568
+  }
 }

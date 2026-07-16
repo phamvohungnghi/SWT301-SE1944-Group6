@@ -1,101 +1,98 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class Knapsack01Test {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Test
-    void testNullWeights() {
-        int[] weights = null;
-        int[] values = {1, 2, 3};
-        int capacity = 5;
-        assertEquals(0, knapsack01(weights, values, capacity));
+public class Knapsack01Test {
+
+    private int[] weights;
+    private int[] values;
+    private int capacity;
+
+    @BeforeEach
+    public void setUp() {
+        weights = new int[]{1, 2, 3};
+        values = new int[]{10, 15, 40};
+        capacity = 6;
     }
 
     @Test
-    void testNullValues() {
-        int[] weights = {1, 2, 3};
-        int[] values = null;
-        int capacity = 5;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01NormalCase() {
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(55, result);
     }
 
     @Test
-    void testNegativeCapacity() {
-        int[] weights = {1, 2, 3};
-        int[] values = {1, 2, 3};
-        int capacity = -1;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01ExactFit() {
+        weights = new int[]{2, 3, 4};
+        values = new int[]{20, 30, 40};
+        capacity = 5;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(50, result);
     }
 
     @Test
-    void testMismatchedArrayLengths() {
-        int[] weights = {1, 2};
-        int[] values = {1, 2, 3};
-        int capacity = 5;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01NoItems() {
+        weights = new int[]{};
+        values = new int[]{};
+        capacity = 0;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testEmptyArrays() {
-        int[] weights = {};
-        int[] values = {};
-        int capacity = 5;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01ZeroCapacity() {
+        capacity = 0;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testSingleItemFits() {
-        int[] weights = {1};
-        int[] values = {1};
-        int capacity = 1;
-        assertEquals(1, knapsack01(weights, values, capacity));
+    public void testKnapsack01NullWeights() {
+        weights = null;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testSingleItemTooHeavy() {
-        int[] weights = {2};
-        int[] values = {1};
-        int capacity = 1;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01NullValues() {
+        values = null;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testMultipleItemsAllFit() {
-        int[] weights = {1, 2, 3};
-        int[] values = {10, 15, 40};
-        int capacity = 6;
-        assertEquals(65, knapsack01(weights, values, capacity));
+    public void testKnapsack01MismatchedArrayLengths() {
+        weights = new int[]{1, 2};
+        values = new int[]{10};
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testMultipleItemsSomeFit() {
-        int[] weights = {1, 2, 3};
-        int[] values = {10, 15, 40};
-        int capacity = 5;
-        assertEquals(55, knapsack01(weights, values, capacity));
+    public void testKnapsack01SingleItemFits() {
+        weights = new int[]{5};
+        values = new int[]{50};
+        capacity = 5;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(50, result);
     }
 
     @Test
-    void testMultipleItemsNoneFit() {
-        int[] weights = {5, 6, 7};
-        int[] values = {10, 15, 40};
-        int capacity = 4;
-        assertEquals(0, knapsack01(weights, values, capacity));
+    public void testKnapsack01SingleItemTooHeavy() {
+        weights = new int[]{10};
+        values = new int[]{100};
+        capacity = 5;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(0, result);
     }
 
     @Test
-    void testExactFit() {
-        int[] weights = {2, 3, 4, 5};
-        int[] values = {3, 4, 5, 6};
-        int capacity = 5;
-        assertEquals(7, knapsack01(weights, values, capacity));
-    }
-
-    @Test
-    void testLargeCapacity() {
-        int[] weights = {1, 2, 3, 4, 5};
-        int[] values = {1, 2, 3, 4, 5};
-        int capacity = 10;
-        assertEquals(15, knapsack01(weights, values, capacity));
+    public void testKnapsack01MultipleItemsExceedCapacity() {
+        weights = new int[]{4, 5, 6};
+        values = new int[]{40, 50, 60};
+        capacity = 5;
+        int result = JavaAlgorithms.knapsack01(weights, values, capacity);
+        assertEquals(50, result);
     }
 }

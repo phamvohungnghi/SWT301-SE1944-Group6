@@ -1,96 +1,18 @@
 {
-  "id": "resp_05f1c9f2446d9790006a54c3bfbb4881989dde1c94fe43f70f",
-  "created_at": 1783940031.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-00aac831a6ab",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_05f1c9f2446d9790006a54c3c03ce08198b45aa7b64760dd9c",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass LuhnCheckTest {\n\n    @Test\n    void testNullInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(null));\n    }\n\n    @Test\n    void testEmptyInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"\"));\n    }\n\n    @Test\n    void testNonDigitCharacters() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234a6789\"));\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234-5678-9012-3456\"));\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"1234 5678 9012 3456\"));\n    }\n\n    @Test\n    void testValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"4532015112830366\")); // Visa\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"6011514433546201\")); // Discover\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"371449635398431\"));  // American Express\n    }\n\n    @Test\n    void testInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"4532015112830365\")); // Invalid Visa\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"6011514433546200\")); // Invalid Discover\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"371449635398432\"));  // Invalid American Express\n    }\n\n    @Test\n    void testSingleDigitInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"5\")); // Single digit cannot be valid\n    }\n\n    @Test\n    void testTwoDigitInput() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"12\")); // Two digits cannot be valid\n    }\n\n    @Test\n    void testLongValidLuhnNumber() {\n        assertTrue(JAVA_019_luhnCheck.luhnCheck(\"79927398713\")); // Valid Luhn number\n    }\n\n    @Test\n    void testLongInvalidLuhnNumber() {\n        assertFalse(JAVA_019_luhnCheck.luhnCheck(\"79927398714\")); // Invalid Luhn number\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class LuhnCheckTest {\n\n    @BeforeEach\n    public void setUp() {\n        // No setup needed for this test suite\n    }\n\n    @Test\n    public void testLuhnCheck_ValidCardNumber() {\n        assertTrue(JavaAlgorithms.luhnCheck(\"4532015112830366\")); // Valid Visa\n        assertTrue(JavaAlgorithms.luhnCheck(\"6011514433546201\")); // Valid Discover\n        assertTrue(JavaAlgorithms.luhnCheck(\"378282246310005\"));  // Valid American Express\n        assertTrue(JavaAlgorithms.luhnCheck(\"371449635398431\"));  // Valid American Express\n    }\n\n    @Test\n    public void testLuhnCheck_InvalidCardNumber() {\n        assertFalse(JavaAlgorithms.luhnCheck(\"4532015112830365\")); // Invalid Visa\n        assertFalse(JavaAlgorithms.luhnCheck(\"6011514433546200\")); // Invalid Discover\n        assertFalse(JavaAlgorithms.luhnCheck(\"378282246310006\"));  // Invalid American Express\n        assertFalse(JavaAlgorithms.luhnCheck(\"371449635398432\"));  // Invalid American Express\n    }\n\n    @Test\n    public void testLuhnCheck_EmptyString() {\n        assertFalse(JavaAlgorithms.luhnCheck(\"\")); // Empty string\n    }\n\n    @Test\n    public void testLuhnCheck_NullInput() {\n        assertFalse(JavaAlgorithms.luhnCheck(null)); // Null input\n    }\n\n    @Test\n    public void testLuhnCheck_NonDigitCharacters() {\n        assertFalse(JavaAlgorithms.luhnCheck(\"4532a015112830366\")); // Contains non-digit\n        assertFalse(JavaAlgorithms.luhnCheck(\"6011-5144-3354-6201\")); // Contains non-digit\n        assertFalse(JavaAlgorithms.luhnCheck(\"3782 8224 6310 005\")); // Contains spaces\n    }\n\n    @Test\n    public void testLuhnCheck_SingleDigit() {\n        assertFalse(JavaAlgorithms.luhnCheck(\"1\")); // Single digit\n        assertTrue(JavaAlgorithms.luhnCheck(\"0\")); // Single digit\n    }\n\n    @Test\n    public void testLuhnCheck_TwoDigits() {\n        assertTrue(JavaAlgorithms.luhnCheck(\"10\")); // Valid Luhn\n        assertFalse(JavaAlgorithms.luhnCheck(\"11\")); // Invalid Luhn\n    }\n\n    @Test\n    public void testLuhnCheck_LongCardNumber() {\n        assertTrue(JavaAlgorithms.luhnCheck(\"1234567890123456\")); // Valid Luhn\n        assertFalse(JavaAlgorithms.luhnCheck(\"1234567890123455\")); // Invalid Luhn\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783940037.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 370,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 499,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 869
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6228,
+    "output_tokens": 569,
+    "total_tokens": 6797
   }
 }

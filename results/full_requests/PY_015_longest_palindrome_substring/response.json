@@ -1,96 +1,18 @@
 {
-  "id": "resp_07b8f9e884ddcead006a54c29eb9c4819abda080a4d192e8b8",
-  "created_at": 1783939742.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-0c551e91161a",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_07b8f9e884ddcead006a54c29f3208819abf01ae724cd1c7d8",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\n\ndef longest_palindrome_substring(s):\n    if not s:\n        return \"\"\n    longest = \"\"\n    for i in range(len(s)):\n        l, r = i, i\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            if (r - l + 1) > len(longest):\n                longest = s[l:r+1]\n            l -= 1\n            r += 1\n        l, r = i, i + 1\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            if (r - l + 1) > len(longest):\n                longest = s[l:r+1]\n            l -= 1\n            r += 1\n    return longest\n\ndef test_longest_palindrome_substring():\n    # Test with a simple palindrome\n    assert longest_palindrome_substring(\"babad\") in [\"bab\", \"aba\"]\n    \n    # Test with a single character\n    assert longest_palindrome_substring(\"a\") == \"a\"\n    \n    # Test with two identical characters\n    assert longest_palindrome_substring(\"aa\") == \"aa\"\n    \n    # Test with two different characters\n    assert longest_palindrome_substring(\"ab\") == \"a\"\n    \n    # Test with an empty string\n    assert longest_palindrome_substring(\"\") == \"\"\n    \n    # Test with a longer palindrome\n    assert longest_palindrome_substring(\"racecar\") == \"racecar\"\n    \n    # Test with a string that has no palindrome longer than 1\n    assert longest_palindrome_substring(\"abcde\") == \"a\"\n    \n    # Test with a string that has multiple palindromes\n    assert longest_palindrome_substring(\"cbbd\") in [\"bb\", \"b\"]\n    \n    # Test with a string that is a palindrome\n    assert longest_palindrome_substring(\"aibohphobia\") == \"aibohphobia\"\n    \n    # Test with a string that has mixed case\n    assert longest_palindrome_substring(\"Aibohphobia\") == \"A\"\n    \n    # Test with a string that has special characters\n    assert longest_palindrome_substring(\"!@#$$#@!\") == \"$$\"\n    \n    # Test with a long string with no palindromes\n    assert longest_palindrome_substring(\"abcdefghijklmnopqrstuvwxyz\") == \"a\"\n    \n    # Test with a string that is a palindrome with spaces\n    assert longest_palindrome_substring(\"a man a plan a canal panama\") == \" a \"\n    \n    # Test with a string that has a palindrome at the end\n    assert longest_palindrome_substring(\"abcba\") == \"abcba\"\n    \n    # Test with a string that has a palindrome at the start\n    assert longest_palindrome_substring(\"abccba\") == \"abccba\"",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "from python_functions import longest_palindrome_substring\n\ndef test_longest_palindrome_substring():\n    # Test with a simple palindrome\n    assert longest_palindrome_substring(\"babad\") in [\"bab\", \"aba\"]\n    \n    # Test with a single character\n    assert longest_palindrome_substring(\"a\") == \"a\"\n    \n    # Test with two characters, both the same\n    assert longest_palindrome_substring(\"aa\") == \"aa\"\n    \n    # Test with two characters, different\n    assert longest_palindrome_substring(\"ab\") in [\"a\", \"b\"]\n    \n    # Test with an empty string\n    assert longest_palindrome_substring(\"\") == \"\"\n    \n    # Test with a longer palindrome\n    assert longest_palindrome_substring(\"cbbd\") == \"bb\"\n    \n    # Test with a string that has no palindrome longer than 1\n    assert longest_palindrome_substring(\"abcde\") in [\"a\", \"b\", \"c\", \"d\", \"e\"]\n    \n    # Test with a complex palindrome\n    assert longest_palindrome_substring(\"racecar\") == \"racecar\"\n    \n    # Test with a string that has multiple palindromes\n    assert longest_palindrome_substring(\"aabbccddeeffgghhiijj\") in [\"aa\", \"bb\", \"cc\", \"dd\", \"ee\", \"ff\", \"gg\", \"hh\", \"ii\", \"jj\"]\n    \n    # Test with a string that is a palindrome with spaces\n    assert longest_palindrome_substring(\"a man a plan a canal panama\") == \"ana\"\n    \n    # Test with a string that has mixed case\n    assert longest_palindrome_substring(\"Aba\") in [\"A\", \"a\", \"b\"]\n    \n    # Test with a string that has special characters\n    assert longest_palindrome_substring(\"!@#$$#@!\") == \"$$\"\n    \n    # Test with a long string with no palindromes\n    assert longest_palindrome_substring(\"abcdefghijklmnopqrstuvwxyz\") in [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\", \"k\", \"l\", \"m\", \"n\", \"o\", \"p\", \"q\", \"r\", \"s\", \"t\", \"u\", \"v\", \"w\", \"x\", \"y\", \"z\"]"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939749.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 366,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 603,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 969
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4533,
+    "output_tokens": 499,
+    "total_tokens": 5032
   }
 }

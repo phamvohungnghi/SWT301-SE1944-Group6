@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_021_dijkstra",
-  "started_at_utc": "2026-07-13T10:54:11.173777+00:00",
-  "finished_at_utc": "2026-07-13T10:54:17.093486+00:00",
-  "response_id": "resp_0424a52b3a9354bc006a54c3d2da7c8198ab8061ea20603327",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "c480ce506736ed03343dd85d26ddb6a5bac149f63e0b210cf02aa471a936195e",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:06:01.339973+00:00",
+  "finished_at_utc": "2026-07-16T09:06:10.490233+00:00",
+  "response_id": "openai-0f80b8e5089c",
+  "prompt_sha256": "cf8e81768b773b5aed2ef774cbcb79289462005244fe79bcf7daa9f4c86c5360",
   "source_sha256": "5b1135e0e6b6c30030e291fdc4e1cfb40d298c0b11ea3aa75088e7bc9c319b9d",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6332,
+    "output_tokens": 550,
+    "total_tokens": 6882
+  }
 }

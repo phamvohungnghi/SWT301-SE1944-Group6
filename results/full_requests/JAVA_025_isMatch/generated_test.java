@@ -1,105 +1,54 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class JAVA_025_isMatchTest {
+public class JavaAlgorithmsTest {
 
     @Test
-    void testNullPattern() {
-        assertFalse(JAVA_025_isMatch.isMatch("abc", null));
-    }
+    public void testIsMatch() {
+        // Test cases for isMatch function
 
-    @Test
-    void testNullString() {
-        assertFalse(JAVA_025_isMatch.isMatch(null, "a"));
-    }
-
-    @Test
-    void testBothNull() {
-        assertFalse(JAVA_025_isMatch.isMatch(null, null));
-    }
-
-    @Test
-    void testEmptyPattern() {
-        assertTrue(JAVA_025_isMatch.isMatch("", ""));
-    }
-
-    @Test
-    void testEmptyStringWithEmptyPattern() {
-        assertTrue(JAVA_025_isMatch.isMatch("", ""));
-    }
-
-    @Test
-    void testEmptyStringWithNonEmptyPattern() {
-        assertFalse(JAVA_025_isMatch.isMatch("", "a"));
-    }
-
-    @Test
-    void testSingleCharacterMatch() {
-        assertTrue(JAVA_025_isMatch.isMatch("a", "a"));
-    }
-
-    @Test
-    void testSingleCharacterMismatch() {
-        assertFalse(JAVA_025_isMatch.isMatch("a", "b"));
-    }
-
-    @Test
-    void testDotMatch() {
-        assertTrue(JAVA_025_isMatch.isMatch("a", "."));
-    }
-
-    @Test
-    void testStarWithSingleMatch() {
-        assertTrue(JAVA_025_isMatch.isMatch("aa", "a*"));
-    }
-
-    @Test
-    void testStarWithMultipleMatches() {
-        assertTrue(JAVA_025_isMatch.isMatch("aaa", "a*"));
-    }
-
-    @Test
-    void testStarWithNoMatch() {
-        assertFalse(JAVA_025_isMatch.isMatch("a", "b*"));
-    }
-
-    @Test
-    void testComplexPatternMatch() {
-        assertTrue(JAVA_025_isMatch.isMatch("aab", "c*a*b"));
-    }
-
-    @Test
-    void testComplexPatternMismatch() {
-        assertFalse(JAVA_025_isMatch.isMatch("mississippi", "mis*is*p*."));
-    }
-
-    @Test
-    void testPatternWithMultipleStars() {
-        assertTrue(JAVA_025_isMatch.isMatch("ab", ".*"));
-    }
-
-    @Test
-    void testPatternWithLeadingStar() {
-        assertFalse(JAVA_025_isMatch.isMatch("abc", "*a"));
-    }
-
-    @Test
-    void testPatternWithTrailingStar() {
-        assertTrue(JAVA_025_isMatch.isMatch("abc", "abc*"));
-    }
-
-    @Test
-    void testPatternWithOnlyStar() {
-        assertTrue(JAVA_025_isMatch.isMatch("abc", ".*"));
-    }
-
-    @Test
-    void testLongStringWithStar() {
-        assertTrue(JAVA_025_isMatch.isMatch("abbbbbbc", "ab*bc"));
-    }
-
-    @Test
-    void testLongStringWithStarMismatch() {
-        assertFalse(JAVA_025_isMatch.isMatch("abbbbbbc", "ab*cd"));
+        // Test with exact match
+        assertTrue(JavaAlgorithms.isMatch("abc", "abc"));
+        
+        // Test with single character wildcard
+        assertTrue(JavaAlgorithms.isMatch("a", "."));
+        assertFalse(JavaAlgorithms.isMatch("b", "."));
+        
+        // Test with multiple character wildcard
+        assertTrue(JavaAlgorithms.isMatch("aa", "a*"));
+        assertTrue(JavaAlgorithms.isMatch("ab", ".*"));
+        assertFalse(JavaAlgorithms.isMatch("a", ".*b"));
+        
+        // Test with empty pattern
+        assertTrue(JavaAlgorithms.isMatch("", ""));
+        assertFalse(JavaAlgorithms.isMatch("a", ""));
+        
+        // Test with pattern that has a star
+        assertTrue(JavaAlgorithms.isMatch("aab", "c*a*b"));
+        assertFalse(JavaAlgorithms.isMatch("mississippi", "mis*is*p*."));
+        
+        // Test with null inputs
+        assertFalse(JavaAlgorithms.isMatch(null, "a"));
+        assertFalse(JavaAlgorithms.isMatch("a", null));
+        assertFalse(JavaAlgorithms.isMatch(null, null));
+        
+        // Test with pattern that matches empty string
+        assertTrue(JavaAlgorithms.isMatch("abc", ".*"));
+        assertTrue(JavaAlgorithms.isMatch("", ".*"));
+        
+        // Test with complex patterns
+        assertTrue(JavaAlgorithms.isMatch("ab", ".*"));
+        assertTrue(JavaAlgorithms.isMatch("aab", "c*a*b"));
+        assertFalse(JavaAlgorithms.isMatch("mississippi", "mis*is*p*."));
+        
+        // Test with single character and star
+        assertTrue(JavaAlgorithms.isMatch("a", "a*"));
+        assertTrue(JavaAlgorithms.isMatch("aa", "a*"));
+        assertTrue(JavaAlgorithms.isMatch("aaa", "a*"));
+        assertFalse(JavaAlgorithms.isMatch("a", "b*"));
+        
+        // Test with patterns that should not match
+        assertFalse(JavaAlgorithms.isMatch("abc", "a.c"));
+        assertFalse(JavaAlgorithms.isMatch("abc", "a*b*c"));
     }
 }

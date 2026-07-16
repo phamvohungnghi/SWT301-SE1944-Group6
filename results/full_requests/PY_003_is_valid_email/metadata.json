@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_003_is_valid_email",
-  "started_at_utc": "2026-07-13T10:46:48.791800+00:00",
-  "finished_at_utc": "2026-07-13T10:46:57.577393+00:00",
-  "response_id": "resp_0768dd36b49a5641006a54c218751c819b90e089090797a17d",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "a8ee292a293e1cebd685d1932fd68c790d500a98bd3a0f43833313788763402c",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:53:52.202425+00:00",
+  "finished_at_utc": "2026-07-16T08:54:16.355061+00:00",
+  "response_id": "openai-2ec595636d14",
+  "prompt_sha256": "c6ba5a2fe516aa7865ca04f6752da1d34b474491dce26359902f527721259e81",
   "source_sha256": "878c3f9c1963932b1726e6a4b661dd2c14ef804c36db78bcc7c1ba4685e9f175",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4489,
+    "output_tokens": 2048,
+    "total_tokens": 6537
+  }
 }

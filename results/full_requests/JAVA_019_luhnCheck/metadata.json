@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_019_luhnCheck",
-  "started_at_utc": "2026-07-13T10:53:52.064011+00:00",
-  "finished_at_utc": "2026-07-13T10:53:58.634717+00:00",
-  "response_id": "resp_05f1c9f2446d9790006a54c3bfbb4881989dde1c94fe43f70f",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "010156336372f0918ec06357a2a09ab3cd0c62af228b87078b5867e384ff035a",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:05:14.212315+00:00",
+  "finished_at_utc": "2026-07-16T09:05:43.657895+00:00",
+  "response_id": "openai-00aac831a6ab",
+  "prompt_sha256": "c7d67adc591c69560f311470bfe11f0dec7939e6427cb48d65755dd0a707c26a",
   "source_sha256": "d6c0635ef41f97a1c0b77446137e42d44e52e06c68b2d947d07842b9b7b8c685",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6228,
+    "output_tokens": 569,
+    "total_tokens": 6797
+  }
 }

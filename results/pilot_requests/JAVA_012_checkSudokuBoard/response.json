@@ -1,96 +1,18 @@
 {
-  "id": "resp_0b165b2334bcb272006a54c1929328819b91abd066ef08e504",
-  "created_at": 1783939474.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-67330d763a6f",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0b165b2334bcb272006a54c1947398819ba63c4ea5cf380808",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic class SudokuBoardTest {\n\n    @Test\n    public void testNullBoard() {\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(null));\n    }\n\n    @Test\n    public void testInvalidBoardSize() {\n        int[][] invalidBoard = new int[8][9];\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));\n        \n        invalidBoard = new int[10][9];\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));\n    }\n\n    @Test\n    public void testValidBoard() {\n        int[][] validBoard = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoard));\n    }\n\n    @Test\n    public void testDuplicateInRow() {\n        int[][] boardWithDuplicateRow = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 5, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithDuplicateRow));\n    }\n\n    @Test\n    public void testDuplicateInColumn() {\n        int[][] boardWithDuplicateColumn = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 5}\n        };\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithDuplicateColumn));\n    }\n\n    @Test\n    public void testInvalidNumberInBoard() {\n        int[][] boardWithInvalidNumber = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 10, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithInvalidNumber));\n    }\n\n    @Test\n    public void testValidBoardWithZeros() {\n        int[][] validBoardWithZeros = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoardWithZeros));\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class SudokuBoardTest {\n\n    @Test\n    public void testNullBoard() {\n        assertFalse(JavaAlgorithms.checkSudokuBoard(null));\n    }\n\n    @Test\n    public void testInvalidBoardSize() {\n        int[][] board = new int[8][9];\n        assertFalse(JavaAlgorithms.checkSudokuBoard(board));\n        \n        board = new int[10][9];\n        assertFalse(JavaAlgorithms.checkSudokuBoard(board));\n    }\n\n    @Test\n    public void testValidBoard() {\n        int[][] board = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertTrue(JavaAlgorithms.checkSudokuBoard(board));\n    }\n\n    @Test\n    public void testDuplicateInRow() {\n        int[][] board = {\n            {5, 3, 5, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertFalse(JavaAlgorithms.checkSudokuBoard(board));\n    }\n\n    @Test\n    public void testDuplicateInColumn() {\n        int[][] board = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 5}\n        };\n        assertFalse(JavaAlgorithms.checkSudokuBoard(board));\n    }\n\n    @Test\n    public void testInvalidNumberInBoard() {\n        int[][] board = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 10, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 2, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertFalse(JavaAlgorithms.checkSudokuBoard(board));\n    }\n\n    @Test\n    public void testValidBoardWithZeros() {\n        int[][] board = {\n            {5, 3, 0, 0, 7, 0, 0, 0, 0},\n            {6, 0, 0, 1, 9, 5, 0, 0, 0},\n            {0, 9, 8, 0, 0, 0, 0, 6, 0},\n            {8, 0, 0, 0, 6, 0, 0, 0, 3},\n            {4, 0, 0, 8, 0, 3, 0, 0, 1},\n            {7, 0, 0, 0, 2, 0, 0, 0, 6},\n            {0, 6, 0, 0, 0, 0, 0, 8, 0},\n            {0, 0, 0, 4, 1, 9, 0, 0, 5},\n            {0, 0, 0, 0, 8, 0, 0, 7, 9}\n        };\n        assertTrue(JavaAlgorithms.checkSudokuBoard(board));\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939494.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 398,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 1630,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 2028
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6256,
+    "output_tokens": 1538,
+    "total_tokens": 7794
   }
 }

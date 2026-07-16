@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_018_findPrimeFactors",
-  "started_at_utc": "2026-07-13T10:53:45.340278+00:00",
-  "finished_at_utc": "2026-07-13T10:53:52.042455+00:00",
-  "response_id": "resp_07f64ab8d793da10006a54c3b90590819a9b729839d32baed9",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "36563c3bffb6cef609dfff50bc4163cd650bb008d471292c4f3cb70067705a29",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:05:03.400903+00:00",
+  "finished_at_utc": "2026-07-16T09:05:14.144163+00:00",
+  "response_id": "openai-67db64b6b637",
+  "prompt_sha256": "00cd85ee4bdd3d0f3ef307625df2307dc1403ea9e973c15a5c57649522bc1a79",
   "source_sha256": "b14ad26c1143c306b411b081b07db289eb3a472368dc9ad8241e6841b4ca5f9b",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6188,
+    "output_tokens": 739,
+    "total_tokens": 6927
+  }
 }

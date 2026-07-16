@@ -1,75 +1,85 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LongestPalindromeSubstringTest {
+class JavaAlgorithmsTest {
 
-    @Test
-    public void testNullInput() {
-        assertEquals("", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(null));
+    @BeforeEach
+    void setUp() {
     }
 
     @Test
-    public void testEmptyString() {
-        assertEquals("", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring(""));
+    void testLongestPalindromeSubstring_NullInput() {
+        assertEquals("", JavaAlgorithms.longestPalindromeSubstring(null));
     }
 
     @Test
-    public void testSingleCharacter() {
-        assertEquals("a", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("a"));
+    void testLongestPalindromeSubstring_EmptyInput() {
+        assertEquals("", JavaAlgorithms.longestPalindromeSubstring(""));
     }
 
     @Test
-    public void testTwoIdenticalCharacters() {
-        assertEquals("aa", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("aa"));
+    void testLongestPalindromeSubstring_SingleCharacter() {
+        assertEquals("a", JavaAlgorithms.longestPalindromeSubstring("a"));
     }
 
     @Test
-    public void testTwoDifferentCharacters() {
-        assertEquals("a", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("ab"));
+    void testLongestPalindromeSubstring_TwoDifferentCharacters() {
+        assertEquals("a", JavaAlgorithms.longestPalindromeSubstring("ab"));
     }
 
     @Test
-    public void testOddLengthPalindrome() {
-        assertEquals("aba", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("abacdfgdcaba"));
+    void testLongestPalindromeSubstring_TwoSameCharacters() {
+        assertEquals("aa", JavaAlgorithms.longestPalindromeSubstring("aa"));
     }
 
     @Test
-    public void testEvenLengthPalindrome() {
-        assertEquals("abba", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("cbbd"));
+    void testLongestPalindromeSubstring_OddLengthPalindrome() {
+        assertEquals("aba", JavaAlgorithms.longestPalindromeSubstring("abacdfgdcaba"));
     }
 
     @Test
-    public void testNoPalindrome() {
-        assertEquals("a", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("abc"));
+    void testLongestPalindromeSubstring_EvenLengthPalindrome() {
+        assertEquals("abba", JavaAlgorithms.longestPalindromeSubstring("cbbd"));
     }
 
     @Test
-    public void testMultiplePalindromes() {
-        assertEquals("racecar", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("racecarxyz"));
+    void testLongestPalindromeSubstring_NoPalindrome() {
+        assertEquals("a", JavaAlgorithms.longestPalindromeSubstring("abc"));
     }
 
     @Test
-    public void testLongStringWithPalindromes() {
-        assertEquals("abcdedcba", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("abcdedcbaefg"));
+    void testLongestPalindromeSubstring_MultiplePalindromes() {
+        assertEquals("bab", JavaAlgorithms.longestPalindromeSubstring("babad"));
     }
 
     @Test
-    public void testLongStringWithoutPalindromes() {
-        assertEquals("a", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("abcdefgh"));
+    void testLongestPalindromeSubstring_ComplexCase() {
+        assertEquals("racecar", JavaAlgorithms.longestPalindromeSubstring("racecarxyz"));
     }
 
     @Test
-    public void testPalindromeAtStart() {
-        assertEquals("madam", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("madamxyz"));
+    void testLongestPalindromeSubstring_EntireStringIsPalindrome() {
+        assertEquals("madam", JavaAlgorithms.longestPalindromeSubstring("madam"));
     }
 
     @Test
-    public void testPalindromeAtEnd() {
-        assertEquals("deified", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("xyzdeified"));
+    void testLongestPalindromeSubstring_SpecialCharacters() {
+        assertEquals("!@!", JavaAlgorithms.longestPalindromeSubstring("!@!abc!@!"));
     }
 
     @Test
-    public void testPalindromeInMiddle() {
-        assertEquals("noon", JAVA_015_longestPalindromeSubstring.longestPalindromeSubstring("abcnoonxyz"));
+    void testLongestPalindromeSubstring_Spaces() {
+        assertEquals(" a ", JavaAlgorithms.longestPalindromeSubstring(" a b a "));
+    }
+
+    @Test
+    void testLongestPalindromeSubstring_LongestAtStart() {
+        assertEquals("abcba", JavaAlgorithms.longestPalindromeSubstring("abcbaxyz"));
+    }
+
+    @Test
+    void testLongestPalindromeSubstring_LongestAtEnd() {
+        assertEquals("xyzzyx", JavaAlgorithms.longestPalindromeSubstring("xyzzyxabc"));
     }
 }

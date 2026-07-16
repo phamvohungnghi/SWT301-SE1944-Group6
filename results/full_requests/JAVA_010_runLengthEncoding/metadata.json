@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_010_runLengthEncoding",
-  "started_at_utc": "2026-07-13T10:52:11.576821+00:00",
-  "finished_at_utc": "2026-07-13T10:52:19.510580+00:00",
-  "response_id": "resp_0b8a8a92909d3a5f006a54c35b408c81998378ebd25eeeb603",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "e25b9612e900081469cab9ee2dbe3edac50ec4fde2a45e7eac6c5c3bcb5ba5be",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:03:11.385499+00:00",
+  "finished_at_utc": "2026-07-16T09:03:17.327328+00:00",
+  "response_id": "openai-188be54ce01b",
+  "prompt_sha256": "02fe0089a327fa0e47afa56da058c1c99be9b207a250219bf97497c2414796dc",
   "source_sha256": "8022b5eaef7b7e2bac0a8d9d94db64827092585a9a2fb4c559730bbc233160ba",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6222,
+    "output_tokens": 437,
+    "total_tokens": 6659
+  }
 }

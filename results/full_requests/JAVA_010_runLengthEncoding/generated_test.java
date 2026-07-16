@@ -1,67 +1,65 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class RunLengthEncodingTest {
+public class JavaAlgorithmsTest {
 
     @Test
-    void testNullInput() {
-        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding(null));
+    public void testRunLengthEncoding_NullInput() {
+        String result = JavaAlgorithms.runLengthEncoding(null);
+        Assertions.assertEquals("", result);
     }
 
     @Test
-    void testEmptyString() {
-        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding(""));
+    public void testRunLengthEncoding_EmptyString() {
+        String result = JavaAlgorithms.runLengthEncoding("");
+        Assertions.assertEquals("", result);
     }
 
     @Test
-    void testSingleCharacter() {
-        assertEquals("1a", JAVA_010_runLengthEncoding.runLengthEncoding("a"));
-        assertEquals("1b", JAVA_010_runLengthEncoding.runLengthEncoding("b"));
+    public void testRunLengthEncoding_SingleCharacter() {
+        String result = JavaAlgorithms.runLengthEncoding("a");
+        Assertions.assertEquals("1a", result);
     }
 
     @Test
-    void testTwoDifferentCharacters() {
-        assertEquals("1a1b", JAVA_010_runLengthEncoding.runLengthEncoding("ab"));
+    public void testRunLengthEncoding_RepeatedCharacters() {
+        String result = JavaAlgorithms.runLengthEncoding("aaabbc");
+        Assertions.assertEquals("3a2b1c", result);
     }
 
     @Test
-    void testTwoSameCharacters() {
-        assertEquals("2a", JAVA_010_runLengthEncoding.runLengthEncoding("aa"));
-        assertEquals("2b", JAVA_010_runLengthEncoding.runLengthEncoding("bb"));
+    public void testRunLengthEncoding_AlternatingCharacters() {
+        String result = JavaAlgorithms.runLengthEncoding("abc");
+        Assertions.assertEquals("1a1b1c", result);
     }
 
     @Test
-    void testMultipleSameCharacters() {
-        assertEquals("3a", JAVA_010_runLengthEncoding.runLengthEncoding("aaa"));
-        assertEquals("4b", JAVA_010_runLengthEncoding.runLengthEncoding("bbbb"));
+    public void testRunLengthEncoding_NonLetterCharacters() {
+        String result = JavaAlgorithms.runLengthEncoding("aa1bb");
+        Assertions.assertEquals("", result);
     }
 
     @Test
-    void testMixedCharacters() {
-        assertEquals("2a1b2c", JAVA_010_runLengthEncoding.runLengthEncoding("aabbcc"));
-        assertEquals("1a1b1c1d", JAVA_010_runLengthEncoding.runLengthEncoding("abcd"));
+    public void testRunLengthEncoding_SpecialCharacters() {
+        String result = JavaAlgorithms.runLengthEncoding("aa@bb");
+        Assertions.assertEquals("", result);
     }
 
     @Test
-    void testLongSequence() {
-        assertEquals("5a", JAVA_010_runLengthEncoding.runLengthEncoding("aaaaa"));
-        assertEquals("1a1b1c1d1e1f", JAVA_010_runLengthEncoding.runLengthEncoding("abcdef"));
+    public void testRunLengthEncoding_MixedCase() {
+        String result = JavaAlgorithms.runLengthEncoding("aaAAaa");
+        Assertions.assertEquals("2a2A2a", result);
     }
 
     @Test
-    void testInvalidCharacter() {
-        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding("a1b"));
-        assertEquals("", JAVA_010_runLengthEncoding.runLengthEncoding("abc!"));
+    public void testRunLengthEncoding_LongString() {
+        String result = JavaAlgorithms.runLengthEncoding("aaaabbbbcccc");
+        Assertions.assertEquals("4a4b4c", result);
     }
 
     @Test
-    void testAllSameCharacters() {
-        assertEquals("10a", JAVA_010_runLengthEncoding.runLengthEncoding("aaaaaaaaaa"));
-    }
-
-    @Test
-    void testLargeInput() {
-        String input = "a".repeat(1000);
-        assertEquals("1000a", JAVA_010_runLengthEncoding.runLengthEncoding(input));
+    public void testRunLengthEncoding_SingleCharacterRepeated() {
+        String result = JavaAlgorithms.runLengthEncoding("zzzzzz");
+        Assertions.assertEquals("6z", result);
     }
 }

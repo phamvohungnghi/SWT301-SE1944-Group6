@@ -1,71 +1,42 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class DateDifferenceTest {
+public class JavaAlgorithmsTest {
 
     @Test
-    void testNullDate1() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference(null, "2023-10-01"));
+    public void testDateDifference_ValidDates() {
+        Assertions.assertEquals(0, JavaAlgorithms.dateDifference("2023-10-01", "2023-10-01"));
+        Assertions.assertEquals(1, JavaAlgorithms.dateDifference("2023-10-01", "2023-10-02"));
+        Assertions.assertEquals(365, JavaAlgorithms.dateDifference("2022-10-01", "2023-10-01"));
+        Assertions.assertEquals(365, JavaAlgorithms.dateDifference("2023-10-01", "2024-10-01"));
+        Assertions.assertEquals(30, JavaAlgorithms.dateDifference("2023-09-01", "2023-10-01"));
     }
 
     @Test
-    void testNullDate2() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-10-01", null));
+    public void testDateDifference_LeapYear() {
+        Assertions.assertEquals(60, JavaAlgorithms.dateDifference("2020-01-01", "2020-03-01")); // Leap year
+        Assertions.assertEquals(59, JavaAlgorithms.dateDifference("2020-01-01", "2020-02-29")); // Leap year
+        Assertions.assertEquals(1, JavaAlgorithms.dateDifference("2020-02-29", "2020-03-01")); // Leap year
     }
 
     @Test
-    void testInvalidFormatDate1() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-10", "2023-10-01"));
+    public void testDateDifference_InvalidFormat() {
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-10", "2023-10-01"));
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-10-01", "2023-10-01-01"));
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-10-01", "2023-10"));
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-10-01", "2023-10-01-01"));
     }
 
     @Test
-    void testInvalidFormatDate2() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-10-01", "2023-10"));
+    public void testDateDifference_NullInput() {
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(null, "2023-10-01"));
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-10-01", null));
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(null, null));
     }
 
     @Test
-    void testInvalidDate1() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-13-01", "2023-10-01"));
-    }
-
-    @Test
-    void testInvalidDate2() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-10-01", "2023-13-01"));
-    }
-
-    @Test
-    void testValidDatesSameYear() {
-        assertEquals(0, JAVA_023_dateDifference.dateDifference("2023-10-01", "2023-10-01"));
-    }
-
-    @Test
-    void testValidDatesDifferentDaysSameMonth() {
-        assertEquals(1, JAVA_023_dateDifference.dateDifference("2023-10-01", "2023-10-02"));
-    }
-
-    @Test
-    void testValidDatesDifferentMonths() {
-        assertEquals(30, JAVA_023_dateDifference.dateDifference("2023-09-01", "2023-10-01"));
-    }
-
-    @Test
-    void testValidDatesDifferentYears() {
-        assertEquals(365, JAVA_023_dateDifference.dateDifference("2022-10-01", "2023-10-01"));
-    }
-
-    @Test
-    void testLeapYearDifference() {
-        assertEquals(1, JAVA_023_dateDifference.dateDifference("2020-02-28", "2020-02-29"));
-    }
-
-    @Test
-    void testInvalidIntegerParsing() {
-        assertEquals(-1, JAVA_023_dateDifference.dateDifference("2023-10-01", "2023-10-xx"));
-    }
-
-    @Test
-    void testBoundaryDates() {
-        assertEquals(0, JAVA_023_dateDifference.dateDifference("0001-01-01", "0001-01-01"));
-        assertEquals(365, JAVA_023_dateDifference.dateDifference("0001-01-01", "0002-01-01"));
+    public void testDateDifference_InvalidDate() {
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-02-30", "2023-03-01")); // Invalid date
+        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference("2023-04-31", "2023-05-01")); // Invalid date
     }
 }

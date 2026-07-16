@@ -1,96 +1,18 @@
 {
-  "id": "resp_0dbae915be01c5f7006a54c2c002448198af35ec8d73e3c761",
-  "created_at": 1783939776.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-44f9ab43ac75",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0dbae915be01c5f7006a54c2c066d48198a82cf8b09833c55b",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\nfrom your_module import luhn_check  # Adjust the import based on your project structure\n\ndef test_luhn_check_valid_card():\n    assert luhn_check(\"4532015112830366\") == True\n    assert luhn_check(\"6011514433546201\") == True\n    assert luhn_check(\"378282246310005\") == True\n    assert luhn_check(\"371449635398431\") == True\n\ndef test_luhn_check_invalid_card():\n    assert luhn_check(\"4532015112830367\") == False\n    assert luhn_check(\"6011514433546200\") == False\n    assert luhn_check(\"378282246310006\") == False\n    assert luhn_check(\"371449635398432\") == False\n\ndef test_luhn_check_empty_input():\n    assert luhn_check(\"\") == False\n\ndef test_luhn_check_non_digit_input():\n    assert luhn_check(\"1234a6789012345\") == False\n    assert luhn_check(\"abcd\") == False\n    assert luhn_check(\"1234 5678 9012 3456\") == False\n\ndef test_luhn_check_single_digit():\n    assert luhn_check(\"5\") == False\n    assert luhn_check(\"0\") == False\n\ndef test_luhn_check_two_digits():\n    assert luhn_check(\"10\") == False\n    assert luhn_check(\"11\") == False\n    assert luhn_check(\"12\") == False\n    assert luhn_check(\"13\") == False\n    assert luhn_check(\"14\") == False\n    assert luhn_check(\"15\") == False\n    assert luhn_check(\"16\") == False\n    assert luhn_check(\"17\") == False\n    assert luhn_check(\"18\") == False\n    assert luhn_check(\"19\") == False\n\ndef test_luhn_check_large_number():\n    assert luhn_check(\"12345678901234567890\") == False\n    assert luhn_check(\"4532015112830366\" * 10) == False  # Exceeding typical card length\n\ndef test_luhn_check_valid_boundary_cases():\n    assert luhn_check(\"79927398713\") == True  # Valid 11-digit number\n    assert luhn_check(\"1234567812345670\") == True  # Valid 16-digit number\n\ndef test_luhn_check_invalid_boundary_cases():\n    assert luhn_check(\"79927398714\") == False  # Invalid 11-digit number\n    assert luhn_check(\"1234567812345671\") == False  # Invalid 16-digit number",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import pytest\nfrom python_functions import luhn_check\n\ndef test_luhn_check_valid():\n    assert luhn_check(\"4532015112830366\") == True\n    assert luhn_check(\"6011514433546201\") == True\n    assert luhn_check(\"378282246310005\") == True\n    assert luhn_check(\"371449635398431\") == True\n\ndef test_luhn_check_invalid():\n    assert luhn_check(\"4532015112830367\") == False\n    assert luhn_check(\"6011514433546202\") == False\n    assert luhn_check(\"378282246310006\") == False\n    assert luhn_check(\"371449635398432\") == False\n\ndef test_luhn_check_empty():\n    assert luhn_check(\"\") == False\n\ndef test_luhn_check_non_digit():\n    assert luhn_check(\"453201511283036A\") == False\n    assert luhn_check(\"1234-5678-9012-3456\") == False\n    assert luhn_check(\"abcd\") == False\n\ndef test_luhn_check_single_digit():\n    assert luhn_check(\"0\") == False\n    assert luhn_check(\"1\") == False\n    assert luhn_check(\"2\") == False\n    assert luhn_check(\"3\") == False\n    assert luhn_check(\"4\") == False\n    assert luhn_check(\"5\") == False\n    assert luhn_check(\"6\") == False\n    assert luhn_check(\"7\") == False\n    assert luhn_check(\"8\") == False\n    assert luhn_check(\"9\") == False\n\ndef test_luhn_check_two_digits():\n    assert luhn_check(\"10\") == False\n    assert luhn_check(\"11\") == False\n    assert luhn_check(\"12\") == False\n    assert luhn_check(\"13\") == False\n    assert luhn_check(\"14\") == False\n    assert luhn_check(\"15\") == False\n    assert luhn_check(\"16\") == False\n    assert luhn_check(\"17\") == False\n    assert luhn_check(\"18\") == False\n    assert luhn_check(\"19\") == False\n\ndef test_luhn_check_large_number():\n    assert luhn_check(\"12345678901234567890\") == False\n    assert luhn_check(\"4532015112830366\" * 10) == True\n    assert luhn_check(\"6011514433546201\" * 10) == True\n\ndef test_luhn_check_boundary_cases():\n    assert luhn_check(\"0000000000000000\") == True\n    assert luhn_check(\"9999999999999999\") == False\n    assert luhn_check(\"1234567890123456\") == False\n    assert luhn_check(\"4000000000000002\") == True\n    assert luhn_check(\"4000000000000003\") == False"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939788.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 292,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 543,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 835
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4459,
+    "output_tokens": 609,
+    "total_tokens": 5068
   }
 }

@@ -1,96 +1,18 @@
 {
-  "id": "resp_0fefcf10e50a8eda006a54c3d8cd80819b9f0addf01e2871cf",
-  "created_at": 1783940056.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-c1c605019e92",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0fefcf10e50a8eda006a54c3d92adc819b8a924b3f3c3e5156",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport java.util.Map;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass QueryStringParserTest {\n\n    @Test\n    void testParseQueryString_NullInput() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(null);\n        assertTrue(result.isEmpty(), \"Expected empty map for null input\");\n    }\n\n    @Test\n    void testParseQueryString_EmptyInput() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"\");\n        assertTrue(result.isEmpty(), \"Expected empty map for empty input\");\n    }\n\n    @Test\n    void testParseQueryString_OnlyQuestionMark() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"?\");\n        assertTrue(result.isEmpty(), \"Expected empty map for input with only '?'\");\n    }\n\n    @Test\n    void testParseQueryString_SingleKeyValue() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"key=value\");\n        assertEquals(1, result.size(), \"Expected map size of 1\");\n        assertEquals(\"value\", result.get(\"key\"), \"Expected value for 'key' to be 'value'\");\n    }\n\n    @Test\n    void testParseQueryString_MultipleKeyValues() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"key1=value1&key2=value2\");\n        assertEquals(2, result.size(), \"Expected map size of 2\");\n        assertEquals(\"value1\", result.get(\"key1\"), \"Expected value for 'key1' to be 'value1'\");\n        assertEquals(\"value2\", result.get(\"key2\"), \"Expected value for 'key2' to be 'value2'\");\n    }\n\n    @Test\n    void testParseQueryString_EmptyValue() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"key=\");\n        assertEquals(1, result.size(), \"Expected map size of 1\");\n        assertEquals(\"\", result.get(\"key\"), \"Expected value for 'key' to be empty string\");\n    }\n\n    @Test\n    void testParseQueryString_MultipleValuesForSameKey() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"key=value1&key=value2\");\n        assertEquals(1, result.size(), \"Expected map size of 1\");\n        assertTrue(result.get(\"key\") instanceof List, \"Expected value for 'key' to be a List\");\n        List<String> values = (List<String>) result.get(\"key\");\n        assertEquals(2, values.size(), \"Expected list size of 2\");\n        assertTrue(values.contains(\"value1\"), \"Expected list to contain 'value1'\");\n        assertTrue(values.contains(\"value2\"), \"Expected list to contain 'value2'\");\n    }\n\n    @Test\n    void testParseQueryString_IgnoreEmptyPairs() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"key1=value1&&key2=value2\");\n        assertEquals(2, result.size(), \"Expected map size of 2\");\n        assertEquals(\"value1\", result.get(\"key1\"), \"Expected value for 'key1' to be 'value1'\");\n        assertEquals(\"value2\", result.get(\"key2\"), \"Expected value for 'key2' to be 'value2'\");\n    }\n\n    @Test\n    void testParseQueryString_LeadingQuestionMark() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"?key=value\");\n        assertEquals(1, result.size(), \"Expected map size of 1\");\n        assertEquals(\"value\", result.get(\"key\"), \"Expected value for 'key' to be 'value'\");\n    }\n\n    @Test\n    void testParseQueryString_MultipleEmptyKeys() {\n        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(\"=value1&=value2\");\n        assertEquals(1, result.size(), \"Expected map size of 1\");\n        assertTrue(result.get(\"\").equals(\"value2\") || result.get(\"\").equals(\"value1\"), \"Expected last value for empty key to be either 'value1' or 'value2'\");\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport java.util.*;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JavaAlgorithmsTest {\n\n    private JavaAlgorithms algorithms;\n\n    @BeforeEach\n    void setUp() {\n        algorithms = new JavaAlgorithms();\n    }\n\n    @Test\n    void testParseQueryString_NullInput() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(null);\n        assertNotNull(result);\n        assertTrue(result.isEmpty());\n    }\n\n    @Test\n    void testParseQueryString_EmptyInput() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"\");\n        assertNotNull(result);\n        assertTrue(result.isEmpty());\n    }\n\n    @Test\n    void testParseQueryString_OnlyQuestionMark() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"?\");\n        assertNotNull(result);\n        assertTrue(result.isEmpty());\n    }\n\n    @Test\n    void testParseQueryString_SingleKeyValue() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key=value\");\n        assertNotNull(result);\n        assertEquals(1, result.size());\n        assertEquals(\"value\", result.get(\"key\"));\n    }\n\n    @Test\n    void testParseQueryString_MultipleKeyValues() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key1=value1&key2=value2\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertEquals(\"value1\", result.get(\"key1\"));\n        assertEquals(\"value2\", result.get(\"key2\"));\n    }\n\n    @Test\n    void testParseQueryString_EmptyValue() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key1=&key2=value2\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertEquals(\"\", result.get(\"key1\"));\n        assertEquals(\"value2\", result.get(\"key2\"));\n    }\n\n    @Test\n    void testParseQueryString_SameKeyMultipleValues() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key=value1&key=value2\");\n        assertNotNull(result);\n        assertEquals(1, result.size());\n        assertTrue(result.get(\"key\") instanceof List);\n        List<String> values = (List<String>) result.get(\"key\");\n        assertEquals(2, values.size());\n        assertTrue(values.contains(\"value1\"));\n        assertTrue(values.contains(\"value2\"));\n    }\n\n    @Test\n    void testParseQueryString_EmptyPairs() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key1=value1&&key2=value2\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertEquals(\"value1\", result.get(\"key1\"));\n        assertEquals(\"value2\", result.get(\"key2\"));\n    }\n\n    @Test\n    void testParseQueryString_LeadingQuestionMark() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"?key1=value1&key2=value2\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertEquals(\"value1\", result.get(\"key1\"));\n        assertEquals(\"value2\", result.get(\"key2\"));\n    }\n\n    @Test\n    void testParseQueryString_OnlyKeys() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key1&key2\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertEquals(\"\", result.get(\"key1\"));\n        assertEquals(\"\", result.get(\"key2\"));\n    }\n\n    @Test\n    void testParseQueryString_ComplexInput() {\n        Map<String, Object> result = JavaAlgorithms.parseQueryString(\"key1=value1&key2=value2&key1=value3\");\n        assertNotNull(result);\n        assertEquals(2, result.size());\n        assertTrue(result.get(\"key1\") instanceof List);\n        List<String> values = (List<String>) result.get(\"key1\");\n        assertEquals(2, values.size());\n        assertTrue(values.contains(\"value1\"));\n        assertTrue(values.contains(\"value3\"));\n        assertEquals(\"value2\", result.get(\"key2\"));\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783940064.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 454,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 904,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 1358
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6312,
+    "output_tokens": 890,
+    "total_tokens": 7202
   }
 }

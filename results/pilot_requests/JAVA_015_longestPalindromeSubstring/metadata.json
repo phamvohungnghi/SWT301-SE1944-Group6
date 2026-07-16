@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_015_longestPalindromeSubstring",
-  "started_at_utc": "2026-07-13T10:44:55.164295+00:00",
-  "finished_at_utc": "2026-07-13T10:45:02.869351+00:00",
-  "response_id": "resp_0763f3e08ebd5818006a54c1a6d60c8199942735ff9017d411",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "562aa623affc2177d48038d725f888bdafb503e733ab206646b6abcee2eccec8",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:46:44.222604+00:00",
+  "finished_at_utc": "2026-07-16T08:46:54.529442+00:00",
+  "response_id": "openai-b019677e0f69",
+  "prompt_sha256": "13c3e5670214af93e9e91d295c418e4d64440e21cbe8157b707806533248d337",
   "source_sha256": "5dc26648207a2cf5c5da102e398ab3122fbf2d29511127e2dc4403b1befe3599",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6260,
+    "output_tokens": 549,
+    "total_tokens": 6809
+  }
 }

@@ -1,96 +1,18 @@
 {
-  "id": "resp_01669073264fccb7006a54c297f794819ba899de9589688f18",
-  "created_at": 1783939735.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-8975995a3950",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_01669073264fccb7006a54c2987764819b8f5494278ae71167",
-      "content": [
-        {
-          "annotations": [],
-          "text": "def test_int_to_roman():\n    from your_module import int_to_roman  # Replace 'your_module' with the actual module name\n\n    # Test cases for valid inputs\n    assert int_to_roman(1) == \"I\"\n    assert int_to_roman(4) == \"IV\"\n    assert int_to_roman(5) == \"V\"\n    assert int_to_roman(9) == \"IX\"\n    assert int_to_roman(10) == \"X\"\n    assert int_to_roman(40) == \"XL\"\n    assert int_to_roman(50) == \"L\"\n    assert int_to_roman(90) == \"XC\"\n    assert int_to_roman(100) == \"C\"\n    assert int_to_roman(400) == \"CD\"\n    assert int_to_roman(500) == \"D\"\n    assert int_to_roman(900) == \"CM\"\n    assert int_to_roman(1000) == \"M\"\n    assert int_to_roman(1994) == \"MCMXCIV\"\n    assert int_to_roman(2023) == \"MMXXIII\"\n    assert int_to_roman(3999) == \"MMMCMXCIX\"\n\n    # Test cases for boundary conditions\n    assert int_to_roman(0) == \"\"\n    assert int_to_roman(-1) == \"\"\n    assert int_to_roman(4000) == \"\"\n\n    # Test cases for invalid inputs\n    assert int_to_roman(5000) == \"\"\n    assert int_to_roman(-10) == \"\"\n    assert int_to_roman(10000) == \"\"",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "from python_functions import int_to_roman\n\ndef test_int_to_roman():\n    # Test lower boundary\n    assert int_to_roman(0) == \"\"\n    assert int_to_roman(-1) == \"\"\n    \n    # Test upper boundary\n    assert int_to_roman(4000) == \"\"\n    \n    # Test valid conversions\n    assert int_to_roman(1) == \"I\"\n    assert int_to_roman(4) == \"IV\"\n    assert int_to_roman(5) == \"V\"\n    assert int_to_roman(9) == \"IX\"\n    assert int_to_roman(10) == \"X\"\n    assert int_to_roman(40) == \"XL\"\n    assert int_to_roman(50) == \"L\"\n    assert int_to_roman(90) == \"XC\"\n    assert int_to_roman(100) == \"C\"\n    assert int_to_roman(400) == \"CD\"\n    assert int_to_roman(500) == \"D\"\n    assert int_to_roman(900) == \"CM\"\n    assert int_to_roman(1000) == \"M\"\n    \n    # Test combinations\n    assert int_to_roman(1994) == \"MCMXCIV\"\n    assert int_to_roman(58) == \"LVIII\"\n    assert int_to_roman(2023) == \"MMXXIII\"\n    \n    # Test random values within range\n    assert int_to_roman(123) == \"CXXIII\"\n    assert int_to_roman(256) == \"CCLVI\"\n    assert int_to_roman(3333) == \"MMMCCCXXXIII\""
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939742.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 356,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 343,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 699
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4523,
+    "output_tokens": 349,
+    "total_tokens": 4872
   }
 }

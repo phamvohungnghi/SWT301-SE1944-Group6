@@ -1,7 +1,14 @@
-def test_int_to_roman():
-    from your_module import int_to_roman  # Replace 'your_module' with the actual module name
+from python_functions import int_to_roman
 
-    # Test cases for valid inputs
+def test_int_to_roman():
+    # Test lower boundary
+    assert int_to_roman(0) == ""
+    assert int_to_roman(-1) == ""
+    
+    # Test upper boundary
+    assert int_to_roman(4000) == ""
+    
+    # Test valid conversions
     assert int_to_roman(1) == "I"
     assert int_to_roman(4) == "IV"
     assert int_to_roman(5) == "V"
@@ -15,16 +22,13 @@ def test_int_to_roman():
     assert int_to_roman(500) == "D"
     assert int_to_roman(900) == "CM"
     assert int_to_roman(1000) == "M"
+    
+    # Test combinations
     assert int_to_roman(1994) == "MCMXCIV"
+    assert int_to_roman(58) == "LVIII"
     assert int_to_roman(2023) == "MMXXIII"
-    assert int_to_roman(3999) == "MMMCMXCIX"
-
-    # Test cases for boundary conditions
-    assert int_to_roman(0) == ""
-    assert int_to_roman(-1) == ""
-    assert int_to_roman(4000) == ""
-
-    # Test cases for invalid inputs
-    assert int_to_roman(5000) == ""
-    assert int_to_roman(-10) == ""
-    assert int_to_roman(10000) == ""
+    
+    # Test random values within range
+    assert int_to_roman(123) == "CXXIII"
+    assert int_to_roman(256) == "CCLVI"
+    assert int_to_roman(3333) == "MMMCCCXXXIII"

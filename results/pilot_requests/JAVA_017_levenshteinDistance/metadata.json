@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_017_levenshteinDistance",
-  "started_at_utc": "2026-07-13T10:45:02.885945+00:00",
-  "finished_at_utc": "2026-07-13T10:45:10.240026+00:00",
-  "response_id": "resp_0b6cea4b44e65d25006a54c1ae8f6c8198a5bab10cebb0b5f6",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "fe9fc30ceb67c5ff12e3fe5e08e9a5ff02a95a774e9f3b42ba89ad45ac8b9f05",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:46:54.607713+00:00",
+  "finished_at_utc": "2026-07-16T08:47:00.840228+00:00",
+  "response_id": "openai-f1e06f5e1663",
+  "prompt_sha256": "ffe02f33482e364d82bbb2a617141aa90b6820ca7d54d6d71b24b3b63d8d8ab9",
   "source_sha256": "385d430c6a3499a5b58ccc3997e33c938158455a6912252c595370bda80d2e8e",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6314,
+    "output_tokens": 334,
+    "total_tokens": 6648
+  }
 }

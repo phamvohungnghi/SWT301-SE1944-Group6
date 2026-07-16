@@ -1,96 +1,18 @@
 {
-  "id": "resp_04d9b1c6d00c99d5006a54c30c0264819990dfb94f3288c182",
-  "created_at": 1783939852.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-30e5fc231d39",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_04d9b1c6d00c99d5006a54c30c82f88199a6f56d50f6d9149e",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass BubbleSortTest {\n\n    @Test\n    void testBubbleSort_NullArray() {\n        assertNull(JAVA_001_bubbleSort.bubbleSort(null));\n    }\n\n    @Test\n    void testBubbleSort_EmptyArray() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{});\n        assertArrayEquals(new int[]{}, result);\n    }\n\n    @Test\n    void testBubbleSort_SingleElement() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{5});\n        assertArrayEquals(new int[]{5}, result);\n    }\n\n    @Test\n    void testBubbleSort_TwoElements_Sorted() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{1, 2});\n        assertArrayEquals(new int[]{1, 2}, result);\n    }\n\n    @Test\n    void testBubbleSort_TwoElements_Unsorted() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{2, 1});\n        assertArrayEquals(new int[]{1, 2}, result);\n    }\n\n    @Test\n    void testBubbleSort_MultipleElements_Sorted() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{1, 2, 3, 4, 5});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    void testBubbleSort_MultipleElements_Unsorted() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{5, 3, 4, 1, 2});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    void testBubbleSort_MultipleElements_WithDuplicates() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{3, 1, 2, 3, 2});\n        assertArrayEquals(new int[]{1, 2, 2, 3, 3}, result);\n    }\n\n    @Test\n    void testBubbleSort_AllIdenticalElements() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{2, 2, 2, 2});\n        assertArrayEquals(new int[]{2, 2, 2, 2}, result);\n    }\n\n    @Test\n    void testBubbleSort_NegativeAndPositiveNumbers() {\n        int[] result = JAVA_001_bubbleSort.bubbleSort(new int[]{-1, 2, 0, -3, 5});\n        assertArrayEquals(new int[]{-3, -1, 0, 2, 5}, result);\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    private int[] sortedArray;\n    private int[] unsortedArray;\n    private int[] emptyArray;\n    private int[] singleElementArray;\n    private int[] nullArray;\n\n    @BeforeEach\n    public void setUp() {\n        sortedArray = new int[]{1, 2, 3, 4, 5};\n        unsortedArray = new int[]{5, 3, 4, 1, 2};\n        emptyArray = new int[]{};\n        singleElementArray = new int[]{1};\n        nullArray = null;\n    }\n\n    @Test\n    public void testBubbleSortWithSortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(sortedArray);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithUnsortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(unsortedArray);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithEmptyArray() {\n        int[] result = JavaAlgorithms.bubbleSort(emptyArray);\n        assertArrayEquals(new int[]{}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithSingleElementArray() {\n        int[] result = JavaAlgorithms.bubbleSort(singleElementArray);\n        assertArrayEquals(new int[]{1}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithNullArray() {\n        int[] result = JavaAlgorithms.bubbleSort(nullArray);\n        assertNull(result);\n    }\n\n    @Test\n    public void testBubbleSortWithAlreadySortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{1, 2, 3, 4, 5});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithReverseSortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{5, 4, 3, 2, 1});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithDuplicates() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{3, 1, 2, 2, 1});\n        assertArrayEquals(new int[]{1, 1, 2, 2, 3}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithNegativeNumbers() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{-1, -3, -2, 0, 1});\n        assertArrayEquals(new int[]{-3, -2, -1, 0, 1}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithMixedNumbers() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{3, -1, 2, 0, -2});\n        assertArrayEquals(new int[]{-2, -1, 0, 2, 3}, result);\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939858.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 341,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 607,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 948
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6199,
+    "output_tokens": 714,
+    "total_tokens": 6913
   }
 }

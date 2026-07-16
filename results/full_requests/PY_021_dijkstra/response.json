@@ -1,96 +1,18 @@
 {
-  "id": "resp_040bdb988c103295006a54c2d308f0819a9e7ace9614ef44da",
-  "created_at": 1783939795.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-05c54a246938",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_040bdb988c103295006a54c2d3a310819a8f78abc506363bbd",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\n\ndef test_dijkstra_none_graph():\n    assert dijkstra(None, 0, 1) == -1\n\ndef test_dijkstra_empty_graph():\n    assert dijkstra([], 0, 1) == -1\n\ndef test_dijkstra_single_node():\n    graph = [[0]]\n    assert dijkstra(graph, 0, 0) == 0\n    assert dijkstra(graph, 0, 1) == -1\n\ndef test_dijkstra_two_nodes_no_edge():\n    graph = [[0, 0], [0, 0]]\n    assert dijkstra(graph, 0, 1) == -1\n\ndef test_dijkstra_two_nodes_with_edge():\n    graph = [[0, 1], [0, 0]]\n    assert dijkstra(graph, 0, 1) == 1\n\ndef test_dijkstra_three_nodes():\n    graph = [[0, 1, 4], [0, 0, 2], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 3\n    assert dijkstra(graph, 1, 2) == 2\n    assert dijkstra(graph, 0, 1) == 1\n\ndef test_dijkstra_disconnected_graph():\n    graph = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == -1\n\ndef test_dijkstra_multiple_paths():\n    graph = [[0, 10, 5], [0, 0, 2], [0, 3, 0]]\n    assert dijkstra(graph, 0, 1) == 8\n    assert dijkstra(graph, 0, 2) == 5\n\ndef test_dijkstra_path_with_zero_weight():\n    graph = [[0, 0, 1], [0, 0, 0], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 1\n\ndef test_dijkstra_large_graph():\n    graph = [[0, 1, 2, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 3], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]\n    assert dijkstra(graph, 0, 4) == 5\n\ndef test_dijkstra_no_path():\n    graph = [[0, 1, 0], [0, 0, 1], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == 2\n    assert dijkstra(graph, 1, 0) == -1\n\ndef test_dijkstra_same_source_dest():\n    graph = [[0, 1], [1, 0]]\n    assert dijkstra(graph, 0, 0) == 0\n    assert dijkstra(graph, 1, 1) == 0",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import pytest\nfrom python_functions import dijkstra\n\ndef test_dijkstra_basic():\n    graph = [[0, 1, 4], [1, 0, 2], [4, 2, 0]]\n    assert dijkstra(graph, 0, 2) == 3  # 0 -> 1 -> 2\n    assert dijkstra(graph, 1, 0) == 1  # 1 -> 0\n    assert dijkstra(graph, 0, 1) == 1  # 0 -> 1\n    assert dijkstra(graph, 1, 2) == 2  # 1 -> 2\n\ndef test_dijkstra_no_path():\n    graph = [[0, 0], [0, 0]]\n    assert dijkstra(graph, 0, 1) == -1  # No path exists\n\ndef test_dijkstra_single_node():\n    graph = [[0]]\n    assert dijkstra(graph, 0, 0) == 0  # Same node\n\ndef test_dijkstra_disconnected_graph():\n    graph = [[0, 1, 0], [1, 0, 0], [0, 0, 0]]\n    assert dijkstra(graph, 0, 2) == -1  # No path exists\n\ndef test_dijkstra_empty_graph():\n    graph = []\n    assert dijkstra(graph, 0, 0) == -1  # Invalid graph\n\ndef test_dijkstra_graph_with_negative_weights():\n    graph = [[0, 1, -2], [1, 0, 2], [-2, 2, 0]]\n    assert dijkstra(graph, 0, 2) == -1  # Dijkstra's algorithm does not work with negative weights\n\ndef test_dijkstra_graph_with_inf():\n    graph = [[0, float('inf'), 1], [float('inf'), 0, 2], [1, 2, 0]]\n    assert dijkstra(graph, 0, 1) == 3  # 0 -> 2 -> 1\n\ndef test_dijkstra_graph_with_multiple_paths():\n    graph = [[0, 10, 5], [10, 0, 2], [5, 2, 0]]\n    assert dijkstra(graph, 0, 1) == 7  # 0 -> 2 -> 1\n\ndef test_dijkstra_graph_with_self_loops():\n    graph = [[0, 1, 2], [1, 0, 1], [2, 1, 0]]\n    assert dijkstra(graph, 0, 1) == 1  # 0 -> 1\n    assert dijkstra(graph, 0, 2) == 2  # 0 -> 2\n\ndef test_dijkstra_graph_with_multiple_edges():\n    graph = [[0, 1, 1], [1, 0, 1], [1, 1, 0]]\n    assert dijkstra(graph, 0, 2) == 1  # 0 -> 2 directly\n    assert dijkstra(graph, 1, 0) == 1  # 1 -> 0 directly\n\ndef test_dijkstra_graph_with_large_numbers():\n    graph = [[0, 1000000, 2000000], [1000000, 0, 3000000], [2000000, 3000000, 0]]\n    assert dijkstra(graph, 0, 2) == 2000000  # 0 -> 2 directly\n    assert dijkstra(graph, 1, 0) == 1000000  # 1 -> 0 directly"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939806.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 399,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 661,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 1060
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4566,
+    "output_tokens": 781,
+    "total_tokens": 5347
   }
 }

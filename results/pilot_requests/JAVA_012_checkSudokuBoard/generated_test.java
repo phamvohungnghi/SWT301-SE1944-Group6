@@ -1,28 +1,25 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class SudokuBoardTest {
 
     @Test
     public void testNullBoard() {
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(null));
+        assertFalse(JavaAlgorithms.checkSudokuBoard(null));
     }
 
     @Test
     public void testInvalidBoardSize() {
-        int[][] invalidBoard = new int[8][9];
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));
+        int[][] board = new int[8][9];
+        assertFalse(JavaAlgorithms.checkSudokuBoard(board));
         
-        invalidBoard = new int[10][9];
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(invalidBoard));
+        board = new int[10][9];
+        assertFalse(JavaAlgorithms.checkSudokuBoard(board));
     }
 
     @Test
     public void testValidBoard() {
-        int[][] validBoard = {
+        int[][] board = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
@@ -33,14 +30,14 @@ public class SudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoard));
+        assertTrue(JavaAlgorithms.checkSudokuBoard(board));
     }
 
     @Test
     public void testDuplicateInRow() {
-        int[][] boardWithDuplicateRow = {
-            {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 5, 0, 1, 9, 5, 0, 0, 0},
+        int[][] board = {
+            {5, 3, 5, 0, 7, 0, 0, 0, 0},
+            {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
             {4, 0, 0, 8, 0, 3, 0, 0, 1},
@@ -49,12 +46,12 @@ public class SudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithDuplicateRow));
+        assertFalse(JavaAlgorithms.checkSudokuBoard(board));
     }
 
     @Test
     public void testDuplicateInColumn() {
-        int[][] boardWithDuplicateColumn = {
+        int[][] board = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
@@ -65,15 +62,15 @@ public class SudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 5}
         };
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithDuplicateColumn));
+        assertFalse(JavaAlgorithms.checkSudokuBoard(board));
     }
 
     @Test
     public void testInvalidNumberInBoard() {
-        int[][] boardWithInvalidNumber = {
+        int[][] board = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 10, 0, 1, 9, 5, 0, 0, 0},
-            {0, 9, 8, 0, 0, 0, 0, 6, 0},
+            {6, 0, 0, 1, 9, 5, 0, 0, 0},
+            {0, 9, 10, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
             {4, 0, 0, 8, 0, 3, 0, 0, 1},
             {7, 0, 0, 0, 2, 0, 0, 0, 6},
@@ -81,22 +78,22 @@ public class SudokuBoardTest {
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertFalse(JAVA_012_checkSudokuBoard.checkSudokuBoard(boardWithInvalidNumber));
+        assertFalse(JavaAlgorithms.checkSudokuBoard(board));
     }
 
     @Test
     public void testValidBoardWithZeros() {
-        int[][] validBoardWithZeros = {
+        int[][] board = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
             {0, 9, 8, 0, 0, 0, 0, 6, 0},
             {8, 0, 0, 0, 6, 0, 0, 0, 3},
             {4, 0, 0, 8, 0, 3, 0, 0, 1},
             {7, 0, 0, 0, 2, 0, 0, 0, 6},
-            {0, 6, 0, 0, 0, 0, 2, 8, 0},
+            {0, 6, 0, 0, 0, 0, 0, 8, 0},
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        assertTrue(JAVA_012_checkSudokuBoard.checkSudokuBoard(validBoardWithZeros));
+        assertTrue(JavaAlgorithms.checkSudokuBoard(board));
     }
 }

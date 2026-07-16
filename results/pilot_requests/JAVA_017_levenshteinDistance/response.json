@@ -1,96 +1,18 @@
 {
-  "id": "resp_0b6cea4b44e65d25006a54c1ae8f6c8198a5bab10cebb0b5f6",
-  "created_at": 1783939502.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-f1e06f5e1663",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0b6cea4b44e65d25006a54c1af10308198b0113b06069c94e2",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass LevenshteinDistanceTest {\n\n    @Test\n    void testNullInputs() {\n        assertEquals(-1, levenshteinDistance(null, null));\n        assertEquals(-1, levenshteinDistance(\"test\", null));\n        assertEquals(-1, levenshteinDistance(null, \"test\"));\n    }\n\n    @Test\n    void testEmptyStrings() {\n        assertEquals(0, levenshteinDistance(\"\", \"\"));\n        assertEquals(4, levenshteinDistance(\"test\", \"\"));\n        assertEquals(4, levenshteinDistance(\"\", \"test\"));\n    }\n\n    @Test\n    void testIdenticalStrings() {\n        assertEquals(0, levenshteinDistance(\"test\", \"test\"));\n        assertEquals(0, levenshteinDistance(\"a\", \"a\"));\n    }\n\n    @Test\n    void testSingleCharacterDifferences() {\n        assertEquals(1, levenshteinDistance(\"a\", \"b\"));\n        assertEquals(1, levenshteinDistance(\"a\", \"\"));\n        assertEquals(1, levenshteinDistance(\"\", \"a\"));\n    }\n\n    @Test\n    void testMultipleCharacterDifferences() {\n        assertEquals(2, levenshteinDistance(\"kitten\", \"sitting\"));\n        assertEquals(3, levenshteinDistance(\"flaw\", \"lawn\"));\n        assertEquals(5, levenshteinDistance(\"intention\", \"execution\"));\n    }\n\n    @Test\n    void testLongerStrings() {\n        assertEquals(3, levenshteinDistance(\"abcdef\", \"azced\"));\n        assertEquals(4, levenshteinDistance(\"sunday\", \"saturday\"));\n    }\n\n    @Test\n    void testPerformance() {\n        String s1 = \"a\".repeat(1000);\n        String s2 = \"b\".repeat(1000);\n        assertEquals(1000, levenshteinDistance(s1, s2));\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.Assertions;\nimport org.junit.jupiter.api.Test;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testLevenshteinDistance() {\n        // Test with two identical strings\n        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance(\"test\", \"test\"));\n\n        // Test with one empty string\n        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance(\"test\", \"\"));\n        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance(\"\", \"test\"));\n\n        // Test with both strings empty\n        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance(\"\", \"\"));\n\n        // Test with different strings\n        Assertions.assertEquals(1, JavaAlgorithms.levenshteinDistance(\"test\", \"tast\"));\n        Assertions.assertEquals(2, JavaAlgorithms.levenshteinDistance(\"test\", \"tastt\"));\n        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance(\"test\", \"tset\"));\n\n        // Test with strings of different lengths\n        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance(\"kitten\", \"sitting\"));\n        Assertions.assertEquals(5, JavaAlgorithms.levenshteinDistance(\"flaw\", \"lawn\"));\n\n        // Test with null inputs\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, \"test\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(\"test\", null));\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, null));\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939509.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 456,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 412,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 868
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6314,
+    "output_tokens": 334,
+    "total_tokens": 6648
   }
 }

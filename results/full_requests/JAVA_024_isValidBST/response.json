@@ -1,96 +1,18 @@
 {
-  "id": "resp_05d64eefc1f6de24006a54c3ea9b9c819bb7150c3cf1c6291c",
-  "created_at": 1783940074.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-63fe47835d79",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_05d64eefc1f6de24006a54c3eb1f74819b8a9e29152ae1d539",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass IsValidBSTTest {\n\n    @Test\n    void testNullNodes() {\n        assertTrue(JAVA_024_isValidBST.isValidBST(null, 0));\n    }\n\n    @Test\n    void testEmptyNodes() {\n        assertTrue(JAVA_024_isValidBST.isValidBST(new ArrayList<>(), 0));\n    }\n\n    @Test\n    void testSingleNode() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 5);\n        nodes.add(node);\n        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testValidBST() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 2);\n        node1.put(\"left\", -1);\n        node1.put(\"right\", 1);\n        nodes.add(node1);\n        \n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 3);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n        \n        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testInvalidBST() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 5);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n        \n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 1);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n        \n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 4);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n        \n        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testInvalidLeftChild() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 5);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", -1);\n        nodes.add(node1);\n        \n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 6);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n        \n        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testInvalidRightChild() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 5);\n        node1.put(\"left\", -1);\n        node1.put(\"right\", 1);\n        nodes.add(node1);\n        \n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 3);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n        \n        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testOutOfBoundsLeftChild() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 5);\n        node.put(\"left\", 1);\n        node.put(\"right\", -1);\n        nodes.add(node);\n        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testOutOfBoundsRightChild() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 5);\n        node.put(\"left\", -1);\n        node.put(\"right\", 1);\n        nodes.add(node);\n        assertFalse(JAVA_024_isValidBST.isValidBST(nodes, 0));\n    }\n\n    @Test\n    void testNegativeIndex() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 5);\n        nodes.add(node);\n        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, -1));\n    }\n\n    @Test\n    void testIndexOutOfBounds() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 5);\n        nodes.add(node);\n        assertTrue(JAVA_024_isValidBST.isValidBST(nodes, 2));\n    }\n}",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import org.junit.jupiter.api.Test;\nimport java.util.*;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testIsValidBST_NullNodes() {\n        assertTrue(JavaAlgorithms.isValidBST(null, 0));\n    }\n\n    @Test\n    public void testIsValidBST_EmptyNodes() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        assertTrue(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_SingleNode() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 10);\n        nodes.add(node);\n        assertTrue(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_ValidBST() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 10);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n\n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 5);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n\n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 15);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n\n        assertTrue(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_InvalidBST_LeftChildGreater() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 10);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n\n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 15);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n\n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 5);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n\n        assertFalse(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_InvalidBST_RightChildLess() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 10);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n\n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 5);\n        node2.put(\"left\", -1);\n        node2.put(\"right\", -1);\n        nodes.add(node2);\n\n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 15);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n\n        assertFalse(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_InvalidIndex() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node = new HashMap<>();\n        node.put(\"val\", 10);\n        nodes.add(node);\n        assertTrue(JavaAlgorithms.isValidBST(nodes, -1));\n        assertTrue(JavaAlgorithms.isValidBST(nodes, 1));\n    }\n\n    @Test\n    public void testIsValidBST_ComplexTree() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 20);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n\n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 10);\n        node2.put(\"left\", 3);\n        node2.put(\"right\", 4);\n        nodes.add(node2);\n\n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 30);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n\n        Map<String, Integer> node4 = new HashMap<>();\n        node4.put(\"val\", 5);\n        node4.put(\"left\", -1);\n        node4.put(\"right\", -1);\n        nodes.add(node4);\n\n        Map<String, Integer> node5 = new HashMap<>();\n        node5.put(\"val\", 15);\n        node5.put(\"left\", -1);\n        node5.put(\"right\", -1);\n        nodes.add(node5);\n\n        assertTrue(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n\n    @Test\n    public void testIsValidBST_ComplexInvalidTree() {\n        List<Map<String, Integer>> nodes = new ArrayList<>();\n        Map<String, Integer> node1 = new HashMap<>();\n        node1.put(\"val\", 20);\n        node1.put(\"left\", 1);\n        node1.put(\"right\", 2);\n        nodes.add(node1);\n\n        Map<String, Integer> node2 = new HashMap<>();\n        node2.put(\"val\", 30);\n        node2.put(\"left\", 3);\n        node2.put(\"right\", 4);\n        nodes.add(node2);\n\n        Map<String, Integer> node3 = new HashMap<>();\n        node3.put(\"val\", 10);\n        node3.put(\"left\", -1);\n        node3.put(\"right\", -1);\n        nodes.add(node3);\n\n        Map<String, Integer> node4 = new HashMap<>();\n        node4.put(\"val\", 5);\n        node4.put(\"left\", -1);\n        node4.put(\"right\", -1);\n        nodes.add(node4);\n\n        Map<String, Integer> node5 = new HashMap<>();\n        node5.put(\"val\", 15);\n        node5.put(\"left\", -1);\n        node5.put(\"right\", -1);\n        nodes.add(node5);\n\n        assertFalse(JavaAlgorithms.isValidBST(nodes, 0));\n    }\n}"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783940090.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 502,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 1114,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 1616
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 6360,
+    "output_tokens": 1409,
+    "total_tokens": 7769
   }
 }

@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_002_binary_search",
-  "started_at_utc": "2026-07-13T10:46:40.906418+00:00",
-  "finished_at_utc": "2026-07-13T10:46:48.783130+00:00",
-  "response_id": "resp_07d0e6b7b6a75698006a54c21093748199acfcd02939b8fb5a",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "f9281b87a7b157981d1219bbbb149b258a284e16c564903297a73ceaaeaa99ec",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:53:44.727302+00:00",
+  "finished_at_utc": "2026-07-16T08:53:52.183959+00:00",
+  "response_id": "openai-37e44ef2b1f3",
+  "prompt_sha256": "ac67e2769ade5d8b1c236c33d23a43678f977fd3f99a521ef9d1e3267c848d49",
   "source_sha256": "c04a16c23954a2eb36ff9e54a443ad28688861ddae668912648c2827fd77eb26",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4454,
+    "output_tokens": 481,
+    "total_tokens": 4935
+  }
 }

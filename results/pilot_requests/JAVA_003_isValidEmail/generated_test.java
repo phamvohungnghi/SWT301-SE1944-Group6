@@ -4,77 +4,76 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EmailValidatorTest {
 
     @Test
-    public void testNullEmail() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail(null));
-    }
-
-    @Test
-    public void testMissingAtSymbol() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("testemail.com"));
-    }
-
-    @Test
-    public void testMissingDot() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("test@emailcom"));
-    }
-
-    @Test
-    public void testMultipleAtSymbols() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("test@@email.com"));
-    }
-
-    @Test
-    public void testEmptyLocalPart() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("@domain.com"));
-    }
-
-    @Test
-    public void testEmptyDomainPart() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("local@.com"));
-    }
-
-    @Test
-    public void testDomainStartsWithDot() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("local@domain.com."));
-    }
-
-    @Test
-    public void testDomainEndsWithDot() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("local@.domain.com"));
-    }
-
-    @Test
     public void testValidEmail() {
-        assertTrue(JAVA_003_isValidEmail.isValidEmail("test.email@example.com"));
+        assertTrue(JavaAlgorithms.isValidEmail("test@example.com"));
+        assertTrue(JavaAlgorithms.isValidEmail("user.name+tag+sorting@example.com"));
+        assertTrue(JavaAlgorithms.isValidEmail("user_name@example.co.uk"));
+        assertTrue(JavaAlgorithms.isValidEmail("user-name@example.com"));
     }
 
     @Test
-    public void testValidEmailWithUnderscore() {
-        assertTrue(JAVA_003_isValidEmail.isValidEmail("test_email@example.com"));
+    public void testInvalidEmail_Null() {
+        assertFalse(JavaAlgorithms.isValidEmail(null));
     }
 
     @Test
-    public void testValidEmailWithHyphen() {
-        assertTrue(JAVA_003_isValidEmail.isValidEmail("test-email@example.com"));
+    public void testInvalidEmail_NoAtSymbol() {
+        assertFalse(JavaAlgorithms.isValidEmail("testexample.com"));
     }
 
     @Test
-    public void testInvalidCharacterInLocalPart() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("test#email@example.com"));
+    public void testInvalidEmail_NoDomain() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@.com"));
+        assertFalse(JavaAlgorithms.isValidEmail("test@com"));
     }
 
     @Test
-    public void testValidEmailWithSubdomain() {
-        assertTrue(JAVA_003_isValidEmail.isValidEmail("test@sub.domain.com"));
+    public void testInvalidEmail_EmptyLocalPart() {
+        assertFalse(JavaAlgorithms.isValidEmail("@example.com"));
     }
 
     @Test
-    public void testValidEmailWithNumbers() {
-        assertTrue(JAVA_003_isValidEmail.isValidEmail("test123@example.com"));
+    public void testInvalidEmail_EmptyDomainPart() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@"));
     }
 
     @Test
-    public void testLocalPartWithConsecutiveDots() {
-        assertFalse(JAVA_003_isValidEmail.isValidEmail("test..email@example.com"));
+    public void testInvalidEmail_MultipleAtSymbols() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@@example.com"));
+    }
+
+    @Test
+    public void testInvalidEmail_DomainStartsWithDot() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@.example.com"));
+    }
+
+    @Test
+    public void testInvalidEmail_DomainEndsWithDot() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@example.com."));
+    }
+
+    @Test
+    public void testInvalidEmail_InvalidCharactersInLocalPart() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@exa!mple.com"));
+        assertFalse(JavaAlgorithms.isValidEmail("test@exa#mple.com"));
+        assertFalse(JavaAlgorithms.isValidEmail("test@exa$mple.com"));
+    }
+
+    @Test
+    public void testInvalidEmail_ValidCharactersInLocalPart() {
+        assertTrue(JavaAlgorithms.isValidEmail("test.email@example.com"));
+        assertTrue(JavaAlgorithms.isValidEmail("test_email@example.com"));
+        assertTrue(JavaAlgorithms.isValidEmail("test-email@example.com"));
+    }
+
+    @Test
+    public void testInvalidEmail_SingleCharacterLocalPart() {
+        assertTrue(JavaAlgorithms.isValidEmail("a@b.com"));
+        assertFalse(JavaAlgorithms.isValidEmail("@b.com"));
+    }
+
+    @Test
+    public void testInvalidEmail_SingleCharacterDomainPart() {
+        assertFalse(JavaAlgorithms.isValidEmail("test@b"));
     }
 }

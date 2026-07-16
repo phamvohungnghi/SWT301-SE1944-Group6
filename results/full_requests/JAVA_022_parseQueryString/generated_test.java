@@ -1,79 +1,115 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.Map;
+
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class QueryStringParserTest {
+class JavaAlgorithmsTest {
+
+    private JavaAlgorithms algorithms;
+
+    @BeforeEach
+    void setUp() {
+        algorithms = new JavaAlgorithms();
+    }
 
     @Test
     void testParseQueryString_NullInput() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString(null);
-        assertTrue(result.isEmpty(), "Expected empty map for null input");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString(null);
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
     }
 
     @Test
     void testParseQueryString_EmptyInput() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("");
-        assertTrue(result.isEmpty(), "Expected empty map for empty input");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("");
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
     }
 
     @Test
     void testParseQueryString_OnlyQuestionMark() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("?");
-        assertTrue(result.isEmpty(), "Expected empty map for input with only '?'");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("?");
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
     }
 
     @Test
     void testParseQueryString_SingleKeyValue() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("key=value");
-        assertEquals(1, result.size(), "Expected map size of 1");
-        assertEquals("value", result.get("key"), "Expected value for 'key' to be 'value'");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key=value");
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals("value", result.get("key"));
     }
 
     @Test
     void testParseQueryString_MultipleKeyValues() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("key1=value1&key2=value2");
-        assertEquals(2, result.size(), "Expected map size of 2");
-        assertEquals("value1", result.get("key1"), "Expected value for 'key1' to be 'value1'");
-        assertEquals("value2", result.get("key2"), "Expected value for 'key2' to be 'value2'");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key1=value1&key2=value2");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("value1", result.get("key1"));
+        assertEquals("value2", result.get("key2"));
     }
 
     @Test
     void testParseQueryString_EmptyValue() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("key=");
-        assertEquals(1, result.size(), "Expected map size of 1");
-        assertEquals("", result.get("key"), "Expected value for 'key' to be empty string");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key1=&key2=value2");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("", result.get("key1"));
+        assertEquals("value2", result.get("key2"));
     }
 
     @Test
-    void testParseQueryString_MultipleValuesForSameKey() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("key=value1&key=value2");
-        assertEquals(1, result.size(), "Expected map size of 1");
-        assertTrue(result.get("key") instanceof List, "Expected value for 'key' to be a List");
+    void testParseQueryString_SameKeyMultipleValues() {
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key=value1&key=value2");
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertTrue(result.get("key") instanceof List);
         List<String> values = (List<String>) result.get("key");
-        assertEquals(2, values.size(), "Expected list size of 2");
-        assertTrue(values.contains("value1"), "Expected list to contain 'value1'");
-        assertTrue(values.contains("value2"), "Expected list to contain 'value2'");
+        assertEquals(2, values.size());
+        assertTrue(values.contains("value1"));
+        assertTrue(values.contains("value2"));
     }
 
     @Test
-    void testParseQueryString_IgnoreEmptyPairs() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("key1=value1&&key2=value2");
-        assertEquals(2, result.size(), "Expected map size of 2");
-        assertEquals("value1", result.get("key1"), "Expected value for 'key1' to be 'value1'");
-        assertEquals("value2", result.get("key2"), "Expected value for 'key2' to be 'value2'");
+    void testParseQueryString_EmptyPairs() {
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key1=value1&&key2=value2");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("value1", result.get("key1"));
+        assertEquals("value2", result.get("key2"));
     }
 
     @Test
     void testParseQueryString_LeadingQuestionMark() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("?key=value");
-        assertEquals(1, result.size(), "Expected map size of 1");
-        assertEquals("value", result.get("key"), "Expected value for 'key' to be 'value'");
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("?key1=value1&key2=value2");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("value1", result.get("key1"));
+        assertEquals("value2", result.get("key2"));
     }
 
     @Test
-    void testParseQueryString_MultipleEmptyKeys() {
-        Map<String, Object> result = JAVA_022_parseQueryString.parseQueryString("=value1&=value2");
-        assertEquals(1, result.size(), "Expected map size of 1");
-        assertTrue(result.get("").equals("value2") || result.get("").equals("value1"), "Expected last value for empty key to be either 'value1' or 'value2'");
+    void testParseQueryString_OnlyKeys() {
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key1&key2");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("", result.get("key1"));
+        assertEquals("", result.get("key2"));
+    }
+
+    @Test
+    void testParseQueryString_ComplexInput() {
+        Map<String, Object> result = JavaAlgorithms.parseQueryString("key1=value1&key2=value2&key1=value3");
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertTrue(result.get("key1") instanceof List);
+        List<String> values = (List<String>) result.get("key1");
+        assertEquals(2, values.size());
+        assertTrue(values.contains("value1"));
+        assertTrue(values.contains("value3"));
+        assertEquals("value2", result.get("key2"));
     }
 }

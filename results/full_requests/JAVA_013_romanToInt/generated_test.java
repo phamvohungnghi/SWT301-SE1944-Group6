@@ -1,62 +1,67 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class RomanToIntTest {
 
     @Test
     public void testNullInput() {
-        assertEquals(0, JAVA_013_romanToInt.romanToInt(null));
+        assertEquals(0, JavaAlgorithms.romanToInt(null));
     }
 
     @Test
-    public void testEmptyInput() {
-        assertEquals(0, JAVA_013_romanToInt.romanToInt(""));
+    public void testEmptyString() {
+        assertEquals(0, JavaAlgorithms.romanToInt(""));
     }
 
     @Test
     public void testInvalidCharacter() {
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("ABC"));
+        assertEquals(0, JavaAlgorithms.romanToInt("ABCD"));
     }
 
     @Test
     public void testSingleCharacter() {
-        assertEquals(1, JAVA_013_romanToInt.romanToInt("I"));
-        assertEquals(5, JAVA_013_romanToInt.romanToInt("V"));
-        assertEquals(10, JAVA_013_romanToInt.romanToInt("X"));
-        assertEquals(50, JAVA_013_romanToInt.romanToInt("L"));
-        assertEquals(100, JAVA_013_romanToInt.romanToInt("C"));
-        assertEquals(500, JAVA_013_romanToInt.romanToInt("D"));
-        assertEquals(1000, JAVA_013_romanToInt.romanToInt("M"));
+        assertEquals(1, JavaAlgorithms.romanToInt("I"));
+        assertEquals(5, JavaAlgorithms.romanToInt("V"));
+        assertEquals(10, JavaAlgorithms.romanToInt("X"));
+        assertEquals(50, JavaAlgorithms.romanToInt("L"));
+        assertEquals(100, JavaAlgorithms.romanToInt("C"));
+        assertEquals(500, JavaAlgorithms.romanToInt("D"));
+        assertEquals(1000, JavaAlgorithms.romanToInt("M"));
     }
 
     @Test
     public void testTwoCharacterCombinations() {
-        assertEquals(4, JAVA_013_romanToInt.romanToInt("IV"));
-        assertEquals(9, JAVA_013_romanToInt.romanToInt("IX"));
-        assertEquals(40, JAVA_013_romanToInt.romanToInt("XL"));
-        assertEquals(90, JAVA_013_romanToInt.romanToInt("XC"));
-        assertEquals(400, JAVA_013_romanToInt.romanToInt("CD"));
-        assertEquals(900, JAVA_013_romanToInt.romanToInt("CM"));
+        assertEquals(4, JavaAlgorithms.romanToInt("IV"));
+        assertEquals(9, JavaAlgorithms.romanToInt("IX"));
+        assertEquals(40, JavaAlgorithms.romanToInt("XL"));
+        assertEquals(90, JavaAlgorithms.romanToInt("XC"));
+        assertEquals(400, JavaAlgorithms.romanToInt("CD"));
+        assertEquals(900, JavaAlgorithms.romanToInt("CM"));
     }
 
     @Test
-    public void testMultipleCharacters() {
-        assertEquals(3, JAVA_013_romanToInt.romanToInt("III"));
-        assertEquals(58, JAVA_013_romanToInt.romanToInt("LVIII"));
-        assertEquals(1994, JAVA_013_romanToInt.romanToInt("MCMXCIV"));
+    public void testValidRomanNumerals() {
+        assertEquals(3, JavaAlgorithms.romanToInt("III"));
+        assertEquals(58, JavaAlgorithms.romanToInt("LVIII"));
+        assertEquals(1994, JavaAlgorithms.romanToInt("MCMXCIV"));
+        assertEquals(2023, JavaAlgorithms.romanToInt("MMXXIII"));
     }
 
     @Test
-    public void testInvalidSequence() {
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("IIII"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("VV"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("XXXX"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("LL"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("CCCC"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("DD"));
-        assertEquals(0, JAVA_013_romanToInt.romanToInt("MMMM"));
+    public void testInvalidRomanNumerals() {
+        assertEquals(0, JavaAlgorithms.romanToInt("IIII"));
+        assertEquals(0, JavaAlgorithms.romanToInt("VV"));
+        assertEquals(0, JavaAlgorithms.romanToInt("XXXX"));
+        assertEquals(0, JavaAlgorithms.romanToInt("LL"));
+        assertEquals(0, JavaAlgorithms.romanToInt("CCCCC"));
+        assertEquals(0, JavaAlgorithms.romanToInt("DD"));
+        assertEquals(0, JavaAlgorithms.romanToInt("MMMM"));
+    }
+
+    @Test
+    public void testMixedValidAndInvalid() {
+        assertEquals(0, JavaAlgorithms.romanToInt("IVI"));
+        assertEquals(0, JavaAlgorithms.romanToInt("IXC"));
+        assertEquals(0, JavaAlgorithms.romanToInt("MCMXCIVX"));
     }
 }

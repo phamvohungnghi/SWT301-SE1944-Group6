@@ -1,112 +1,94 @@
-def test_is_match():
-    # Test cases for is_match function
+import pytest
+from python_functions import is_match
 
-    # Test with None inputs
-    assert not is_match(None, None)
-    assert not is_match("abc", None)
-    assert not is_match(None, "a*b")
+def test_is_match_basic():
+    assert is_match("a", "a") == True
+    assert is_match("a", "b") == False
+    assert is_match("aa", "a") == False
+    assert is_match("aa", "aa") == True
+    assert is_match("aaa", "aa") == False
+    assert is_match("aa", "a*") == True
+    assert is_match("ab", ".*") == True
+    assert is_match("aab", "c*a*b") == True
+    assert is_match("mississippi", "mis*is*p*.") == False
 
-    # Test with empty pattern
-    assert is_match("", "")
-    assert not is_match("a", "")
-    assert not is_match("abc", "")
+def test_is_match_with_dot():
+    assert is_match("abc", "a.c") == True
+    assert is_match("abc", "a.*c") == True
+    assert is_match("abc", "a..c") == False
+    assert is_match("a", ".") == True
+    assert is_match("", ".") == False
 
-    # Test with simple character matches
-    assert is_match("a", "a")
-    assert not is_match("a", "b")
-    assert is_match("abc", "abc")
-    assert not is_match("abc", "abcd")
+def test_is_match_with_star():
+    assert is_match("a", "a*") == True
+    assert is_match("aa", "a*") == True
+    assert is_match("aaa", "a*") == True
+    assert is_match("ab", ".*") == True
+    assert is_match("aab", "c*a*b") == True
+    assert is_match("mississippi", "mis*is*ip*.") == True
 
-    # Test with single character and dot
-    assert is_match("a", ".")
-    assert is_match("b", ".")
-    assert not is_match("a", "b")
+def test_is_match_empty_string():
+    assert is_match("", "") == True
+    assert is_match("a", "") == False
+    assert is_match("", "a") == False
+    assert is_match("", ".*") == True
+    assert is_match("", "a*") == True
 
-    # Test with star operator
-    assert is_match("aa", "a*")
-    assert is_match("aab", "c*a*b")
-    assert not is_match("mississippi", "mis*is*p*.")
-    assert is_match("ab", ".*")
-    assert is_match("aab", ".*")
-    assert is_match("aaa", "a*")
-    assert is_match("ab", ".*c")
+def test_is_match_none():
+    assert is_match(None, "a") == False
+    assert is_match("a", None) == False
+    assert is_match(None, None) == False
 
-    # Test with edge cases
-    assert is_match("a", "a*")
-    assert is_match("", ".*")
-    assert not is_match("a", ".*b")
-    assert is_match("abc", ".*c")
-    assert not is_match("abc", ".*d")
-    assert is_match("abc", ".*")  # Full match with any character
-    assert not is_match("abc", "a.*d")  # Should not match
-
-    # Test with patterns that include multiple stars
-    assert is_match("a", "a**")
-    assert is_match("aaa", "a**")
-    assert is_match("aa", "a*b*")
-    assert is_match("a", "a*b*")
-    assert not is_match("a", "b*a*")  # Should not match
-
-    # Test with patterns that have leading/trailing stars
-    assert is_match("abc", "*abc")
-    assert is_match("abc", "abc*")
-    assert not is_match("abc", "*xyz*")  # Should not match
-    assert is_match("abc", "*")  # Match with any string
-    assert is_match("", "*")  # Match with empty string
-
-    # Test with complex patterns
-    assert is_match("ab", ".*b")
-    assert is_match("ab", ".*a*b")
-    assert not is_match("ab", ".*c")
-    assert is_match("abc", ".*")  # Full match with any character
-    assert not is_match("abc", "a.*d")  # Should not match
-
-    # Test with patterns that have no matches
-    assert not is_match("abc", "xyz")
-    assert not is_match("abc", "a.c")  # Should not match
-    assert not is_match("abc", "a.*d")  # Should not match
-    assert not is_match("abc", ".*xyz")  # Should not match
-
-    # Test with patterns that are just wildcards
-    assert is_match("abc", ".*")  # Full match with any character
-    assert is_match("", ".*")  # Match with empty string
-    assert is_match("abc", ".*c")  # Should match
-    assert not is_match("abc", ".*d")  # Should not match
-
-    # Test with patterns that have multiple characters and stars
-    assert is_match("aabb", "a*b*")  # Should match
-    assert is_match("aabb", ".*")  # Full match with any character
-    assert not is_match("aabb", "a*b*c")  # Should not match
-    assert is_match("aabb", ".*b")  # Should match
-    assert not is_match("aabb", ".*c")  # Should not match
-
-    # Test with patterns that have leading/trailing characters
-    assert is_match("abc", "a.*c")  # Should match
-    assert not is_match("abc", "a.*d")  # Should not match
-    assert is_match("abc", ".*b")  # Should match
-    assert not is_match("abc", ".*d")  # Should not match
-
-    # Test with patterns that have no matches
-    assert not is_match("abc", "xyz")  # Should not match
-    assert not is_match("abc", "a.c")  # Should not match
-    assert not is_match("abc", "a.*d")  # Should not match
-    assert not is_match("abc", ".*xyz")  # Should not match
-
-    # Test with patterns that are just wildcards
-    assert is_match("abc", ".*")  # Full match with any character
-    assert is_match("", ".*")  # Match with empty string
-    assert is_match("abc", ".*c")  # Should match
-    assert not is_match("abc", ".*d")  # Should not match
-
-    # Test with patterns that have multiple characters and stars
-    assert is_match("aabb", "a*b*")  # Should match
-    assert is_match("aabb", ".*")  # Full match with any character
-    assert not is_match("aabb", "a*b*c")  # Should not match
-    assert is_match("aabb", ".*b")  # Should match
-    assert not is_match("aabb", ".*c")  # Should not match
-
-    # Test with patterns that have leading/trailing characters
-    assert is_match("abc", "a.*c")  # Should match
-    assert not is_match("abc", "a.*d")  # Should not match
-    assert is_match("abc", ".*b")  # Should match
-    assert not is_match("abc", ".*d")  # Should not match
+def test_is_match_edge_cases():
+    assert is_match("a", ".*") == True
+    assert is_match("ab", ".*") == True
+    assert is_match("abc", ".*") == True
+    assert is_match("abc", "a.*c") == True
+    assert is_match("abc", ".*c") == True
+    assert is_match("abc", ".*b") == False
+    assert is_match("abc", ".*d") == False
+    assert is_match("abc", "a*b*c") == False
+    assert is_match("abc", "a*b*c*") == True
+    assert is_match("abc", ".*.*") == True
+    assert is_match("abc", ".*.*.*") == True
+    assert is_match("abc", ".*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*") == True
+    assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*

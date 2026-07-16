@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_005_calculate_tax",
-  "started_at_utc": "2026-07-13T10:47:03.736020+00:00",
-  "finished_at_utc": "2026-07-13T10:47:13.338314+00:00",
-  "response_id": "resp_02c5567ed0e77a6d006a54c2276864819abbbb4f0bfefb0629",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "3ac5949453035f4a06a2118ef76fb3888c0e1d3d74634c7b47d957221223840a",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:54:23.464658+00:00",
+  "finished_at_utc": "2026-07-16T08:54:35.231579+00:00",
+  "response_id": "openai-f38c3d82008d",
+  "prompt_sha256": "3807671922cf2eac65d86f6d37aabcd6c8996ddb67d2876c4a296f16b80ea79d",
   "source_sha256": "c489bc154b704d5379c7aa472c61beb01a55e77a3ea8d14adace1486a2c86dc9",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4560,
+    "output_tokens": 702,
+    "total_tokens": 5262
+  }
 }

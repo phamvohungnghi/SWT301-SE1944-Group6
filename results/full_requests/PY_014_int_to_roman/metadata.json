@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_014_int_to_roman",
-  "started_at_utc": "2026-07-13T10:48:56.299337+00:00",
-  "finished_at_utc": "2026-07-13T10:49:03.050206+00:00",
-  "response_id": "resp_01669073264fccb7006a54c297f794819ba899de9589688f18",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "0f368793b09d1f3253a5a442cdbdab91e213ad06b64059123c5314a67042b3df",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:56:47.033895+00:00",
+  "finished_at_utc": "2026-07-16T08:57:01.211695+00:00",
+  "response_id": "openai-8975995a3950",
+  "prompt_sha256": "0422d3d259e511ab2660a4cb31f7f41169f3eef6f609e317bdff43030dd30e09",
   "source_sha256": "0b9229354d3ae0117154002b08108a1ca9504cc9005b38073974014ec5aac88a",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4523,
+    "output_tokens": 349,
+    "total_tokens": 4872
+  }
 }

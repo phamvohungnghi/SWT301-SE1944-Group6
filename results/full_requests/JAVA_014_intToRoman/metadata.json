@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_014_intToRoman",
-  "started_at_utc": "2026-07-13T10:53:04.975084+00:00",
-  "finished_at_utc": "2026-07-13T10:53:16.514663+00:00",
-  "response_id": "resp_081ec4395113ebdd006a54c390a9b0819882d2564282949a57",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "220fe71915186135b8cef7afdbbb975a820f9d8b861b04337118c1b0e8dda393",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:04:25.245575+00:00",
+  "finished_at_utc": "2026-07-16T09:04:34.434633+00:00",
+  "response_id": "openai-1fbfb14cef5c",
+  "prompt_sha256": "c48f51bb0d5f1ba1cfe60c50307be7ddc83da8c1421bd232337ff301ddcbcd03",
   "source_sha256": "241a82c7561367615040c31e411ea91c8aa71e1a660ff2bf69d29bf316a57629",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6255,
+    "output_tokens": 472,
+    "total_tokens": 6727
+  }
 }

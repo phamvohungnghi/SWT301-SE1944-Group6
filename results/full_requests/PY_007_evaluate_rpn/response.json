@@ -1,96 +1,18 @@
 {
-  "id": "resp_0cd7f425e121ad1f006a54c2360628819b908d055c56ab155b",
-  "created_at": 1783939638.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-a047c4059b18",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0cd7f425e121ad1f006a54c23684ac819b9dd5136494543a4f",
-      "content": [
-        {
-          "annotations": [],
-          "text": "import pytest\n\ndef test_evaluate_rpn():\n    # Test with a simple addition\n    assert evaluate_rpn(\"3 4 +\") == 7\n    \n    # Test with a simple subtraction\n    assert evaluate_rpn(\"10 4 -\") == 6\n    \n    # Test with a simple multiplication\n    assert evaluate_rpn(\"2 3 *\") == 6\n    \n    # Test with a simple division\n    assert evaluate_rpn(\"8 2 /\") == 4\n    \n    # Test with division by zero\n    assert evaluate_rpn(\"8 0 /\") == 0\n    \n    # Test with multiple operations\n    assert evaluate_rpn(\"3 4 + 2 *\") == 14  # (3 + 4) * 2\n    \n    # Test with mixed operations\n    assert evaluate_rpn(\"5 1 2 + 4 * + 3 -\") == 14  # 5 + (1 + 2) * 4 - 3\n    \n    # Test with insufficient operands\n    assert evaluate_rpn(\"+\") == 0\n    assert evaluate_rpn(\"3 +\") == 0\n    assert evaluate_rpn(\"3 4 + +\") == 0\n    \n    # Test with invalid token\n    assert evaluate_rpn(\"3 4 &\") == 0\n    assert evaluate_rpn(\"3 4 + a\") == 0\n    \n    # Test with empty expression\n    assert evaluate_rpn(\"\") == 0\n    \n    # Test with a single number\n    assert evaluate_rpn(\"42\") == 42\n    \n    # Test with negative numbers\n    assert evaluate_rpn(\"-3 -4 +\") == -7  # (-3) + (-4)\n    \n    # Test with large numbers\n    assert evaluate_rpn(\"1000000 2000000 +\") == 3000000\n    \n    # Test with a complex expression\n    assert evaluate_rpn(\"3 4 2 * 1 5 - 2 3 ^ ^ / +\") == 3  # (3 + (4 * 2) / ((1 - 5) ^ (2 ^ 3)))\n    \n    # Test with a single operator\n    assert evaluate_rpn(\"+\") == 0\n    assert evaluate_rpn(\"-\") == 0\n    assert evaluate_rpn(\"*\") == 0\n    assert evaluate_rpn(\"/\") == 0\n    \n    # Test with multiple spaces\n    assert evaluate_rpn(\"   3   4   +   \") == 7\n    assert evaluate_rpn(\"   10   4   -   \") == 6\n    assert evaluate_rpn(\"   2   3   *   \") == 6\n    assert evaluate_rpn(\"   8   2   /   \") == 4",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "import pytest\nfrom python_functions import evaluate_rpn\n\ndef test_evaluate_rpn_basic_operations():\n    assert evaluate_rpn(\"3 4 +\") == 7\n    assert evaluate_rpn(\"10 2 -\") == 8\n    assert evaluate_rpn(\"2 3 *\") == 6\n    assert evaluate_rpn(\"8 4 /\") == 2\n\ndef test_evaluate_rpn_multiple_operations():\n    assert evaluate_rpn(\"2 3 + 5 *\") == 25\n    assert evaluate_rpn(\"4 5 + 2 * 3 -\") == 10\n    assert evaluate_rpn(\"3 4 + 2 * 7 -\") == 7\n\ndef test_evaluate_rpn_edge_cases():\n    assert evaluate_rpn(\"\") == 0\n    assert evaluate_rpn(\"5 0 /\") == 0\n    assert evaluate_rpn(\"5 1 0 / +\") == 0\n    assert evaluate_rpn(\"5 1 + 2 /\") == 3\n\ndef test_evaluate_rpn_invalid_input():\n    assert evaluate_rpn(\"3 4 + invalid\") == 0\n    assert evaluate_rpn(\"3 4 + 5 6\") == 0\n    assert evaluate_rpn(\"3 4 + 5 * 6 /\") == 0\n\ndef test_evaluate_rpn_single_number():\n    assert evaluate_rpn(\"42\") == 42\n    assert evaluate_rpn(\"100\") == 100\n\ndef test_evaluate_rpn_zero_division():\n    assert evaluate_rpn(\"5 0 /\") == 0\n    assert evaluate_rpn(\"10 5 0 / +\") == 0\n\ndef test_evaluate_rpn_unbalanced_stack():\n    assert evaluate_rpn(\"3 4 + 5 -\") == 0\n    assert evaluate_rpn(\"3 +\") == 0\n    assert evaluate_rpn(\"3 4 + 5 6 +\") == 0\n\ndef test_evaluate_rpn_large_numbers():\n    assert evaluate_rpn(\"1000000 2000000 +\") == 3000000\n    assert evaluate_rpn(\"1000000 2000000 *\") == 2000000000000\n\ndef test_evaluate_rpn_negative_numbers():\n    assert evaluate_rpn(\"-3 -4 +\") == -7\n    assert evaluate_rpn(\"-10 -2 -\") == -8\n    assert evaluate_rpn(\"5 -3 *\") == -15\n\ndef test_evaluate_rpn_mixed_operations():\n    assert evaluate_rpn(\"3 4 + 2 * 7 -\") == 7\n    assert evaluate_rpn(\"5 1 2 + 4 * + 3 -\") == 14\n    assert evaluate_rpn(\"3 4 + 2 * 1 -\") == 13\n\nif __name__ == \"__main__\":\n    pytest.main()"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939646.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 372,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 591,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 963
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4539,
+    "output_tokens": 616,
+    "total_tokens": 5155
   }
 }

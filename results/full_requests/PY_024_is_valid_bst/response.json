@@ -1,96 +1,18 @@
 {
-  "id": "resp_0fb32444f04c45f0006a54c2efca808199a86059c7eab42f1d",
-  "created_at": 1783939823.0,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "metadata": {},
+  "id": "openai-4d0c0b0f71e7",
+  "object": "chat.completion",
   "model": "gpt-4o-mini-2024-07-18",
-  "object": "response",
-  "output": [
+  "choices": [
     {
-      "id": "msg_0fb32444f04c45f0006a54c2f0539c8199afd2daae3565978b",
-      "content": [
-        {
-          "annotations": [],
-          "text": "def test_is_valid_bst():\n    # Test case 1: Empty tree\n    assert is_valid_bst([], 0) == True\n\n    # Test case 2: Single node tree\n    assert is_valid_bst([{\"val\": 10}], 0) == True\n\n    # Test case 3: Valid BST\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 15}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 4: Invalid BST (left child greater than parent)\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 15}, {\"val\": 5}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 5: Invalid BST (right child less than parent)\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 10}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 6: Invalid BST (out of bounds left child)\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5, \"left\": -1, \"right\": -1}, {\"val\": 15}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 7: Invalid BST (out of bounds right child)\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 15, \"left\": -1, \"right\": 3}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 8: Valid BST with negative values\n    nodes = [{\"val\": 0, \"left\": 1, \"right\": 2}, {\"val\": -1}, {\"val\": 1}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 9: Invalid BST with negative values\n    nodes = [{\"val\": 0, \"left\": 1, \"right\": 2}, {\"val\": 1}, {\"val\": -1}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 10: Root index out of bounds\n    assert is_valid_bst(nodes, 3) == True\n\n    # Test case 11: Invalid BST with duplicate values\n    nodes = [{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 10}, {\"val\": 15}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 12: Valid BST with large values\n    nodes = [{\"val\": 2**31 - 1, \"left\": 1, \"right\": 2}, {\"val\": 2**31 - 2}, {\"val\": 2**31 - 3}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 13: Invalid BST with large values\n    nodes = [{\"val\": 2**31 - 1, \"left\": 1, \"right\": 2}, {\"val\": 2**31}, {\"val\": 2**31 - 2}]\n    assert is_valid_bst(nodes, 0) == False\n\n    # Test case 14: Valid BST with complex structure\n    nodes = [{\"val\": 20, \"left\": 1, \"right\": 2}, {\"val\": 10, \"left\": 3, \"right\": 4}, {\"val\": 30}, {\"val\": 5}, {\"val\": 15}]\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 15: Invalid BST with complex structure\n    nodes = [{\"val\": 20, \"left\": 1, \"right\": 2}, {\"val\": 10, \"left\": 3, \"right\": 4}, {\"val\": 30}, {\"val\": 25}, {\"val\": 15}]\n    assert is_valid_bst(nodes, 0) == False",
-          "type": "output_text",
-          "logprobs": []
-        }
-      ],
-      "role": "assistant",
-      "status": "completed",
-      "type": "message",
-      "phase": null
+      "message": {
+        "role": "assistant",
+        "content": "from python_functions import is_valid_bst\n\ndef test_is_valid_bst():\n    # Test case 1: Empty tree\n    assert is_valid_bst([], 0) == True\n\n    # Test case 2: Single node tree\n    assert is_valid_bst([{\"val\": 10}], 0) == True\n\n    # Test case 3: Valid BST\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 15}], 0) == True\n\n    # Test case 4: Invalid BST (left child greater than parent)\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 15}, {\"val\": 5}], 0) == False\n\n    # Test case 5: Invalid BST (right child less than parent)\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 12}], 0) == False\n\n    # Test case 6: Valid BST with negative values\n    assert is_valid_bst([{\"val\": 0, \"left\": 1, \"right\": 2}, {\"val\": -1}, {\"val\": 1}], 0) == True\n\n    # Test case 7: Invalid BST with negative values\n    assert is_valid_bst([{\"val\": 0, \"left\": 1, \"right\": 2}, {\"val\": 1}, {\"val\": -1}], 0) == False\n\n    # Test case 8: Tree with multiple levels\n    assert is_valid_bst([{\"val\": 4, \"left\": 1, \"right\": 3}, {\"val\": 2, \"left\": 4, \"right\": 5}, {\"val\": 6}], 0) == True\n\n    # Test case 9: Invalid BST with multiple levels\n    assert is_valid_bst([{\"val\": 4, \"left\": 1, \"right\": 3}, {\"val\": 5, \"left\": 4, \"right\": 2}, {\"val\": 6}], 0) == False\n\n    # Test case 10: Root index out of bounds\n    assert is_valid_bst([{\"val\": 10}], 1) == True\n    assert is_valid_bst([{\"val\": 10}], -1) == True\n\n    # Test case 11: Non-existent nodes\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 15}], 3) == True\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 5}, {\"val\": 15}], -1) == True\n\n    # Test case 12: All left children\n    assert is_valid_bst([{\"val\": 3, \"left\": 2, \"right\": -1}, {\"val\": 2, \"left\": 1, \"right\": -1}, {\"val\": 1}], 0) == True\n\n    # Test case 13: All right children\n    assert is_valid_bst([{\"val\": 1, \"left\": -1, \"right\": 1}, {\"val\": 2, \"left\": -1, \"right\": 1}, {\"val\": 3}], 0) == True\n\n    # Test case 14: Invalid due to duplicate values\n    assert is_valid_bst([{\"val\": 10, \"left\": 1, \"right\": 2}, {\"val\": 10}, {\"val\": 15}], 0) == False\n\n    # Test case 15: Large tree\n    nodes = [{\"val\": i} for i in range(100)]\n    for i in range(50):\n        nodes[i][\"left\"] = 2 * i + 1\n        nodes[i][\"right\"] = 2 * i + 2\n    assert is_valid_bst(nodes, 0) == True\n\n    # Test case 16: Large tree with invalid structure\n    nodes[50][\"val\"] = 200  # Making a node invalid\n    assert is_valid_bst(nodes, 0) == False"
+      }
     }
   ],
-  "parallel_tool_calls": true,
-  "temperature": 0.0,
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1.0,
-  "background": false,
-  "completed_at": 1783939834.0,
-  "conversation": null,
-  "max_output_tokens": 2048,
-  "max_tool_calls": null,
-  "moderation": null,
-  "previous_response_id": null,
-  "prompt": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": null,
-    "effort": null,
-    "generate_summary": null,
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "top_logprobs": 0,
-  "truncation": "disabled",
   "usage": {
-    "input_tokens": 374,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 915,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 1289
-  },
-  "user": null,
-  "billing": {
-    "payer": "developer"
-  },
-  "frequency_penalty": 0.0,
-  "presence_penalty": 0.0,
-  "store": true,
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "image_tokens": 0,
-        "text_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
+    "input_tokens": 4541,
+    "output_tokens": 943,
+    "total_tokens": 5484
   }
 }

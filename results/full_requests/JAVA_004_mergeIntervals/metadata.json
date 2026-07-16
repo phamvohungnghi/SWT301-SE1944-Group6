@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_004_mergeIntervals",
-  "started_at_utc": "2026-07-13T10:51:17.272215+00:00",
-  "finished_at_utc": "2026-07-13T10:51:29.020163+00:00",
-  "response_id": "resp_00627c0902d3a3a9006a54c324f4d08198badb4bf5993afe4c",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "cd33e20e789681fe127b32a05d6605275bec61712155a6a0c46707c20a371965",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:01:50.842087+00:00",
+  "finished_at_utc": "2026-07-16T09:02:04.936958+00:00",
+  "response_id": "openai-f3b262c1d45e",
+  "prompt_sha256": "75aece290ba7d726ae97ff7f0f77196d7ed60d42f1b83c94563ef9741b303efc",
   "source_sha256": "c1f1c2ff507711f13a3c7a6d6d4418977f715cc8a05b3b66e114cc18f4cbf385",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6251,
+    "output_tokens": 888,
+    "total_tokens": 7139
+  }
 }

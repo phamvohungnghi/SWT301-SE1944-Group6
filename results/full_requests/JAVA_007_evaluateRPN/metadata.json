@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_007_evaluateRPN",
-  "started_at_utc": "2026-07-13T10:51:44.510278+00:00",
-  "finished_at_utc": "2026-07-13T10:51:51.161110+00:00",
-  "response_id": "resp_0206c5844b85b98b006a54c3402dac819b827b308ab8b3585e",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "1fbe2acfb6d654108e85d0e3c9e5d68d6daf8e6562b86e12fd26b5826a052e9a",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:02:28.723325+00:00",
+  "finished_at_utc": "2026-07-16T09:02:46.913637+00:00",
+  "response_id": "openai-680ff8c565f9",
+  "prompt_sha256": "458be8fd33a47016fc905278c125774245bcf215f8b29bf7efef1fa0c7f83c07",
   "source_sha256": "bcfec215f0e86ec4c2b7b2bf7cca2e165f47ed380520a635c0d68ff95d2fc84e",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6313,
+    "output_tokens": 614,
+    "total_tokens": 6927
+  }
 }

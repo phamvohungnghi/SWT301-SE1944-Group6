@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_019_luhn_check",
-  "started_at_utc": "2026-07-13T10:49:35.920390+00:00",
-  "finished_at_utc": "2026-07-13T10:49:48.996358+00:00",
-  "response_id": "resp_0dbae915be01c5f7006a54c2c002448198af35ec8d73e3c761",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "e0197e4f5cb3ffd8d1332d18a6810bd6f79e477398a4e388c14fd14a0cc8a629",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:57:52.674745+00:00",
+  "finished_at_utc": "2026-07-16T08:58:14.736608+00:00",
+  "response_id": "openai-44f9ab43ac75",
+  "prompt_sha256": "559aaf319eadd30116663f42edf243ae202ed4585423b5d7e9b9280596bfe2c1",
   "source_sha256": "4389291ac7c83d0625a068373a545bb50343a211d16a00ce01c1ed9e791846d0",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4459,
+    "output_tokens": 609,
+    "total_tokens": 5068
+  }
 }

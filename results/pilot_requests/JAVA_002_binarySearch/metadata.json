@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_002_binarySearch",
-  "started_at_utc": "2026-07-13T10:44:03.181843+00:00",
-  "finished_at_utc": "2026-07-13T10:44:10.901007+00:00",
-  "response_id": "resp_0ee0078332a739fb006a54c172d93c819b9ed26cd35afb99a1",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "12fb7d88b89c57e9e4dd1cd0299a240b0e41286774ab25ff49bb1058112db20b",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:46:08.216487+00:00",
+  "finished_at_utc": "2026-07-16T08:46:15.153272+00:00",
+  "response_id": "openai-226fc6b0e28e",
+  "prompt_sha256": "8814e7d339b6006790385e53ea03d4d006e0242fccb0c2a978357e37646a5809",
   "source_sha256": "ecbfe609739ed007dfbec02f533c991670fcaa8631627c037d6d84f3daa76460",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6183,
+    "output_tokens": 509,
+    "total_tokens": 6692
+  }
 }

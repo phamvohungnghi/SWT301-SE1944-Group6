@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_005_calculateTax",
-  "started_at_utc": "2026-07-13T10:51:29.037575+00:00",
-  "finished_at_utc": "2026-07-13T10:51:36.383112+00:00",
-  "response_id": "resp_00216e9e25cd4698006a54c330b628819887b227a4f832ece6",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "d4e08920d3a2a9496967b52935fb1fd0fd30c911736249f0481fd365a93aa6be",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:02:05.036279+00:00",
+  "finished_at_utc": "2026-07-16T09:02:20.495284+00:00",
+  "response_id": "openai-e05176f01d79",
+  "prompt_sha256": "dbe3d36c20eeedef624e3b462833645f201204b75e7dbe4369436ed696f89f44",
   "source_sha256": "0bf38332f1165040886eaeedffe8c0b904a2999944eac66826614c919f609496",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6295,
+    "output_tokens": 683,
+    "total_tokens": 6978
+  }
 }

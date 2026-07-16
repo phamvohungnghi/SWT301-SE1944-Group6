@@ -1,4 +1,4 @@
-import pytest
+from python_functions import knapsack_01
 
 def test_knapsack_01():
     # Test case 1: Basic test with a few items
@@ -25,9 +25,9 @@ def test_knapsack_01():
     capacity = 0
     assert knapsack_01(weights, values, capacity) == 0
 
-    # Test case 5: Weights and values length mismatch
+    # Test case 5: Invalid input (weights and values length mismatch)
     weights = [1, 2]
-    values = [10]
+    values = [10, 15, 40]
     capacity = 5
     assert knapsack_01(weights, values, capacity) == 0
 
@@ -37,7 +37,7 @@ def test_knapsack_01():
     capacity = 5
     assert knapsack_01(weights, values, capacity) == 0
 
-    # Test case 7: Single item fits
+    # Test case 7: Single item fits exactly
     weights = [5]
     values = [10]
     capacity = 5
@@ -50,43 +50,43 @@ def test_knapsack_01():
     assert knapsack_01(weights, values, capacity) == 0
 
     # Test case 9: Multiple items, some fit
-    weights = [1, 2, 3, 8]
-    values = [20, 5, 10, 40]
-    capacity = 9
-    assert knapsack_01(weights, values, capacity) == 65
+    weights = [1, 2, 3, 4, 5]
+    values = [1, 2, 3, 4, 5]
+    capacity = 5
+    assert knapsack_01(weights, values, capacity) == 15
 
-    # Test case 10: Large capacity with small items
+    # Test case 10: Large capacity with multiple items
+    weights = [1, 2, 3, 4, 5]
+    values = [10, 20, 30, 40, 50]
+    capacity = 10
+    assert knapsack_01(weights, values, capacity) == 90
+
+    # Test case 11: Edge case with negative capacity
     weights = [1, 2, 3]
     values = [10, 15, 40]
-    capacity = 100
-    assert knapsack_01(weights, values, capacity) == 65
+    capacity = -1
+    assert knapsack_01(weights, values, capacity) == 0
 
-    # Test case 11: Large values and weights
+    # Test case 12: Large input
+    weights = [i for i in range(1, 101)]
+    values = [i * 10 for i in range(1, 101)]
+    capacity = 100
+    assert knapsack_01(weights, values, capacity) == 5050
+
+    # Test case 13: All items fit
+    weights = [1, 2, 3, 4]
+    values = [10, 20, 30, 40]
+    capacity = 10
+    assert knapsack_01(weights, values, capacity) == 100
+
+    # Test case 14: No items and negative capacity
+    weights = []
+    values = []
+    capacity = -5
+    assert knapsack_01(weights, values, capacity) == 0
+
+    # Test case 15: Large weights and values
     weights = [10, 20, 30]
     values = [60, 100, 120]
     capacity = 50
     assert knapsack_01(weights, values, capacity) == 220
-
-    # Test case 12: Edge case with negative capacity
-    weights = [1, 2, 3]
-    values = [10, 15, 40]
-    capacity = -5
-    assert knapsack_01(weights, values, capacity) == 0
-
-    # Test case 13: Edge case with empty weights and non-empty values
-    weights = []
-    values = [10, 15, 40]
-    capacity = 5
-    assert knapsack_01(weights, values, capacity) == 0
-
-    # Test case 14: Edge case with empty values and non-empty weights
-    weights = [1, 2, 3]
-    values = []
-    capacity = 5
-    assert knapsack_01(weights, values, capacity) == 0
-
-    # Test case 15: Large input test
-    weights = list(range(1, 101))
-    values = list(range(1, 101))
-    capacity = 100
-    assert knapsack_01(weights, values, capacity) == 5050

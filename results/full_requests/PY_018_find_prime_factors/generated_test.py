@@ -1,45 +1,36 @@
 import pytest
+from python_functions import find_prime_factors
 
-from your_module import find_prime_factors  # Adjust the import based on your module structure
-
-def test_find_prime_factors_with_negative_number():
-    assert find_prime_factors(-10) == []
-
-def test_find_prime_factors_with_zero():
-    assert find_prime_factors(0) == []
-
-def test_find_prime_factors_with_one():
-    assert find_prime_factors(1) == []
-
-def test_find_prime_factors_with_two():
-    assert find_prime_factors(2) == [2]
-
-def test_find_prime_factors_with_three():
-    assert find_prime_factors(3) == [3]
-
-def test_find_prime_factors_with_four():
-    assert find_prime_factors(4) == [2, 2]
-
-def test_find_prime_factors_with_six():
-    assert find_prime_factors(6) == [2, 3]
-
-def test_find_prime_factors_with_twelve():
-    assert find_prime_factors(12) == [2, 2, 3]
-
-def test_find_prime_factors_with_prime_number():
-    assert find_prime_factors(29) == [29]
-
-def test_find_prime_factors_with_large_composite_number():
-    assert find_prime_factors(100) == [2, 2, 5, 5]
-
-def test_find_prime_factors_with_large_prime_number():
-    assert find_prime_factors(9973) == [9973]
-
-def test_find_prime_factors_with_product_of_primes():
+def test_find_prime_factors():
+    # Test with a prime number
+    assert find_prime_factors(13) == [13]
+    
+    # Test with a composite number
+    assert find_prime_factors(28) == [2, 2, 7]
+    
+    # Test with a square of a prime number
+    assert find_prime_factors(9) == [3, 3]
+    
+    # Test with a number that is a product of two different primes
     assert find_prime_factors(15) == [3, 5]
-
-def test_find_prime_factors_with_square_of_prime():
-    assert find_prime_factors(49) == [7, 7]
-
-def test_find_prime_factors_with_even_and_odd_primes():
-    assert find_prime_factors(2310) == [2, 3, 5, 7, 11]
+    
+    # Test with a large prime number
+    assert find_prime_factors(97) == [97]
+    
+    # Test with a large composite number
+    assert find_prime_factors(100) == [2, 2, 5, 5]
+    
+    # Test with 1 (edge case)
+    assert find_prime_factors(1) == []
+    
+    # Test with 0 (edge case)
+    assert find_prime_factors(0) == []
+    
+    # Test with a negative number (edge case)
+    assert find_prime_factors(-10) == []
+    
+    # Test with a power of a prime number
+    assert find_prime_factors(64) == [2, 2, 2, 2, 2, 2]
+    
+    # Test with a prime factorization that includes 2 and odd primes
+    assert find_prime_factors(60) == [2, 2, 3, 5]

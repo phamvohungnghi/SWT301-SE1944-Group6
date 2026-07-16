@@ -1,90 +1,75 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class DijkstraTest {
+public class JavaAlgorithmsTest {
 
-    @Test
-    void testNullGraph() {
-        assertEquals(-1, JAVA_021_dijkstra.dijkstra(null, 0, 1));
-    }
+    private int[][] graph;
 
-    @Test
-    void testEmptyGraph() {
-        int[][] graph = {};
-        assertEquals(-1, JAVA_021_dijkstra.dijkstra(graph, 0, 1));
-    }
-
-    @Test
-    void testSingleNodeGraph() {
-        int[][] graph = {{0}};
-        assertEquals(0, JAVA_021_dijkstra.dijkstra(graph, 0, 0));
-    }
-
-    @Test
-    void testTwoNodeGraphNoPath() {
-        int[][] graph = {
-            {0, 0},
-            {0, 0}
+    @BeforeEach
+    public void setUp() {
+        graph = new int[][] {
+            {0, 1, 4, 0, 0, 0},
+            {1, 0, 2, 5, 0, 0},
+            {4, 2, 0, 0, 1, 0},
+            {0, 5, 0, 0, 3, 2},
+            {0, 0, 1, 3, 0, 1},
+            {0, 0, 0, 2, 1, 0}
         };
-        assertEquals(-1, JAVA_021_dijkstra.dijkstra(graph, 0, 1));
     }
 
     @Test
-    void testTwoNodeGraphWithPath() {
-        int[][] graph = {
-            {0, 1},
-            {0, 0}
-        };
-        assertEquals(1, JAVA_021_dijkstra.dijkstra(graph, 0, 1));
+    public void testDijkstraValidPath() {
+        int result = JavaAlgorithms.dijkstra(graph, 0, 4);
+        assertEquals(5, result);
     }
 
     @Test
-    void testThreeNodeGraph() {
-        int[][] graph = {
-            {0, 1, 4},
-            {0, 0, 2},
-            {0, 0, 0}
-        };
-        assertEquals(3, JAVA_021_dijkstra.dijkstra(graph, 0, 2));
+    public void testDijkstraNoPath() {
+        int result = JavaAlgorithms.dijkstra(graph, 0, 5);
+        assertEquals(7, result);
     }
 
     @Test
-    void testDisconnectedGraph() {
-        int[][] graph = {
-            {0, 1, 0},
+    public void testDijkstraSameSourceAndDestination() {
+        int result = JavaAlgorithms.dijkstra(graph, 2, 2);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testDijkstraInvalidSource() {
+        int result = JavaAlgorithms.dijkstra(graph, -1, 4);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testDijkstraInvalidDestination() {
+        int result = JavaAlgorithms.dijkstra(graph, 0, 6);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testDijkstraNullGraph() {
+        int result = JavaAlgorithms.dijkstra(null, 0, 4);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testDijkstraEmptyGraph() {
+        int[][] emptyGraph = new int[0][0];
+        int result = JavaAlgorithms.dijkstra(emptyGraph, 0, 0);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testDijkstraDisconnectedGraph() {
+        int[][] disconnectedGraph = {
             {0, 0, 0},
-            {0, 1, 0}
-        };
-        assertEquals(-1, JAVA_021_dijkstra.dijkstra(graph, 0, 2));
-    }
-
-    @Test
-    void testGraphWithNegativeWeights() {
-        int[][] graph = {
-            {0, 1, 4},
-            {0, 0, -2},
-            {0, 0, 0}
-        };
-        assertEquals(3, JAVA_021_dijkstra.dijkstra(graph, 0, 2));
-    }
-
-    @Test
-    void testGraphWithMultiplePaths() {
-        int[][] graph = {
-            {0, 10, 5},
-            {0, 0, 2},
-            {0, 3, 0}
-        };
-        assertEquals(7, JAVA_021_dijkstra.dijkstra(graph, 0, 1));
-    }
-
-    @Test
-    void testSourceEqualsDestination() {
-        int[][] graph = {
-            {0, 1, 2},
             {0, 0, 0},
             {0, 0, 0}
         };
-        assertEquals(0, JAVA_021_dijkstra.dijkstra(graph, 1, 1));
+        int result = JavaAlgorithms.dijkstra(disconnectedGraph, 0, 2);
+        assertEquals(-1, result);
     }
 }

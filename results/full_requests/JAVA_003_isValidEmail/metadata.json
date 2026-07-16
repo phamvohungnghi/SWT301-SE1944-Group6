@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_003_isValidEmail",
-  "started_at_utc": "2026-07-13T10:51:09.138046+00:00",
-  "finished_at_utc": "2026-07-13T10:51:17.254944+00:00",
-  "response_id": "resp_0d3397e25c241fa2006a54c31ccdcc8198bfb664cb60328513",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "6d6c4514e2801458312dda62e6ca0ee03ce697ac49e47ad90a0113884f957f41",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:01:30.814711+00:00",
+  "finished_at_utc": "2026-07-16T09:01:50.712559+00:00",
+  "response_id": "openai-63a4b3709b83",
+  "prompt_sha256": "f5d2d800919f7e3f16cc3c97ac9a22ca3ce2ba5de2bef870d6f5cf0219f2a386",
   "source_sha256": "d3a0d8997af51d15b5bcff34d3a38239d4e366d2f1dfcf6e2d27fd0efcd495b1",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6246,
+    "output_tokens": 521,
+    "total_tokens": 6767
+  }
 }

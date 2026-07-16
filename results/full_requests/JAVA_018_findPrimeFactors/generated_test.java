@@ -1,66 +1,87 @@
 import org.junit.jupiter.api.Test;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
-class PrimeFactorsTest {
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class JavaAlgorithmsTest {
+
+    @BeforeEach
+    public void setUp() {
+        // Any setup can be done here if needed
+    }
 
     @Test
-    void testFindPrimeFactors_Zero() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(0);
+    public void testFindPrimeFactors_Zero() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(0);
         assertTrue(result.isEmpty(), "Expected empty list for input 0");
     }
 
     @Test
-    void testFindPrimeFactors_One() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(1);
+    public void testFindPrimeFactors_One() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(1);
         assertTrue(result.isEmpty(), "Expected empty list for input 1");
     }
 
     @Test
-    void testFindPrimeFactors_PrimeNumber() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(13);
-        assertEquals(List.of(13), result, "Expected list containing the prime number itself");
+    public void testFindPrimeFactors_Two() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(2);
+        assertEquals(List.of(2), result, "Expected [2] for input 2");
     }
 
     @Test
-    void testFindPrimeFactors_SmallComposite() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(12);
-        assertEquals(List.of(2, 2, 3), result, "Expected prime factors for 12");
+    public void testFindPrimeFactors_Three() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(3);
+        assertEquals(List.of(3), result, "Expected [3] for input 3");
     }
 
     @Test
-    void testFindPrimeFactors_LargeComposite() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(100);
-        assertEquals(List.of(2, 2, 5, 5), result, "Expected prime factors for 100");
+    public void testFindPrimeFactors_Four() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(4);
+        assertEquals(List.of(2, 2), result, "Expected [2, 2] for input 4");
     }
 
     @Test
-    void testFindPrimeFactors_PerfectSquare() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(36);
-        assertEquals(List.of(2, 2, 3, 3), result, "Expected prime factors for 36");
+    public void testFindPrimeFactors_Six() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(6);
+        assertEquals(List.of(2, 3), result, "Expected [2, 3] for input 6");
     }
 
     @Test
-    void testFindPrimeFactors_LargePrime() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(97);
-        assertEquals(List.of(97), result, "Expected list containing the large prime number itself");
+    public void testFindPrimeFactors_Nine() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(9);
+        assertEquals(List.of(3, 3), result, "Expected [3, 3] for input 9");
     }
 
     @Test
-    void testFindPrimeFactors_ProductOfPrimes() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(15);
-        assertEquals(List.of(3, 5), result, "Expected prime factors for 15");
+    public void testFindPrimeFactors_Twelve() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(12);
+        assertEquals(List.of(2, 2, 3), result, "Expected [2, 2, 3] for input 12");
     }
 
     @Test
-    void testFindPrimeFactors_Two() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(2);
-        assertEquals(List.of(2), result, "Expected list containing the prime number 2");
+    public void testFindPrimeFactors_Thirty() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(30);
+        assertEquals(List.of(2, 3, 5), result, "Expected [2, 3, 5] for input 30");
     }
 
     @Test
-    void testFindPrimeFactors_CompositeWithMultipleFactors() {
-        List<Integer> result = JAVA_018_findPrimeFactors.findPrimeFactors(60);
-        assertEquals(List.of(2, 2, 3, 5), result, "Expected prime factors for 60");
+    public void testFindPrimeFactors_PrimeNumber() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(29);
+        assertEquals(List.of(29), result, "Expected [29] for input 29");
+    }
+
+    @Test
+    public void testFindPrimeFactors_LargeNumber() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(100);
+        assertEquals(List.of(2, 2, 5, 5), result, "Expected [2, 2, 5, 5] for input 100");
+    }
+
+    @Test
+    public void testFindPrimeFactors_LargePrime() {
+        List<Integer> result = JavaAlgorithms.findPrimeFactors(997);
+        assertEquals(List.of(997), result, "Expected [997] for input 997");
     }
 }

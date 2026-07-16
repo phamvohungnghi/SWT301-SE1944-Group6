@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_012_check_sudoku_board",
-  "started_at_utc": "2026-07-13T10:43:31.216744+00:00",
-  "finished_at_utc": "2026-07-13T10:43:49.499100+00:00",
-  "response_id": "resp_0a4c153cfa7d9e2a006a54c152e1f0819a8e3590e2bd05ef4d",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "e126de95cf517907e83750c9e63fe3d9a1e5c43df1074b84dee0a5071d6e5710",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:45:28.388531+00:00",
+  "finished_at_utc": "2026-07-16T08:45:52.342211+00:00",
+  "response_id": "openai-03e19c3efdc6",
+  "prompt_sha256": "a94cac0a653328a056e5603cadfabb058d51ac10c6913f36e35e803bcd91fc81",
   "source_sha256": "c49155859a25efe71d4f11faa1846325e6b79ca21dd63501a4912ef2bcd1265b",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4522,
+    "output_tokens": 2013,
+    "total_tokens": 6535
+  }
 }

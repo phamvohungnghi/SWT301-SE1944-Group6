@@ -1,10 +1,15 @@
 {
   "unit_id": "JAVA_001_bubbleSort",
-  "started_at_utc": "2026-07-13T10:50:52.336664+00:00",
-  "finished_at_utc": "2026-07-13T10:50:59.178403+00:00",
-  "response_id": "resp_04d9b1c6d00c99d5006a54c30c0264819990dfb94f3288c182",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "8d07b229ee1b2df38b205c31668769b12d40ad5d49714cc506e567c942e3b518",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T09:00:58.265209+00:00",
+  "finished_at_utc": "2026-07-16T09:01:20.899183+00:00",
+  "response_id": "openai-30e5fc231d39",
+  "prompt_sha256": "5d30eac7b2a0d2b9de4d685a54c55a584b65605c6900c9fe1f9e76d0cd7c82e0",
   "source_sha256": "a85d43fb2c865ead84b8d1f7f27a6143c6e04a7af5b0f90679dc7a3e7d3b2af3",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 6199,
+    "output_tokens": 714,
+    "total_tokens": 6913
+  }
 }

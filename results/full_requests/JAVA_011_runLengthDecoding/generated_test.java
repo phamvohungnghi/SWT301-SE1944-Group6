@@ -1,72 +1,65 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RunLengthDecodingTest {
+public class JavaAlgorithmsTest {
 
     @Test
-    void testNullInput() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(null));
+    public void testRunLengthDecoding_ValidInput() {
+        assertEquals("aaabb", JavaAlgorithms.runLengthDecoding("3a2b"));
+        assertEquals("cccc", JavaAlgorithms.runLengthDecoding("4c"));
+        assertEquals("xxyyy", JavaAlgorithms.runLengthDecoding("2x3y"));
     }
 
     @Test
-    void testEmptyInput() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding(""));
+    public void testRunLengthDecoding_EmptyString() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding(""));
     }
 
     @Test
-    void testSingleCharacter() {
-        assertEquals("a", JAVA_011_runLengthDecoding.runLengthDecoding("1a"));
+    public void testRunLengthDecoding_NullInput() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding(null));
     }
 
     @Test
-    void testMultipleCharacters() {
-        assertEquals("aa", JAVA_011_runLengthDecoding.runLengthDecoding("2a"));
-        assertEquals("aaa", JAVA_011_runLengthDecoding.runLengthDecoding("3a"));
+    public void testRunLengthDecoding_InvalidCharacter() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding("3a2b4c1d!"));
+        assertEquals("", JavaAlgorithms.runLengthDecoding("3a2b4c1d#"));
     }
 
     @Test
-    void testDifferentCharacters() {
-        assertEquals("aabb", JAVA_011_runLengthDecoding.runLengthDecoding("2a2b"));
-        assertEquals("aaabbb", JAVA_011_runLengthDecoding.runLengthDecoding("3a3b"));
+    public void testRunLengthDecoding_NonDigitStart() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding("a3b2"));
+        assertEquals("", JavaAlgorithms.runLengthDecoding("b4c1d"));
     }
 
     @Test
-    void testInvalidInputStartsWithCharacter() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("a2b"));
+    public void testRunLengthDecoding_MissingCharacterAfterCount() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding("3a2"));
+        assertEquals("", JavaAlgorithms.runLengthDecoding("4c"));
     }
 
     @Test
-    void testInvalidInputWithLeadingZero() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("02a"));
+    public void testRunLengthDecoding_ConsecutiveDigits() {
+        assertEquals("aaa", JavaAlgorithms.runLengthDecoding("3a"));
+        assertEquals("bb", JavaAlgorithms.runLengthDecoding("2b"));
+        assertEquals("cccc", JavaAlgorithms.runLengthDecoding("4c"));
     }
 
     @Test
-    void testInvalidInputWithNonDigit() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1a2b3c4d5e6f7g8h9i0j"));
+    public void testRunLengthDecoding_LargeCounts() {
+        assertEquals("a", JavaAlgorithms.runLengthDecoding("1a"));
+        assertEquals("bbbb", JavaAlgorithms.runLengthDecoding("4b"));
+        assertEquals("cccccccccc", JavaAlgorithms.runLengthDecoding("10c"));
     }
 
     @Test
-    void testInputWithNoCharacters() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1"));
+    public void testRunLengthDecoding_ComplexValidInput() {
+        assertEquals("aaabbbcccc", JavaAlgorithms.runLengthDecoding("3a3b4c"));
+        assertEquals("xyzxyz", JavaAlgorithms.runLengthDecoding("3x2y2z"));
     }
 
     @Test
-    void testInputWithCountZero() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("0a"));
-    }
-
-    @Test
-    void testInputWithLargeCount() {
-        assertEquals("a", JAVA_011_runLengthDecoding.runLengthDecoding("1000000a").substring(0, 1));
-    }
-
-    @Test
-    void testInputWithMultipleCounts() {
-        assertEquals("aaabbbccc", JAVA_011_runLengthDecoding.runLengthDecoding("3a3b3c"));
-    }
-
-    @Test
-    void testInputWithInvalidCount() {
-        assertEquals("", JAVA_011_runLengthDecoding.runLengthDecoding("1a1b1c1d1e1f1g1h1i1j1k1l1m1n1o1p1q1r1s1t1u1v1w1x1y1z1"));
+    public void testRunLengthDecoding_OnlyDigits() {
+        assertEquals("", JavaAlgorithms.runLengthDecoding("12345"));
     }
 }

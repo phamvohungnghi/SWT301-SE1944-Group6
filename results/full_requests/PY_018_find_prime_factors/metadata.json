@@ -1,10 +1,15 @@
 {
   "unit_id": "PY_018_find_prime_factors",
-  "started_at_utc": "2026-07-13T10:49:29.056542+00:00",
-  "finished_at_utc": "2026-07-13T10:49:35.913479+00:00",
-  "response_id": "resp_023e3f21f0508fab006a54c2b8b7b48198b441ed540694fb33",
-  "response_model": "gpt-4o-mini-2024-07-18",
-  "prompt_sha256": "a6253c81c681e1048f540a4e7e657d66201370d0a966a8f188115a4ff12fda85",
+  "provider": "openai",
+  "model": "gpt-4o-mini-2024-07-18",
+  "started_at_utc": "2026-07-16T08:57:47.123768+00:00",
+  "finished_at_utc": "2026-07-16T08:57:52.620767+00:00",
+  "response_id": "openai-512d013c9007",
+  "prompt_sha256": "05e86269d6cfaeb9ae6e0972bbea504c9c2990a8d20eb1dd20a2a6db78e134b0",
   "source_sha256": "4f9008e414c091adf4f891e352d14618228255f80427a68683ce05eb7ddf9a9b",
-  "sdk_version": "2.43.0"
+  "usage": {
+    "input_tokens": 4461,
+    "output_tokens": 329,
+    "total_tokens": 4790
+  }
 }

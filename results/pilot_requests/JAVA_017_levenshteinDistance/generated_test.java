@@ -1,52 +1,32 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class LevenshteinDistanceTest {
-
-    @Test
-    void testNullInputs() {
-        assertEquals(-1, levenshteinDistance(null, null));
-        assertEquals(-1, levenshteinDistance("test", null));
-        assertEquals(-1, levenshteinDistance(null, "test"));
-    }
+public class JavaAlgorithmsTest {
 
     @Test
-    void testEmptyStrings() {
-        assertEquals(0, levenshteinDistance("", ""));
-        assertEquals(4, levenshteinDistance("test", ""));
-        assertEquals(4, levenshteinDistance("", "test"));
-    }
+    public void testLevenshteinDistance() {
+        // Test with two identical strings
+        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance("test", "test"));
 
-    @Test
-    void testIdenticalStrings() {
-        assertEquals(0, levenshteinDistance("test", "test"));
-        assertEquals(0, levenshteinDistance("a", "a"));
-    }
+        // Test with one empty string
+        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance("test", ""));
+        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance("", "test"));
 
-    @Test
-    void testSingleCharacterDifferences() {
-        assertEquals(1, levenshteinDistance("a", "b"));
-        assertEquals(1, levenshteinDistance("a", ""));
-        assertEquals(1, levenshteinDistance("", "a"));
-    }
+        // Test with both strings empty
+        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance("", ""));
 
-    @Test
-    void testMultipleCharacterDifferences() {
-        assertEquals(2, levenshteinDistance("kitten", "sitting"));
-        assertEquals(3, levenshteinDistance("flaw", "lawn"));
-        assertEquals(5, levenshteinDistance("intention", "execution"));
-    }
+        // Test with different strings
+        Assertions.assertEquals(1, JavaAlgorithms.levenshteinDistance("test", "tast"));
+        Assertions.assertEquals(2, JavaAlgorithms.levenshteinDistance("test", "tastt"));
+        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance("test", "tset"));
 
-    @Test
-    void testLongerStrings() {
-        assertEquals(3, levenshteinDistance("abcdef", "azced"));
-        assertEquals(4, levenshteinDistance("sunday", "saturday"));
-    }
+        // Test with strings of different lengths
+        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance("kitten", "sitting"));
+        Assertions.assertEquals(5, JavaAlgorithms.levenshteinDistance("flaw", "lawn"));
 
-    @Test
-    void testPerformance() {
-        String s1 = "a".repeat(1000);
-        String s2 = "b".repeat(1000);
-        assertEquals(1000, levenshteinDistance(s1, s2));
+        // Test with null inputs
+        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, "test"));
+        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance("test", null));
+        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, null));
     }
 }
