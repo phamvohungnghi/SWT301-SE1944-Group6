@@ -1,0 +1,56 @@
+% ===========================================================================
+% PHẦN VIẾT BÁO CÁO CỦA THÁI (WP2 - LLM GENERATION)
+% Đọc kỹ và copy/paste/chỉnh sửa phần này để đưa lên Overleaf của nhóm
+% ===========================================================================
+
+\subsection{LLM-based Test Generation Setup}
+\label{subsec:llm_setup}
+
+For the automated test generation pipeline, we utilized the official OpenAI API using the \texttt{gpt-4o-mini-2024-07-18} model snapshot. To ensure the reproducibility of results and minimize bias, the parameters generating the results are tightly controlled:
+\begin{itemize}
+    \item \textbf{Temperature:} Set to 0.0 to enforce deterministic code generation.
+    \item \textbf{Top P:} The API requirements have been simplified to rely solely on temperature-based sampling.
+    \item \textbf{Max Output Tokens:} The limit has been fixed at 2048 to avoid the possibility of the response being cut short.
+    \item \textbf{System Prompt:} The system guided the model to operate like a software testing expert, adhering to the required framework, returning only executable source code, avoiding Markdown formatting blocks, and refraining from accessing external resources or modifying the product code.
+\end{itemize}
+
+At first (as documented in the revision log), we evaluated the process using \texttt{gpt-4o} via the GitHub Models platform. However, to address protocol discrepancies, collect accurate token consumption data via the API \texttt{usage} field, and obtain standard OpenAI response identifiers (\texttt{resp\_*}), we switched to the official OpenAI API and rerun all tests on July 16, 2026.
+
+\subsection{Prompt Engineering and Context Injection}
+\label{subsec:prompt_engineering}
+
+A key challenge in first-attempt zero-shot unit test generation is ensuring the generated code compiles and is syntactically correct the first time. Our test evaluations show that without class structure and module context, LLM often produces invalid class definitions in Java or makes incorrect import assumptions in Python.
+
+To overcome these issues, we created a prompt structure that includes context for each language:
+\begin{enumerate}
+    \item \textbf{Language-Specific Instructions:}
+    \begin{itemize}
+        \item \textit{Java Instructions:} The model was told to call methods through the \texttt{JavaAlgorithms} class and forbidden from creating separate classes named after the unique unit identifiers (e.g., \texttt{JAVA\_001}).
+        \item \textit{Python Instructions:} The model was told to import the target function using the syntax \texttt{from python\_functions import <function\_name>} and forbidden from copying the production code into the test file.
+    \end{itemize}
+    \item \textbf{Context Injection:} We included the entire target source file (or the first 200 lines if the file size exceeded 50KB) as background context to provide the model with the exact imports, packages, and helper functions available.
+    \item \textbf{Target Code:} The specific target method's source code was appended at the end of the prompt.
+\end{enumerate}
+
+\subsection{Execution Cost and Token Analysis}
+\label{subsec:execution_cost}
+
+To evaluate the performance and efficiency of our proposed framework, we conducted extensive experiments using the official API endpoint. The experimental workload strictly utilized text completion and response capabilities (Responses and Chat Completions). A batch-processing run consisting of 60 successful requests was executed (10 requests during the pilot phase and 50 requests during the full run), consuming a total volume of 323,246 input tokens. The average payload per request was approximately 5,387.4 input tokens, indicating a highly dense contextual input/output interaction due to the injection of source code context. The total computational budget incurred during this empirical session was \$0.0788997 USD (consisting of \$0.0135977 USD for the pilot run and \$0.0653020 USD for the full run, which rounds to \$0.08 USD on the OpenAI billing dashboard), demonstrating the high cost-effectiveness and feasibility of our methodology for large-scale deployment.
+
+Table~\ref{tab:token_cost} summarizes the token consumption and estimated cost using OpenAI's pricing structure for the \texttt{gpt-4o-mini-2024-07-18} model.
+
+\begin{table}[htbp]
+\caption{Token Consumption and Cost Details}
+\label{tab:token_cost}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Phase} & \textbf{Input Tokens} & \textbf{Output Tokens} & \textbf{Total Tokens} & \textbf{Cost (USD)} \\
+\midrule
+Pilot (10 units) & 53,831 & 9,205 & 63,036 & \$0.0135977 \\
+Full Run (50 units) & 269,415 & 41,483 & 310,898 & \$0.0653020 \\
+\midrule
+\textbf{Total (60 units)} & \textbf{323,246} & \textbf{50,688} & \textbf{373,934} & \textbf{\$0.0788997} \\
+\bottomrule
+\end{tabular}
+\end{table}
