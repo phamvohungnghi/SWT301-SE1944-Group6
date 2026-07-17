@@ -1,18 +1,6 @@
 {
-  "id": "openai-ef4fe2851971",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport java.util.Arrays;\nimport java.util.List;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\n\npublic class JavaAlgorithmsTest {\n\n    @BeforeEach\n    public void setUp() {\n        // Any setup can be done here if needed\n    }\n\n    @Test\n    public void testParseCsvLine_NullInput() {\n        List<String> result = JavaAlgorithms.parseCsvLine(null);\n        assertEquals(Arrays.asList(), result);\n    }\n\n    @Test\n    public void testParseCsvLine_EmptyInput() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"\");\n        assertEquals(Arrays.asList(\"\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_SingleValue() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"value\");\n        assertEquals(Arrays.asList(\"value\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_TwoValues() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"value1,value2\");\n        assertEquals(Arrays.asList(\"value1\", \"value2\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_QuotedValue() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"\\\"value1\\\",\\\"value2\\\"\");\n        assertEquals(Arrays.asList(\"value1\", \"value2\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_QuotedValueWithComma() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"\\\"value1,value2\\\",\\\"value3\\\"\");\n        assertEquals(Arrays.asList(\"value1,value2\", \"value3\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_EscapedQuote() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"\\\"value1\\\"\\\"value2\\\"\");\n        assertEquals(Arrays.asList(\"value1\", \"value2\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_MixedQuotesAndValues() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"value1,\\\"value2,value3\\\",value4\");\n        assertEquals(Arrays.asList(\"value1\", \"value2,value3\", \"value4\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_LeadingAndTrailingSpaces() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"  value1 , \\\" value2 \\\" , value3  \");\n        assertEquals(Arrays.asList(\"  value1 \", \" value2 \", \" value3  \"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_ConsecutiveCommas() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\"value1,,value3\");\n        assertEquals(Arrays.asList(\"value1\", \"\", \"value3\"), result);\n    }\n\n    @Test\n    public void testParseCsvLine_EmptyValues() {\n        List<String> result = JavaAlgorithms.parseCsvLine(\",value2,,value4\");\n        assertEquals(Arrays.asList(\"\", \"value2\", \"\", \"value4\"), result);\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6246,
-    "output_tokens": 646,
-    "total_tokens": 6892
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_016_parseCsvLineTest {\n    @Test void handlesNullAndEmpty() { assertTrue(JavaAlgorithms.parseCsvLine(null).isEmpty()); assertEquals(List.of(\"\"),JavaAlgorithms.parseCsvLine(\"\")); }\n    @Test void parsesPlainAndQuotedFields() { assertEquals(List.of(\"a\",\"b\",\"c\"),JavaAlgorithms.parseCsvLine(\"a,b,c\")); assertEquals(List.of(\"a,b\",\"c\"),JavaAlgorithms.parseCsvLine(\"\"a,b\",c\")); }\n    @Test void unescapesDoubleQuotes() { assertEquals(List.of(\"a\"b\",\"x\"),JavaAlgorithms.parseCsvLine(\"\"a\"\"b\",x\")); }\n}\n",
+  "usage": null
 }

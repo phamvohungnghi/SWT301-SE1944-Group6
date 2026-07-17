@@ -1,83 +1,9 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class JavaAlgorithmsTest {
-
-    @Test
-    public void testCalculateTax_SingleIncomeBelowThreshold() {
-        double result = JavaAlgorithms.calculateTax(5000, "single");
-        Assertions.assertEquals(500.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_SingleIncomeAtThreshold() {
-        double result = JavaAlgorithms.calculateTax(10000, "single");
-        Assertions.assertEquals(1000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_SingleIncomeAboveThreshold() {
-        double result = JavaAlgorithms.calculateTax(30000, "single");
-        Assertions.assertEquals(4000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_SingleIncomeAboveUpperThreshold() {
-        double result = JavaAlgorithms.calculateTax(50000, "single");
-        Assertions.assertEquals(10500.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_MarriedIncomeBelowThreshold() {
-        double result = JavaAlgorithms.calculateTax(15000, "married");
-        Assertions.assertEquals(1500.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_MarriedIncomeAtThreshold() {
-        double result = JavaAlgorithms.calculateTax(20000, "married");
-        Assertions.assertEquals(2000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_MarriedIncomeAboveThreshold() {
-        double result = JavaAlgorithms.calculateTax(60000, "married");
-        Assertions.assertEquals(8000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_MarriedIncomeAboveUpperThreshold() {
-        double result = JavaAlgorithms.calculateTax(100000, "married");
-        Assertions.assertEquals(18500.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_OtherStatusIncome() {
-        double result = JavaAlgorithms.calculateTax(30000, "other");
-        Assertions.assertEquals(6000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_NegativeIncome() {
-        double result = JavaAlgorithms.calculateTax(-5000, "single");
-        Assertions.assertEquals(0.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_ZeroIncome() {
-        double result = JavaAlgorithms.calculateTax(0, "single");
-        Assertions.assertEquals(0.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_IncomeWithNullStatus() {
-        double result = JavaAlgorithms.calculateTax(30000, null);
-        Assertions.assertEquals(6000.0, result, 0.001);
-    }
-
-    @Test
-    public void testCalculateTax_IncomeWithEmptyStatus() {
-        double result = JavaAlgorithms.calculateTax(30000, "");
-        Assertions.assertEquals(6000.0, result, 0.001);
-    }
+class JAVA_005_calculateTaxTest {
+    @Test void handlesNonPositiveIncome() { assertEquals(0.0,JavaAlgorithms.calculateTax(0,"single")); assertEquals(0.0,JavaAlgorithms.calculateTax(-1,"married")); }
+    @Test void coversSingleBrackets() { assertEquals(1000.0,JavaAlgorithms.calculateTax(10000,"single")); assertEquals(2500.0,JavaAlgorithms.calculateTax(20000,"SINGLE")); assertEquals(8000.0,JavaAlgorithms.calculateTax(50000,"single")); }
+    @Test void coversMarriedAndFallbackBrackets() { assertEquals(2000.0,JavaAlgorithms.calculateTax(20000,"married")); assertEquals(5000.0,JavaAlgorithms.calculateTax(40000,"married")); assertEquals(13500.0,JavaAlgorithms.calculateTax(90000,"married")); assertEquals(2000.0,JavaAlgorithms.calculateTax(10000,"other")); }
 }

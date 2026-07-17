@@ -1,18 +1,6 @@
 {
-  "id": "openai-0f80b8e5089c",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    private int[][] graph;\n\n    @BeforeEach\n    public void setUp() {\n        graph = new int[][] {\n            {0, 1, 4, 0, 0, 0},\n            {1, 0, 2, 5, 0, 0},\n            {4, 2, 0, 0, 1, 0},\n            {0, 5, 0, 0, 3, 2},\n            {0, 0, 1, 3, 0, 1},\n            {0, 0, 0, 2, 1, 0}\n        };\n    }\n\n    @Test\n    public void testDijkstraValidPath() {\n        int result = JavaAlgorithms.dijkstra(graph, 0, 4);\n        assertEquals(5, result);\n    }\n\n    @Test\n    public void testDijkstraNoPath() {\n        int result = JavaAlgorithms.dijkstra(graph, 0, 5);\n        assertEquals(7, result);\n    }\n\n    @Test\n    public void testDijkstraSameSourceAndDestination() {\n        int result = JavaAlgorithms.dijkstra(graph, 2, 2);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testDijkstraInvalidSource() {\n        int result = JavaAlgorithms.dijkstra(graph, -1, 4);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testDijkstraInvalidDestination() {\n        int result = JavaAlgorithms.dijkstra(graph, 0, 6);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testDijkstraNullGraph() {\n        int result = JavaAlgorithms.dijkstra(null, 0, 4);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testDijkstraEmptyGraph() {\n        int[][] emptyGraph = new int[0][0];\n        int result = JavaAlgorithms.dijkstra(emptyGraph, 0, 0);\n        assertEquals(-1, result);\n    }\n\n    @Test\n    public void testDijkstraDisconnectedGraph() {\n        int[][] disconnectedGraph = {\n            {0, 0, 0},\n            {0, 0, 0},\n            {0, 0, 0}\n        };\n        int result = JavaAlgorithms.dijkstra(disconnectedGraph, 0, 2);\n        assertEquals(-1, result);\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6332,
-    "output_tokens": 550,
-    "total_tokens": 6882
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_021_dijkstraTest {\n    @Test void rejectsNullGraph() { assertEquals(-1,JavaAlgorithms.dijkstra(null,0,0)); }\n    @Test void findsShortestPath() { int[][] g={{0,4,1,0},{4,0,2,1},{1,2,0,5},{0,1,5,0}}; assertEquals(4,JavaAlgorithms.dijkstra(g,0,3)); assertEquals(0,JavaAlgorithms.dijkstra(g,2,2)); }\n    @Test void reportsUnreachableDestination() { int[][] g={{0,1,0},{1,0,0},{0,0,0}}; assertEquals(-1,JavaAlgorithms.dijkstra(g,0,2)); }\n}\n",
+  "usage": null
 }

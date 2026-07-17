@@ -1,18 +1,6 @@
 {
-  "id": "openai-6183a4e455a4",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class RomanToIntTest {\n\n    @Test\n    public void testNullInput() {\n        assertEquals(0, JavaAlgorithms.romanToInt(null));\n    }\n\n    @Test\n    public void testEmptyString() {\n        assertEquals(0, JavaAlgorithms.romanToInt(\"\"));\n    }\n\n    @Test\n    public void testInvalidCharacter() {\n        assertEquals(0, JavaAlgorithms.romanToInt(\"ABCD\"));\n    }\n\n    @Test\n    public void testSingleCharacter() {\n        assertEquals(1, JavaAlgorithms.romanToInt(\"I\"));\n        assertEquals(5, JavaAlgorithms.romanToInt(\"V\"));\n        assertEquals(10, JavaAlgorithms.romanToInt(\"X\"));\n        assertEquals(50, JavaAlgorithms.romanToInt(\"L\"));\n        assertEquals(100, JavaAlgorithms.romanToInt(\"C\"));\n        assertEquals(500, JavaAlgorithms.romanToInt(\"D\"));\n        assertEquals(1000, JavaAlgorithms.romanToInt(\"M\"));\n    }\n\n    @Test\n    public void testTwoCharacterCombinations() {\n        assertEquals(4, JavaAlgorithms.romanToInt(\"IV\"));\n        assertEquals(9, JavaAlgorithms.romanToInt(\"IX\"));\n        assertEquals(40, JavaAlgorithms.romanToInt(\"XL\"));\n        assertEquals(90, JavaAlgorithms.romanToInt(\"XC\"));\n        assertEquals(400, JavaAlgorithms.romanToInt(\"CD\"));\n        assertEquals(900, JavaAlgorithms.romanToInt(\"CM\"));\n    }\n\n    @Test\n    public void testValidRomanNumerals() {\n        assertEquals(3, JavaAlgorithms.romanToInt(\"III\"));\n        assertEquals(58, JavaAlgorithms.romanToInt(\"LVIII\"));\n        assertEquals(1994, JavaAlgorithms.romanToInt(\"MCMXCIV\"));\n        assertEquals(2023, JavaAlgorithms.romanToInt(\"MMXXIII\"));\n    }\n\n    @Test\n    public void testInvalidRomanNumerals() {\n        assertEquals(0, JavaAlgorithms.romanToInt(\"IIII\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"VV\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"XXXX\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"LL\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"CCCCC\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"DD\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"MMMM\"));\n    }\n\n    @Test\n    public void testMixedValidAndInvalid() {\n        assertEquals(0, JavaAlgorithms.romanToInt(\"IVI\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"IXC\"));\n        assertEquals(0, JavaAlgorithms.romanToInt(\"MCMXCIVX\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6294,
-    "output_tokens": 607,
-    "total_tokens": 6901
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_013_romanToIntTest {\n    @Test void handlesMissingAndInvalidInput() { assertEquals(0,JavaAlgorithms.romanToInt(null)); assertEquals(0,JavaAlgorithms.romanToInt(\"\")); assertEquals(0,JavaAlgorithms.romanToInt(\"AX\")); }\n    @Test void convertsAdditiveAndSubtractiveForms() { assertEquals(3,JavaAlgorithms.romanToInt(\"III\")); assertEquals(4,JavaAlgorithms.romanToInt(\"IV\")); assertEquals(1994,JavaAlgorithms.romanToInt(\"MCMXCIV\")); }\n}\n",
+  "usage": null
 }

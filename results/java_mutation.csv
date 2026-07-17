@@ -1,0 +1,26 @@
+unit_id,symbol,cc,executability,mutants_generated,mutants_killed,mutants_invalid,mutation_score,status,notes
+JAVA_001_bubbleSort,bubbleSort,6,EXECUTABLE,14,12,0,85.71428571428571,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_002_binarySearch,binarySearch,6,EXECUTABLE,16,13,0,81.25,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_003_isValidEmail,isValidEmail,15,EXECUTABLE,21,21,0,100.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_004_mergeIntervals,mergeIntervals,9,EXECUTABLE,15,12,0,80.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_005_calculateTax,calculateTax,8,EXECUTABLE,28,23,0,82.14285714285714,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_006_validatePassword,validatePassword,11,EXECUTABLE,16,16,0,100.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_007_evaluateRPN,evaluateRPN,13,EXECUTABLE,15,15,0,100.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_008_knapsack01,knapsack01,8,EXECUTABLE,22,21,0,95.45454545454545,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_009_jsonPathLookup,jsonPathLookup,14,EXECUTABLE,16,14,0,87.5,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_010_runLengthEncoding,runLengthEncoding,7,EXECUTABLE,13,13,0,100.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_011_runLengthDecoding,runLengthDecoding,9,EXECUTABLE,14,13,0,92.85714285714286,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_012_checkSudokuBoard,checkSudokuBoard,13,EXECUTABLE,22,12,0,54.54545454545454,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_013_romanToInt,romanToInt,8,EXECUTABLE,16,16,0,100.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_014_intToRoman,intToRoman,5,EXECUTABLE,12,9,0,75.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_015_longestPalindromeSubstring,longestPalindromeSubstring,12,EXECUTABLE,30,24,0,80.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_016_parseCsvLine,parseCsvLine,9,COMPILE_ERROR,NA,NA,NA,NA,NOT_RUN_NON_EXECUTABLE,Primary protocol: PIT not run for non-executable raw test
+JAVA_017_levenshteinDistance,levenshteinDistance,8,EXECUTABLE,24,22,0,91.66666666666666,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_018_findPrimeFactors,findPrimeFactors,6,EXECUTABLE,15,9,0,60.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_019_luhnCheck,luhnCheck,8,EXECUTABLE,21,17,0,80.95238095238095,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_020_simpleHtmlTokenizer,simpleHtmlTokenizer,9,EXECUTABLE,17,13,0,76.47058823529412,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_021_dijkstra,dijkstra,14,EXECUTABLE,24,20,0,83.33333333333334,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_022_parseQueryString,parseQueryString,9,EXECUTABLE,9,8,0,88.88888888888889,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_023_dateDifference,dateDifference,8,EXECUTABLE,41,39,0,95.1219512195122,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_024_isValidBST,isValidBST,13,EXECUTABLE,25,18,0,72.0,MEASURED,method-level PIT; timeout mutants counted as survived
+JAVA_025_isMatch,isMatch,11,EXECUTABLE,19,18,0,94.73684210526315,MEASURED,method-level PIT; timeout mutants counted as survived

@@ -1,18 +1,6 @@
 {
-  "id": "openai-1fbfb14cef5c",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class IntToRomanTest {\n\n    @Test\n    public void testIntToRoman_ValidInputs() {\n        assertEquals(\"I\", JavaAlgorithms.intToRoman(1));\n        assertEquals(\"IV\", JavaAlgorithms.intToRoman(4));\n        assertEquals(\"V\", JavaAlgorithms.intToRoman(5));\n        assertEquals(\"IX\", JavaAlgorithms.intToRoman(9));\n        assertEquals(\"X\", JavaAlgorithms.intToRoman(10));\n        assertEquals(\"XL\", JavaAlgorithms.intToRoman(40));\n        assertEquals(\"L\", JavaAlgorithms.intToRoman(50));\n        assertEquals(\"XC\", JavaAlgorithms.intToRoman(90));\n        assertEquals(\"C\", JavaAlgorithms.intToRoman(100));\n        assertEquals(\"CD\", JavaAlgorithms.intToRoman(400));\n        assertEquals(\"D\", JavaAlgorithms.intToRoman(500));\n        assertEquals(\"CM\", JavaAlgorithms.intToRoman(900));\n        assertEquals(\"M\", JavaAlgorithms.intToRoman(1000));\n        assertEquals(\"MMXXIII\", JavaAlgorithms.intToRoman(2023));\n        assertEquals(\"MMMCMXCIX\", JavaAlgorithms.intToRoman(3999));\n    }\n\n    @Test\n    public void testIntToRoman_BoundaryInputs() {\n        assertEquals(\"\", JavaAlgorithms.intToRoman(0)); // Below valid range\n        assertEquals(\"\", JavaAlgorithms.intToRoman(-1)); // Below valid range\n        assertEquals(\"\", JavaAlgorithms.intToRoman(4000)); // Above valid range\n    }\n\n    @Test\n    public void testIntToRoman_AdditionalCases() {\n        assertEquals(\"MMM\", JavaAlgorithms.intToRoman(3000)); // Upper limit of thousands\n        assertEquals(\"MMMCMXC\", JavaAlgorithms.intToRoman(3990)); // Complex case\n        assertEquals(\"MMMDCCCLXXXVIII\", JavaAlgorithms.intToRoman(3888)); // Complex case\n    }\n\n    @Test\n    public void testIntToRoman_EmptyStringForInvalidInput() {\n        assertEquals(\"\", JavaAlgorithms.intToRoman(0));\n        assertEquals(\"\", JavaAlgorithms.intToRoman(-10));\n        assertEquals(\"\", JavaAlgorithms.intToRoman(4000));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6255,
-    "output_tokens": 472,
-    "total_tokens": 6727
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_014_intToRomanTest {\n    @Test void rejectsOutOfRangeInput() { assertEquals(\"\",JavaAlgorithms.intToRoman(0)); assertEquals(\"\",JavaAlgorithms.intToRoman(-1)); assertEquals(\"\",JavaAlgorithms.intToRoman(4000)); }\n    @Test void convertsRepresentativeValues() { assertEquals(\"I\",JavaAlgorithms.intToRoman(1)); assertEquals(\"IV\",JavaAlgorithms.intToRoman(4)); assertEquals(\"LVIII\",JavaAlgorithms.intToRoman(58)); assertEquals(\"MCMXCIV\",JavaAlgorithms.intToRoman(1994)); }\n}\n",
+  "usage": null
 }

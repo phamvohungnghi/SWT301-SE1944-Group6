@@ -1,18 +1,6 @@
 {
-  "id": "openai-7b9df08664ec",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testRunLengthDecoding_ValidInput() {\n        assertEquals(\"aaabb\", JavaAlgorithms.runLengthDecoding(\"3a2b\"));\n        assertEquals(\"cccc\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n        assertEquals(\"xxyyy\", JavaAlgorithms.runLengthDecoding(\"2x3y\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_EmptyString() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_NullInput() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(null));\n    }\n\n    @Test\n    public void testRunLengthDecoding_InvalidCharacter() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2b4c1d!\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2b4c1d#\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_NonDigitStart() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"a3b2\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"b4c1d\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_MissingCharacterAfterCount() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"3a2\"));\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_ConsecutiveDigits() {\n        assertEquals(\"aaa\", JavaAlgorithms.runLengthDecoding(\"3a\"));\n        assertEquals(\"bb\", JavaAlgorithms.runLengthDecoding(\"2b\"));\n        assertEquals(\"cccc\", JavaAlgorithms.runLengthDecoding(\"4c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_LargeCounts() {\n        assertEquals(\"a\", JavaAlgorithms.runLengthDecoding(\"1a\"));\n        assertEquals(\"bbbb\", JavaAlgorithms.runLengthDecoding(\"4b\"));\n        assertEquals(\"cccccccccc\", JavaAlgorithms.runLengthDecoding(\"10c\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_ComplexValidInput() {\n        assertEquals(\"aaabbbcccc\", JavaAlgorithms.runLengthDecoding(\"3a3b4c\"));\n        assertEquals(\"xyzxyz\", JavaAlgorithms.runLengthDecoding(\"3x2y2z\"));\n    }\n\n    @Test\n    public void testRunLengthDecoding_OnlyDigits() {\n        assertEquals(\"\", JavaAlgorithms.runLengthDecoding(\"12345\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6237,
-    "output_tokens": 554,
-    "total_tokens": 6791
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_011_runLengthDecodingTest {\n    @Test void handlesMissingAndMalformedInput() { assertEquals(\"\",JavaAlgorithms.runLengthDecoding(null)); assertEquals(\"\",JavaAlgorithms.runLengthDecoding(\"\")); assertEquals(\"\",JavaAlgorithms.runLengthDecoding(\"a3\")); assertEquals(\"\",JavaAlgorithms.runLengthDecoding(\"12\")); }\n    @Test void decodesRunsAndMultiDigitCounts() { assertEquals(\"aaabbc\",JavaAlgorithms.runLengthDecoding(\"3a2b1c\")); assertEquals(\"xxxxxxxxxxxx\",JavaAlgorithms.runLengthDecoding(\"12x\")); }\n}\n",
+  "usage": null
 }

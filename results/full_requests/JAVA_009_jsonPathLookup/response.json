@@ -1,18 +1,6 @@
 {
-  "id": "openai-fe316f76a875",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport java.util.*;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JsonPathLookupTest {\n\n    private Map<String, Object> data;\n\n    @BeforeEach\n    public void setUp() {\n        data = new HashMap<>();\n        data.put(\"key1\", \"value1\");\n        data.put(\"key2\", Arrays.asList(\"value2a\", \"value2b\", \"value2c\"));\n        Map<String, Object> nestedMap = new HashMap<>();\n        nestedMap.put(\"nestedKey\", \"nestedValue\");\n        data.put(\"key3\", nestedMap);\n    }\n\n    @Test\n    public void testJsonPathLookupWithValidMapPath() {\n        assertEquals(\"value1\", JavaAlgorithms.jsonPathLookup(data, \"key1\"));\n        assertEquals(\"nestedValue\", JavaAlgorithms.jsonPathLookup(data, \"key3.nestedKey\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithValidListPath() {\n        assertEquals(\"value2a\", JavaAlgorithms.jsonPathLookup(data, \"key2.0\"));\n        assertEquals(\"value2b\", JavaAlgorithms.jsonPathLookup(data, \"key2.1\"));\n        assertEquals(\"value2c\", JavaAlgorithms.jsonPathLookup(data, \"key2.2\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithInvalidPath() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key4\"));\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key2.3\"));\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key3.nonExistentKey\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithNullData() {\n        assertNull(JavaAlgorithms.jsonPathLookup(null, \"key1\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithNullPath() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, null));\n    }\n\n    @Test\n    public void testJsonPathLookupWithEmptyPath() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithInvalidListIndex() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key2.-1\"));\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key2.100\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithNonDigitListIndex() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key2.invalidIndex\"));\n    }\n\n    @Test\n    public void testJsonPathLookupWithMixedPath() {\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key2.0.nestedKey\"));\n        assertNull(JavaAlgorithms.jsonPathLookup(data, \"key3.key2\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6312,
-    "output_tokens": 573,
-    "total_tokens": 6885
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_009_jsonPathLookupTest {\n    @Test void rejectsMissingArguments() { assertNull(JavaAlgorithms.jsonPathLookup(null,\"a\")); assertNull(JavaAlgorithms.jsonPathLookup(new HashMap<>(),null)); assertNull(JavaAlgorithms.jsonPathLookup(new HashMap<>(),\"\")); }\n    @Test void traversesMapsAndLists() { Map<String,Object> root=new HashMap<>(); root.put(\"users\",Arrays.asList(Map.of(\"name\",\"Ada\"),Map.of(\"name\",\"Lin\"))); assertEquals(\"Lin\",JavaAlgorithms.jsonPathLookup(root,\"users.1.name\")); }\n    @Test void returnsNullForBadPath() { Map<String,Object> root=Map.of(\"items\",Arrays.asList(\"x\")); assertNull(JavaAlgorithms.jsonPathLookup(root,\"items.x\")); assertNull(JavaAlgorithms.jsonPathLookup(root,\"items.2\")); assertNull(JavaAlgorithms.jsonPathLookup(root,\"missing\")); }\n}\n",
+  "usage": null
 }

@@ -1,18 +1,6 @@
 {
-  "id": "openai-72304c4c384c",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Assertions;\nimport org.junit.jupiter.api.Test;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testDateDifference_ValidDates() {\n        Assertions.assertEquals(0, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2023-10-01\"));\n        Assertions.assertEquals(1, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2023-10-02\"));\n        Assertions.assertEquals(365, JavaAlgorithms.dateDifference(\"2022-10-01\", \"2023-10-01\"));\n        Assertions.assertEquals(365, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2024-10-01\"));\n        Assertions.assertEquals(30, JavaAlgorithms.dateDifference(\"2023-09-01\", \"2023-10-01\"));\n    }\n\n    @Test\n    public void testDateDifference_LeapYear() {\n        Assertions.assertEquals(60, JavaAlgorithms.dateDifference(\"2020-01-01\", \"2020-03-01\")); // Leap year\n        Assertions.assertEquals(59, JavaAlgorithms.dateDifference(\"2020-01-01\", \"2020-02-29\")); // Leap year\n        Assertions.assertEquals(1, JavaAlgorithms.dateDifference(\"2020-02-29\", \"2020-03-01\")); // Leap year\n    }\n\n    @Test\n    public void testDateDifference_InvalidFormat() {\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-10\", \"2023-10-01\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2023-10-01-01\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2023-10\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-10-01\", \"2023-10-01-01\"));\n    }\n\n    @Test\n    public void testDateDifference_NullInput() {\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(null, \"2023-10-01\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-10-01\", null));\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(null, null));\n    }\n\n    @Test\n    public void testDateDifference_InvalidDate() {\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-02-30\", \"2023-03-01\")); // Invalid date\n        Assertions.assertEquals(-1, JavaAlgorithms.dateDifference(\"2023-04-31\", \"2023-05-01\")); // Invalid date\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6410,
-    "output_tokens": 559,
-    "total_tokens": 6969
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_023_dateDifferenceTest {\n    @Test void rejectsMissingAndMalformedDates() { assertEquals(-1,JavaAlgorithms.dateDifference(null,\"2024-01-01\")); assertEquals(-1,JavaAlgorithms.dateDifference(\"bad\",\"2024-01-01\")); assertEquals(-1,JavaAlgorithms.dateDifference(\"2024-xx-01\",\"2024-01-01\")); }\n    @Test void computesAbsoluteDifferences() { assertEquals(0,JavaAlgorithms.dateDifference(\"2024-01-01\",\"2024-01-01\")); assertEquals(1,JavaAlgorithms.dateDifference(\"2024-02-28\",\"2024-02-29\")); assertEquals(10,JavaAlgorithms.dateDifference(\"2024-01-01\",\"2024-01-11\")); }\n}\n",
+  "usage": null
 }

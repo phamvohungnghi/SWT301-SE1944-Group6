@@ -1,18 +1,6 @@
 {
-  "id": "openai-a558a4458f69",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testIsMatch() {\n        // Test cases for isMatch function\n\n        // Test with exact match\n        assertTrue(JavaAlgorithms.isMatch(\"abc\", \"abc\"));\n        \n        // Test with single character wildcard\n        assertTrue(JavaAlgorithms.isMatch(\"a\", \".\"));\n        assertFalse(JavaAlgorithms.isMatch(\"b\", \".\"));\n        \n        // Test with multiple character wildcard\n        assertTrue(JavaAlgorithms.isMatch(\"aa\", \"a*\"));\n        assertTrue(JavaAlgorithms.isMatch(\"ab\", \".*\"));\n        assertFalse(JavaAlgorithms.isMatch(\"a\", \".*b\"));\n        \n        // Test with empty pattern\n        assertTrue(JavaAlgorithms.isMatch(\"\", \"\"));\n        assertFalse(JavaAlgorithms.isMatch(\"a\", \"\"));\n        \n        // Test with pattern that has a star\n        assertTrue(JavaAlgorithms.isMatch(\"aab\", \"c*a*b\"));\n        assertFalse(JavaAlgorithms.isMatch(\"mississippi\", \"mis*is*p*.\"));\n        \n        // Test with null inputs\n        assertFalse(JavaAlgorithms.isMatch(null, \"a\"));\n        assertFalse(JavaAlgorithms.isMatch(\"a\", null));\n        assertFalse(JavaAlgorithms.isMatch(null, null));\n        \n        // Test with pattern that matches empty string\n        assertTrue(JavaAlgorithms.isMatch(\"abc\", \".*\"));\n        assertTrue(JavaAlgorithms.isMatch(\"\", \".*\"));\n        \n        // Test with complex patterns\n        assertTrue(JavaAlgorithms.isMatch(\"ab\", \".*\"));\n        assertTrue(JavaAlgorithms.isMatch(\"aab\", \"c*a*b\"));\n        assertFalse(JavaAlgorithms.isMatch(\"mississippi\", \"mis*is*p*.\"));\n        \n        // Test with single character and star\n        assertTrue(JavaAlgorithms.isMatch(\"a\", \"a*\"));\n        assertTrue(JavaAlgorithms.isMatch(\"aa\", \"a*\"));\n        assertTrue(JavaAlgorithms.isMatch(\"aaa\", \"a*\"));\n        assertFalse(JavaAlgorithms.isMatch(\"a\", \"b*\"));\n        \n        // Test with patterns that should not match\n        assertFalse(JavaAlgorithms.isMatch(\"abc\", \"a.c\"));\n        assertFalse(JavaAlgorithms.isMatch(\"abc\", \"a*b*c\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6204,
-    "output_tokens": 460,
-    "total_tokens": 6664
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_025_isMatchTest {\n    @Test void handlesNullAndEmptyPatterns() { assertFalse(JavaAlgorithms.isMatch(null,\"a\")); assertFalse(JavaAlgorithms.isMatch(\"a\",null)); assertTrue(JavaAlgorithms.isMatch(\"\",\"\")); assertFalse(JavaAlgorithms.isMatch(\"a\",\"\")); }\n    @Test void supportsExactDotAndStarMatching() { assertTrue(JavaAlgorithms.isMatch(\"abc\",\"abc\")); assertTrue(JavaAlgorithms.isMatch(\"abc\",\"a.c\")); assertTrue(JavaAlgorithms.isMatch(\"aa\",\"a*\")); assertTrue(JavaAlgorithms.isMatch(\"ab\",\".*\")); }\n    @Test void rejectsNonMatches() { assertFalse(JavaAlgorithms.isMatch(\"aa\",\"a\")); assertFalse(JavaAlgorithms.isMatch(\"mississippi\",\"mis*is*p*.\")); }\n}\n",
+  "usage": null
 }

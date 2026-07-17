@@ -1,18 +1,6 @@
 {
-  "id": "openai-13267ad49680",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JavaAlgorithmsTest {\n\n    @BeforeEach\n    void setUp() {\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_NullInput() {\n        assertEquals(\"\", JavaAlgorithms.longestPalindromeSubstring(null));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_EmptyInput() {\n        assertEquals(\"\", JavaAlgorithms.longestPalindromeSubstring(\"\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_SingleCharacter() {\n        assertEquals(\"a\", JavaAlgorithms.longestPalindromeSubstring(\"a\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_TwoDifferentCharacters() {\n        assertEquals(\"a\", JavaAlgorithms.longestPalindromeSubstring(\"ab\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_TwoSameCharacters() {\n        assertEquals(\"aa\", JavaAlgorithms.longestPalindromeSubstring(\"aa\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_OddLengthPalindrome() {\n        assertEquals(\"aba\", JavaAlgorithms.longestPalindromeSubstring(\"abacdfgdcaba\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_EvenLengthPalindrome() {\n        assertEquals(\"abba\", JavaAlgorithms.longestPalindromeSubstring(\"cbbd\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_NoPalindrome() {\n        assertEquals(\"a\", JavaAlgorithms.longestPalindromeSubstring(\"abc\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_MultiplePalindromes() {\n        assertEquals(\"bab\", JavaAlgorithms.longestPalindromeSubstring(\"babad\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_ComplexCase() {\n        assertEquals(\"racecar\", JavaAlgorithms.longestPalindromeSubstring(\"racecarxyz\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_EntireStringIsPalindrome() {\n        assertEquals(\"madam\", JavaAlgorithms.longestPalindromeSubstring(\"madam\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_SpecialCharacters() {\n        assertEquals(\"!@!\", JavaAlgorithms.longestPalindromeSubstring(\"!@!abc!@!\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_Spaces() {\n        assertEquals(\" a \", JavaAlgorithms.longestPalindromeSubstring(\" a b a \"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_LongestAtStart() {\n        assertEquals(\"abcba\", JavaAlgorithms.longestPalindromeSubstring(\"abcbaxyz\"));\n    }\n\n    @Test\n    void testLongestPalindromeSubstring_LongestAtEnd() {\n        assertEquals(\"xyzzyx\", JavaAlgorithms.longestPalindromeSubstring(\"xyzzyxabc\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6260,
-    "output_tokens": 553,
-    "total_tokens": 6813
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_015_longestPalindromeSubstringTest {\n    @Test void handlesMissingInput() { assertEquals(\"\",JavaAlgorithms.longestPalindromeSubstring(null)); assertEquals(\"\",JavaAlgorithms.longestPalindromeSubstring(\"\")); }\n    @Test void findsOddPalindrome() { String out=JavaAlgorithms.longestPalindromeSubstring(\"babad\"); assertTrue(out.equals(\"bab\")||out.equals(\"aba\")); }\n    @Test void findsEvenAndSinglePalindromes() { assertEquals(\"bb\",JavaAlgorithms.longestPalindromeSubstring(\"cbbd\")); assertEquals(\"a\",JavaAlgorithms.longestPalindromeSubstring(\"abc\")); }\n}\n",
+  "usage": null
 }

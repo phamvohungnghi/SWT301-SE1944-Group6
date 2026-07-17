@@ -3,6 +3,26 @@ import csv
 import json
 from pathlib import Path
 
+
+def format_log_line(
+    timestamp, unit_id, language, model, response_id, status,
+    prompt_sha256, source_sha256, error_message
+):
+    fields = [
+        timestamp,
+        unit_id,
+        language,
+        model,
+        response_id,
+        status,
+        prompt_sha256,
+        source_sha256,
+    ]
+    if error_message:
+        fields.append(error_message)
+    return " | ".join(str(value) for value in fields)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate logs and CSV summary for pilot/full LLM run.")
     parser.add_argument("--manifest", type=Path, default=Path("experiment/dataset-manifest.csv"), help="Path to main manifest CSV")
@@ -66,7 +86,7 @@ def main():
                 started_at = metadata.get("started_at_utc", "")
                 finished_at = metadata.get("finished_at_utc", "")
                 response_id = metadata.get("response_id", "NONE")
-                response_model = metadata.get("response_model", "")
+                response_model = metadata.get("response_model", metadata.get("model", ""))
                 prompt_sha256 = metadata.get("prompt_sha256", "")
                 source_sha256 = metadata.get("source_sha256", source_sha256)
                 if test_file.is_file() and test_file.stat().st_size > 0:
@@ -98,7 +118,19 @@ def main():
 
         # TXT format: timestamp_utc | unit_id | language | model | response_id | status | prompt_sha256 | source_sha256 | error_message
         timestamp = finished_at if finished_at else "NONE"
-        log_lines.append(f"{timestamp} | {unit_id} | {info['language']} | {response_model} | {response_id} | {status} | {prompt_sha256} | {source_sha256} | {error_msg}")
+        log_lines.append(
+            format_log_line(
+                timestamp,
+                unit_id,
+                info["language"],
+                response_model,
+                response_id,
+                status,
+                prompt_sha256,
+                source_sha256,
+                error_msg,
+            )
+        )
 
     # Write CSV
     csv_headers = ["unit_id", "language", "symbol", "status", "response_model", "response_id", "generated_test_path", "metadata_path", "error_message"]

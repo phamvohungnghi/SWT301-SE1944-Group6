@@ -1,18 +1,6 @@
 {
-  "id": "openai-30e5fc231d39",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    private int[] sortedArray;\n    private int[] unsortedArray;\n    private int[] emptyArray;\n    private int[] singleElementArray;\n    private int[] nullArray;\n\n    @BeforeEach\n    public void setUp() {\n        sortedArray = new int[]{1, 2, 3, 4, 5};\n        unsortedArray = new int[]{5, 3, 4, 1, 2};\n        emptyArray = new int[]{};\n        singleElementArray = new int[]{1};\n        nullArray = null;\n    }\n\n    @Test\n    public void testBubbleSortWithSortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(sortedArray);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithUnsortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(unsortedArray);\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithEmptyArray() {\n        int[] result = JavaAlgorithms.bubbleSort(emptyArray);\n        assertArrayEquals(new int[]{}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithSingleElementArray() {\n        int[] result = JavaAlgorithms.bubbleSort(singleElementArray);\n        assertArrayEquals(new int[]{1}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithNullArray() {\n        int[] result = JavaAlgorithms.bubbleSort(nullArray);\n        assertNull(result);\n    }\n\n    @Test\n    public void testBubbleSortWithAlreadySortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{1, 2, 3, 4, 5});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithReverseSortedArray() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{5, 4, 3, 2, 1});\n        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithDuplicates() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{3, 1, 2, 2, 1});\n        assertArrayEquals(new int[]{1, 1, 2, 2, 3}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithNegativeNumbers() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{-1, -3, -2, 0, 1});\n        assertArrayEquals(new int[]{-3, -2, -1, 0, 1}, result);\n    }\n\n    @Test\n    public void testBubbleSortWithMixedNumbers() {\n        int[] result = JavaAlgorithms.bubbleSort(new int[]{3, -1, 2, 0, -2});\n        assertArrayEquals(new int[]{-2, -1, 0, 2, 3}, result);\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6199,
-    "output_tokens": 714,
-    "total_tokens": 6913
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_001_bubbleSortTest {\n    @Test void handlesNullAndEmpty() { assertNull(JavaAlgorithms.bubbleSort(null)); assertArrayEquals(new int[]{}, JavaAlgorithms.bubbleSort(new int[]{})); }\n    @Test void sortsAndMutatesInput() { int[] a={5,1,4,2,8,2}; assertSame(a, JavaAlgorithms.bubbleSort(a)); assertArrayEquals(new int[]{1,2,2,4,5,8}, a); }\n    @Test void acceptsAlreadySorted() { assertArrayEquals(new int[]{1,2,3}, JavaAlgorithms.bubbleSort(new int[]{1,2,3})); }\n}\n",
+  "usage": null
 }

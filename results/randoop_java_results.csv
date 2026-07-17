@@ -1,0 +1,26 @@
+unit_id,symbol,randoop_status,randoop_branch_coverage,randoop_mutation_score,notes
+JAVA_001_bubbleSort,bubbleSort,OK,90.0,85.71428571428571,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=5; branches=9/10; mutants=12/14; invalid_mutants=0
+JAVA_002_binarySearch,binarySearch,OK,90.0,81.25,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=6; branches=9/10; mutants=13/16; invalid_mutants=0
+JAVA_003_isValidEmail,isValidEmail,OK,7.142857142857142,4.761904761904762,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=2/28; mutants=1/21; invalid_mutants=0
+JAVA_004_mergeIntervals,mergeIntervals,OK,18.75,13.333333333333334,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=5; branches=3/16; mutants=2/15; invalid_mutants=0
+JAVA_005_calculateTax,calculateTax,OK,28.57142857142857,17.857142857142858,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=9; branches=4/14; mutants=5/28; invalid_mutants=0
+JAVA_006_validatePassword,validatePassword,OK,9.090909090909092,6.25,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=2/22; mutants=1/16; invalid_mutants=0
+JAVA_007_evaluateRPN,evaluateRPN,OK,22.727272727272727,0.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=5/22; mutants=0/15; invalid_mutants=0
+JAVA_008_knapsack01,knapsack01,OK,100.0,95.45454545454545,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=5; branches=14/14; mutants=21/22; invalid_mutants=0
+JAVA_009_jsonPathLookup,jsonPathLookup,OK,3.8461538461538463,0.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=1/26; mutants=0/16; invalid_mutants=0
+JAVA_010_runLengthEncoding,runLengthEncoding,OK,50.0,15.384615384615385,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=6/12; mutants=2/13; invalid_mutants=0
+JAVA_011_runLengthDecoding,runLengthDecoding,OK,31.25,7.142857142857142,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=5/16; mutants=1/14; invalid_mutants=0
+JAVA_012_checkSudokuBoard,checkSudokuBoard,OK,12.5,13.636363636363635,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=4; branches=3/24; mutants=3/22; invalid_mutants=0
+JAVA_013_romanToInt,romanToInt,OK,35.714285714285715,6.25,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=5/14; mutants=1/16; invalid_mutants=0
+JAVA_014_intToRoman,intToRoman,OK,87.5,75.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=7/8; mutants=9/12; invalid_mutants=0
+JAVA_015_longestPalindromeSubstring,longestPalindromeSubstring,OK,77.27272727272727,60.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=17/22; mutants=18/30; invalid_mutants=0
+JAVA_016_parseCsvLine,parseCsvLine,OK,27.77777777777778,16.666666666666664,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=5/18; mutants=3/18; invalid_mutants=0
+JAVA_017_levenshteinDistance,levenshteinDistance,OK,85.71428571428571,83.33333333333334,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=12/14; mutants=20/24; invalid_mutants=0
+JAVA_018_findPrimeFactors,findPrimeFactors,OK,100.0,0.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=10/10; mutants=0/15; invalid_mutants=0
+JAVA_019_luhnCheck,luhnCheck,OK,27.77777777777778,14.285714285714285,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=5/18; mutants=3/21; invalid_mutants=0
+JAVA_020_simpleHtmlTokenizer,simpleHtmlTokenizer,OK,43.75,17.647058823529413,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=7/16; mutants=3/17; invalid_mutants=0
+JAVA_021_dijkstra,dijkstra,OK,88.46153846153845,83.33333333333334,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=6; branches=23/26; mutants=20/24; invalid_mutants=0
+JAVA_022_parseQueryString,parseQueryString,OK,56.25,11.11111111111111,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=9/16; mutants=1/9; invalid_mutants=0
+JAVA_023_dateDifference,dateDifference,OK,25.0,2.4390243902439024,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=3/12; mutants=1/41; invalid_mutants=0
+JAVA_024_isValidBST,isValidBST,OK,20.833333333333336,20.0,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=5; branches=5/24; mutants=5/25; invalid_mutants=0
+JAVA_025_isMatch,isMatch,OK,50.0,63.1578947368421,Randoop 4.3.4; seed=20260621; time_limit=60s; generated_tests=2; branches=13/26; mutants=12/19; invalid_mutants=0

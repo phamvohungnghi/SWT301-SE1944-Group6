@@ -1,18 +1,6 @@
 {
-  "id": "openai-67db64b6b637",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.BeforeEach;\n\nimport java.util.List;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\nimport static org.junit.jupiter.api.Assertions.assertTrue;\n\npublic class JavaAlgorithmsTest {\n\n    @BeforeEach\n    public void setUp() {\n        // Any setup can be done here if needed\n    }\n\n    @Test\n    public void testFindPrimeFactors_Zero() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(0);\n        assertTrue(result.isEmpty(), \"Expected empty list for input 0\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_One() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(1);\n        assertTrue(result.isEmpty(), \"Expected empty list for input 1\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Two() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(2);\n        assertEquals(List.of(2), result, \"Expected [2] for input 2\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Three() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(3);\n        assertEquals(List.of(3), result, \"Expected [3] for input 3\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Four() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(4);\n        assertEquals(List.of(2, 2), result, \"Expected [2, 2] for input 4\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Six() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(6);\n        assertEquals(List.of(2, 3), result, \"Expected [2, 3] for input 6\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Nine() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(9);\n        assertEquals(List.of(3, 3), result, \"Expected [3, 3] for input 9\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Twelve() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(12);\n        assertEquals(List.of(2, 2, 3), result, \"Expected [2, 2, 3] for input 12\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_Thirty() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(30);\n        assertEquals(List.of(2, 3, 5), result, \"Expected [2, 3, 5] for input 30\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_PrimeNumber() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(29);\n        assertEquals(List.of(29), result, \"Expected [29] for input 29\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_LargeNumber() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(100);\n        assertEquals(List.of(2, 2, 5, 5), result, \"Expected [2, 2, 5, 5] for input 100\");\n    }\n\n    @Test\n    public void testFindPrimeFactors_LargePrime() {\n        List<Integer> result = JavaAlgorithms.findPrimeFactors(997);\n        assertEquals(List.of(997), result, \"Expected [997] for input 997\");\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6188,
-    "output_tokens": 739,
-    "total_tokens": 6927
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_018_findPrimeFactorsTest {\n    @Test void rejectsSmallInput() { assertTrue(JavaAlgorithms.findPrimeFactors(1).isEmpty()); assertTrue(JavaAlgorithms.findPrimeFactors(-3).isEmpty()); }\n    @Test void factorsCompositeAndPrimeNumbers() { assertEquals(List.of(2,2,3,7),JavaAlgorithms.findPrimeFactors(84)); assertEquals(List.of(13),JavaAlgorithms.findPrimeFactors(13)); }\n}\n",
+  "usage": null
 }

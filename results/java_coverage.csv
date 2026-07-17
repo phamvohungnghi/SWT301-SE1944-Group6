@@ -1,0 +1,26 @@
+unit_id,symbol,cc,executability,total_branches,covered_branches,branch_coverage,status,notes
+JAVA_001_bubbleSort,bubbleSort,6,EXECUTABLE,10,10,100.0,MEASURED,method-level JaCoCo; branches=10/10
+JAVA_002_binarySearch,binarySearch,6,EXECUTABLE,10,10,100.0,MEASURED,method-level JaCoCo; branches=10/10
+JAVA_003_isValidEmail,isValidEmail,15,EXECUTABLE,28,26,92.85714285714286,MEASURED,method-level JaCoCo; branches=26/28
+JAVA_004_mergeIntervals,mergeIntervals,9,EXECUTABLE,16,14,87.5,MEASURED,method-level JaCoCo; branches=14/16
+JAVA_005_calculateTax,calculateTax,8,EXECUTABLE,14,14,100.0,MEASURED,method-level JaCoCo; branches=14/14
+JAVA_006_validatePassword,validatePassword,11,EXECUTABLE,22,21,95.45454545454545,MEASURED,method-level JaCoCo; branches=21/22
+JAVA_007_evaluateRPN,evaluateRPN,13,EXECUTABLE,22,21,95.45454545454545,MEASURED,method-level JaCoCo; branches=21/22
+JAVA_008_knapsack01,knapsack01,8,EXECUTABLE,14,14,100.0,MEASURED,method-level JaCoCo; branches=14/14
+JAVA_009_jsonPathLookup,jsonPathLookup,14,EXECUTABLE,26,23,88.46153846153845,MEASURED,method-level JaCoCo; branches=23/26
+JAVA_010_runLengthEncoding,runLengthEncoding,7,EXECUTABLE,12,12,100.0,MEASURED,method-level JaCoCo; branches=12/12
+JAVA_011_runLengthDecoding,runLengthDecoding,9,EXECUTABLE,16,16,100.0,MEASURED,method-level JaCoCo; branches=16/16
+JAVA_012_checkSudokuBoard,checkSudokuBoard,13,EXECUTABLE,24,21,87.5,MEASURED,method-level JaCoCo; branches=21/24
+JAVA_013_romanToInt,romanToInt,8,EXECUTABLE,14,13,92.85714285714286,MEASURED,method-level JaCoCo; branches=13/14
+JAVA_014_intToRoman,intToRoman,5,EXECUTABLE,8,8,100.0,MEASURED,method-level JaCoCo; branches=8/8
+JAVA_015_longestPalindromeSubstring,longestPalindromeSubstring,12,EXECUTABLE,22,20,90.9090909090909,MEASURED,method-level JaCoCo; branches=20/22
+JAVA_016_parseCsvLine,parseCsvLine,9,COMPILE_ERROR,NA,NA,NA,NOT_RUN_NON_EXECUTABLE,Primary protocol: JaCoCo not run for non-executable raw test
+JAVA_017_levenshteinDistance,levenshteinDistance,8,EXECUTABLE,14,14,100.0,MEASURED,method-level JaCoCo; branches=14/14
+JAVA_018_findPrimeFactors,findPrimeFactors,6,EXECUTABLE,10,9,90.0,MEASURED,method-level JaCoCo; branches=9/10
+JAVA_019_luhnCheck,luhnCheck,8,EXECUTABLE,18,18,100.0,MEASURED,method-level JaCoCo; branches=18/18
+JAVA_020_simpleHtmlTokenizer,simpleHtmlTokenizer,9,EXECUTABLE,16,15,93.75,MEASURED,method-level JaCoCo; branches=15/16
+JAVA_021_dijkstra,dijkstra,14,EXECUTABLE,26,23,88.46153846153845,MEASURED,method-level JaCoCo; branches=23/26
+JAVA_022_parseQueryString,parseQueryString,9,EXECUTABLE,16,16,100.0,MEASURED,method-level JaCoCo; branches=16/16
+JAVA_023_dateDifference,dateDifference,8,EXECUTABLE,12,8,66.66666666666666,MEASURED,method-level JaCoCo; branches=8/12
+JAVA_024_isValidBST,isValidBST,13,EXECUTABLE,24,20,83.33333333333334,MEASURED,method-level JaCoCo; branches=20/24
+JAVA_025_isMatch,isMatch,11,EXECUTABLE,26,26,100.0,MEASURED,method-level JaCoCo; branches=26/26

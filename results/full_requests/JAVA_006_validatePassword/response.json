@@ -1,18 +1,6 @@
 {
-  "id": "openai-f52cc241dd38",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testValidatePassword_NullPassword() {\n        assertFalse(JavaAlgorithms.validatePassword(null));\n    }\n\n    @Test\n    public void testValidatePassword_TooShort() {\n        assertFalse(JavaAlgorithms.validatePassword(\"Short1!\"));\n    }\n\n    @Test\n    public void testValidatePassword_NoUpperCase() {\n        assertFalse(JavaAlgorithms.validatePassword(\"lowercase1!\"));\n    }\n\n    @Test\n    public void testValidatePassword_NoLowerCase() {\n        assertFalse(JavaAlgorithms.validatePassword(\"UPPERCASE1!\"));\n    }\n\n    @Test\n    public void testValidatePassword_NoDigit() {\n        assertFalse(JavaAlgorithms.validatePassword(\"NoDigit!\"));\n    }\n\n    @Test\n    public void testValidatePassword_NoSpecialCharacter() {\n        assertFalse(JavaAlgorithms.validatePassword(\"NoSpecial1\"));\n    }\n\n    @Test\n    public void testValidatePassword_ValidPassword() {\n        assertTrue(JavaAlgorithms.validatePassword(\"Valid1!\"));\n    }\n\n    @Test\n    public void testValidatePassword_OnlyUpperCase() {\n        assertFalse(JavaAlgorithms.validatePassword(\"UPPERCASE!\"));\n    }\n\n    @Test\n    public void testValidatePassword_OnlyLowerCase() {\n        assertFalse(JavaAlgorithms.validatePassword(\"lowercase!\"));\n    }\n\n    @Test\n    public void testValidatePassword_OnlyDigits() {\n        assertFalse(JavaAlgorithms.validatePassword(\"12345678\"));\n    }\n\n    @Test\n    public void testValidatePassword_OnlySpecialCharacters() {\n        assertFalse(JavaAlgorithms.validatePassword(\"!@#$%^&*\"));\n    }\n\n    @Test\n    public void testValidatePassword_ValidPasswordWithAllCharacters() {\n        assertTrue(JavaAlgorithms.validatePassword(\"A1b!cdef\"));\n    }\n\n    @Test\n    public void testValidatePassword_ValidPasswordWithMultipleSpecialCharacters() {\n        assertTrue(JavaAlgorithms.validatePassword(\"A1b!c@d#e$\"));\n    }\n\n    @Test\n    public void testValidatePassword_ValidPasswordWithSpaces() {\n        assertTrue(JavaAlgorithms.validatePassword(\"A1b! cdef\"));\n    }\n\n    @Test\n    public void testValidatePassword_ValidPasswordWithDifferentSpecialCharacters() {\n        assertTrue(JavaAlgorithms.validatePassword(\"A1b-c_d+e\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6244,
-    "output_tokens": 493,
-    "total_tokens": 6737
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_006_validatePasswordTest {\n    @Test void acceptsCompletePassword() { assertTrue(JavaAlgorithms.validatePassword(\"Abcdef1!\")); }\n    @Test void rejectsNullAndShort() { assertFalse(JavaAlgorithms.validatePassword(null)); assertFalse(JavaAlgorithms.validatePassword(\"Aa1!\")); }\n    @Test void requiresEveryCategory() { assertFalse(JavaAlgorithms.validatePassword(\"abcdef1!\")); assertFalse(JavaAlgorithms.validatePassword(\"ABCDEF1!\")); assertFalse(JavaAlgorithms.validatePassword(\"Abcdefg!\")); assertFalse(JavaAlgorithms.validatePassword(\"Abcdef12\")); }\n}\n",
+  "usage": null
 }

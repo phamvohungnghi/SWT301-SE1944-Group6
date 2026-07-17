@@ -1,18 +1,6 @@
 {
-  "id": "openai-63a4b3709b83",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class EmailValidatorTest {\n\n    @BeforeEach\n    public void setUp() {\n        // No setup needed for this test suite\n    }\n\n    @Test\n    public void testValidEmail() {\n        assertTrue(JavaAlgorithms.isValidEmail(\"test@example.com\"));\n        assertTrue(JavaAlgorithms.isValidEmail(\"user.name+tag+sorting@example.com\"));\n        assertTrue(JavaAlgorithms.isValidEmail(\"user_name@example.co.uk\"));\n        assertTrue(JavaAlgorithms.isValidEmail(\"user-name@example.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_Null() {\n        assertFalse(JavaAlgorithms.isValidEmail(null));\n    }\n\n    @Test\n    public void testInvalidEmail_NoAtSymbol() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"testexample.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_NoDomain() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@.com\"));\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_EmptyLocalPart() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"@example.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_EmptyDomainPart() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@\"));\n    }\n\n    @Test\n    public void testInvalidEmail_MultipleAtSymbols() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@@example.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_DomainStartsWithDot() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@.example.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_DomainEndsWithDot() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@example.com.\"));\n    }\n\n    @Test\n    public void testInvalidEmail_InvalidCharactersInLocalPart() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@exa!mple.com\"));\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@ex#ample.com\"));\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@ex$ample.com\"));\n    }\n\n    @Test\n    public void testInvalidEmail_ValidCharactersButNoDotInDomain() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@examplecom\"));\n    }\n\n    @Test\n    public void testInvalidEmail_ValidLocalPartButNoDomain() {\n        assertFalse(JavaAlgorithms.isValidEmail(\"test@\"));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6246,
-    "output_tokens": 521,
-    "total_tokens": 6767
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_003_isValidEmailTest {\n    @Test void acceptsSupportedAddress() { assertTrue(JavaAlgorithms.isValidEmail(\"first.last_1-test@example.co\")); }\n    @Test void rejectsMissingStructure() { assertFalse(JavaAlgorithms.isValidEmail(null)); assertFalse(JavaAlgorithms.isValidEmail(\"abc\")); assertFalse(JavaAlgorithms.isValidEmail(\"a@b\")); assertFalse(JavaAlgorithms.isValidEmail(\"@b.com\")); }\n    @Test void rejectsBadDomainAndCharacters() { assertFalse(JavaAlgorithms.isValidEmail(\"a@.com\")); assertFalse(JavaAlgorithms.isValidEmail(\"a@com.\")); assertFalse(JavaAlgorithms.isValidEmail(\"a+b@example.com\")); assertFalse(JavaAlgorithms.isValidEmail(\"a@@example.com\")); }\n}\n",
+  "usage": null
 }

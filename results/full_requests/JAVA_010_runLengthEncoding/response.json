@@ -1,18 +1,6 @@
 {
-  "id": "openai-188be54ce01b",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Assertions;\nimport org.junit.jupiter.api.Test;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testRunLengthEncoding_NullInput() {\n        String result = JavaAlgorithms.runLengthEncoding(null);\n        Assertions.assertEquals(\"\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_EmptyString() {\n        String result = JavaAlgorithms.runLengthEncoding(\"\");\n        Assertions.assertEquals(\"\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_SingleCharacter() {\n        String result = JavaAlgorithms.runLengthEncoding(\"a\");\n        Assertions.assertEquals(\"1a\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_RepeatedCharacters() {\n        String result = JavaAlgorithms.runLengthEncoding(\"aaabbc\");\n        Assertions.assertEquals(\"3a2b1c\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_AlternatingCharacters() {\n        String result = JavaAlgorithms.runLengthEncoding(\"abc\");\n        Assertions.assertEquals(\"1a1b1c\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_NonLetterCharacters() {\n        String result = JavaAlgorithms.runLengthEncoding(\"aa1bb\");\n        Assertions.assertEquals(\"\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_SpecialCharacters() {\n        String result = JavaAlgorithms.runLengthEncoding(\"aa@bb\");\n        Assertions.assertEquals(\"\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_MixedCase() {\n        String result = JavaAlgorithms.runLengthEncoding(\"aaAAaa\");\n        Assertions.assertEquals(\"2a2A2a\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_LongString() {\n        String result = JavaAlgorithms.runLengthEncoding(\"aaaabbbbcccc\");\n        Assertions.assertEquals(\"4a4b4c\", result);\n    }\n\n    @Test\n    public void testRunLengthEncoding_SingleCharacterRepeated() {\n        String result = JavaAlgorithms.runLengthEncoding(\"zzzzzz\");\n        Assertions.assertEquals(\"6z\", result);\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6222,
-    "output_tokens": 437,
-    "total_tokens": 6659
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_010_runLengthEncodingTest {\n    @Test void handlesMissingAndInvalidInput() { assertEquals(\"\",JavaAlgorithms.runLengthEncoding(null)); assertEquals(\"\",JavaAlgorithms.runLengthEncoding(\"\")); assertEquals(\"\",JavaAlgorithms.runLengthEncoding(\"aa1\")); }\n    @Test void encodesRuns() { assertEquals(\"3a2b1c\",JavaAlgorithms.runLengthEncoding(\"aaabbc\")); assertEquals(\"1A\",JavaAlgorithms.runLengthEncoding(\"A\")); }\n}\n",
+  "usage": null
 }

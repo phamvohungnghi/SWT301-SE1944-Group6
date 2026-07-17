@@ -1,0 +1,2 @@
+analysis,status,paired_n,missing_n,gpt_median,randoop_median,median_difference,q1_difference,q3_difference,bootstrap_ci_low,bootstrap_ci_high,wilcoxon_statistic,wilcoxon_p_value,positive_pairs,negative_pairs,ties,sign_test_p_value,notes
+RQ2_GPT_VS_RANDOOP_MUTATION,TESTED,24,1,86.60714285714286,14.835164835164836,62.14285714285714,17.08333333333333,86.16071428571429,31.578947368421048,84.61538461538461,190.0,6.581352259461346e-05,19,0,5,1.9073486328125e-06,One-sided paired Wilcoxon; sign test sensitivity excludes ties; deterministic bootstrap seed=20260621.

@@ -1,18 +1,6 @@
 {
-  "id": "openai-eca131db7880",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\n\npublic class Knapsack01Test {\n\n    private int[] weights;\n    private int[] values;\n    private int capacity;\n\n    @BeforeEach\n    public void setUp() {\n        weights = new int[]{1, 2, 3};\n        values = new int[]{10, 15, 40};\n        capacity = 6;\n    }\n\n    @Test\n    public void testKnapsack01NormalCase() {\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(55, result);\n    }\n\n    @Test\n    public void testKnapsack01ExactFit() {\n        weights = new int[]{2, 3, 4};\n        values = new int[]{20, 30, 40};\n        capacity = 5;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(50, result);\n    }\n\n    @Test\n    public void testKnapsack01NoItems() {\n        weights = new int[]{};\n        values = new int[]{};\n        capacity = 0;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01ZeroCapacity() {\n        capacity = 0;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01NullWeights() {\n        weights = null;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01NullValues() {\n        values = null;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01MismatchedArrayLengths() {\n        weights = new int[]{1, 2};\n        values = new int[]{10};\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01SingleItemFits() {\n        weights = new int[]{5};\n        values = new int[]{50};\n        capacity = 5;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(50, result);\n    }\n\n    @Test\n    public void testKnapsack01SingleItemTooHeavy() {\n        weights = new int[]{10};\n        values = new int[]{100};\n        capacity = 5;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(0, result);\n    }\n\n    @Test\n    public void testKnapsack01MultipleItemsExceedCapacity() {\n        weights = new int[]{4, 5, 6};\n        values = new int[]{40, 50, 60};\n        capacity = 5;\n        int result = JavaAlgorithms.knapsack01(weights, values, capacity);\n        assertEquals(50, result);\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6242,
-    "output_tokens": 674,
-    "total_tokens": 6916
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_008_knapsack01Test {\n    @Test void rejectsInvalidArguments() { assertEquals(0,JavaAlgorithms.knapsack01(null,new int[]{1},1)); assertEquals(0,JavaAlgorithms.knapsack01(new int[]{1},null,1)); assertEquals(0,JavaAlgorithms.knapsack01(new int[]{1},new int[]{1},0)); assertEquals(0,JavaAlgorithms.knapsack01(new int[]{1},new int[]{1,2},2)); }\n    @Test void solvesClassicCase() { assertEquals(220,JavaAlgorithms.knapsack01(new int[]{10,20,30},new int[]{60,100,120},50)); }\n    @Test void skipsOverweightItems() { assertEquals(0,JavaAlgorithms.knapsack01(new int[]{5},new int[]{10},4)); }\n}\n",
+  "usage": null
 }

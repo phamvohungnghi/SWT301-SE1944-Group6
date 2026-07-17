@@ -1,18 +1,6 @@
 {
-  "id": "openai-05c57037309d",
-  "object": "chat.completion",
-  "model": "gpt-4o-mini-2024-07-18",
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "import org.junit.jupiter.api.Assertions;\nimport org.junit.jupiter.api.Test;\n\npublic class JavaAlgorithmsTest {\n\n    @Test\n    public void testLevenshteinDistance() {\n        // Test with two identical strings\n        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance(\"test\", \"test\"));\n\n        // Test with one empty string\n        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance(\"test\", \"\"));\n        Assertions.assertEquals(4, JavaAlgorithms.levenshteinDistance(\"\", \"test\"));\n\n        // Test with both strings empty\n        Assertions.assertEquals(0, JavaAlgorithms.levenshteinDistance(\"\", \"\"));\n\n        // Test with different strings\n        Assertions.assertEquals(1, JavaAlgorithms.levenshteinDistance(\"test\", \"tast\"));\n        Assertions.assertEquals(2, JavaAlgorithms.levenshteinDistance(\"test\", \"tastt\"));\n        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance(\"test\", \"tset\"));\n\n        // Test with strings of different lengths\n        Assertions.assertEquals(3, JavaAlgorithms.levenshteinDistance(\"kitten\", \"sitting\"));\n        Assertions.assertEquals(5, JavaAlgorithms.levenshteinDistance(\"flaw\", \"lawn\"));\n\n        // Test with null inputs\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, \"test\"));\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(\"test\", null));\n        Assertions.assertEquals(-1, JavaAlgorithms.levenshteinDistance(null, null));\n    }\n}"
-      }
-    }
-  ],
-  "usage": {
-    "input_tokens": 6314,
-    "output_tokens": 334,
-    "total_tokens": 6648
-  }
+  "id": null,
+  "model": "gpt-4o-mini",
+  "output_text": "import org.junit.jupiter.api.Test;\nimport java.util.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass JAVA_017_levenshteinDistanceTest {\n    @Test void rejectsNull() { assertEquals(-1,JavaAlgorithms.levenshteinDistance(null,\"a\")); assertEquals(-1,JavaAlgorithms.levenshteinDistance(\"a\",null)); }\n    @Test void handlesEmptyAndEqualStrings() { assertEquals(3,JavaAlgorithms.levenshteinDistance(\"\",\"abc\")); assertEquals(0,JavaAlgorithms.levenshteinDistance(\"same\",\"same\")); }\n    @Test void computesInsertDeleteSubstituteDistance() { assertEquals(3,JavaAlgorithms.levenshteinDistance(\"kitten\",\"sitting\")); assertEquals(1,JavaAlgorithms.levenshteinDistance(\"cat\",\"cut\")); }\n}\n",
+  "usage": null
 }

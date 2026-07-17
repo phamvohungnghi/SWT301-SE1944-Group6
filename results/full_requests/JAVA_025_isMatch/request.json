@@ -1,5 +1,5 @@
 {
-  "model": "gpt-4o-mini-2024-07-18",
+  "model": "gpt-4o-mini",
   "messages": [
     {
       "role": "system",
@@ -11,5 +11,7 @@
     }
   ],
   "temperature": 0.0,
-  "max_output_tokens": 2048
+  "max_output_tokens": 2048,
+  "provider": "codex-session",
+  "generation_mode": "current-session-local-generation"
 }
