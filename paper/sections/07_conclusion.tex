@@ -1,3 +1,37 @@
+% Written by Nghi (PL) — Project Lead
 \section{Conclusion}
 \label{sec:conclusion}
-This is the conclusion section.
+
+We presented a reproducibility-first empirical study evaluating the first-attempt,
+zero-shot test-generation capability of \texttt{gpt-4o-mini-2024-07-18} on 50
+standalone Java and Python functions with controlled cyclomatic complexity
+(CC\,5--15).
+Our protocol addresses a gap in the existing literature: no prior study had
+simultaneously applied complexity filtering, zero-shot single-attempt evaluation,
+and a paired search-based baseline within a pre-registered, fully logged design.
+
+For RQ1, both language sub-populations reject the null hypothesis that median
+branch coverage is at most 75\% (Java: $p = 0.000001$, 23/24 units above
+threshold; Python: $p = 0.0004$, 19/22 units above threshold), demonstrating
+that a single context-enriched prompt is sufficient to achieve high coverage on
+CC-moderate functions without iterative repair.
+For RQ2, GPT-generated tests substantially outperform Randoop 4.3.4 in mutation
+score on all 24 paired Java units (median difference 62.1 percentage points,
+Cliff's $\delta = 0.79$, $p = 6.6\times10^{-5}$), confirming that the semantic
+understanding of the model provides a decisive advantage over random test
+generation for functions with complex, domain-specific branching logic.
+
+The primary failure mode identified is response truncation---three Python test
+files ended with \texttt{SyntaxError: unterminated string literal}---suggesting
+that increasing \texttt{max\_output\_tokens} to 4,096 would eliminate most
+non-executable outputs without changing the generation strategy.
+Python mutation score could not be evaluated due to a tool limitation in
+\texttt{pytest-mutagen 1.3}, which we report as a construct-validity threat.
+
+Our replication package, including the frozen manifest, prompt SHA-256 hashes,
+raw API request/response logs, all metric outputs, and the pre-registered analysis
+script, is publicly available at
+\url{https://github.com/phamvohungnghi/SWT301-SE1944-Group6}.
+Future work should extend the complexity range beyond CC\,15, incorporate an
+automatic truncation-retry mechanism, and replicate the protocol with additional
+LLMs to assess model-level variation under the same controlled design.

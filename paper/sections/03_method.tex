@@ -21,9 +21,91 @@ This section describes our empirical study methodology, outlining the dataset pr
 
 \subsection{Metrics and Execution Tools}
 \label{subsec:metrics}
-% Written by Quan & Van (WP3/WP4) - Write here
+
+We measure three primary outcomes for each generated test suite: executability, branch coverage, and mutation score.
+
+\textbf{Executability.}
+A generated test suite is classified as \texttt{EXECUTABLE} if it compiles successfully and all test methods complete without a JVM crash under JUnit~5.11.4 for Java, or under pytest~9.1.1 for Python.
+Suites that fail to compile are classified as \texttt{COMPILE\_ERROR}; suites that compile but abort at runtime are classified as \texttt{TEST\_RUNTIME\_ERROR}.
+Every generated response, including failures, is retained in the denominator when computing executability rates; no suite is silently dropped.
+
+\textbf{Branch Coverage.}
+For Java, branch coverage is measured at method granularity using JaCoCo~0.8.13 instrumented through the Maven Surefire plugin.
+Only the target method's branches are counted; helper code in the same class is excluded.
+For Python, branch coverage is measured per function using coverage.py~7.14.2 with the \texttt{--branch} flag and a per-function \texttt{coverage run} scope.
+Coverage is defined as $\text{branch\_coverage} = \frac{\text{covered\_branches}}{\text{total\_branches}} \times 100\%$.
+Non-executable suites receive \texttt{NA} in the primary complete-case analysis and $0\%$ in the worst-case sensitivity analysis.
+
+\textbf{Mutation Score.}
+For Java, mutation score is measured using PIT~1.19.1 with its default mutator set.
+Timeout mutants are counted as survived in the primary analysis; invalid mutants are excluded from the denominator.
+Equivalent mutants are not removed by manual inspection after viewing results, to avoid inflating scores post-hoc.
+The formula is $\text{mutation\_score} = \frac{\text{killed}}{\text{generated} - \text{invalid}} \times 100\%$.
+For Python, pytest-mutagen~1.3 is used.
+As a tool limitation, pytest-mutagen did not produce any valid mutants for any of the 25~Python functions; consequently, Python mutation scores are \texttt{NA} throughout and the Python mutation outcome is excluded from the confirmatory analysis.
+
+\textbf{Randoop Baseline.}
+Randoop~4.3.4 is run for each of the 25~Java methods with \texttt{randomseed=20260621} and a time budget of 60~seconds per unit, using JDK~17 and the same production source revision as the GPT-generated tests.
+Randoop-generated suites are passed through the same JaCoCo and PIT pipeline without any manual repair.
+Raw command logs, generated test files, and per-unit coverage/mutation reports are archived in \texttt{evaluation/randoop/}.
 
 \subsection{Statistical Analysis Plan}
 \label{subsec:statistics}
-% Written by Quan (WP3) - Write here
 
+All hypotheses are registered in \texttt{team-synthesis/proposal.md} before data collection.
+No threshold, test, or metric definition is altered after observing experimental results.
+The family-wise significance level is $\alpha = 0.05$.
+We report raw $p$-values, Holm-adjusted $p$-values, effect estimates, and 95\% confidence intervals for all confirmatory tests.
+
+\textbf{RQ1 (Branch Coverage vs.\ 75\% Target).}
+We apply a one-sided exact sign test (right-tailed) separately for Java and Python, with $H_0$: median branch coverage $\leq 75\%$.
+Observations exactly equal to 75\% are excluded as ties.
+The two resulting $p$-values are adjusted for multiplicity using the Holm--Bonferroni procedure.
+
+\textbf{RQ2 (GPT-4o vs.\ Randoop, Java Only).}
+We apply a one-sided paired Wilcoxon signed-rank test (right-tailed) on the per-unit differences $d_i = \text{mutation\_GPT}_i - \text{mutation\_Randoop}_i$, with $H_0$: $\text{median}(d) \leq 0$.
+Zero differences are handled with the Wilcox zero-method.
+As a sensitivity analysis, we apply a one-sided sign test excluding tied pairs.
+A deterministic bootstrap 95\% confidence interval for the median difference is computed with seed 20260621 and 10,000 resamples.
+
+\textbf{RQ3 (CC vs.\ Test Quality).}
+We compute one-sided Spearman rank correlations (left-tailed) between cyclomatic complexity and each of branch coverage and mutation score, separately for Java and Python.
+The four planned pairs yield three testable correlations after excluding Python mutation (which is \texttt{NOT\_TESTABLE} due to the pytest-mutagen tool limitation).
+The three raw $p$-values are adjusted using Holm--Bonferroni correction.
+RQ3 is pre-registered as a secondary exploratory analysis; we do not claim causal relationships.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Protocol Amendments and Replication Package}
+\label{subsec:amendments}
+% Written by Nghi (PL) — Project Lead
+% ─────────────────────────────────────────────────────────────────────────────
+
+\textbf{Protocol amendments.}
+Three deviations from the registered protocol were recorded in \texttt{notes.md}
+before any metric outcome was inspected.
+First, an initial pilot conducted on 2026-07-02 used the GitHub Models proxy
+(response IDs prefixed \texttt{mock-github-*}); this run was classified as a dry
+run and excluded from analysis.
+The full confirmatory run used the OpenAI API directly, producing authentic
+\texttt{resp\_...} response IDs.
+Second, the target model was changed from \texttt{gpt-4o-2024-08-06} to
+\texttt{gpt-4o-mini-2024-07-18} for two reasons: (a)~to reduce API cost to a
+total of USD\,0.065 for 50 units, and (b)~to increase output determinism by
+setting \texttt{temperature}\,=\,0 (reduced from 0.2 in the proposal).
+Third, on 2026-07-16, the prompt was updated to supply the full production-file
+context---up to 200 lines of source---as the \texttt{MINIMAL\_CONTEXT} field,
+resolving the class-name and import failures observed in the 2026-07-13 run.
+Only the 2026-07-16 outputs are used in the confirmatory analysis.
+All amendments and their rationales were recorded prior to the metric computation
+pipeline being executed.
+
+\textbf{Replication package.}
+Our replication package includes: the frozen dataset manifest
+(\texttt{experiment/dataset-manifest.csv}) with SHA-256 source hashes and
+commit SHAs for all 50 units; prompt templates and their SHA-256 fingerprints;
+raw OpenAI request and response JSON for all 50 API calls; dependency lock files
+(\texttt{requirements-experiment.txt}) and Java build configuration; the
+pre-registered analysis script; raw JaCoCo, PIT, coverage.py, and Randoop output
+logs; and the full amendment log.
+The package is publicly available at:
+\url{https://github.com/phamvohungnghi/SWT301-SE1944-Group6}.

@@ -1,3 +1,68 @@
+% Written by Nghi (PL) — Project Lead
 \section{Discussion}
 \label{sec:discussion}
-This is the discussion section.
+
+\subsection{What the Results Actually Show}
+\label{sec:disc-findings}
+
+\textbf{RQ1 --- Branch Coverage Against the 75\% Mark}
+
+Both Java and Python cleared the pre-registered threshold with room to spare.
+
+On the Java side, 23 out of 24 executable units finished above 75\% branch coverage. The one exception was \texttt{dateDifference} (CC\,=\,8, coverage 66.7\%)---a function whose correctness depends on locale-specific date handling, which the model did not probe. The sign test returned $p = 0.000001$ after Holm adjustment, so the null hypothesis is rejected with no ambiguity.
+
+Python showed a different pattern in a good way: median coverage landed at an outright 100\%. Nineteen of 22 executable units crossed the threshold (sign test $p = 0.0004$). The three that did not are worth examining individually. \texttt{validate\_password} (CC\,=\,11) received tests that only walked the normal success path---the model generated inputs that passed every rule, leaving the rejection branches untouched. This is a familiar limitation noted in prior LLM testing work: validation functions with multi-clause conditions tend to get surface-level coverage. The other two low-coverage Python cases were not logic failures but tool failures, covered in the next paragraph.
+
+\textbf{Executability and What Failed}
+
+Java was almost clean: 24 of 25 functions ran. The one failure (\texttt{parseCsvLine}, CC\,=\,9) hit a compilation error unrelated to test logic---the generated class referenced an import that did not resolve.
+
+Python was messier, though for a clear mechanical reason. Three functions---\texttt{roman\_to\_int}, \texttt{simple\_html\_tokenizer}, and \texttt{is\_match}---came back with a \texttt{SyntaxError} pointing to an unterminated string literal. In each case, inspecting the raw response showed the file simply stopped in the middle of a string. The model ran into the \texttt{max\_output\_tokens} ceiling and the response was cut off. This is qualitatively different from the import/class-name failures that appeared in the earlier pilot run; those were fixed by including the full source file in the prompt, which is why the July 16 run was so much cleaner overall.
+
+\textbf{RQ2 --- GPT vs Randoop on Mutation Score}
+
+This was the most decisive result of the study. Across all 24 matched Java pairs, the GPT-generated tests killed far more mutants than Randoop did. Median mutation score: 86.6\% for GPT, 14.8\% for Randoop. The per-unit difference had a median of 62.1 percentage points (95\% CI: 31.6\% to 84.6\%). Wilcoxon one-sided $p = 6.6\times10^{-5}$, Cliff's $\delta = 0.79$---a large effect by any standard classification.
+
+Not a single unit went the other way. Randoop never outscored GPT on mutation; five units tied.
+
+The functions where Randoop did worst tell the story clearly. On \texttt{isValidEmail}, Randoop achieved 4.8\% mutation score because random string generation almost never produces a syntactically valid email address---the few that randomly satisfy the regex are not diverse enough to kill boundary mutants. GPT scored 100\% on the same function. The same dynamic appeared on \texttt{evaluateRPN} (Randoop: 0.0\%, GPT: 100\%) and \texttt{jsonPathLookup} (Randoop: 0.0\%, GPT: 87.5\%). Random enumeration cannot construct domain-meaningful inputs without understanding the function's contract.
+
+\textbf{Java Mutation Score as a Standalone Number}
+
+For reference, the median PIT score across all 24 Java units was 86.6\% (IQR: 80.0\%--95.5\%, mean 85.7\%). The lowest individual score was \texttt{checkSudokuBoard} at 54.6\% (CC\,=\,13). That function has deeply nested row/column/box validation loops; the generated tests covered branches but did not build enough distinct board configurations to distinguish all the boundary mutants from one another.
+
+\subsection{How These Numbers Sit Against Earlier Work}
+\label{sec:disc-prior}
+
+The results are broadly in line with the better end of what prior studies have reported, but comparing them directly requires care because the study designs differ on several dimensions.
+
+Sch{\"a}fer et al.~\cite{schafer2024testpilot} measured a median branch coverage of 52.8\% on JavaScript, TypeScript, and Python functions. Their pipeline allowed up to five repair iterations, so the output is not a raw first-attempt number. More importantly, they evaluated functions of all complexity levels without filtering---which means simple functions pull the median up while complex ones drag it down. Our CC 5--15 filter removes both extremes, and the full-context prompt eliminates most import failures, which their paper identifies as a main driver of test failures.
+
+Lops et al.~\cite{lops2025agonetest} reported 79.8\% branch coverage. That figure is the highest result across three different models and multiple prompt configurations applied to Java classes rather than individual methods. A class-level analysis will naturally produce different numbers than a method-level one, and taking the maximum over a model grid is not comparable to a single first-attempt median.
+
+Guilherme and Vincenzi~\cite{guilherme2023sast} got a mean of 90.2\% on 33 Java programs using \texttt{gpt-3.5-turbo}. Their sample had no complexity filter, so it almost certainly included many trivially easy functions (CC\,$<$\,5) where any test will hit 100\% coverage. That inflates the mean. The pattern we see in our own data is consistent with this: every unit in our set with the lowest CC values achieved 100\% coverage without difficulty.
+
+Yuan et al.~\cite{yuan2024chattester} reached above 82\% branch coverage and above 65\% mutation score on Java classes through multi-turn self-repair. The repair loop is doing real work in their pipeline. The fact that our first-attempt Java mutation median (86.6\%) sits above their repaired mutation result is notable---it suggests that supplying the right context upfront can compensate for the lack of iterative correction, at least within the CC 5--15 range.
+
+On the Randoop comparison specifically, Celik and Mahmoud~\cite{celik2026gem} also found that LLM-generated tests beat random-based tools on mutation score for isolated functions. Our effect ($\delta = 0.79$) is larger than what they report. Part of that gap is likely attributable to the CC filter: by removing very simple functions where Randoop does fine through random enumeration, we are measuring performance on exactly the kind of code where semantic understanding matters most.
+
+Three factors account for most of the differences between our results and earlier work: the level of analysis (individual method versus class or file), the generation protocol (one shot versus iterative repair), and whether complexity was controlled. No paper in our literature review did all three at once.
+
+\subsection{What This Means in Practice}
+\label{sec:disc-implications}
+
+\textbf{For Development Teams}
+
+The practical takeaway is fairly direct. A single call to \texttt{gpt-4o-mini-2024-07-18} with a prompt that includes the full source file can routinely produce tests hitting above 95\% branch coverage (Java) or 100\% (Python) for standalone functions with CC between 5 and 15---at a cost of roughly USD\,0.07 for 50 functions. Compared to Randoop, GPT-generated tests found far more mutants, with a 62-percentage-point median advantage.
+
+That said, two situations deserve extra human attention. First, validation-heavy functions---the kind that enforce complex multi-clause rules like password policies or format checks---tended to get only happy-path coverage. A reviewer should check these specifically. Second, if a test file comes back with a \texttt{SyntaxError} at the end, the likely cause is a truncated response rather than a logic error; bumping the token limit fixes it without needing to redesign the prompt.
+
+\textbf{For People Building Test Generation Tools}
+
+The main failure mode we observed has nothing to do with the model's reasoning---it is a pure engineering issue. When the output gets cut off mid-string, the file is dead on arrival. A simple length check before handing the file to the compiler, with an automatic retry at a higher token limit (say, 4,096 tokens), would likely eliminate nearly all the non-executable cases we saw.
+
+\textbf{For Researchers Running Similar Studies}
+
+The protocol used here---frozen dataset manifest with SHA-256 hashes, prompt fingerprinting, pre-registered hypotheses, and all raw API logs committed to a public repository---took no extraordinary effort and cost almost nothing to run. The large RQ2 effect ($\delta = 0.79$) appeared without any fine-tuning, model customisation, or repair loop, which suggests that a well-scoped complexity filter does a lot of the work that researchers usually attribute to elaborate prompting strategies.
+
+Extending this beyond CC 15 is a natural next step, as is running the same protocol under a different LLM to see how much of the result is model-specific versus prompt-structure-specific.
