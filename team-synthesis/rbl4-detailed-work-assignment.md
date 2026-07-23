@@ -426,7 +426,7 @@ Van phu trach do chat luong test cho Python:
 
 Can dam bao:
 
-- Python 3.12
+- Python 3.14.6
 - pytest 9.1.1
 - coverage.py 7.14.2
 - pytest-mutagen 1.3
@@ -504,14 +504,14 @@ Goi y:
 
 ### 7.4. Checklist Done cua Van
 
-- [ ] 25/25 Python functions co status execution.
-- [ ] Co `results/python_coverage.csv`.
-- [ ] Co `results/python_mutation.csv`.
-- [ ] Co raw logs cho pytest/coverage/mutation.
-- [ ] Co `figures/fig1_distribution.png`.
-- [ ] Co `figures/fig2_comparison.png`.
-- [ ] Ban giao Python metrics cho Quan.
-- [ ] Ban giao figures cho Nghi.
+- [x] 25/25 Python functions co status execution.
+- [x] Co `results/python_coverage.csv`.
+- [x] Co `results/python_mutation.csv`.
+- [x] Co raw logs cho pytest/coverage/mutation.
+- [x] Co `figures/fig1_distribution.png`.
+- [x] Co `figures/fig2_comparison.png`.
+- [x] Ban giao Python metrics cho Quan.
+- [x] Ban giao figures cho Nghi.
 
 ## 8. Cong viec chi tiet cua Nghi - Project Lead + Final Integrator
 

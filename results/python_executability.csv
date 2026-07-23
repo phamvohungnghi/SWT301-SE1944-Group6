@@ -1,26 +1,26 @@
 unit_id,symbol,cc,status,error_type,error_message,generated_test_path,notes
 PY_001_bubble_sort,bubble_sort,6,EXECUTABLE,,,results/full_requests/PY_001_bubble_sort/generated_test.py,Test executed successfully with all passes
 PY_002_binary_search,binary_search,5,EXECUTABLE,,,results/full_requests/PY_002_binary_search/generated_test.py,Test executed with 2 failures and 7010 passes
-PY_003_is_valid_email,is_valid_email,13,EXECUTABLE,,,results/full_requests/PY_003_is_valid_email/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_003_is_valid_email,is_valid_email,13,EXECUTABLE,,,results/full_requests/PY_003_is_valid_email/generated_test.py,Test executed with 1008 failures and 0 passes
 PY_004_merge_intervals,merge_intervals,7,EXECUTABLE,,,results/full_requests/PY_004_merge_intervals/generated_test.py,Test executed successfully with all passes
 PY_005_calculate_tax,calculate_tax,8,EXECUTABLE,,,results/full_requests/PY_005_calculate_tax/generated_test.py,Test executed successfully with all passes
-PY_006_validate_password,validate_password,11,EXECUTABLE,,,results/full_requests/PY_006_validate_password/generated_test.py,Test executed with 1006 failures and 0 passes
-PY_007_evaluate_rpn,evaluate_rpn,12,EXECUTABLE,,,results/full_requests/PY_007_evaluate_rpn/generated_test.py,Test executed with 3 failures and 7007 passes
-PY_008_knapsack_01,knapsack_01,9,EXECUTABLE,,,results/full_requests/PY_008_knapsack_01/generated_test.py,Test executed with 1006 failures and 0 passes
-PY_009_json_path_lookup,json_path_lookup,9,EXECUTABLE,,,results/full_requests/PY_009_json_path_lookup/generated_test.py,Test executed with 1 failures and 21008 passes
-PY_010_run_length_encoding,run_length_encoding,6,EXECUTABLE,,,results/full_requests/PY_010_run_length_encoding/generated_test.py,Test executed with 1006 failures and 0 passes
-PY_011_run_length_decoding,run_length_decoding,7,EXECUTABLE,,,results/full_requests/PY_011_run_length_decoding/generated_test.py,Test executed with 1006 failures and 0 passes
-PY_012_check_sudoku_board,check_sudoku_board,14,EXECUTABLE,,,results/full_requests/PY_012_check_sudoku_board/generated_test.py,Test executed with 2 failures and 6007 passes
+PY_006_validate_password,validate_password,11,EXECUTABLE,,,results/full_requests/PY_006_validate_password/generated_test.py,Test executed with 1008 failures and 0 passes
+PY_007_evaluate_rpn,evaluate_rpn,12,EXECUTABLE,,,results/full_requests/PY_007_evaluate_rpn/generated_test.py,Test executed with 3 failures and 7008 passes
+PY_008_knapsack_01,knapsack_01,9,EXECUTABLE,,,results/full_requests/PY_008_knapsack_01/generated_test.py,Test executed with 1008 failures and 0 passes
+PY_009_json_path_lookup,json_path_lookup,9,EXECUTABLE,,,results/full_requests/PY_009_json_path_lookup/generated_test.py,Test executed with 1 failures and 21009 passes
+PY_010_run_length_encoding,run_length_encoding,6,EXECUTABLE,,,results/full_requests/PY_010_run_length_encoding/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_011_run_length_decoding,run_length_decoding,7,EXECUTABLE,,,results/full_requests/PY_011_run_length_decoding/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_012_check_sudoku_board,check_sudoku_board,14,EXECUTABLE,,,results/full_requests/PY_012_check_sudoku_board/generated_test.py,Test executed with 2 failures and 6008 passes
 PY_013_roman_to_int,roman_to_int,6,TEST_RUNTIME_ERROR,SyntaxError,E   SyntaxError: unterminated string literal (detected at line 207),results/full_requests/PY_013_roman_to_int/generated_test.py,Syntax error in the generated test file
 PY_014_int_to_roman,int_to_roman,5,EXECUTABLE,,,results/full_requests/PY_014_int_to_roman/generated_test.py,Test executed successfully with all passes
-PY_015_longest_palindrome_substring,longest_palindrome_substring,11,EXECUTABLE,,,results/full_requests/PY_015_longest_palindrome_substring/generated_test.py,Test executed with 1006 failures and 0 passes
+PY_015_longest_palindrome_substring,longest_palindrome_substring,11,EXECUTABLE,,,results/full_requests/PY_015_longest_palindrome_substring/generated_test.py,Test executed with 1007 failures and 0 passes
 PY_016_parse_csv_line,parse_csv_line,9,EXECUTABLE,,,results/full_requests/PY_016_parse_csv_line/generated_test.py,Test executed successfully with all passes
-PY_017_levenshtein_distance,levenshtein_distance,9,EXECUTABLE,,,results/full_requests/PY_017_levenshtein_distance/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_017_levenshtein_distance,levenshtein_distance,9,EXECUTABLE,,,results/full_requests/PY_017_levenshtein_distance/generated_test.py,Test executed with 1008 failures and 0 passes
 PY_018_find_prime_factors,find_prime_factors,6,EXECUTABLE,,,results/full_requests/PY_018_find_prime_factors/generated_test.py,Test executed successfully with all passes
-PY_019_luhn_check,luhn_check,6,EXECUTABLE,,,results/full_requests/PY_019_luhn_check/generated_test.py,Test executed with 2 failures and 6007 passes
+PY_019_luhn_check,luhn_check,6,EXECUTABLE,,,results/full_requests/PY_019_luhn_check/generated_test.py,Test executed with 2 failures and 6009 passes
 PY_020_simple_html_tokenizer,simple_html_tokenizer,9,TEST_RUNTIME_ERROR,SyntaxError,E   SyntaxError: unterminated string literal (detected at line 161),results/full_requests/PY_020_simple_html_tokenizer/generated_test.py,Syntax error in the generated test file
 PY_021_dijkstra,dijkstra,13,EXECUTABLE,,,results/full_requests/PY_021_dijkstra/generated_test.py,Test executed with 2 failures and 9009 passes
-PY_022_parse_query_string,parse_query_string,8,EXECUTABLE,,,results/full_requests/PY_022_parse_query_string/generated_test.py,Test executed with 2 failures and 12007 passes
-PY_023_date_difference,date_difference,8,EXECUTABLE,,,results/full_requests/PY_023_date_difference/generated_test.py,Test executed with 1006 failures and 0 passes
-PY_024_is_valid_bst,is_valid_bst,13,EXECUTABLE,,,results/full_requests/PY_024_is_valid_bst/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_022_parse_query_string,parse_query_string,8,EXECUTABLE,,,results/full_requests/PY_022_parse_query_string/generated_test.py,Test executed with 2 failures and 12008 passes
+PY_023_date_difference,date_difference,8,EXECUTABLE,,,results/full_requests/PY_023_date_difference/generated_test.py,Test executed with 1007 failures and 0 passes
+PY_024_is_valid_bst,is_valid_bst,13,EXECUTABLE,,,results/full_requests/PY_024_is_valid_bst/generated_test.py,Test executed with 1008 failures and 0 passes
 PY_025_is_match,is_match,10,TEST_RUNTIME_ERROR,SyntaxError,E   SyntaxError: unterminated string literal (detected at line 94),results/full_requests/PY_025_is_match/generated_test.py,Syntax error in the generated test file
