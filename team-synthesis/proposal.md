@@ -148,7 +148,7 @@ Target production unit:
 
 | Thành phần | Version |
 |---|---:|
-| Python | 3.12 |
+| Python | 3.14.6 |
 | OpenAI SDK | 2.43.0 |
 | Lizard | 1.23.0 |
 | pytest | 9.1.1 |

@@ -1,0 +1,1001 @@
+
+=========================================
+=== Pytest output for test_PY_001_bubble_sort.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 6 items
+
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_normal_cases PASSED [ 16%]
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_edge_cases PASSED [ 33%]
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_none_input PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_large_numbers PASSED [ 66%]
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_floats PASSED [ 83%]
+evaluation/python_fixture/tests/test_PY_001_bubble_sort.py::test_bubble_sort_negative_numbers PASSED [100%]
+
+============================== 6 passed in 0.04s ==============================
+
+=========================================
+=== Pytest output for test_PY_002_binary_search.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 9 items
+
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_found PASSED [ 11%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_not_found PASSED [ 22%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_empty_array PASSED [ 33%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_single_element_found PASSED [ 44%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_single_element_not_found PASSED [ 55%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_negative_numbers PASSED [ 66%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_duplicates FAILED [ 77%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_large_array PASSED [ 88%]
+evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_non_sorted_array FAILED [100%]
+
+================================== FAILURES ===================================
+________________________ test_binary_search_duplicates ________________________
+
+    def test_binary_search_duplicates():
+>       assert binary_search([1, 2, 2, 2, 3], 2) == 1  # First occurrence
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 2 == 1
+E        +  where 2 = binary_search([1, 2, 2, 2, 3], 2)
+
+evaluation\python_fixture\tests\test_PY_002_binary_search.py:28: AssertionError
+_____________________ test_binary_search_non_sorted_array _____________________
+
+    def test_binary_search_non_sorted_array():
+>       assert binary_search([3, 1, 4, 2, 5], 3) == -1  # Not sorted, should return -1
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 0 == -1
+E        +  where 0 = binary_search([3, 1, 4, 2, 5], 3)
+
+evaluation\python_fixture\tests\test_PY_002_binary_search.py:39: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_duplicates
+FAILED evaluation/python_fixture/tests/test_PY_002_binary_search.py::test_binary_search_non_sorted_array
+========================= 2 failed, 7 passed in 0.11s =========================
+
+=========================================
+=== Pytest output for test_PY_003_is_valid_email.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_003_is_valid_email.py::test_is_valid_email FAILED [100%]
+
+================================== FAILURES ===================================
+_____________________________ test_is_valid_email _____________________________
+
+    def test_is_valid_email():
+        # Test valid email addresses
+        assert is_valid_email("test@example.com") == True
+>       assert is_valid_email("user.name+tag+sorting@example.com") == True
+E       AssertionError: assert False == True
+E        +  where False = is_valid_email('user.name+tag+sorting@example.com')
+
+evaluation\python_fixture\tests\test_PY_003_is_valid_email.py:6: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_003_is_valid_email.py::test_is_valid_email
+============================== 1 failed in 0.08s ==============================
+
+=========================================
+=== Pytest output for test_PY_004_merge_intervals.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_004_merge_intervals.py::test_merge_intervals PASSED [100%]
+
+============================== 1 passed in 0.03s ==============================
+
+=========================================
+=== Pytest output for test_PY_005_calculate_tax.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_005_calculate_tax.py::test_calculate_tax PASSED [100%]
+
+============================== 1 passed in 0.03s ==============================
+
+=========================================
+=== Pytest output for test_PY_006_validate_password.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_006_validate_password.py::test_validate_password FAILED [100%]
+
+================================== FAILURES ===================================
+___________________________ test_validate_password ____________________________
+
+    def test_validate_password():
+        # Test with valid password
+>       assert validate_password("Valid1!") == True
+E       AssertionError: assert False == True
+E        +  where False = validate_password('Valid1!')
+
+evaluation\python_fixture\tests\test_PY_006_validate_password.py:5: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_006_validate_password.py::test_validate_password
+============================== 1 failed in 0.07s ==============================
+
+=========================================
+=== Pytest output for test_PY_007_evaluate_rpn.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 10 items
+
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_basic_operations PASSED [ 10%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_multiple_operations FAILED [ 20%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_edge_cases PASSED [ 30%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_invalid_input FAILED [ 40%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_single_number PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_zero_division PASSED [ 60%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_unbalanced_stack FAILED [ 70%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_large_numbers PASSED [ 80%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_negative_numbers PASSED [ 90%]
+evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_mixed_operations PASSED [100%]
+
+================================== FAILURES ===================================
+____________________ test_evaluate_rpn_multiple_operations ____________________
+
+    def test_evaluate_rpn_multiple_operations():
+        assert evaluate_rpn("2 3 + 5 *") == 25
+>       assert evaluate_rpn("4 5 + 2 * 3 -") == 10
+E       AssertionError: assert 15 == 10
+E        +  where 15 = evaluate_rpn('4 5 + 2 * 3 -')
+
+evaluation\python_fixture\tests\test_PY_007_evaluate_rpn.py:12: AssertionError
+_______________________ test_evaluate_rpn_invalid_input _______________________
+
+    def test_evaluate_rpn_invalid_input():
+        assert evaluate_rpn("3 4 + invalid") == 0
+        assert evaluate_rpn("3 4 + 5 6") == 0
+>       assert evaluate_rpn("3 4 + 5 * 6 /") == 0
+E       AssertionError: assert 5 == 0
+E        +  where 5 = evaluate_rpn('3 4 + 5 * 6 /')
+
+evaluation\python_fixture\tests\test_PY_007_evaluate_rpn.py:24: AssertionError
+_____________________ test_evaluate_rpn_unbalanced_stack ______________________
+
+    def test_evaluate_rpn_unbalanced_stack():
+>       assert evaluate_rpn("3 4 + 5 -") == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = evaluate_rpn('3 4 + 5 -')
+
+evaluation\python_fixture\tests\test_PY_007_evaluate_rpn.py:35: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_multiple_operations
+FAILED evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_invalid_input
+FAILED evaluation/python_fixture/tests/test_PY_007_evaluate_rpn.py::test_evaluate_rpn_unbalanced_stack
+========================= 3 failed, 7 passed in 0.08s =========================
+
+=========================================
+=== Pytest output for test_PY_008_knapsack_01.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_008_knapsack_01.py::test_knapsack_01 FAILED [100%]
+
+================================== FAILURES ===================================
+______________________________ test_knapsack_01 _______________________________
+
+    def test_knapsack_01():
+        # Test case 1: Basic test with a few items
+        weights = [1, 2, 3]
+        values = [10, 15, 40]
+        capacity = 6
+>       assert knapsack_01(weights, values, capacity) == 55
+E       assert 65 == 55
+E        +  where 65 = knapsack_01([1, 2, 3], [10, 15, 40], 6)
+
+evaluation\python_fixture\tests\test_PY_008_knapsack_01.py:8: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_008_knapsack_01.py::test_knapsack_01
+============================== 1 failed in 0.07s ==============================
+
+=========================================
+=== Pytest output for test_PY_009_json_path_lookup.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 22 items
+
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_none_data PASSED [  4%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_empty_path PASSED [  9%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_nonexistent_key PASSED [ 13%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_nested_dict PASSED [ 18%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_list_index PASSED [ 22%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_invalid_list_index PASSED [ 27%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_non_digit_key_in_list PASSED [ 31%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_empty_dict PASSED [ 36%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_complex_structure PASSED [ 40%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_multiple_levels PASSED [ 45%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_list_of_dicts PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_invalid_path PASSED [ 54%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_numeric_key_in_dict FAILED [ 59%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_mixed_types PASSED [ 63%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_none_in_path PASSED [ 68%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_none_value PASSED [ 72%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_empty_list PASSED [ 77%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_empty_dict PASSED [ 81%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_nonexistent_list_index PASSED [ 86%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_nonexistent_dict_key PASSED [ 90%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_nested_empty_dict PASSED [ 95%]
+evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_path_to_nested_empty_list PASSED [100%]
+
+================================== FAILURES ===================================
+_______________ test_json_path_lookup_with_numeric_key_in_dict ________________
+
+    def test_json_path_lookup_with_numeric_key_in_dict():
+        data = {1: "one", 2: "two"}
+>       assert json_path_lookup(data, "1") == "one"
+E       AssertionError: assert None == 'one'
+E        +  where None = json_path_lookup({1: 'one', 2: 'two'}, '1')
+
+evaluation\python_fixture\tests\test_PY_009_json_path_lookup.py:51: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_009_json_path_lookup.py::test_json_path_lookup_with_numeric_key_in_dict
+======================== 1 failed, 21 passed in 0.08s =========================
+
+=========================================
+=== Pytest output for test_PY_010_run_length_encoding.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_010_run_length_encoding.py::test_run_length_encoding FAILED [100%]
+
+================================== FAILURES ===================================
+__________________________ test_run_length_encoding ___________________________
+
+    def test_run_length_encoding():
+        # Test with a simple case
+        assert run_length_encoding("aaabb") == "3a2b"
+    
+        # Test with a single character
+        assert run_length_encoding("a") == "1a"
+    
+        # Test with no characters
+        assert run_length_encoding("") == ""
+    
+        # Test with all unique characters
+        assert run_length_encoding("abc") == "1a1b1c"
+    
+        # Test with mixed characters
+        assert run_length_encoding("aabbcc") == "2a2b2c"
+    
+        # Test with non-alphabetic characters (should return "")
+        assert run_length_encoding("aa1bb") == ""
+        assert run_length_encoding("abc!") == ""
+    
+        # Test with a long string
+        assert run_length_encoding("aaaabbbbcccc") == "4a4b4c"
+    
+        # Test with alternating characters
+        assert run_length_encoding("abababab") == "1a1b1a1b1a1b1a1b"
+    
+        # Test with uppercase and lowercase (should return "")
+>       assert run_length_encoding("aaAA") == ""
+E       AssertionError: assert '2a2A' == ''
+E         
+E         + 2a2A
+
+evaluation\python_fixture\tests\test_PY_010_run_length_encoding.py:30: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_010_run_length_encoding.py::test_run_length_encoding
+============================== 1 failed in 0.07s ==============================
+
+=========================================
+=== Pytest output for test_PY_011_run_length_decoding.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_011_run_length_decoding.py::test_run_length_decoding FAILED [100%]
+
+================================== FAILURES ===================================
+__________________________ test_run_length_decoding ___________________________
+
+    def test_run_length_decoding():
+        # Test basic decoding
+>       assert run_length_decoding("2a3b1c") == "aabbbbc"
+E       AssertionError: assert 'aabbbc' == 'aabbbbc'
+E         
+E         - aabbbbc
+E         ?      -
+E         + aabbbc
+
+evaluation\python_fixture\tests\test_PY_011_run_length_decoding.py:6: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_011_run_length_decoding.py::test_run_length_decoding
+============================== 1 failed in 0.07s ==============================
+
+=========================================
+=== Pytest output for test_PY_012_check_sudoku_board.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 8 items
+
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_valid PASSED [ 12%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_invalid_row FAILED [ 25%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_invalid_column PASSED [ 37%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_invalid_value PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_invalid_shape PASSED [ 62%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_none_board PASSED [ 75%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_empty_board PASSED [ 87%]
+evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_incomplete_board FAILED [100%]
+
+================================== FAILURES ===================================
+_____________________ test_check_sudoku_board_invalid_row _____________________
+
+    def test_check_sudoku_board_invalid_row():
+        board = [
+            [5, 3, 4, 6, 7, 8, 9, 1, 2],
+            [6, 7, 2, 1, 9, 5, 3, 4, 8],
+            [1, 9, 8, 3, 4, 2, 5, 6, 7],
+            [8, 5, 9, 7, 6, 1, 4, 2, 3],
+            [4, 2, 6, 8, 5, 3, 7, 9, 1],
+            [7, 1, 3, 9, 2, 4, 8, 5, 6],
+            [9, 6, 1, 5, 3, 7, 2, 8, 4],
+            [2, 8, 7, 4, 1, 9, 6, 3, 5],
+            [3, 4, 5, 2, 8, 6, 1, 7, 9]
+        ]
+        board[0][0] = 5  # Duplicate in the first row
+>       assert check_sudoku_board(board) == False
+E       assert True == False
+E        +  where True = check_sudoku_board([[5, 3, 4, 6, 7, 8, ...], [6, 7, 2, 1, 9, 5, ...], [1, 9, 8, 3, 4, 2, ...], [8, 5, 9, 7, 6, 1, ...], [4, 2, 6, 8, 5, 3, ...], [7, 1, 3, 9, 2, 4, ...], ...])
+
+evaluation\python_fixture\tests\test_PY_012_check_sudoku_board.py:30: AssertionError
+__________________ test_check_sudoku_board_incomplete_board ___________________
+
+    def test_check_sudoku_board_incomplete_board():
+        board = [
+            [5, 3, 4, 6, 7, 8, 9, 1, 2],
+            [6, 7, 2, 1, 9, 5, 3, 4, 8],
+            [1, 9, 8, 3, 4, 2, 5, 6, 7],
+            [8, 5, 9, 7, 6, 1, 4, 2, 3],
+            [4, 2, 6, 8, 5, 3, 7, 9, 1],
+            [7, 1, 3, 9, 2, 4, 8, 5, 6],
+            [9, 6, 1, 5, 3, 7, 2, 8, 4],
+            [2, 8, 7, 4, 1, 9, 6, 3, 5],
+            [3, 4, 5, 2, 8, 6, 1, 7, 0]  # Incomplete value (0)
+        ]
+>       assert check_sudoku_board(board) == False
+E       assert True == False
+E        +  where True = check_sudoku_board([[5, 3, 4, 6, 7, 8, ...], [6, 7, 2, 1, 9, 5, ...], [1, 9, 8, 3, 4, 2, ...], [8, 5, 9, 7, 6, 1, ...], [4, 2, 6, 8, 5, 3, ...], [7, 1, 3, 9, 2, 4, ...], ...])
+
+evaluation\python_fixture\tests\test_PY_012_check_sudoku_board.py:93: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_invalid_row
+FAILED evaluation/python_fixture/tests/test_PY_012_check_sudoku_board.py::test_check_sudoku_board_incomplete_board
+========================= 2 failed, 6 passed in 0.08s =========================
+
+=========================================
+=== Pytest output for test_PY_013_roman_to_int.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+_ ERROR collecting evaluation/python_fixture/tests/test_PY_013_roman_to_int.py _
+.venv\Lib\site-packages\_pytest\python.py:508: in importtestmodule
+    mod = import_path(
+.venv\Lib\site-packages\_pytest\pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1406: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:179: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:348: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\ast.py:46: in parse
+    return compile(source, filename, mode, flags,
+E     File "D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\evaluation\python_fixture\tests\test_PY_013_roman_to_int.py", line 207
+E       assert roman_to_int("
+E                           ^
+E   SyntaxError: unterminated string literal (detected at line 207)
+=========================== short test summary info ===========================
+ERROR evaluation/python_fixture/tests/test_PY_013_roman_to_int.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.19s ===============================
+
+=========================================
+=== Pytest output for test_PY_014_int_to_roman.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_014_int_to_roman.py::test_int_to_roman PASSED [100%]
+
+============================== 1 passed in 0.03s ==============================
+
+=========================================
+=== Pytest output for test_PY_015_longest_palindrome_substring.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_015_longest_palindrome_substring.py::test_longest_palindrome_substring FAILED [100%]
+
+================================== FAILURES ===================================
+______________________ test_longest_palindrome_substring ______________________
+
+    def test_longest_palindrome_substring():
+        # Test with a simple palindrome
+        assert longest_palindrome_substring("babad") in ["bab", "aba"]
+    
+        # Test with a single character
+        assert longest_palindrome_substring("a") == "a"
+    
+        # Test with two characters, both the same
+        assert longest_palindrome_substring("aa") == "aa"
+    
+        # Test with two characters, different
+        assert longest_palindrome_substring("ab") in ["a", "b"]
+    
+        # Test with an empty string
+        assert longest_palindrome_substring("") == ""
+    
+        # Test with a longer palindrome
+        assert longest_palindrome_substring("cbbd") == "bb"
+    
+        # Test with a string that has no palindrome longer than 1
+        assert longest_palindrome_substring("abcde") in ["a", "b", "c", "d", "e"]
+    
+        # Test with a complex palindrome
+        assert longest_palindrome_substring("racecar") == "racecar"
+    
+        # Test with a string that has multiple palindromes
+        assert longest_palindrome_substring("aabbccddeeffgghhiijj") in ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj"]
+    
+        # Test with a string that is a palindrome with spaces
+>       assert longest_palindrome_substring("a man a plan a canal panama") == "ana"
+E       AssertionError: assert ' a ' == 'ana'
+E         
+E         - ana
+E         +  a
+
+evaluation\python_fixture\tests\test_PY_015_longest_palindrome_substring.py:32: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_015_longest_palindrome_substring.py::test_longest_palindrome_substring
+============================== 1 failed in 0.08s ==============================
+
+=========================================
+=== Pytest output for test_PY_016_parse_csv_line.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_016_parse_csv_line.py::test_parse_csv_line PASSED [100%]
+
+============================== 1 passed in 0.03s ==============================
+
+=========================================
+=== Pytest output for test_PY_017_levenshtein_distance.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_017_levenshtein_distance.py::test_levenshtein_distance FAILED [100%]
+
+================================== FAILURES ===================================
+__________________________ test_levenshtein_distance __________________________
+
+    def test_levenshtein_distance():
+        # Test with two identical strings
+        assert levenshtein_distance("kitten", "kitten") == 0
+    
+        # Test with one empty string
+        assert levenshtein_distance("", "abc") == 3
+        assert levenshtein_distance("abc", "") == 3
+    
+        # Test with both strings empty
+        assert levenshtein_distance("", "") == 0
+    
+        # Test with different lengths
+        assert levenshtein_distance("abc", "ab") == 1
+        assert levenshtein_distance("ab", "abc") == 1
+        assert levenshtein_distance("abc", "def") == 3
+    
+        # Test with single character changes
+        assert levenshtein_distance("a", "b") == 1
+        assert levenshtein_distance("a", "a") == 0
+        assert levenshtein_distance("abc", "abd") == 1
+        assert levenshtein_distance("abc", "a") == 2
+    
+        # Test with substitutions
+        assert levenshtein_distance("kitten", "sitting") == 3
+        assert levenshtein_distance("flaw", "lawn") == 2
+    
+        # Test with insertions
+        assert levenshtein_distance("abc", "abdc") == 1
+        assert levenshtein_distance("abc", "abcd") == 1
+    
+        # Test with deletions
+        assert levenshtein_distance("abc", "bc") == 1
+        assert levenshtein_distance("abc", "a") == 2
+    
+        # Test with None inputs
+        assert levenshtein_distance(None, "abc") == -1
+        assert levenshtein_distance("abc", None) == -1
+        assert levenshtein_distance(None, None) == -1
+    
+        # Test with longer strings
+        assert levenshtein_distance("abcdef", "azced") == 3
+        assert levenshtein_distance("sunday", "saturday") == 3
+    
+        # Test with strings that are completely different
+        assert levenshtein_distance("abc", "xyz") == 3
+    
+        # Test with strings that have spaces
+        assert levenshtein_distance("a b c", "a b d") == 1
+>       assert levenshtein_distance("kitten", "kit ten") == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = levenshtein_distance('kitten', 'kit ten')
+
+evaluation\python_fixture\tests\test_PY_017_levenshtein_distance.py:51: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_017_levenshtein_distance.py::test_levenshtein_distance
+============================== 1 failed in 0.08s ==============================
+
+=========================================
+=== Pytest output for test_PY_018_find_prime_factors.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_018_find_prime_factors.py::test_find_prime_factors PASSED [100%]
+
+============================== 1 passed in 0.03s ==============================
+
+=========================================
+=== Pytest output for test_PY_019_luhn_check.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 8 items
+
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_valid PASSED [ 12%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_invalid PASSED [ 25%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_empty PASSED [ 37%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_non_digit PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_single_digit FAILED [ 62%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_two_digits FAILED [ 75%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_large_number PASSED [ 87%]
+evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_boundary_cases PASSED [100%]
+
+================================== FAILURES ===================================
+________________________ test_luhn_check_single_digit _________________________
+
+    def test_luhn_check_single_digit():
+>       assert luhn_check("0") == False
+E       AssertionError: assert True == False
+E        +  where True = luhn_check('0')
+
+evaluation\python_fixture\tests\test_PY_019_luhn_check.py:25: AssertionError
+_________________________ test_luhn_check_two_digits __________________________
+
+    def test_luhn_check_two_digits():
+        assert luhn_check("10") == False
+        assert luhn_check("11") == False
+        assert luhn_check("12") == False
+        assert luhn_check("13") == False
+        assert luhn_check("14") == False
+        assert luhn_check("15") == False
+        assert luhn_check("16") == False
+        assert luhn_check("17") == False
+>       assert luhn_check("18") == False
+E       AssertionError: assert True == False
+E        +  where True = luhn_check('18')
+
+evaluation\python_fixture\tests\test_PY_019_luhn_check.py:45: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_single_digit
+FAILED evaluation/python_fixture/tests/test_PY_019_luhn_check.py::test_luhn_check_two_digits
+========================= 2 failed, 6 passed in 0.08s =========================
+
+=========================================
+=== Pytest output for test_PY_020_simple_html_tokenizer.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+_ ERROR collecting evaluation/python_fixture/tests/test_PY_020_simple_html_tokenizer.py _
+.venv\Lib\site-packages\_pytest\python.py:508: in importtestmodule
+    mod = import_path(
+.venv\Lib\site-packages\_pytest\pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1406: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:179: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:348: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\ast.py:46: in parse
+    return compile(source, filename, mode, flags,
+E     File "D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\evaluation\python_fixture\tests\test_PY_020_simple_html_tokenizer.py", line 161
+E       expected = [("TAG", "<tag1>"), ("TEXT", "\tText1\t"), ("TAG", "</tag
+E                                                                     ^
+E   SyntaxError: unterminated string literal (detected at line 161)
+=========================== short test summary info ===========================
+ERROR evaluation/python_fixture/tests/test_PY_020_simple_html_tokenizer.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.19s ===============================
+
+=========================================
+=== Pytest output for test_PY_021_dijkstra.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 11 items
+
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_basic PASSED [  9%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_no_path PASSED [ 18%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_single_node PASSED [ 27%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_disconnected_graph PASSED [ 36%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_empty_graph FAILED [ 45%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_negative_weights FAILED [ 54%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_inf PASSED [ 63%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_multiple_paths PASSED [ 72%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_self_loops PASSED [ 81%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_multiple_edges PASSED [ 90%]
+evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_large_numbers PASSED [100%]
+
+================================== FAILURES ===================================
+__________________________ test_dijkstra_empty_graph __________________________
+
+    def test_dijkstra_empty_graph():
+        graph = []
+>       assert dijkstra(graph, 0, 0) == -1  # Invalid graph
+               ^^^^^^^^^^^^^^^^^^^^^
+
+evaluation\python_fixture\tests\test_PY_021_dijkstra.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = [], src = 0, dest = 0
+
+    def dijkstra(graph, src, dest):
+        if graph is None:
+            return -1
+        n = len(graph)
+        dist = [float('inf')] * n
+>       dist[src] = 0
+        ^^^^^^^^^
+E       IndexError: list assignment index out of range
+
+evaluation\python_fixture\python_functions.py:426: IndexError
+__________________ test_dijkstra_graph_with_negative_weights __________________
+
+    def test_dijkstra_graph_with_negative_weights():
+        graph = [[0, 1, -2], [1, 0, 2], [-2, 2, 0]]
+>       assert dijkstra(graph, 0, 2) == -1  # Dijkstra's algorithm does not work with negative weights
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 3 == -1
+E        +  where 3 = dijkstra([[0, 1, -2], [1, 0, 2], [-2, 2, 0]], 0, 2)
+
+evaluation\python_fixture\tests\test_PY_021_dijkstra.py:29: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_empty_graph
+FAILED evaluation/python_fixture/tests/test_PY_021_dijkstra.py::test_dijkstra_graph_with_negative_weights
+========================= 2 failed, 9 passed in 0.10s =========================
+
+=========================================
+=== Pytest output for test_PY_022_parse_query_string.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 14 items
+
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_empty PASSED [  7%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_no_question_mark PASSED [ 14%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_with_question_mark PASSED [ 21%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_multiple_pairs PASSED [ 28%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_multiple_values_for_key PASSED [ 35%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_key_without_value PASSED [ 42%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_empty_key PASSED [ 50%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_empty_value PASSED [ 57%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_multiple_empty_pairs PASSED [ 64%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_no_pairs FAILED [ 71%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_key_with_special_characters FAILED [ 78%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_key_with_equal_sign PASSED [ 85%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_value_with_equal_sign PASSED [ 92%]
+evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_key_with_ampersand PASSED [100%]
+
+================================== FAILURES ===================================
+______________________ test_parse_query_string_no_pairs _______________________
+
+    def test_parse_query_string_no_pairs():
+>       assert parse_query_string("??") == {}
+E       AssertionError: assert {'?': ''} == {}
+E         
+E         Left contains 1 more item:
+E         {'?': ''}
+E         
+E         Full diff:
+E         - {}
+E         + {
+E         +     '?': '',
+E         + }
+
+evaluation\python_fixture\tests\test_PY_022_parse_query_string.py:31: AssertionError
+_____________ test_parse_query_string_key_with_special_characters _____________
+
+    def test_parse_query_string_key_with_special_characters():
+>       assert parse_query_string("key%20with%20spaces=value%20with%20spaces") == {"key with spaces": "value with spaces"}
+E       AssertionError: assert {'key%20with%...ith%20spaces'} == {'key with sp... with spaces'}
+E         
+E         Left contains 1 more item:
+E         {'key%20with%20spaces': 'value%20with%20spaces'}
+E         Right contains 1 more item:
+E         {'key with spaces': 'value with spaces'}
+E         
+E         Full diff:...
+E         
+E         ...Full output truncated (6 lines hidden), use '-vv' to show
+
+evaluation\python_fixture\tests\test_PY_022_parse_query_string.py:34: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_no_pairs
+FAILED evaluation/python_fixture/tests/test_PY_022_parse_query_string.py::test_parse_query_string_key_with_special_characters
+======================== 2 failed, 12 passed in 0.09s =========================
+
+=========================================
+=== Pytest output for test_PY_023_date_difference.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_023_date_difference.py::test_date_difference FAILED [100%]
+
+================================== FAILURES ===================================
+____________________________ test_date_difference _____________________________
+
+    def test_date_difference():
+        # Test valid date differences
+        assert date_difference("2023-10-01", "2023-10-01") == 0
+        assert date_difference("2023-01-01", "2023-01-02") == 1
+        assert date_difference("2023-01-01", "2024-01-01") == 365
+        assert date_difference("2020-01-01", "2021-01-01") == 366  # Leap year
+        assert date_difference("2021-01-01", "2020-01-01") == 366  # Leap year
+    
+        # Test invalid date formats
+        assert date_difference("2023-10-01", "2023-10") == -1
+        assert date_difference("2023-10-01", "2023-10-01-01") == -1
+        assert date_difference("2023-10-01", "2023-10-01-01") == -1
+        assert date_difference("2023-10-01", "2023-10-01-01") == -1
+    
+        # Test None inputs
+        assert date_difference(None, "2023-10-01") == -1
+        assert date_difference("2023-10-01", None) == -1
+        assert date_difference(None, None) == -1
+    
+        # Test invalid date values
+>       assert date_difference("2023-13-01", "2023-10-01") == -1  # Invalid month
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 92 == -1
+E        +  where 92 = date_difference('2023-13-01', '2023-10-01')
+
+evaluation\python_fixture\tests\test_PY_023_date_difference.py:23: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_023_date_difference.py::test_date_difference
+============================== 1 failed in 0.08s ==============================
+
+=========================================
+=== Pytest output for test_PY_024_is_valid_bst.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 1 item
+
+evaluation/python_fixture/tests/test_PY_024_is_valid_bst.py::test_is_valid_bst FAILED [100%]
+
+================================== FAILURES ===================================
+______________________________ test_is_valid_bst ______________________________
+
+    def test_is_valid_bst():
+        # Test case 1: Empty tree
+        assert is_valid_bst([], 0) == True
+    
+        # Test case 2: Single node tree
+        assert is_valid_bst([{"val": 10}], 0) == True
+    
+        # Test case 3: Valid BST
+        assert is_valid_bst([{"val": 10, "left": 1, "right": 2}, {"val": 5}, {"val": 15}], 0) == True
+    
+        # Test case 4: Invalid BST (left child greater than parent)
+        assert is_valid_bst([{"val": 10, "left": 1, "right": 2}, {"val": 15}, {"val": 5}], 0) == False
+    
+        # Test case 5: Invalid BST (right child less than parent)
+>       assert is_valid_bst([{"val": 10, "left": 1, "right": 2}, {"val": 5}, {"val": 12}], 0) == False
+E       AssertionError: assert True == False
+E        +  where True = is_valid_bst([{'val': 10, 'left': 1, 'right': 2}, {'val': 5}, {'val': 12}], 0)
+
+evaluation\python_fixture\tests\test_PY_024_is_valid_bst.py:17: AssertionError
+=========================== short test summary info ===========================
+FAILED evaluation/python_fixture/tests/test_PY_024_is_valid_bst.py::test_is_valid_bst
+============================== 1 failed in 0.08s ==============================
+
+=========================================
+=== Pytest output for test_PY_025_is_match.py ===
+=========================================
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0 -- D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+pytest-mutagen-1.3 : Mutations disabled
+rootdir: D:\FPT\SWT301\RBL\SWT301-SE1944-Group6
+plugins: anyio-4.14.2, mutagen-1.3
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+__ ERROR collecting evaluation/python_fixture/tests/test_PY_025_is_match.py ___
+.venv\Lib\site-packages\_pytest\python.py:508: in importtestmodule
+    mod = import_path(
+.venv\Lib\site-packages\_pytest\pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1406: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:179: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:348: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python314\Lib\ast.py:46: in parse
+    return compile(source, filename, mode, flags,
+E     File "D:\FPT\SWT301\RBL\SWT301-SE1944-Group6\evaluation\python_fixture\tests\test_PY_025_is_match.py", line 94
+E       assert is_match("abc", ".*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*
+E                              ^
+E   SyntaxError: unterminated string literal (detected at line 94)
+=========================== short test summary info ===========================
+ERROR evaluation/python_fixture/tests/test_PY_025_is_match.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.19s ===============================

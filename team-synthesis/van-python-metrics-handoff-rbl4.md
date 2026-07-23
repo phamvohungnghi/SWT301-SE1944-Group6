@@ -111,7 +111,7 @@ evaluation/python_fixture/
 Toolchain theo proposal:
 
 ```text
-Python 3.12
+Python 3.14.6
 pytest 9.1.1
 coverage.py 7.14.2
 pytest-mutagen 1.3
@@ -289,29 +289,29 @@ Không để người khác viết thay phần chuyên môn Python/figures.
 
 ### Python preflight
 
-- [ ] Tạo Python fixture.
-- [ ] Copy `python_functions.py`.
-- [ ] Copy 25 Python generated tests.
-- [ ] Chạy pytest/import preflight.
-- [ ] Tạo `results/python_executability.csv`.
+- [x] Tạo Python fixture.
+- [x] Copy `python_functions.py`.
+- [x] Copy 25 Python generated tests.
+- [x] Chạy pytest/import preflight.
+- [x] Tạo `results/python_executability.csv`.
 
 ### Python metrics
 
-- [ ] Tạo `results/python_coverage.csv`.
-- [ ] Tạo `results/python_mutation.csv`.
-- [ ] Lưu raw logs cho pytest/coverage.py/pytest-mutagen.
+- [x] Tạo `results/python_coverage.csv`.
+- [x] Tạo `results/python_mutation.csv`.
+- [x] Lưu raw logs cho pytest/coverage.py/pytest-mutagen.
 
 ### Figures
 
-- [ ] Tạo `figures/fig1_distribution.png`.
-- [ ] Tạo `figures/fig2_comparison.png` khi có Java/Randoop data.
-- [ ] Đảm bảo figures trace được về result CSV.
+- [x] Tạo `figures/fig1_distribution.png`.
+- [x] Tạo `figures/fig2_comparison.png` khi có Java/Randoop data.
+- [x] Đảm bảo figures trace được về result CSV.
 
 ### Handoff
 
-- [ ] Gửi Python metrics cho Quân.
-- [ ] Gửi figures cho Nghi.
-- [ ] Viết Python subsection cho report.
+- [x] Gửi Python metrics cho Quân.
+- [x] Gửi figures cho Nghi.
+- [x] Viết Python subsection cho report.
 
 ## 14. Handoff sau khi Văn xong
 
