@@ -1,3 +1,16 @@
 \section{Introduction}
 \label{sec:introduction}
-This is the introduction section.
+
+Writing unit tests manually is time-consuming and error-prone, especially for code with complex branching logic. For the past few years, researchers have been exploring whether large language models can handle this task. Current findings are encouraging, but direct comparisons are difficult: different studies vary in the models used, the hint structures, whether the models allow modification of their own output, and how they handle complexity. Our work narrows the question deliberately.
+
+We're only considering one thing: with a single prompt and no follow-up question, how good is the test file that \texttt{gpt-4o-mini-2024-07-18} produces for a function with a cycle complexity between 5 and 15? That CC band captures functions complex enough to require genuine test design---not trivial getters---but self-contained enough to run without external dependencies. We sampled 50 such functions (25~Java, 25~Python) from a manifest frozen before the model was ever called.
+
+On the measurement side, JaCoCo tracked branch coverage for Java units and coverage.py handled Python. For Java we also ran PIT mutation testing and, separately, Randoop 4.3.4 to get a direct comparison against a classical automated tool. All statistical comparisons were pre-registered: a one-sided sign test per language against a 75\% branch-coverage threshold, and a paired Wilcoxon test for the Java-vs-Randoop mutation comparison.
+
+The Java numbers came out well. Of the 25 Java functions tested, 24 produced executable tests (an execution rate of 96.0\%). Among these 24 functions, the median branch coverage was 95.5\%, with interquartile ranges from 90.0\% to 100\%, and 23 functions had branch coverage exceeding the 75\% threshold. The $p$-value for signature testing was 0.000001. Mutation coverage showed similar results: over the same 24 units, the median mutation coverage was 86.6\% (interquartile ranges from 80.0\% to 95.5\%).
+
+Python results were just as strong, though one more unit failed. Three test files came back with a \texttt{SyntaxError} caused by the response being cut off mid-string---a token-limit issue, not a logic problem. That left 22 executable units, all of which were measured. Average branch coverage: 100\%. Nineteen out of 22 branches exceeded the 75\% mark, giving a $p$-value of 0.0004 for the marker test.
+
+The head-to-head with Randoop was the starkest finding. Across the 24 paired Java units, GPT averaged a median mutation score of 86.6\% while Randoop averaged only 14.8\%. The median gap per pair was 62.1 percentage points (95\% CI: 31.6\%--84.6\%). The one-sided Wilcoxon test returned $p = 6.6\times10^{-5}$ and Cliff's $\delta$ came to 0.79, which is a large effect by standard thresholds. Not a single unit went the other way---Randoop never beat GPT on mutation score, though five pairs tied.
+
+The full dataset, every prompt, every raw API response, and all analysis scripts are available at \url{https://github.com/phamvohungnghi/SWT301-SE1944-Group6}.
