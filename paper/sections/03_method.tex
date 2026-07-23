@@ -73,3 +73,39 @@ We compute one-sided Spearman rank correlations (left-tailed) between cyclomatic
 The four planned pairs yield three testable correlations after excluding Python mutation (which is \texttt{NOT\_TESTABLE} due to the pytest-mutagen tool limitation).
 The three raw $p$-values are adjusted using Holm--Bonferroni correction.
 RQ3 is pre-registered as a secondary exploratory analysis; we do not claim causal relationships.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Protocol Amendments and Replication Package}
+\label{subsec:amendments}
+% Written by Nghi (PL) — Project Lead
+% ─────────────────────────────────────────────────────────────────────────────
+
+\textbf{Protocol amendments.}
+Three deviations from the registered protocol were recorded in \texttt{notes.md}
+before any metric outcome was inspected.
+First, an initial pilot conducted on 2026-07-02 used the GitHub Models proxy
+(response IDs prefixed \texttt{mock-github-*}); this run was classified as a dry
+run and excluded from analysis.
+The full confirmatory run used the OpenAI API directly, producing authentic
+\texttt{resp\_...} response IDs.
+Second, the target model was changed from \texttt{gpt-4o-2024-08-06} to
+\texttt{gpt-4o-mini-2024-07-18} for two reasons: (a)~to reduce API cost to a
+total of USD\,0.065 for 50 units, and (b)~to increase output determinism by
+setting \texttt{temperature}\,=\,0 (reduced from 0.2 in the proposal).
+Third, on 2026-07-16, the prompt was updated to supply the full production-file
+context---up to 200 lines of source---as the \texttt{MINIMAL\_CONTEXT} field,
+resolving the class-name and import failures observed in the 2026-07-13 run.
+Only the 2026-07-16 outputs are used in the confirmatory analysis.
+All amendments and their rationales were recorded prior to the metric computation
+pipeline being executed.
+
+\textbf{Replication package.}
+Our replication package includes: the frozen dataset manifest
+(\texttt{experiment/dataset-manifest.csv}) with SHA-256 source hashes and
+commit SHAs for all 50 units; prompt templates and their SHA-256 fingerprints;
+raw OpenAI request and response JSON for all 50 API calls; dependency lock files
+(\texttt{requirements-experiment.txt}) and Java build configuration; the
+pre-registered analysis script; raw JaCoCo, PIT, coverage.py, and Randoop output
+logs; and the full amendment log.
+The package is publicly available at:
+\url{https://github.com/phamvohungnghi/SWT301-SE1944-Group6}.
