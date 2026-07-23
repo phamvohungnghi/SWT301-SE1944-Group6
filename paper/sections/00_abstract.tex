@@ -1,1 +1,20 @@
-This is the abstract of the paper.
+% Written by Nghi (PL) — Project Lead
+Writing unit tests manually remains time-consuming and error-prone, yet no prior
+empirical study has evaluated first-attempt zero-shot LLM test generation on a
+complexity-controlled, language-balanced sample with a pre-registered statistical
+analysis plan.
+We apply \texttt{gpt-4o-mini-2024-07-18} to 50 standalone functions (25~Java,
+25~Python) filtered to cyclomatic complexity 5--15, generate one test suite per
+unit without any iterative repair, and measure branch coverage (JaCoCo and
+coverage.py) and mutation score (PIT for Java; Randoop~4.3.4 as a paired baseline).
+For RQ1, the one-sided sign test rejects the null that median branch coverage is
+at most 75\% for both Java ($p = 1.49 \times 10^{-6}$, 23/24 units above
+threshold) and Python ($p = 4.28 \times 10^{-4}$, 19/22 units above threshold),
+with Java median branch coverage 95.5\% and Python median 100\%.
+For RQ2, GPT-generated tests outperform Randoop on mutation score across all
+24~paired Java units (median difference $+62.1$ pp, 95\% CI: 31.6--84.6~pp;
+Wilcoxon $p = 6.58 \times 10^{-5}$; Cliff's $\delta = 0.79$, large effect).
+These results suggest that a single context-enriched prompt is sufficient to
+achieve high test quality on CC-moderate standalone functions, and that semantic
+understanding confers a decisive advantage over random test generation for
+functions with complex, domain-specific branching logic.

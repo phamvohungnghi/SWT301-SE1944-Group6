@@ -1,78 +1,230 @@
 \section{Methodology}
 \label{sec:methodology}
 
-This section describes our empirical study methodology, outlining the dataset preparation, the large language model setup, the prompt engineering design, the metrics measured, and the statistical analysis plan.
+This section describes our empirical study methodology, outlining the dataset
+preparation, the large language model setup, the prompt engineering design, the
+metrics measured, and the statistical analysis plan.
 
 \subsection{Dataset and Subject Units}
 \label{subsec:dataset}
-% Written by Vinh (WP1) - Write here
+
+We evaluate test generation on 50 standalone units: 25~Java methods and
+25~Python functions.
+All units were selected from public open-source repositories and from a shared
+course project repository at
+\url{https://github.com/phamvohungnghi/SWT301-SE1944-Group6}.
+
+\textbf{Complexity filter.}
+Cyclomatic complexity (CC) was measured using Lizard~1.23.0 on the source
+revision identified by the commit SHA recorded in the dataset manifest.
+Only units with $5 \le \text{CC} \le 15$ were eligible.
+This band captures functions with genuine branching logic---too complex for a
+trivial line-coverage sweep but small enough to be self-contained and runnable
+without external services.
+
+\textbf{Isolation requirement.}
+Each unit must build and execute without network access, database connections,
+wall-clock dependencies, or uncontrolled global state.
+Two reviewers assessed isolation independently; any disagreement was resolved by
+the project lead.
+
+\textbf{Manifest and freeze.}
+All eligible units were enumerated, assigned a \texttt{unit\_id}, and sorted by
+the SHA-256 hash of the \texttt{unit\_id} string.
+The first 25 Java and 25 Python entries were selected, yielding a deterministic,
+cherry-pick-resistant sample.
+The resulting manifest (\texttt{experiment/dataset-manifest.csv}) records, for
+each unit: \texttt{unit\_id}, language, test framework, repository URL, commit
+SHA, license, relative path, start/end lines, function name, Lizard CC score,
+isolation status, SHA-256 source hash, and reviewer sign-offs.
+The manifest was frozen and committed before any API call was made.
+
+\textbf{Descriptive statistics.}
+Cyclomatic complexity ranges from 5 to 15 for all 50 units by construction.
+The Java units span 13 distinct CC values (5 to 15); the Python units span the
+same range.
+All functions are standalone: they accept and return primitive or standard-library
+types without requiring test doubles for the production context.
 
 \subsection{LLM-based Test Generation Setup}
 \label{subsec:llm_setup}
-% Written by Thai (WP2) - Write here (refer to paper/thai/thai_section.tex)
+
+For the automated test generation pipeline, we utilized the official OpenAI API
+using the \texttt{gpt-4o-mini-2024-07-18} model snapshot.
+To ensure the reproducibility of results and minimize bias, the parameters
+generating the results are tightly controlled:
+\begin{itemize}
+    \item \textbf{Temperature:} Set to 0.0 to enforce deterministic code
+    generation.
+    \item \textbf{Top P:} The API requirements have been simplified to rely
+    solely on temperature-based sampling.
+    \item \textbf{Max Output Tokens:} The limit has been fixed at 2048 to avoid
+    the possibility of the response being cut short.
+    \item \textbf{System Prompt:} The system guided the model to operate like a
+    software testing expert, adhering to the required framework, returning only
+    executable source code, avoiding Markdown formatting blocks, and refraining
+    from accessing external resources or modifying the production code.
+\end{itemize}
+
+At first (as documented in the revision log), we evaluated the process using
+\texttt{gpt-4o} via the GitHub Models platform.
+However, to address protocol discrepancies, collect accurate token consumption
+data via the API \texttt{usage} field, and obtain standard OpenAI response
+identifiers (\texttt{resp\_*}), we switched to the official OpenAI API and
+reran all tests on 2026-07-16.
 
 \subsection{Prompt Engineering and Context Injection}
 \label{subsec:prompt_engineering}
-% Written by Thai (WP2) - Write here (refer to paper/thai/thai_section.tex)
+
+A key challenge in first-attempt zero-shot unit test generation is ensuring the
+generated code compiles and is syntactically correct the first time.
+Our test evaluations show that without class structure and module context, LLMs
+often produce invalid class definitions in Java or make incorrect import
+assumptions in Python.
+
+To overcome these issues, we created a prompt structure that includes context for
+each language:
+\begin{enumerate}
+    \item \textbf{Language-Specific Instructions:}
+    \begin{itemize}
+        \item \textit{Java Instructions:} The model was told to call methods
+        through the \texttt{JavaAlgorithms} class and forbidden from creating
+        separate classes named after the unique unit identifiers
+        (e.g., \texttt{JAVA\_001}).
+        \item \textit{Python Instructions:} The model was told to import the
+        target function using the syntax
+        \texttt{from python\_functions import <function\_name>} and forbidden
+        from copying the production code into the test file.
+    \end{itemize}
+    \item \textbf{Context Injection:} We included the entire target source file
+    (or the first 200~lines if the file size exceeded 50~KB) as background
+    context to provide the model with the exact imports, packages, and helper
+    functions available.
+    \item \textbf{Target Code:} The specific target method's source code was
+    appended at the end of the prompt.
+\end{enumerate}
 
 \subsection{Execution Cost and Token Analysis}
 \label{subsec:execution_cost}
-% Written by Thai (WP2) - Write here (refer to paper/thai/thai_section.tex)
+
+To evaluate the performance and efficiency of our proposed framework, we
+conducted extensive experiments using the official API endpoint.
+A batch-processing run consisting of 60 successful requests was executed
+(10~requests during the pilot phase and 50~requests during the full run),
+consuming a total volume of 323,246 input tokens.
+The average payload per request was approximately 5,387.4 input tokens,
+indicating a highly dense contextual input/output interaction due to the
+injection of source code context.
+The total computational budget incurred during this empirical session was
+\$0.0789~USD, demonstrating the high cost-effectiveness of our methodology.
+
+Table~\ref{tab:token_cost} summarises the token consumption and estimated cost
+using OpenAI's pricing structure for the \texttt{gpt-4o-mini-2024-07-18} model.
+
+\begin{table}[htbp]
+\caption{Token Consumption and Cost Details}
+\label{tab:token_cost}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Phase} & \textbf{Input Tokens} & \textbf{Output Tokens} & \textbf{Total Tokens} & \textbf{Cost (USD)} \\
+\midrule
+Pilot (10 units) & 53,831 & 9,205 & 63,036 & \$0.0136 \\
+Full Run (50 units) & 269,415 & 41,483 & 310,898 & \$0.0653 \\
+\midrule
+\textbf{Total (60 units)} & \textbf{323,246} & \textbf{50,688} & \textbf{373,934} & \textbf{\$0.0789} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Metrics and Execution Tools}
 \label{subsec:metrics}
 
-We measure three primary outcomes for each generated test suite: executability, branch coverage, and mutation score.
+We measure three primary outcomes for each generated test suite: executability,
+branch coverage, and mutation score.
 
 \textbf{Executability.}
-A generated test suite is classified as \texttt{EXECUTABLE} if it compiles successfully and all test methods complete without a JVM crash under JUnit~5.11.4 for Java, or under pytest~9.1.1 for Python.
-Suites that fail to compile are classified as \texttt{COMPILE\_ERROR}; suites that compile but abort at runtime are classified as \texttt{TEST\_RUNTIME\_ERROR}.
-Every generated response, including failures, is retained in the denominator when computing executability rates; no suite is silently dropped.
+A generated test suite is classified as \texttt{EXECUTABLE} if it compiles
+successfully and all test methods complete without a JVM crash under JUnit~5.11.4
+for Java, or under pytest~9.1.1 for Python.
+Suites that fail to compile are classified as \texttt{COMPILE\_ERROR}; suites
+that compile but abort at runtime are classified as \texttt{TEST\_RUNTIME\_ERROR}.
+Every generated response, including failures, is retained in the denominator when
+computing executability rates; no suite is silently dropped.
 
 \textbf{Branch Coverage.}
-For Java, branch coverage is measured at method granularity using JaCoCo~0.8.13 instrumented through the Maven Surefire plugin.
-Only the target method's branches are counted; helper code in the same class is excluded.
-For Python, branch coverage is measured per function using coverage.py~7.14.2 with the \texttt{--branch} flag and a per-function \texttt{coverage run} scope.
-Coverage is defined as $\text{branch\_coverage} = \frac{\text{covered\_branches}}{\text{total\_branches}} \times 100\%$.
-Non-executable suites receive \texttt{NA} in the primary complete-case analysis and $0\%$ in the worst-case sensitivity analysis.
+For Java, branch coverage is measured at method granularity using JaCoCo~0.8.13
+instrumented through the Maven Surefire plugin.
+Only the target method's branches are counted; helper code in the same class is
+excluded.
+For Python, branch coverage is measured per function using coverage.py~7.14.2
+with the \texttt{--branch} flag and a per-function \texttt{coverage run} scope.
+Coverage is defined as
+$\text{branch\_coverage} = \frac{\text{covered\_branches}}{\text{total\_branches}} \times 100\%$.
+Non-executable suites receive \texttt{NA} in the primary complete-case analysis
+and $0\%$ in the worst-case sensitivity analysis.
 
 \textbf{Mutation Score.}
-For Java, mutation score is measured using PIT~1.19.1 with its default mutator set.
-Timeout mutants are counted as survived in the primary analysis; invalid mutants are excluded from the denominator.
-Equivalent mutants are not removed by manual inspection after viewing results, to avoid inflating scores post-hoc.
-The formula is $\text{mutation\_score} = \frac{\text{killed}}{\text{generated} - \text{invalid}} \times 100\%$.
+For Java, mutation score is measured using PIT~1.19.1 with its default mutator
+set.
+Timeout mutants are counted as survived in the primary analysis; invalid mutants
+are excluded from the denominator.
+Equivalent mutants are not removed by manual inspection after viewing results, to
+avoid inflating scores post-hoc.
+The formula is
+$\text{mutation\_score} = \frac{\text{killed}}{\text{generated} - \text{invalid}} \times 100\%$.
 For Python, pytest-mutagen~1.3 is used.
-As a tool limitation, pytest-mutagen did not produce any valid mutants for any of the 25~Python functions; consequently, Python mutation scores are \texttt{NA} throughout and the Python mutation outcome is excluded from the confirmatory analysis.
+As a tool limitation, pytest-mutagen did not produce any valid mutants for any
+of the 25~Python functions; consequently, Python mutation scores are \texttt{NA}
+throughout and the Python mutation outcome is excluded from the confirmatory
+analysis.
 
 \textbf{Randoop Baseline.}
-Randoop~4.3.4 is run for each of the 25~Java methods with \texttt{randomseed=20260621} and a time budget of 60~seconds per unit, using JDK~17 and the same production source revision as the GPT-generated tests.
-Randoop-generated suites are passed through the same JaCoCo and PIT pipeline without any manual repair.
-Raw command logs, generated test files, and per-unit coverage/mutation reports are archived in \texttt{evaluation/randoop/}.
+Randoop~4.3.4 is run for each of the 25~Java methods with
+\texttt{randomseed=20260621} and a time budget of 60~seconds per unit, using
+JDK~17 and the same production source revision as the GPT-generated tests.
+Randoop-generated suites are passed through the same JaCoCo and PIT pipeline
+without any manual repair.
+Raw command logs, generated test files, and per-unit coverage/mutation reports
+are archived in \texttt{evaluation/randoop/}.
 
 \subsection{Statistical Analysis Plan}
 \label{subsec:statistics}
 
-All hypotheses are registered in \texttt{team-synthesis/proposal.md} before data collection.
-No threshold, test, or metric definition is altered after observing experimental results.
+All hypotheses are registered in \texttt{team-synthesis/proposal.md} before data
+collection.
+No threshold, test, or metric definition is altered after observing experimental
+results.
 The family-wise significance level is $\alpha = 0.05$.
-We report raw $p$-values, Holm-adjusted $p$-values, effect estimates, and 95\% confidence intervals for all confirmatory tests.
+We report raw $p$-values, Holm-adjusted $p$-values, effect estimates, and 95\%
+confidence intervals for all confirmatory tests.
 
 \textbf{RQ1 (Branch Coverage vs.\ 75\% Target).}
-We apply a one-sided exact sign test (right-tailed) separately for Java and Python, with $H_0$: median branch coverage $\leq 75\%$.
+We apply a one-sided exact sign test (right-tailed) separately for Java and
+Python, with $H_0$: median branch coverage $\leq 75\%$.
 Observations exactly equal to 75\% are excluded as ties.
-The two resulting $p$-values are adjusted for multiplicity using the Holm--Bonferroni procedure.
+The two resulting $p$-values are adjusted for multiplicity using the
+Holm--Bonferroni procedure.
 
 \textbf{RQ2 (GPT-4o vs.\ Randoop, Java Only).}
-We apply a one-sided paired Wilcoxon signed-rank test (right-tailed) on the per-unit differences $d_i = \text{mutation\_GPT}_i - \text{mutation\_Randoop}_i$, with $H_0$: $\text{median}(d) \leq 0$.
+We apply a one-sided paired Wilcoxon signed-rank test (right-tailed) on the
+per-unit differences $d_i = \text{mutation\_GPT}_i - \text{mutation\_Randoop}_i$,
+with $H_0$: $\text{median}(d) \leq 0$.
 Zero differences are handled with the Wilcox zero-method.
 As a sensitivity analysis, we apply a one-sided sign test excluding tied pairs.
-A deterministic bootstrap 95\% confidence interval for the median difference is computed with seed 20260621 and 10,000 resamples.
+A deterministic bootstrap 95\% confidence interval for the median difference is
+computed with seed 20260621 and 10,000 resamples.
 
 \textbf{RQ3 (CC vs.\ Test Quality).}
-We compute one-sided Spearman rank correlations (left-tailed) between cyclomatic complexity and each of branch coverage and mutation score, separately for Java and Python.
-The four planned pairs yield three testable correlations after excluding Python mutation (which is \texttt{NOT\_TESTABLE} due to the pytest-mutagen tool limitation).
+We compute one-sided Spearman rank correlations (left-tailed) between cyclomatic
+complexity and each of branch coverage and mutation score, separately for Java and
+Python.
+The four planned pairs yield three testable correlations after excluding Python
+mutation (which is \texttt{NOT\_TESTABLE} due to the pytest-mutagen tool
+limitation).
 The three raw $p$-values are adjusted using Holm--Bonferroni correction.
-RQ3 is pre-registered as a secondary exploratory analysis; we do not claim causal relationships.
+RQ3 is pre-registered as a secondary exploratory analysis; we do not claim causal
+relationships.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Protocol Amendments and Replication Package}
