@@ -23,18 +23,21 @@ None of the generated test suites failed because of missing module imports or in
 
 Table~\ref{tab:rq1} summarizes the branch coverage results and the sign-test analysis.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{RQ1: Branch Coverage Results (Primary Complete-Case Analysis)}
 \label{tab:rq1}
+\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcccccc}
 \toprule
-Lang & $n$ valid & Median & IQR & $k$ above 75\% & $p_{\text{raw}}$ & $p_{\text{Holm}}$ \\
+Lang & $n$ valid & Median & IQR & $k > 75\%$ & $p_{\text{raw}}$ & $p_{\text{Holm}}$ \\
 \midrule
-Java   & 24/25 & 95.45\% & [89.62, 100.00] & 23/24 & $1.49 \times 10^{-6}$ & $2.98 \times 10^{-6}$ \\
-Python & 22/25 & 100.00\% & [87.85, 100.00] & 19/22 & $4.28 \times 10^{-4}$ & $4.28 \times 10^{-4}$ \\
+Java   & 24/25 & 95.45\% & [89.6, 100.0] & 23/24 & $1.49 \times 10^{-6}$ & $2.98 \times 10^{-6}$ \\
+Python & 22/25 & 100.00\% & [87.9, 100.0] & 19/22 & $4.28 \times 10^{-4}$ & $4.28 \times 10^{-4}$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 For Java, the one-sided sign test produced $k = 23$ out of 24~non-tied observations above the 75\% target ($p_{\text{raw}} = 1.49 \times 10^{-6}$, Holm-adjusted $p = 2.98 \times 10^{-6}$).
@@ -63,6 +66,7 @@ Among the 25~Java functions, 24~provided paired mutation score data. \texttt{JAV
 \centering
 \caption{RQ2: Paired Mutation Score --- GPT-4o vs.\ Randoop (Java, $n = 24$)}
 \label{tab:rq2}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{lcc}
 \toprule
 Statistic & GPT-4o & Randoop \\
@@ -75,7 +79,8 @@ Bootstrap 95\% CI         & \multicolumn{2}{c}{[31.58, 84.62] pp} \\
 Wilcoxon $W$              & \multicolumn{2}{c}{190.0} \\
 $p$-value (one-sided)     & \multicolumn{2}{c}{$6.58 \times 10^{-5}$} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 We used a one-sided paired Wilcoxon signed-rank test to compare the mutation scores of GPT-4o and Randoop. The test produced $W = 190.0$ with $p = 6.58 \times 10^{-5}$, which is below $\alpha = 0.05$. Therefore, we reject $H_0$.
@@ -94,6 +99,7 @@ Table~\ref{tab:rq3} summarizes the results of the Spearman correlation analysis.
 \centering
 \caption{RQ3: Spearman Correlation --- CC vs.\ Test Quality (Holm-corrected)}
 \label{tab:rq3}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{llcccc}
 \toprule
 Language & Outcome & $n$ & $\rho$ & $p_{\text{raw}}$ & $p_{\text{Holm}}$ \\
@@ -103,7 +109,8 @@ Java   & Mutation Score  & 24 & $+0.109$ & $0.6946$  & $1.0000$  \\
 Python & Branch Coverage & 22 & $-0.512$ & $0.0074$ & $0.0223$ \\
 Python & Mutation Score  & 6  & NaN      & NaN      & $1.0000$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 For Java, the Spearman correlation between cyclomatic complexity and branch coverage was $\rho = -0.517$, with a Holm-adjusted $p$-value of 0.0195. The adjusted $p$-value is below $\alpha = 0.05$, so $H_0$ is rejected. This result indicates a moderate negative correlation. In general, functions with higher cyclomatic complexity tended to achieve lower branch coverage.

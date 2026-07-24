@@ -122,19 +122,22 @@ Table~\ref{tab:token_cost} summarises the token consumption and estimated cost
 using OpenAI's pricing structure for the \texttt{gpt-4o-mini-2024-07-18} model.
 
 \begin{table}[htbp]
+\centering
 \caption{Token Consumption and Cost Details}
 \label{tab:token_cost}
-\centering
+\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{lrrrr}
 \toprule
-\textbf{Phase} & \textbf{Input Tokens} & \textbf{Output Tokens} & \textbf{Total Tokens} & \textbf{Cost (USD)} \\
+\textbf{Phase} & \textbf{Input} & \textbf{Output} & \textbf{Total} & \textbf{Cost (USD)} \\
 \midrule
 Pilot (10 units) & 53,831 & 9,205 & 63,036 & \$0.0136 \\
 Full Run (50 units) & 269,415 & 41,483 & 310,898 & \$0.0653 \\
 \midrule
 \textbf{Total (60 units)} & \textbf{323,246} & \textbf{50,688} & \textbf{373,934} & \textbf{\$0.0789} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Metrics and Execution Tools}
